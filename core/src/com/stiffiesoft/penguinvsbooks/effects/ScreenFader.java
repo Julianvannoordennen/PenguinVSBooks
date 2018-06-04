@@ -29,8 +29,8 @@ public class ScreenFader {
     public void fade(Color color, float intensityFrom, float intensityTo, float speed, ScreenFaderListener listener) {
 
         //Execute old listener if available
-        if (listener != null)
-            listener.onFadeDone();
+        if (this.listener != null)
+            this.listener.onFadeDone();
 
         //Change default values
         this.color = color;
