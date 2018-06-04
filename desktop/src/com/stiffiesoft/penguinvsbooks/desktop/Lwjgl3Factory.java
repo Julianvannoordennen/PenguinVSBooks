@@ -13,7 +13,7 @@ public class Lwjgl3Factory {
         Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
 
         //Set fullscreen with correct resolution and monitor
-        Graphics.Monitor monitor = Lwjgl3ApplicationConfiguration.getPrimaryMonitor();
+        Graphics.Monitor monitor = Lwjgl3ApplicationConfiguration.getMonitors()[3];
         Graphics.DisplayMode displayMode = Lwjgl3ApplicationConfiguration.getDisplayMode(monitor);
         config.setFullscreenMode(displayMode);
 

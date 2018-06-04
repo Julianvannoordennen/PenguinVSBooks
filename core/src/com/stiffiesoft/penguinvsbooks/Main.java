@@ -1,29 +1,34 @@
 package com.stiffiesoft.penguinvsbooks;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.stiffiesoft.penguinvsbooks.system.Calc;
+import com.stiffiesoft.penguinvsbooks.effects.ScreenFader;
+import com.stiffiesoft.penguinvsbooks.system.C;
 
 public class Main extends Game {
 
 	private SpriteBatch batch;
 	private Sprite imageLogo;
+	private ScreenFader screenFader;
 
 	@Override
 	public void create () {
 
 		//Instantiate objects
-		batch = new SpriteBatch();
-		imageLogo = new Sprite(new Texture("sprites/menu/menu_logo.png"));
+		batch 				= new SpriteBatch();
+		imageLogo 			= new Sprite(new Texture("sprites/menu/menu_logo.png"));
+		screenFader = new ScreenFader();
 
 		//Set positions
-		imageLogo.setPosition((Calc.sW() / 2) - (imageLogo.getWidth() / 2),(Calc.sH() / 2) - (imageLogo.getHeight() / 2));
-		imageLogo.setSize(Calc.sH(), Calc.sH());
+		imageLogo.setSize(C.sH(), C.sH());
+		imageLogo.setPosition((C.sW() / 2) - (imageLogo.getWidth() / 2),(C.sH() / 2) - (imageLogo.getHeight() / 2));
+
+		screenFader.fade(Color.BLACK, 1f, 0f, 1, null);
 	}
 
 	@Override
@@ -35,7 +40,14 @@ public class Main extends Game {
 
 		//Render textures
 		batch.begin();
+
+		//Default textures
 		batch.draw(imageLogo, imageLogo.getX(), imageLogo.getY(), imageLogo.getWidth(), imageLogo.getHeight());
+
+		//Effects
+		screenFader.draw(batch);
+
+		//End
 		batch.end();
 	}
 
