@@ -51,6 +51,8 @@ public class MenuIntroState implements StartMenuState, MovingFloatListener {
 
     @Override
     public void onDispose() {
+
+        //Dispose
         font.dispose();
     }
 
