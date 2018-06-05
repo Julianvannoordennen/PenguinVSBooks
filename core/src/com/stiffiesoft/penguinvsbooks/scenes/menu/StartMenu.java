@@ -18,7 +18,7 @@ public class StartMenu extends BaseScene {
         super(main);
 
         //Instantiate
-        state = new ScreenFadeInState(this);
+        state = new MenuIntroState(this);
     }
 
     @Override
@@ -30,7 +30,6 @@ public class StartMenu extends BaseScene {
         //Set positions
         imageLogo.setSize(C.sH(), C.sH());
         imageLogo.setPosition((C.sW() / 2) - (imageLogo.getWidth() / 2),(C.sH() / 2) - (imageLogo.getHeight() / 2));
-
         state.onShow();
     }
 

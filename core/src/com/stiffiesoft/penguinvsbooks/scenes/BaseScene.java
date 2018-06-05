@@ -10,7 +10,6 @@ import com.stiffiesoft.penguinvsbooks.effects.ScreenFader;
 public abstract class BaseScene implements Screen {
 
     protected Main main;
-    protected ScreenFader screenFader;
     private SpriteBatch batch;
 
     public BaseScene(Main main) {
@@ -18,7 +17,6 @@ public abstract class BaseScene implements Screen {
         //Load default scene items
         this.main               = main;
         this.batch              = main.getBatch();
-        this.screenFader        = new ScreenFader();
     }
 
     @Override
@@ -71,8 +69,8 @@ public abstract class BaseScene implements Screen {
         onDispose();
     }
 
-    public ScreenFader getScreenFader() {
-        return screenFader;
+    public Main getMain() {
+        return main;
     }
 
     //Abstract methods

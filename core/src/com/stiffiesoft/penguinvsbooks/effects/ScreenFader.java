@@ -43,42 +43,43 @@ public class ScreenFader {
 
     public void draw(SpriteBatch batch) {
 
-        //Check if fading
-        if (color != null) {
+        //Get default color
+        Color color = batch.getColor();
 
-            //Get default color
-            Color color = batch.getColor();
+        //Change color
+        batch.setColor(new Color(this.color.r, this.color.g, this.color.b, currentIntensity));
 
-            //Change color
-            batch.setColor(new Color(this.color.r, this.color.g, this.color.b, currentIntensity));
+        //Draw current layer
+        batch.draw(layer, 0, 0, C.sW(), C.sH());
 
-            //Draw current layer
-            batch.draw(layer, 0, 0, C.sW(), C.sH());
+        //Restore color
+        batch.setColor(color);
 
-            //Restore color
-            batch.setColor(color);
+        //Increase current intensity
+        this.currentIntensity += (this.increase ? speed : -speed) * C.cET();
 
-            //Increase current intensity
-            this.currentIntensity += (this.increase ? speed : -speed) * C.dT();
+        //Check if done
+        if ((this.currentIntensity >= intensityTo && this.increase) || (this.currentIntensity <= intensityTo && !this.increase)) {
 
-            //Check if done
-            if ((this.currentIntensity >= intensityTo && this.increase) || (this.currentIntensity <= intensityTo && !this.increase)) {
+            //Set value
+            this.currentIntensity = intensityTo;
 
-                //Done
-                if (listener != null)
-                    listener.onFadeDone();
+            //Done
+            if (listener != null)
+                listener.onFadeDone();
 
-                //Reset
-                reset();
-            }
+            //Reset
+            reset();
         }
+    }
+
+    public void setCurrentIntensity(float value) {
+        this.currentIntensity = value;
     }
 
     private void reset() {
 
         //Set default values
-        this.currentIntensity = 0;
-        this.color = null;
         this.speed = 0;
         this.intensityTo = 0;
         this.increase = false;
