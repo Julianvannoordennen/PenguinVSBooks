@@ -1,0 +1,11 @@
+package com.stiffiesoft.penguinvsbooks.system;
+
+import com.badlogic.gdx.Gdx;
+
+//Mouse class
+public class M {
+
+    public static int x() { return Gdx.input.getX(); }
+    public static int y() { return Gdx.input.getY(); }
+    public static int iY() { return (int)C.sH() - y(); }
+}

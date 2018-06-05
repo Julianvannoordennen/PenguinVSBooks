@@ -16,6 +16,7 @@ public class Lwjgl3Factory {
         Graphics.Monitor monitor = Lwjgl3ApplicationConfiguration.getMonitors()[3];
         Graphics.DisplayMode displayMode = Lwjgl3ApplicationConfiguration.getDisplayMode(monitor);
         config.setFullscreenMode(displayMode);
+        config.setResizable(false);
 
         //Return
         return config;
