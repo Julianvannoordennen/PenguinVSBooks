@@ -18,11 +18,7 @@ public class StartMenu extends BaseScene {
         super(main);
 
         //Instantiate
-        state = new MenuIntroState(this);
-    }
-
-    @Override
-    protected void onShow() {
+        state = new MenuFadeBeforeIntroState(this);
 
         //Instantiate
         imageLogo = new Sprite(new Texture("sprites/menu/menu_logo.png"));
@@ -30,7 +26,6 @@ public class StartMenu extends BaseScene {
         //Set positions
         imageLogo.setSize(C.sH(), C.sH());
         imageLogo.setPosition((C.sW() / 2) - (imageLogo.getWidth() / 2),(C.sH() / 2) - (imageLogo.getHeight() / 2));
-        state.onShow();
     }
 
     @Override
@@ -43,6 +38,7 @@ public class StartMenu extends BaseScene {
     protected void onDispose() {
         state.onDispose();
     }
+
 
     public void setState(StartMenuState state) {
         this.state = state;

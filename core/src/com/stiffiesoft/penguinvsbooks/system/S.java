@@ -12,7 +12,7 @@ public class S {
 
     public static String startTheGame() {
         if (l == Language.DUTCH) return "Start het spel";
-        else return "Start the game";
+        else return "Start the Game";
     }
 
     public static String showIngameArchievements() {
@@ -22,7 +22,7 @@ public class S {
 
     public static String quitTheGame() {
         if (l == Language.DUTCH) return "Verlaat het spel";
-        else return "Quit the game";
+        else return "Quit the Game";
     }
 
     public static String showConfigurableSettings() {

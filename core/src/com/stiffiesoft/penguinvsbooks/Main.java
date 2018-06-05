@@ -6,11 +6,12 @@ import com.stiffiesoft.penguinvsbooks.effects.ScreenFader;
 import com.stiffiesoft.penguinvsbooks.scenes.menu.StartMenu;
 import com.stiffiesoft.penguinvsbooks.system.FontFactory;
 
+import java.util.Timer;
+
 public class Main extends Game {
 
 	private SpriteBatch batch;
 	private FontFactory fontFactory;
-	protected ScreenFader screenFader;
 
 	@Override
 	public void create () {
@@ -18,7 +19,6 @@ public class Main extends Game {
 		//Instantiate objects
 		batch = new SpriteBatch();
 		fontFactory = new FontFactory();
-		screenFader = new ScreenFader();
 
 		//Open correct scene
 		setScreen(new StartMenu(this));
@@ -41,8 +41,5 @@ public class Main extends Game {
 	}
 	public FontFactory getFontFactory() {
 		return fontFactory;
-	}
-	public ScreenFader getScreenFader() {
-		return screenFader;
 	}
 }

@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.stiffiesoft.penguinvsbooks.effects.*;
 import com.stiffiesoft.penguinvsbooks.system.*;
 
-public class MenuIntroState implements StartMenuState, ScreenFaderListener, MovingFloatListener {
+public class MenuIntroState implements StartMenuState, MovingFloatListener {
 
     private StartMenu startMenu;
     private ScreenFader screenFader;
@@ -22,19 +22,15 @@ public class MenuIntroState implements StartMenuState, ScreenFaderListener, Movi
 
     public MenuIntroState(StartMenu startMenu) {
         this.startMenu = startMenu;
-        this.screenFader = startMenu.getMain().getScreenFader();
+        this.screenFader = new ScreenFader();
+        screenFader.fade(Color.BLACK, 0f, 0f, 0.01f, null);
 
         FontFactory factory = startMenu.getMain().getFontFactory();
         this.font = factory.createNormalFont();
         this.fontGlyph = factory.createGlyph(S.pressSpacebarToContinue(), font);
         this.fontFloat = new MovingFloat(C.pH() * -5);
         this.fontBool = new FlashingBool(true);
-
-        screenFader.fade(Color.BLACK, 1f, 0f, 1f, this);
-    }
-
-    @Override
-    public void onShow() {
+        fontFloat.move(C.pH() * 25, 5f, this);
     }
 
     @Override
@@ -55,17 +51,13 @@ public class MenuIntroState implements StartMenuState, ScreenFaderListener, Movi
 
     @Override
     public void onDispose() {
-
-    }
-
-    @Override
-    public void onFadeDone() {
-        fontFloat.move(C.pH() * 25, 5f, this);
+        font.dispose();
     }
 
     @Override
     public void onFloatMoveDone() {
         if (endIntro) {
+
             startMenu.setState(new MenuSelectOptionState(startMenu));
         } else {
             fontBool.start(500);

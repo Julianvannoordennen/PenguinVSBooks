@@ -1,6 +1,7 @@
 package com.stiffiesoft.penguinvsbooks.scenes.menu;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
@@ -11,6 +12,7 @@ import com.stiffiesoft.penguinvsbooks.effects.ScreenFader;
 import com.stiffiesoft.penguinvsbooks.effects.ScreenFaderListener;
 import com.stiffiesoft.penguinvsbooks.gameobjects.menu.MenuButton;
 import com.stiffiesoft.penguinvsbooks.gameobjects.menu.MenuButtonListener;
+import com.stiffiesoft.penguinvsbooks.scenes.Game;
 import com.stiffiesoft.penguinvsbooks.system.C;
 import com.stiffiesoft.penguinvsbooks.system.FontFactory;
 import com.stiffiesoft.penguinvsbooks.system.S;
@@ -35,8 +37,8 @@ public class MenuSelectOptionState implements StartMenuState, MenuButtonListener
 
     public MenuSelectOptionState(StartMenu startMenu) {
         this.startMenu              = startMenu;
-        this.screenFader            = startMenu.getMain().getScreenFader();
-        this.screenFader.setCurrentIntensity(0.5f);
+        this.screenFader            = new ScreenFader();
+        this.screenFader.fade(Color.BLACK, 0.5f, 0.5f, 0.01f, null);
 
         float space                 = C.pH() * 10;
         float doubleSpace           = space * 2;
@@ -58,11 +60,6 @@ public class MenuSelectOptionState implements StartMenuState, MenuButtonListener
         this.fontFactory            = startMenu.getMain().getFontFactory();
         this.font                   = this.fontFactory.createNormalFont();
         this.fontGlyph              = this.fontFactory.createGlyph("", font);
-    }
-
-    @Override
-    public void onShow() {
-
     }
 
     @Override
@@ -88,6 +85,10 @@ public class MenuSelectOptionState implements StartMenuState, MenuButtonListener
 
         fontFloat.update();
         font.draw(batch, fontGlyph, 0, fontFloat.getValue());
+
+        //Check if pressing escape
+        if (Gdx.input.isKeyPressed(131))
+            onPress(null);
     }
 
     @Override
@@ -122,15 +123,20 @@ public class MenuSelectOptionState implements StartMenuState, MenuButtonListener
     @Override
     public void onPress(MenuButton button) {
 
-        //Remove button listener
-        button.setListener(null);
+        //Remove button listeners
+        playButton.setListener(null);
+        statisticsButton.setListener(null);
+        upgradesButton.setListener(null);
+        archievementsButton.setListener(null);
+        settingsButton.setListener(null);
+        quitButton.setListener(null);
 
         //Set pressed id
-        this.pressedId = button.getId();
+        this.pressedId = button == null ? 7 : button.getId();
 
         //Move
         fontFloat.move(C.pH() * -5, 5f, null);
-        this.leftButtonsFloat.move(-button.getWidth(), 4f, this);
+        this.leftButtonsFloat.move(C.pH() * -10, 4f, this);
         this.rightButtonsFloat.move(C.sW(), 4f, null);
     }
 
@@ -148,10 +154,15 @@ public class MenuSelectOptionState implements StartMenuState, MenuButtonListener
             settingsButton.setListener(this);
             quitButton.setListener(this);
 
-        } else if (pressedId == 6) {
+        } else if (pressedId == 1 || pressedId == 6) {
 
             //Screen fader
             this.screenFader.fade(Color.BLACK, 0.5f, 1, 2f, this);
+
+        } else if (pressedId == 7) {
+
+            //Screen fader
+            this.screenFader.fade(Color.BLACK, 0.5f, 0, 2f, this);
         }
     }
 
@@ -159,10 +170,20 @@ public class MenuSelectOptionState implements StartMenuState, MenuButtonListener
     public void onFadeDone() {
 
         //Check pressed id
-        if (pressedId == 6) {
+        if (pressedId == 1) {
 
-            //Exit the game
+            //Go to game scene
+            this.startMenu.getMain().setScreen(new Game(this.startMenu.getMain()));
+
+        } else if (pressedId == 6) {
+
+            //Exit the Game
             Gdx.app.exit();
+
+        } else if (pressedId == 7) {
+
+            //Back to intro
+            this.startMenu.setState(new MenuIntroState(this.startMenu));
         }
     }
 }

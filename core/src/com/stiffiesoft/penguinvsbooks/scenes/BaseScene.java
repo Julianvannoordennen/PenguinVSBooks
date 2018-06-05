@@ -21,7 +21,6 @@ public abstract class BaseScene implements Screen {
 
     @Override
     public void show() {
-        onShow();
     }
 
     @Override
@@ -74,7 +73,6 @@ public abstract class BaseScene implements Screen {
     }
 
     //Abstract methods
-    protected abstract void onShow();
     protected abstract void onRender(SpriteBatch batch);
     protected abstract void onDispose();
 }

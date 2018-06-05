@@ -28,10 +28,6 @@ public class ScreenFader {
 
     public void fade(Color color, float intensityFrom, float intensityTo, float speed, ScreenFaderListener listener) {
 
-        //Execute old listener if available
-        if (this.listener != null)
-            this.listener.onFadeDone();
-
         //Change default values
         this.color = color;
         this.currentIntensity = intensityFrom;
@@ -43,38 +39,37 @@ public class ScreenFader {
 
     public void draw(SpriteBatch batch) {
 
-        //Get default color
-        Color color = batch.getColor();
+        if (color != null) {
 
-        //Change color
-        batch.setColor(new Color(this.color.r, this.color.g, this.color.b, currentIntensity));
+            //Get default color
+            Color color = batch.getColor();
 
-        //Draw current layer
-        batch.draw(layer, 0, 0, C.sW(), C.sH());
+            //Change color
+            batch.setColor(new Color(this.color.r, this.color.g, this.color.b, currentIntensity));
 
-        //Restore color
-        batch.setColor(color);
+            //Draw current layer
+            batch.draw(layer, 0, 0, C.sW(), C.sH());
 
-        //Increase current intensity
-        this.currentIntensity += (this.increase ? speed : -speed) * C.cET();
+            //Restore color
+            batch.setColor(color);
 
-        //Check if done
-        if ((this.currentIntensity >= intensityTo && this.increase) || (this.currentIntensity <= intensityTo && !this.increase)) {
+            //Increase current intensity
+            this.currentIntensity += (this.increase ? speed : -speed) * C.cET();
 
-            //Set value
-            this.currentIntensity = intensityTo;
+            //Check if done
+            if ((this.currentIntensity >= intensityTo && this.increase) || (this.currentIntensity <= intensityTo && !this.increase)) {
 
-            //Done
-            if (listener != null)
-                listener.onFadeDone();
+                //Set value
+                this.currentIntensity = intensityTo;
 
-            //Reset
-            reset();
+                //Done
+                if (listener != null)
+                    listener.onFadeDone();
+
+                //Reset
+                reset();
+            }
         }
-    }
-
-    public void setCurrentIntensity(float value) {
-        this.currentIntensity = value;
     }
 
     private void reset() {

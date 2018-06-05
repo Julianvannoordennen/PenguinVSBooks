@@ -23,6 +23,7 @@ public class FlashingBool extends TimerTask {
     }
 
     public void stop() {
+        this.cancel();
         timer.cancel();
     }
 
