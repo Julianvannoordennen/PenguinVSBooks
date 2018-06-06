@@ -5,18 +5,21 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.stiffiesoft.penguinvsbooks.Main;
+import com.stiffiesoft.penguinvsbooks.effects.Border;
 import com.stiffiesoft.penguinvsbooks.effects.ScreenFader;
 
 public abstract class BaseScene implements Screen {
 
     protected Main main;
     private SpriteBatch batch;
+    private Border border;
 
     public BaseScene(Main main) {
 
         //Load default scene items
         this.main               = main;
         this.batch              = main.getBatch();
+        this.border             = new Border();
     }
 
     @Override
@@ -35,6 +38,7 @@ public abstract class BaseScene implements Screen {
 
         //Render
         onRender(batch);
+        border.render(batch);
 
         //End
         batch.end();
