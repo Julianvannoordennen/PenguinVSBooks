@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.stiffiesoft.penguinvsbooks.system.A;
 import com.stiffiesoft.penguinvsbooks.system.C;
 
 public class ScreenFader {
@@ -20,7 +21,7 @@ public class ScreenFader {
     public ScreenFader() {
 
         //Load screen fader layer
-        this.layer = new Sprite(new Texture("sprites/effects/screenfade.png"));
+        this.layer = new Sprite(A.m.get(A.screenFader));
 
         //Initialize default variables
         reset();

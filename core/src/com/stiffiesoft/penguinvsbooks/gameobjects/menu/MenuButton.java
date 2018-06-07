@@ -19,8 +19,8 @@ public class MenuButton {
 
     private boolean hovering = false;
 
-    public MenuButton(int id, String image, float width, float height, float x, float y, MenuButtonListener listener) {
-        this.texture = new Texture(image);
+    public MenuButton(int id, Texture image, float width, float height, float x, float y, MenuButtonListener listener) {
+        this.texture = image;
         this.width = width;
         this.height = height;
         this.x = x;
@@ -29,8 +29,8 @@ public class MenuButton {
         this.id = id;
     }
 
-    public MenuButton(int id, String image, float size, float x, float y, MenuButtonListener listener) {
-        this(id, image,size, size, x, y, listener);
+    public MenuButton(int id, Texture image, float size, float x, float y, MenuButtonListener listener) {
+        this(id, image, size, size, x, y, listener);
     }
 
     public float getWidth() {

@@ -3,6 +3,7 @@ package com.stiffiesoft.penguinvsbooks.effects;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.stiffiesoft.penguinvsbooks.system.A;
 import com.stiffiesoft.penguinvsbooks.system.C;
 
 public class Border {
@@ -15,7 +16,7 @@ public class Border {
     public Border() {
 
         //Create textures
-        Texture screen = new Texture("effects/border_screen.png");
+        Texture screen = A.m.get(A.screenBorder);
 
         //Define size
         float size = C.pH() * 10;

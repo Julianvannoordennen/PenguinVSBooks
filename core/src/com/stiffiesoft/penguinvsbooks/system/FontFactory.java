@@ -12,10 +12,10 @@ public class FontFactory {
     private BitmapFont fontSmall;
 
     public FontFactory() {
-        fontNormal = new BitmapFont(Gdx.files.internal("fonts/default.fnt"));
-        fontNormal.getData().setScale(0.3f,0.3f);
-        fontSmall = new BitmapFont(Gdx.files.internal("fonts/default.fnt"));
-        fontSmall.getData().setScale(0.1f,0.1f);
+        fontNormal = A.m.get(A.defaultFont);
+        fontNormal.getData().setScale(1f,1f);
+        fontSmall = A.m.get(A.defaultFont);
+        fontSmall.getData().setScale(0.3f,0.3f);
     }
 
     public BitmapFont createNormalFont() {

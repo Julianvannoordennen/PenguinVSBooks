@@ -15,8 +15,7 @@ public class Game extends BaseScene {
     public Game(Main main) {
         super(main);
 
-        bookEnemy = new SpriteAnimation(A.manager.get(A.defaultBookEnemyAtlas, TextureAtlas.class),30, C.pH() * 5, C.pH() * 5);
-
+        bookEnemy = new SpriteAnimation(A.m.get(A.defaultBookEnemyAtlas),30, C.pH() * 5, C.pH() * 5);
     }
 
     @Override

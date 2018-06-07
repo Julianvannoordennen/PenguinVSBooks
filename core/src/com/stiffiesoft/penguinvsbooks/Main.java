@@ -3,6 +3,7 @@ package com.stiffiesoft.penguinvsbooks;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.stiffiesoft.penguinvsbooks.effects.ScreenFader;
+import com.stiffiesoft.penguinvsbooks.scenes.LoadScene;
 import com.stiffiesoft.penguinvsbooks.scenes.menu.StartMenu;
 import com.stiffiesoft.penguinvsbooks.system.A;
 import com.stiffiesoft.penguinvsbooks.system.FontFactory;
@@ -17,20 +18,20 @@ public class Main extends Game {
 	@Override
 	public void create () {
 
-		//Load assets
-		A.load();
-
-		//A.manager.finishLoading();
-		while(!A.manager.update()) {
-			A.manager.getProgress();
-		}
-
 		//Instantiate objects
 		batch = new SpriteBatch();
-		fontFactory = new FontFactory();
 
 		//Open correct scene
-		setScreen(new com.stiffiesoft.penguinvsbooks.scenes.Game(this));
+		setScreen(new LoadScene(this));
+	}
+
+	public void createAfterAssetLoading() {
+
+		//Instantiate objects that can only be accesses with loaded assets
+		fontFactory = new FontFactory();
+
+		//Load start menu
+		setScreen(new StartMenu(this));
 	}
 
 	@Override

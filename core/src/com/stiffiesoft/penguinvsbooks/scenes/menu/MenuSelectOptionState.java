@@ -13,6 +13,7 @@ import com.stiffiesoft.penguinvsbooks.effects.ScreenFaderListener;
 import com.stiffiesoft.penguinvsbooks.gameobjects.menu.MenuButton;
 import com.stiffiesoft.penguinvsbooks.gameobjects.menu.MenuButtonListener;
 import com.stiffiesoft.penguinvsbooks.scenes.Game;
+import com.stiffiesoft.penguinvsbooks.system.A;
 import com.stiffiesoft.penguinvsbooks.system.C;
 import com.stiffiesoft.penguinvsbooks.system.FontFactory;
 import com.stiffiesoft.penguinvsbooks.system.S;
@@ -46,12 +47,12 @@ public class MenuSelectOptionState implements StartMenuState, MenuButtonListener
         this.rightButtonsFloat      = new MovingFloat(C.sW());
 
         this.pressedId              = 0;
-        this.playButton             = new MenuButton(1, "sprites/menu/button_play.png", space, space, this.leftButtonsFloat.getValue(), C.sH() - doubleSpace, null);
-        this.statisticsButton       = new MenuButton(2, "sprites/menu/button_statistics.png", space, space, this.leftButtonsFloat.getValue(), (C.sH() / 2) - (space / 2), null);
-        this.upgradesButton         = new MenuButton(3, "sprites/menu/button_upgrades.png", space, space, this.leftButtonsFloat.getValue(), space, null);
-        this.archievementsButton    = new MenuButton(4, "sprites/menu/button_archievements.png", space, space, this.rightButtonsFloat.getValue(), C.sH() - doubleSpace, null);
-        this.settingsButton         = new MenuButton(5, "sprites/menu/button_settings.png", space, space, this.rightButtonsFloat.getValue(), (C.sH() / 2) - (space / 2), null);
-        this.quitButton             = new MenuButton(6, "sprites/menu/button_quit.png", space, space, this.rightButtonsFloat.getValue(), space, null);
+        this.playButton             = new MenuButton(1, A.m.get(A.playButton), space, space, this.leftButtonsFloat.getValue(), C.sH() - doubleSpace, null);
+        this.statisticsButton       = new MenuButton(2, A.m.get(A.statisticsButton), space, space, this.leftButtonsFloat.getValue(), (C.sH() / 2) - (space / 2), null);
+        this.upgradesButton         = new MenuButton(3, A.m.get(A.upgradesButton), space, space, this.leftButtonsFloat.getValue(), space, null);
+        this.archievementsButton    = new MenuButton(4, A.m.get(A.archievementsButton), space, space, this.rightButtonsFloat.getValue(), C.sH() - doubleSpace, null);
+        this.settingsButton         = new MenuButton(5, A.m.get(A.settingsButton), space, space, this.rightButtonsFloat.getValue(), (C.sH() / 2) - (space / 2), null);
+        this.quitButton             = new MenuButton(6, A.m.get(A.quitButton), space, space, this.rightButtonsFloat.getValue(), space, null);
 
         this.leftButtonsFloat.move(space, 4f, this);
         this.rightButtonsFloat.move(C.sW() - doubleSpace, 4f, null);

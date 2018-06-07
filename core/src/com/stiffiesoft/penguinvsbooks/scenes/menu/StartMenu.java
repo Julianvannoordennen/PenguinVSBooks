@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.stiffiesoft.penguinvsbooks.Main;
 import com.stiffiesoft.penguinvsbooks.scenes.BaseScene;
+import com.stiffiesoft.penguinvsbooks.system.A;
 import com.stiffiesoft.penguinvsbooks.system.C;
 
 public class StartMenu extends BaseScene {
@@ -21,7 +22,7 @@ public class StartMenu extends BaseScene {
         state = new MenuFadeBeforeIntroState(this);
 
         //Instantiate
-        imageLogo = new Sprite(new Texture("sprites/menu/menu_logo.png"));
+        imageLogo = new Sprite(A.m.get(A.menuLogo));
 
         //Set positions
         imageLogo.setSize(C.sH(), C.sH());

@@ -35,10 +35,4 @@ public class SpriteAnimation {
         elapsedTime += C.cGT();
         batch.draw((TextureRegion)animation.getKeyFrame(elapsedTime,true),x,y,width, height);
     }
-
-    public void dispose() {
-
-        //Dispose
-        texture.dispose();
-    }
 }
