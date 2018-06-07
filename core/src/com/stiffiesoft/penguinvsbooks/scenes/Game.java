@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.stiffiesoft.penguinvsbooks.Main;
 import com.stiffiesoft.penguinvsbooks.effects.SpriteAnimation;
+import com.stiffiesoft.penguinvsbooks.system.A;
 import com.stiffiesoft.penguinvsbooks.system.C;
 
 public class Game extends BaseScene {
@@ -14,7 +15,7 @@ public class Game extends BaseScene {
     public Game(Main main) {
         super(main);
 
-        bookEnemy = new SpriteAnimation("sprites/game/enemies/defaultBookEnemy/default_book_enemy.atlas",30, C.pH() * 5, C.pH() * 5);
+        bookEnemy = new SpriteAnimation(A.manager.get(A.defaultBookEnemyAtlas, TextureAtlas.class),30, C.pH() * 5, C.pH() * 5);
 
     }
 
@@ -29,6 +30,5 @@ public class Game extends BaseScene {
 
     @Override
     protected void onDispose() {
-        bookEnemy.dispose();
     }
 }

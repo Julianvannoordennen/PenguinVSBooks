@@ -15,10 +15,10 @@ public class SpriteAnimation {
     private float width;
     private float height;
 
-    public SpriteAnimation(String path,float framesPerSecond, float width, float height) {
+    public SpriteAnimation(TextureAtlas textureAtlas,float framesPerSecond, float width, float height) {
 
         //Load textureatlas
-        texture = new TextureAtlas(Gdx.files.internal(path));
+        texture = textureAtlas;
 
         //Create animation
         animation = new Animation(1f/framesPerSecond, texture.getRegions());

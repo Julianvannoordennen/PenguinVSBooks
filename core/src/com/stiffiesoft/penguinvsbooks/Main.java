@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.stiffiesoft.penguinvsbooks.effects.ScreenFader;
 import com.stiffiesoft.penguinvsbooks.scenes.menu.StartMenu;
+import com.stiffiesoft.penguinvsbooks.system.A;
 import com.stiffiesoft.penguinvsbooks.system.FontFactory;
 
 import java.util.Timer;
@@ -15,6 +16,14 @@ public class Main extends Game {
 
 	@Override
 	public void create () {
+
+		//Load assets
+		A.load();
+
+		//A.manager.finishLoading();
+		while(!A.manager.update()) {
+			A.manager.getProgress();
+		}
 
 		//Instantiate objects
 		batch = new SpriteBatch();
@@ -33,6 +42,7 @@ public class Main extends Game {
 
 	@Override
 	public void dispose () {
+		A.dispose();
 	}
 
 	//Getter
