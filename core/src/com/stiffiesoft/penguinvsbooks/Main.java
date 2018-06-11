@@ -31,7 +31,7 @@ public class Main extends Game {
 		fontFactory = new FontFactory();
 
 		//Load start menu
-		setScreen(new StartMenu(this));
+		setScreen(new com.stiffiesoft.penguinvsbooks.scenes.Game(this));
 	}
 
 	@Override

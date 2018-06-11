@@ -5,26 +5,26 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.stiffiesoft.penguinvsbooks.Main;
 import com.stiffiesoft.penguinvsbooks.effects.SpriteAnimation;
+import com.stiffiesoft.penguinvsbooks.gameobjects.enemies.DefaultBookEnemy;
+import com.stiffiesoft.penguinvsbooks.gameobjects.enemies.TargetTest;
 import com.stiffiesoft.penguinvsbooks.system.A;
 import com.stiffiesoft.penguinvsbooks.system.C;
 
 public class Game extends BaseScene {
 
-    private SpriteAnimation bookEnemy;
+    private DefaultBookEnemy enemy;
+    private TargetTest targetTest;
 
     public Game(Main main) {
         super(main);
-
-        bookEnemy = new SpriteAnimation(A.m.get(A.defaultBookEnemyAtlas),30, C.pH() * 5, C.pH() * 5);
+        targetTest = new TargetTest();
+        enemy = new DefaultBookEnemy();
     }
 
     @Override
     protected void onRender(SpriteBatch batch) {
-        //for (int x = 0; x <= C.sW(); x += C.pH() * 5) {
-            //for (int y = 0; y <= C.sH(); y += C.pH() * 5) {
-                bookEnemy.render(batch, 16, 16);
-            //}
-        //}
+        enemy.render(batch);
+        targetTest.draw(batch);
     }
 
     @Override

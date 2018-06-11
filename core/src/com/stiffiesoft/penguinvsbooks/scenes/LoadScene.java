@@ -83,11 +83,4 @@ public class LoadScene implements Screen {
     public void dispose() {
 
     }
-
-    /*
-
-
-
-
-     */
 }
