@@ -3,6 +3,7 @@ package com.stiffiesoft.penguinvsbooks.system;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 
 public class Transform {
@@ -12,6 +13,7 @@ public class Transform {
     private Vector2 scale;
     private Vector2 center;
     private float rotation;
+    private float movementAngle;
 
     public Transform(float xPosition, float yPosition, float width, float height, float xScale, float yScale, float rotation, float xCenter, float yCenter) {
         this.position = new Vector2(xPosition, yPosition);
@@ -19,10 +21,19 @@ public class Transform {
         this.scale = new Vector2(xScale, yScale);
         this.center = new Vector2(xCenter, yCenter);
         this.rotation = rotation;
+        this.movementAngle = 0;
     }
 
     public Transform(float xPosition, float yPosition, float width, float height, float xScale, float yScale, float rotation) {
         this(xPosition, yPosition, width, height, xScale, yScale, rotation, width / 2, height / 2);
+    }
+
+    public float getMovementAngle() {
+        return movementAngle;
+    }
+
+    public void setMovementAngle(float movementAngle) {
+        this.movementAngle = movementAngle;
     }
 
     public Vector2 getPosition() {
@@ -71,6 +82,19 @@ public class Transform {
 
     public void setYPosition(float yPosition) {
         this.position.y = yPosition;
+    }
+
+    public Vector2 getPositionCenter() {
+        return new Vector2(this.getXPosition() + this.getXCenter(), this.getYPosition() + this.getYCenter());
+    }
+
+    public void applyPosition(Vector2 position) {
+        System.out.println(position.x);
+        //Create new vector
+        setPosition(new Vector2(
+                getXPosition() + position.x,
+                getYPosition() + position.y
+        ));
     }
 
     public float getXScale() {
@@ -130,6 +154,15 @@ public class Transform {
     }
 
     public void rotate(float degrees) { this.rotation += degrees; }
+
+    public void moveInDirection(float speed) {
+
+        //Apply velocity
+        applyPosition(new Vector2(
+                (float)(speed * Math.cos(movementAngle)),
+                (float)(speed * Math.sin(movementAngle))
+        ));
+    }
 
     public static void draw(SpriteBatch batch, TextureRegion texture, Transform transform) {
 

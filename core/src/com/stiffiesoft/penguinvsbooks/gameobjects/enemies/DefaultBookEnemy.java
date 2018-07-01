@@ -12,15 +12,18 @@ public class DefaultBookEnemy implements Transformable {
     private SpriteAnimation currentSpriteAnimation;
     private Transform transform;
     private EnemyTargetUpdater targetUpdater;
+    private float defaultMovementSpeed;
+    private float currentMovementSpeed;
 
     public DefaultBookEnemy() {
 
         //Transform
-        transform = new Transform(32,32,C.pH() * 5, C.pH() * 5,1,1,45);
+        transform = new Transform(256,256,C.pH() * 5, C.pH() * 5,1,1,0);
+        defaultMovementSpeed = 100;
+        currentMovementSpeed = defaultMovementSpeed;
 
         //Sprite Animation
         currentSpriteAnimation = new SpriteAnimation(A.m.get(A.defaultBookEnemyAtlas),30);
-
 
         //Enemy target updater
         this.targetUpdater = new EnemyTargetUpdater(this);
@@ -31,8 +34,11 @@ public class DefaultBookEnemy implements Transformable {
         //Render animation
         currentSpriteAnimation.render(batch, transform);
 
-        //Move towards enemy
+        //Set movement angle
+        transform.setMovementAngle(C.getAngleInRadians(transform.getPositionCenter(),targetUpdater.getTarget().getTransform().getPositionCenter()));
 
+        //Move towards target
+        transform.moveInDirection( currentMovementSpeed * C.cGT());
     }
 
     @Override

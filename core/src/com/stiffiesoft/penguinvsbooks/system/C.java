@@ -1,6 +1,7 @@
 package com.stiffiesoft.penguinvsbooks.system;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.math.Vector2;
 
 //Calc class, minimized because it will get used a lot
 public class C {
@@ -23,4 +24,13 @@ public class C {
     public static float eT()                {return C.engineTime; }                     //Get engine time
     public static float cET()               {return C.eT() * C.dT(); }                  //Get engine time with delta time, for menu's in Game
     public static void eT(float amount)     {C.engineTime = amount; }                   //Set engine time
+
+    //Calculating angles
+    public static float getAngleInRadians(Vector2 p1, Vector2 p2) {
+        return (float)Math.atan2(p2.y - p1.y, p2.x - p1.x);
+    }
+
+    public static float getAngleInDegrees(Vector2 p1, Vector2 p2) {
+        return (float)(getAngleInRadians(p1, p2) * 180 / Math.PI);
+    }
 }
