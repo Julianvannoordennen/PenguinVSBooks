@@ -89,7 +89,7 @@ public class Transform {
     }
 
     public void applyPosition(Vector2 position) {
-        System.out.println(position.x);
+
         //Create new vector
         setPosition(new Vector2(
                 getXPosition() + position.x,

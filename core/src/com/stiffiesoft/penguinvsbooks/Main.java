@@ -53,4 +53,5 @@ public class Main extends Game {
 	public FontFactory getFontFactory() {
 		return fontFactory;
 	}
+
 }

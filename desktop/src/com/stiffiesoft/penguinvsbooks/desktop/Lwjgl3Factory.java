@@ -1,9 +1,9 @@
 package com.stiffiesoft.penguinvsbooks.desktop;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-import sun.rmi.runtime.Log;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Window;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3WindowListener;
 
 public class Lwjgl3Factory {
 
@@ -17,6 +17,9 @@ public class Lwjgl3Factory {
         Graphics.DisplayMode displayMode = Lwjgl3ApplicationConfiguration.getDisplayMode(monitor);
         config.setFullscreenMode(displayMode);
         config.setResizable(false);
+
+        //Set game title
+        config.setTitle("Penguin VS Books");
 
         //Return
         return config;

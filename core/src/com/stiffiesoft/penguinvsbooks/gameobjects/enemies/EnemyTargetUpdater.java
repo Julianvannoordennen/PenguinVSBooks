@@ -1,32 +1,36 @@
 package com.stiffiesoft.penguinvsbooks.gameobjects.enemies;
 
+import com.badlogic.gdx.utils.TimeUtils;
 import com.stiffiesoft.penguinvsbooks.system.Transformable;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class EnemyTargetUpdater extends TimerTask {
+public class EnemyTargetUpdater {
 
     private Transformable target;
     private Transformable enemy;
-    private Timer timer;
-    public final long REFRESH_RATE = 1;
+    private long spawnRate;
+    private long next;
 
     public EnemyTargetUpdater(Transformable enemy) {
         target = null;
-        timer = new Timer();
-        timer.schedule(this, REFRESH_RATE, REFRESH_RATE);
+        spawnRate = 1000; //1000 = 1 second
         this.enemy = enemy;
+        updateTime();
     }
 
-    public void stop() {
-        this.cancel();
-        timer.cancel();
+    public void updateTime() {
+        next = TimeUtils.millis() + spawnRate;
     }
 
-    @Override
-    public void run() {
-        target = EnemyTargetSystem.getNearestTarget(enemy.getTransform().getPosition());
+    public void update() {
+        if (TimeUtils.millis() >= next) {
+            updateTime();
+
+            if (enemy != null)
+                target = EnemyTargetSystem.getNearestTarget(enemy.getTransform().getPosition());
+        }
     }
 
     public Transformable getTarget() {
