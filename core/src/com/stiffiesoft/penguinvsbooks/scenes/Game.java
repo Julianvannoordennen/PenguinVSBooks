@@ -3,38 +3,39 @@ package com.stiffiesoft.penguinvsbooks.scenes;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.stiffiesoft.penguinvsbooks.Main;
 import com.stiffiesoft.penguinvsbooks.gameobjects.enemies.EnemyList;
-import com.stiffiesoft.penguinvsbooks.gameobjects.enemies.EnemySpawn;
+import com.stiffiesoft.penguinvsbooks.gameobjects.enemies.EnemyFactory;
 import com.stiffiesoft.penguinvsbooks.gameobjects.enemies.TargetTest;
+import com.stiffiesoft.penguinvsbooks.gameobjects.player.Player;
 import com.stiffiesoft.penguinvsbooks.system.DynamicRenderingList;
 
 public class Game extends BaseScene {
 
     private DynamicRenderingList renderList;
-    private TargetTest targetTest;
-    private EnemyList enemyList;
-    private EnemySpawn enemySpawn;
+    private Player player;
+    private EnemyFactory enemyFactory;
 
     public Game(Main main) {
         super(main);
 
         //Create renderinglist which will render all objects inside the game
         renderList = new DynamicRenderingList();
-        targetTest = new TargetTest();
+
+        //Create the player and set him as a enemy target
+        player = new Player();
 
         //Create an enemylist which will keep track of all the enemies displayed
-        enemyList = new EnemyList();
-        enemySpawn = new EnemySpawn(enemyList);
+        enemyFactory = new EnemyFactory();
 
         //Add all items that can be rendered to the renderlist
-        renderList.add(targetTest);
-        renderList.add(enemyList);
+        renderList.add(enemyFactory.getEnemyList());
+        renderList.add(player);
     }
 
     @Override
     protected void onRender(SpriteBatch batch) {
 
         //Update all systems
-        enemySpawn.update();
+        enemyFactory.update();
 
         //Render all objects
         renderList.render(batch);

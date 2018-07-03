@@ -179,4 +179,10 @@ public class Transform {
                 transform.getRotation()
         );
     }
+
+    public static void draw(SpriteBatch batch, Texture texture, Transform transform) {
+
+        //Draw
+        draw(batch, new TextureRegion(texture), transform);
+    }
 }

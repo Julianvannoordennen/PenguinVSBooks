@@ -28,6 +28,9 @@ public class A {
     //Enemies
     public static final AssetDescriptor<TextureAtlas> defaultBookEnemyAtlas = new AssetDescriptor<>("sprites/game/enemies/defaultBookEnemy/default_book_enemy.atlas", TextureAtlas.class);
 
+    //Player
+    public static final AssetDescriptor<Texture> playerIdle = new AssetDescriptor<>("sprites/player/player_idle.png", Texture.class);
+
     //Menu
     public static final AssetDescriptor<Texture> menuLogo = new AssetDescriptor<>("sprites/menu/menu_logo.png", Texture.class);
     public static final AssetDescriptor<Texture> playButton = new AssetDescriptor<>("sprites/menu/button_play.png", Texture.class);

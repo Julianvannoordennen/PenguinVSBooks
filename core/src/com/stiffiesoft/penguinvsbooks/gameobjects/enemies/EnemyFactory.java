@@ -9,7 +9,7 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class EnemySpawn {
+public class EnemyFactory {
 
     private long spawnRate;
     private EnemyList enemyList;
@@ -17,10 +17,10 @@ public class EnemySpawn {
     private int edgeCorrection;
     private Random random;
 
-    public EnemySpawn(EnemyList enemyList) {
+    public EnemyFactory() {
         edgeCorrection = 50;
         spawnRate = 25; //1000 = 1 second
-        this.enemyList = enemyList;
+        this.enemyList = new EnemyList();
         random = new Random();
         updateTime();
     }
@@ -83,5 +83,9 @@ public class EnemySpawn {
 
         //Add to enemylist
         enemyList.add(enemy);
+    }
+
+    public EnemyList getEnemyList() {
+        return this.enemyList;
     }
 }
