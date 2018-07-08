@@ -2,11 +2,10 @@ package com.stiffiesoft.penguinvsbooks.gameobjects.enemies;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.*;
 import com.stiffiesoft.penguinvsbooks.effects.SpriteAnimation;
-import com.stiffiesoft.penguinvsbooks.system.A;
-import com.stiffiesoft.penguinvsbooks.system.C;
+import com.stiffiesoft.penguinvsbooks.system.*;
 import com.stiffiesoft.penguinvsbooks.system.Transform;
-import com.stiffiesoft.penguinvsbooks.system.Transformable;
 
 public class DefaultBookEnemy implements Transformable, Enemy {
 
@@ -15,8 +14,10 @@ public class DefaultBookEnemy implements Transformable, Enemy {
     private EnemyTargetUpdater targetUpdater;
     private float defaultMovementSpeed;
     private float currentMovementSpeed;
+    private Body body;
+    public static final String NAME = "DefaultBookEnemy";
 
-    public DefaultBookEnemy() {
+    public DefaultBookEnemy(World world) {
 
         //Transform
         transform = new Transform(256,256,C.pH() * 5, C.pH() * 5,1,1,0);
@@ -28,6 +29,35 @@ public class DefaultBookEnemy implements Transformable, Enemy {
 
         //Enemy target updater
         this.targetUpdater = new EnemyTargetUpdater(this);
+
+        //Create collision detector
+        createBody(world);
+    }
+
+    private void createBody(World world) {
+
+        //Create body
+        BodyDef bodyDef = new BodyDef();
+        bodyDef.type = BodyDef.BodyType.StaticBody;
+        bodyDef.position.set(transform.getPosition());
+        body = world.createBody(bodyDef);
+
+        //Create shape that works as the collision area
+        PolygonShape collisionShape = new PolygonShape();
+        collisionShape.setAsBox(transform.getWidth() / 2, transform.getHeight() / 2);
+
+        //Create filter for fixture
+        Filter filter = new Filter();
+        filter.categoryBits = 0;
+        filter.groupIndex = 1;
+
+        //Create fixture for collision
+        Fixture fixture = body.createFixture(collisionShape, 0);
+        fixture.setUserData(NAME);
+        fixture.setFilterData(filter);
+
+        //Dispose the shape since we don't need it anymore
+        collisionShape.dispose();
     }
 
     public void render(SpriteBatch batch) {
@@ -47,6 +77,9 @@ public class DefaultBookEnemy implements Transformable, Enemy {
 
         //Move towards target
         transform.moveInDirection( currentMovementSpeed * C.cGT());
+
+        //Update body
+        Transform.pushInBody(transform, body);
     }
 
     @Override

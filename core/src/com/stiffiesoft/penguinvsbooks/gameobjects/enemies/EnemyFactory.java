@@ -1,6 +1,7 @@
 package com.stiffiesoft.penguinvsbooks.gameobjects.enemies;
 
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.stiffiesoft.penguinvsbooks.system.C;
 
@@ -16,10 +17,12 @@ public class EnemyFactory {
     private long next;
     private int edgeCorrection;
     private Random random;
+    private World world;
 
-    public EnemyFactory() {
+    public EnemyFactory(World world) {
         edgeCorrection = 50;
         spawnRate = 25; //1000 = 1 second
+        this.world = world;
         this.enemyList = new EnemyList();
         random = new Random();
         updateTime();
@@ -45,7 +48,7 @@ public class EnemyFactory {
     public void spawnEnemy() {
 
         //Create enemy
-        DefaultBookEnemy enemy = new DefaultBookEnemy();
+        DefaultBookEnemy enemy = new DefaultBookEnemy(world);
 
         //Get position around the edge of the screen
         Vector2 position;

@@ -1,18 +1,20 @@
 package com.stiffiesoft.penguinvsbooks.gameobjects.player;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.*;
 import com.stiffiesoft.penguinvsbooks.gameobjects.enemies.EnemyTargetSystem;
-import com.stiffiesoft.penguinvsbooks.system.C;
-import com.stiffiesoft.penguinvsbooks.system.Renderable;
+import com.stiffiesoft.penguinvsbooks.system.*;
 import com.stiffiesoft.penguinvsbooks.system.Transform;
-import com.stiffiesoft.penguinvsbooks.system.Transformable;
 
 public class Player implements Transformable, Renderable {
 
     private PlayerState state;
     private Transform transform;
+    private Body body;
+    public static final String NAME = "Player";
 
-    public Player() {
+    public Player(World world) {
 
         //Position player in the center of the screen
         transform = new Transform(C.sW() / 2,C.sH() / 2,C.pH() * 5, C.pH() * 5,1,1,0);
@@ -22,6 +24,36 @@ public class Player implements Transformable, Renderable {
 
         //Set start state
         state = new PlayerStateMoving(this);
+
+        //Create body
+        createBody(world);
+    }
+
+    private void createBody(World world) {
+
+        //Create body
+        BodyDef bodyDef = new BodyDef();
+        bodyDef.type = BodyDef.BodyType.DynamicBody;
+        bodyDef.position.set(transform.getPosition());
+        body = world.createBody(bodyDef);
+
+        //Create shape that works as the collision area
+        CircleShape collisionShape = new CircleShape();
+        collisionShape.setPosition(new Vector2(0,0));
+        collisionShape.setRadius(transform.getWidth() / 2);
+
+        //Create filter for fixture
+        Filter filter = new Filter();
+        filter.categoryBits = 0;
+        filter.groupIndex = 1;
+
+        //Create fixture for collision
+        Fixture fixture = body.createFixture(collisionShape, 0);
+        fixture.setUserData(NAME);
+        fixture.setFilterData(filter);
+
+        //Dispose the shape since we don't need it anymore
+        collisionShape.dispose();
     }
 
     @Override
@@ -34,5 +66,8 @@ public class Player implements Transformable, Renderable {
 
         //Update state if it exists
         if (state != null) state.render(batch);
+
+        //Update body
+        Transform.pushInBody(transform, body);
     }
 }

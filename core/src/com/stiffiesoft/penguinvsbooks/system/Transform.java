@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
 
 public class Transform {
 
@@ -184,5 +185,9 @@ public class Transform {
 
         //Draw
         draw(batch, new TextureRegion(texture), transform);
+    }
+
+    public static void pushInBody(Transform transform, Body body) {
+        body.setTransform(transform.getPositionCenter(), 0);
     }
 }
