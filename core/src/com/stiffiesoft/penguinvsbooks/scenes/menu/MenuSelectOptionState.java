@@ -1,7 +1,6 @@
 package com.stiffiesoft.penguinvsbooks.scenes.menu;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
@@ -10,13 +9,13 @@ import com.stiffiesoft.penguinvsbooks.effects.MovingFloat;
 import com.stiffiesoft.penguinvsbooks.effects.MovingFloatListener;
 import com.stiffiesoft.penguinvsbooks.effects.ScreenFader;
 import com.stiffiesoft.penguinvsbooks.effects.ScreenFaderListener;
-import com.stiffiesoft.penguinvsbooks.gameobjects.menu.MenuButton;
-import com.stiffiesoft.penguinvsbooks.gameobjects.menu.MenuButtonListener;
-import com.stiffiesoft.penguinvsbooks.scenes.Game;
-import com.stiffiesoft.penguinvsbooks.system.A;
-import com.stiffiesoft.penguinvsbooks.system.C;
-import com.stiffiesoft.penguinvsbooks.system.FontFactory;
-import com.stiffiesoft.penguinvsbooks.system.S;
+import com.stiffiesoft.penguinvsbooks.objects.menu.MenuButton;
+import com.stiffiesoft.penguinvsbooks.objects.menu.MenuButtonListener;
+import com.stiffiesoft.penguinvsbooks.scenes.game.Game;
+import com.stiffiesoft.penguinvsbooks.system.assets.A;
+import com.stiffiesoft.penguinvsbooks.system.calculations.C;
+import com.stiffiesoft.penguinvsbooks.system.text.FontFactory;
+import com.stiffiesoft.penguinvsbooks.system.text.S;
 
 public class MenuSelectOptionState implements StartMenuState, MenuButtonListener, MovingFloatListener, ScreenFaderListener {
 

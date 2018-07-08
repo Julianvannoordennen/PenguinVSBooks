@@ -1,8 +1,8 @@
 package com.stiffiesoft.penguinvsbooks.effects;
 
 import com.badlogic.gdx.graphics.g2d.*;
-import com.stiffiesoft.penguinvsbooks.system.C;
-import com.stiffiesoft.penguinvsbooks.system.Transform;
+import com.stiffiesoft.penguinvsbooks.system.calculations.C;
+import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 
 public class SpriteAnimation {
 

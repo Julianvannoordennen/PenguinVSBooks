@@ -1,6 +1,6 @@
 package com.stiffiesoft.penguinvsbooks.effects;
 
-import com.stiffiesoft.penguinvsbooks.system.C;
+import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 
 public class MovingFloat {
 

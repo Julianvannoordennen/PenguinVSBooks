@@ -2,13 +2,9 @@ package com.stiffiesoft.penguinvsbooks;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.stiffiesoft.penguinvsbooks.effects.ScreenFader;
-import com.stiffiesoft.penguinvsbooks.scenes.LoadScene;
-import com.stiffiesoft.penguinvsbooks.scenes.menu.StartMenu;
-import com.stiffiesoft.penguinvsbooks.system.A;
-import com.stiffiesoft.penguinvsbooks.system.FontFactory;
-
-import java.util.Timer;
+import com.stiffiesoft.penguinvsbooks.scenes.menu.LoadScene;
+import com.stiffiesoft.penguinvsbooks.system.assets.A;
+import com.stiffiesoft.penguinvsbooks.system.text.FontFactory;
 
 public class Main extends Game {
 
@@ -31,7 +27,7 @@ public class Main extends Game {
 		fontFactory = new FontFactory();
 
 		//Load start menu
-		setScreen(new com.stiffiesoft.penguinvsbooks.scenes.Game(this));
+		setScreen(new com.stiffiesoft.penguinvsbooks.scenes.game.Game(this));
 	}
 
 	@Override

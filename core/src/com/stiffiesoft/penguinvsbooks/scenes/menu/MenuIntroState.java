@@ -1,13 +1,14 @@
 package com.stiffiesoft.penguinvsbooks.scenes.menu;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.stiffiesoft.penguinvsbooks.effects.*;
-import com.stiffiesoft.penguinvsbooks.system.*;
+import com.stiffiesoft.penguinvsbooks.system.calculations.C;
+import com.stiffiesoft.penguinvsbooks.system.text.FontFactory;
+import com.stiffiesoft.penguinvsbooks.system.text.S;
 
 public class MenuIntroState implements StartMenuState, MovingFloatListener {
 

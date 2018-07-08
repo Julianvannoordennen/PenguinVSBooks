@@ -1,12 +1,11 @@
 package com.stiffiesoft.penguinvsbooks.scenes.menu;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.stiffiesoft.penguinvsbooks.Main;
 import com.stiffiesoft.penguinvsbooks.scenes.BaseScene;
-import com.stiffiesoft.penguinvsbooks.system.A;
-import com.stiffiesoft.penguinvsbooks.system.C;
+import com.stiffiesoft.penguinvsbooks.system.assets.A;
+import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 
 public class StartMenu extends BaseScene {
 
