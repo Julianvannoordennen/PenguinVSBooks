@@ -39,4 +39,9 @@ public class S {
         if (l == Language.DUTCH) return "Bekijk de spelupgrades";
         else return "Show ingame upgrades";
     }
+
+    public static String score() {
+        if (l == Language.DUTCH) return "Punten";
+        else return "Score";
+    }
 }

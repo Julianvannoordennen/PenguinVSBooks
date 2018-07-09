@@ -32,4 +32,10 @@ public class FontFactory {
         GlyphLayout layout = new GlyphLayout(font,text,new Color(0.67f, 0.67f, 0.67f, 1),C.sW(),Align.center,true);
         return layout;
     }
+
+    public GlyphLayout createCounterGlyph(String text, BitmapFont font) {
+
+        GlyphLayout layout = new GlyphLayout(font,text,new Color(0.67f, 0.67f, 0.67f, 1),C.pW() * 10,Align.center,true);
+        return layout;
+    }
 }

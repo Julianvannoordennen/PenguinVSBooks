@@ -6,6 +6,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.stiffiesoft.penguinvsbooks.Main;
+import com.stiffiesoft.penguinvsbooks.objects.game.enemies.counters.Counter;
+import com.stiffiesoft.penguinvsbooks.objects.game.enemies.counters.Score;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.EnemyFactory;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.targetting.EnemyTargetSystem;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.Player;
@@ -26,6 +28,7 @@ public class Game extends BaseScene {
     private EnemyFactory enemyFactory;
     private ProjectileFactory projectileFactory;
     private ProjectileListCleaner projectileListCleaner;
+    private Score score;
 
     public Game(Main main) {
         super(main);
@@ -50,12 +53,14 @@ public class Game extends BaseScene {
         //Create all single instances that will be used inside the game
         player = new Player(world, this, projectileFactory);
         projectileListCleaner = new ProjectileListCleaner(projectileFactory.getProjectileList());
+        score = new Score(getMain().getFontFactory());
 
         //Add all items that can be rendered to the renderlist
         renderList = new DynamicRenderingList();
         renderList.add(projectileFactory.getProjectileList());
         renderList.add(enemyFactory.getEnemyList());
         renderList.add(player);
+        renderList.add(score);
     }
 
     @Override
@@ -81,5 +86,8 @@ public class Game extends BaseScene {
 
     @Override
     protected void onDispose() {
+
+        //Dispose all things that are required to dispose
+        score.dispose();
     }
 }
