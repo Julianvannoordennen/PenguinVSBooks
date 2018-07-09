@@ -38,9 +38,6 @@ public class ProjectileList implements Renderable {
 
         //Place item in special dispose list
         disposableProjectiles.add(projectile);
-
-        //Remove from first list
-        projectiles.remove(projectile);
     }
 
     public void dispose() {
@@ -55,6 +52,7 @@ public class ProjectileList implements Renderable {
 
             //Destroy fixtures and object
             for(Fixture fixture : body.getFixtureList()) body.destroyFixture(fixture);
+            projectiles.remove(projectile);
             iterator.remove();
         }
     }

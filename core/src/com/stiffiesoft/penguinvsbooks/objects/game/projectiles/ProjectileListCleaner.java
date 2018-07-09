@@ -35,17 +35,13 @@ public class ProjectileListCleaner {
             updateTime();
 
             //Check each projectile
-            Iterator iterator = projectileList.get().iterator();
-            while(iterator.hasNext()) {
-
-                //Get the projectile for the iterator
-                Projectile projectile = (Projectile)iterator.next();
+            for (Projectile projectile : projectileList.get()) {
 
                 //Get the projectile position
                 Vector2 position = projectile.getTransform().getPosition();
 
                 //Destroy projectile when outside screen
-                if (C.oS(position)) iterator.remove();
+                if (C.oS(position)) projectileList.destroy(projectile);
             }
         }
     }

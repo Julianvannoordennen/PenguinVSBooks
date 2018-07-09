@@ -39,7 +39,7 @@ public class LinearProjectile implements Transformable, Collidable, Renderable, 
         //Create shape that works as the collision area
         CircleShape collisionShape = new CircleShape();
         collisionShape.setPosition(new Vector2(0,0));
-        collisionShape.setRadius(transform.getWidth() / 2);
+        collisionShape.setRadius(transform.getWidth() / 4);
 
         //Create filter for fixture
         Filter filter = new Filter();

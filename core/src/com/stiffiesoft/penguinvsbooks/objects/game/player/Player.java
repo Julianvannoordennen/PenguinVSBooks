@@ -50,7 +50,7 @@ public class Player implements Transformable, Renderable, Collidable {
         //Create shape that works as the collision area
         CircleShape collisionShape = new CircleShape();
         collisionShape.setPosition(new Vector2(0,0));
-        collisionShape.setRadius(transform.getWidth() / 2);
+        collisionShape.setRadius(transform.getWidth() / 3f);
 
         //Create filter for fixture
         Filter filter = new Filter();

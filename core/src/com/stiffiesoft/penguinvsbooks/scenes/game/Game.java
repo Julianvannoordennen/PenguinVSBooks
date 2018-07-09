@@ -53,9 +53,9 @@ public class Game extends BaseScene {
 
         //Add all items that can be rendered to the renderlist
         renderList = new DynamicRenderingList();
-        renderList.add(player);
         renderList.add(projectileFactory.getProjectileList());
         renderList.add(enemyFactory.getEnemyList());
+        renderList.add(player);
     }
 
     @Override
@@ -69,7 +69,7 @@ public class Game extends BaseScene {
         projectileListCleaner.update();
 
         //Render the world
-        debugRenderer.render(world, box2DCamera.combined);
+        //debugRenderer.render(world, box2DCamera.combined);
 
         //Tell world how much times he need to check the collision
         world.step(C.dT(), 6, 2);

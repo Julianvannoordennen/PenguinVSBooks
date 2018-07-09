@@ -32,9 +32,6 @@ public class EnemyList implements Renderable {
 
         //Place item in special dispose list
         disposableEnemies.add(enemy);
-
-        //Remove from first list
-        enemies.remove(enemy);
     }
 
     public void dispose() {
@@ -49,6 +46,7 @@ public class EnemyList implements Renderable {
 
             //Destroy fixtures and object
             for(Fixture fixture : body.getFixtureList()) body.destroyFixture(fixture);
+            enemies.remove(enemy);
             iterator.remove();
         }
     }

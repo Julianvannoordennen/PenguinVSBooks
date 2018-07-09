@@ -94,7 +94,7 @@ public class PlayerStateMoving implements PlayerState {
 
         //Look at cursor
         player.getTransform().setRotation(
-                -C.getAngleInDegrees(
+                C.getAngleInDegrees(
                         player.getTransform().getPositionCenter(),
                         M.p()
                 )

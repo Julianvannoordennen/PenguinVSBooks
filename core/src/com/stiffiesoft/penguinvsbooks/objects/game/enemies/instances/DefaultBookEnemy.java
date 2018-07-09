@@ -55,7 +55,7 @@ public class DefaultBookEnemy implements Transformable, Enemy, Collidable {
 
         //Create shape that works as the collision area
         PolygonShape collisionShape = new PolygonShape();
-        collisionShape.setAsBox(transform.getWidth() / 2, transform.getHeight() / 2);
+        collisionShape.setAsBox(transform.getWidth() / 2.75f, transform.getHeight() / 3.5f);
 
         //Create filter for fixture
         Filter filter = new Filter();
