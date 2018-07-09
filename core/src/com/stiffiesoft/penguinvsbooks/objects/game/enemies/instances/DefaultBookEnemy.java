@@ -5,13 +5,17 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.stiffiesoft.penguinvsbooks.effects.SpriteAnimation;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.Enemy;
+import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.EnemyList;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.targetting.EnemyTargetUpdater;
+import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileFactory;
+import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Collidable;
+import com.stiffiesoft.penguinvsbooks.scenes.game.utility.CollisionTypes;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transformable;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 
-public class DefaultBookEnemy implements Transformable, Enemy {
+public class DefaultBookEnemy implements Transformable, Enemy, Collidable {
 
     private SpriteAnimation currentSpriteAnimation;
     private Transform transform;
@@ -19,9 +23,9 @@ public class DefaultBookEnemy implements Transformable, Enemy {
     private float defaultMovementSpeed;
     private float currentMovementSpeed;
     private Body body;
-    public static final String NAME = "DefaultBookEnemy";
+    private EnemyList enemyList;
 
-    public DefaultBookEnemy(World world) {
+    public DefaultBookEnemy(World world, EnemyList enemyList) {
 
         //Transform
         transform = new Transform(256,256,C.pH() * 5, C.pH() * 5,1,1,0);
@@ -33,6 +37,9 @@ public class DefaultBookEnemy implements Transformable, Enemy {
 
         //Enemy target updater
         this.targetUpdater = new EnemyTargetUpdater(this);
+
+        //Save the enemy list
+        this.enemyList = enemyList;
 
         //Create collision detector
         createBody(world);
@@ -52,12 +59,12 @@ public class DefaultBookEnemy implements Transformable, Enemy {
 
         //Create filter for fixture
         Filter filter = new Filter();
-        filter.categoryBits = 0;
-        filter.groupIndex = 1;
+        filter.categoryBits = CollisionTypes.ENEMY;                                //I am
+        filter.maskBits = CollisionTypes.PLAYER | CollisionTypes.PROJECTILE;       //I hit
 
         //Create fixture for collision
         Fixture fixture = body.createFixture(collisionShape, 0);
-        fixture.setUserData(NAME);
+        fixture.setUserData(this);
         fixture.setFilterData(filter);
 
         //Dispose the shape since we don't need it anymore
@@ -89,5 +96,20 @@ public class DefaultBookEnemy implements Transformable, Enemy {
     @Override
     public Transform getTransform() {
         return transform;
+    }
+
+    @Override
+    public void onCollision(Collidable other, short type) {
+
+        //Check if it's a projectile
+        if (type == CollisionTypes.PROJECTILE)
+
+            //Destroy enemy
+            enemyList.destroy(this);
+    }
+
+    @Override
+    public Body getBody() {
+        return body;
     }
 }

@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 
-public class Transform {
+public class Transform implements Cloneable {
 
     private Vector2 position;
     private Vector2 size;
@@ -188,5 +188,19 @@ public class Transform {
 
     public static void pushInBody(Transform transform, Body body) {
         body.setTransform(transform.getPositionCenter(), 0);
+    }
+
+    @Override
+    public Transform clone() {
+
+        Transform clone = null;
+
+        try {
+            clone = (Transform) super.clone();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return clone;
     }
 }

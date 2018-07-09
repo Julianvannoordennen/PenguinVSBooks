@@ -7,7 +7,10 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.stiffiesoft.penguinvsbooks.Main;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.EnemyFactory;
+import com.stiffiesoft.penguinvsbooks.objects.game.enemies.targetting.EnemyTargetSystem;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.Player;
+import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileFactory;
+import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileListCleaner;
 import com.stiffiesoft.penguinvsbooks.scenes.BaseScene;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.CollisionDetector;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.DynamicRenderingList;
@@ -15,15 +18,20 @@ import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 
 public class Game extends BaseScene {
 
+    private Box2DDebugRenderer debugRenderer;
+    private OrthographicCamera box2DCamera;
+    private World world;
     private DynamicRenderingList renderList;
     private Player player;
     private EnemyFactory enemyFactory;
-    private World world;
-    private Box2DDebugRenderer debugRenderer;
-    private OrthographicCamera box2DCamera;
+    private ProjectileFactory projectileFactory;
+    private ProjectileListCleaner projectileListCleaner;
 
     public Game(Main main) {
         super(main);
+
+        //Clear targets
+        EnemyTargetSystem.clear();
 
         //Create collision detection system
         world = new World(new Vector2(0,0),true);
@@ -35,18 +43,19 @@ public class Game extends BaseScene {
         box2DCamera.position.set(C.sW() / 2, C.sH() / 2, 0);
         debugRenderer = new Box2DDebugRenderer();
 
-        //Create renderinglist which will render all objects inside the game
-        renderList = new DynamicRenderingList();
-
-        //Create the player and set him as a enemy target
-        player = new Player(world);
-
-        //Create an enemylist which will keep track of all the enemies displayed
+        //Create all factories that will be used inside the game
         enemyFactory = new EnemyFactory(world);
+        projectileFactory = new ProjectileFactory(world);
+
+        //Create all single instances that will be used inside the game
+        player = new Player(world, this, projectileFactory);
+        projectileListCleaner = new ProjectileListCleaner(projectileFactory.getProjectileList());
 
         //Add all items that can be rendered to the renderlist
-        renderList.add(enemyFactory.getEnemyList());
+        renderList = new DynamicRenderingList();
         renderList.add(player);
+        renderList.add(projectileFactory.getProjectileList());
+        renderList.add(enemyFactory.getEnemyList());
     }
 
     @Override
@@ -57,12 +66,17 @@ public class Game extends BaseScene {
 
         //Render all objects
         renderList.render(batch);
+        projectileListCleaner.update();
 
         //Render the world
-        //debugRenderer.render(world, box2DCamera.combined);
+        debugRenderer.render(world, box2DCamera.combined);
 
         //Tell world how much times he need to check the collision
         world.step(C.dT(), 6, 2);
+
+        //Dispose objects that are not required anymore
+        projectileFactory.getProjectileList().dispose();
+        enemyFactory.getEnemyList().dispose();
     }
 
     @Override

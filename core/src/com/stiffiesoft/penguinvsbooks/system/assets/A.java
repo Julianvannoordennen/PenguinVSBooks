@@ -29,6 +29,7 @@ public class A {
 
     //Player
     public static final AssetDescriptor<Texture> playerIdle = new AssetDescriptor<>("sprites/player/player_idle.png", Texture.class);
+    public static final AssetDescriptor<Texture> playerProjectile = new AssetDescriptor<>("sprites/player/player_projectile.png", Texture.class);
 
     //Menu
     public static final AssetDescriptor<Texture> menuLogo = new AssetDescriptor<>("sprites/menu/menu_logo.png", Texture.class);

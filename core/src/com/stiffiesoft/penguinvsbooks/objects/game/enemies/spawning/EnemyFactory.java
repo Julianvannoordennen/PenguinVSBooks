@@ -46,7 +46,7 @@ public class EnemyFactory {
     public void spawnEnemy() {
 
         //Create enemy
-        DefaultBookEnemy enemy = new DefaultBookEnemy(world);
+        DefaultBookEnemy enemy = new DefaultBookEnemy(world, enemyList);
 
         //Get position around the edge of the screen
         Vector2 position;

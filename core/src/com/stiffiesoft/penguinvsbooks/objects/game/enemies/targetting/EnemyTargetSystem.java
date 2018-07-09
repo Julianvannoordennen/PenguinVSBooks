@@ -39,4 +39,6 @@ public class EnemyTargetSystem {
     public static void registerTarget(Transformable target) {
         targets.add(target);
     }
+
+    public static void clear() {targets.clear();}
 }

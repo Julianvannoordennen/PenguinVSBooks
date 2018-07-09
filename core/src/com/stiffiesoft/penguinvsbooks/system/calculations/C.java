@@ -2,6 +2,7 @@ package com.stiffiesoft.penguinvsbooks.system.calculations;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
+import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 
 //Calc class, minimized because it will get used a lot
 public class C {
@@ -32,5 +33,10 @@ public class C {
 
     public static float getAngleInDegrees(Vector2 p1, Vector2 p2) {
         return (float)(getAngleInRadians(p1, p2) * 180 / Math.PI);
+    }
+
+    //Check if vector is outside screen
+    public static boolean oS(Vector2 position) {
+        return (position.x < 0 || position.x > sW() || position.y < 0 || position.y > sH());
     }
 }

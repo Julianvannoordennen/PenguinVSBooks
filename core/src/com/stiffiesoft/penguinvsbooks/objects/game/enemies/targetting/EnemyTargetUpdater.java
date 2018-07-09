@@ -17,7 +17,7 @@ public class EnemyTargetUpdater {
         updateTime();
     }
 
-    public void updateTime() {
+    private void updateTime() {
         next = TimeUtils.millis() + spawnRate;
     }
 
