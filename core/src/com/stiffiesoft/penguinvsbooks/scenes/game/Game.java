@@ -55,6 +55,9 @@ public class Game extends BaseScene {
         projectileListCleaner = new ProjectileListCleaner(projectileFactory.getProjectileList());
         score = new Score(getMain().getFontFactory());
 
+        //Add all connections
+        enemyFactory.getEnemyList().addListener(score);
+
         //Add all items that can be rendered to the renderlist
         renderList = new DynamicRenderingList();
         renderList.add(projectileFactory.getProjectileList());

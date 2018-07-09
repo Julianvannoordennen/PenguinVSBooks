@@ -13,14 +13,20 @@ public class EnemyList implements Renderable {
 
     private ArrayList<Enemy> enemies;
     private ArrayList<Enemy> disposableEnemies;
+    private ArrayList<EnemyListListener> listeners;
 
     public EnemyList() {
-        enemies = new ArrayList<>();
-        disposableEnemies = new ArrayList<>();
+        enemies             = new ArrayList<>();
+        disposableEnemies   = new ArrayList<>();
+        listeners           = new ArrayList<>();
     }
 
     public void add(Enemy enemy) {
         enemies.add(enemy);
+    }
+
+    public void addListener(EnemyListListener listener) {
+        listeners.add(listener);
     }
 
     public void render(SpriteBatch batch) {
@@ -48,6 +54,9 @@ public class EnemyList implements Renderable {
             for(Fixture fixture : body.getFixtureList()) body.destroyFixture(fixture);
             enemies.remove(enemy);
             iterator.remove();
+
+            //Call listeners
+            for(EnemyListListener listener : listeners) listener.onEnemyDisposed();
         }
     }
 }

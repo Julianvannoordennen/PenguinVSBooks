@@ -15,12 +15,19 @@ public class Counter implements Renderable {
     protected int value;
     protected BitmapFont font;
     protected FontFactory fontFactory;
+    protected float shakeIntensity;
+    protected float shakeReturn;
+    protected float shakeCurrent;
+    private float shakeLimit;
 
     public Counter(FontFactory fontFactory, int value) {
         this.value          = value;
         this.font           = fontFactory.createSmallFont();
         this.fontFactory    = fontFactory;
-        //this.fontGlyph  = fontFactory.createGlyph(,this.font);
+        this.shakeIntensity = 25;
+        this.shakeCurrent   = 0;
+        this.shakeLimit     = 100;
+        this.shakeReturn    = 250;
     }
 
     public Counter(FontFactory fontFactory) {
@@ -33,17 +40,32 @@ public class Counter implements Renderable {
 
     public void set(int value) {
         this.value = value;
+        shake();
     }
 
     public void apply(int value) {
         this.value += value;
+        shake();
+    }
+
+    private void shake() {
+        shakeCurrent += shakeIntensity;
+        if (shakeCurrent > shakeLimit)
+            shakeCurrent = shakeLimit;
+    }
+
+    protected void returnShake() {
+        shakeCurrent -= (shakeCurrent > 0) ? shakeReturn * C.cGT() : 0;
     }
 
     @Override
     public void render(SpriteBatch batch) {
 
+        //Return shake
+        returnShake();
+
         //Draw the text including the score
-        font.draw(batch, value + "", C.pW() * 5, C.sH() + (C.pW() * -5));
+        font.draw(batch, value + "", C.pW() * 5, (C.sH() + (C.pW() * -5)) + shakeCurrent);
     }
 
     public void dispose() {
