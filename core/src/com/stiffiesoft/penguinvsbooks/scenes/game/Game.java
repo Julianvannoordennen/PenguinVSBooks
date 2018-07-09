@@ -7,6 +7,7 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.stiffiesoft.penguinvsbooks.Main;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.counters.Counter;
+import com.stiffiesoft.penguinvsbooks.objects.game.enemies.counters.Lifes;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.counters.Score;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.EnemyFactory;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.targetting.EnemyTargetSystem;
@@ -29,6 +30,7 @@ public class Game extends BaseScene {
     private ProjectileFactory projectileFactory;
     private ProjectileListCleaner projectileListCleaner;
     private Score score;
+    private Lifes lifes;
 
     public Game(Main main) {
         super(main);
@@ -54,6 +56,7 @@ public class Game extends BaseScene {
         player = new Player(world, this, projectileFactory);
         projectileListCleaner = new ProjectileListCleaner(projectileFactory.getProjectileList());
         score = new Score(getMain().getFontFactory());
+        lifes = new Lifes(getMain().getFontFactory());
 
         //Add all connections
         enemyFactory.getEnemyList().addListener(score);
@@ -64,6 +67,7 @@ public class Game extends BaseScene {
         renderList.add(enemyFactory.getEnemyList());
         renderList.add(player);
         renderList.add(score);
+        renderList.add(lifes);
     }
 
     @Override

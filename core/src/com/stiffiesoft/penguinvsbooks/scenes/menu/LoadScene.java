@@ -10,6 +10,7 @@ import com.badlogic.gdx.utils.Align;
 import com.stiffiesoft.penguinvsbooks.Main;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
+import com.stiffiesoft.penguinvsbooks.system.text.DefinedColors;
 
 public class LoadScene implements Screen {
 
@@ -44,7 +45,7 @@ public class LoadScene implements Screen {
         main.getBatch().begin();
 
         //Show loading percentage
-        GlyphLayout layout = new GlyphLayout(font,Math.round(A.m.getProgress() * 100) + "%",new Color(0.82f, 0, 0, 1),C.sW(),Align.center,true);
+        GlyphLayout layout = new GlyphLayout(font,Math.round(A.m.getProgress() * 100) + "%",DefinedColors.DARK_RED,C.sW(),Align.center,true);
         font.draw(main.getBatch(), layout, 0, (C.sH() / 2) + (layout.height / 2));
 
         //Done loading?

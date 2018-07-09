@@ -44,4 +44,9 @@ public class S {
         if (l == Language.DUTCH) return "Punten";
         else return "Score";
     }
+
+    public static String lifes() {
+        if (l == Language.DUTCH) return "Levens";
+        else return "Lifes";
+    }
 }

@@ -26,8 +26,8 @@ public class Counter implements Renderable {
         this.fontFactory    = fontFactory;
         this.shakeIntensity = 25;
         this.shakeCurrent   = 0;
-        this.shakeLimit     = 100;
-        this.shakeReturn    = 250;
+        this.shakeLimit     = 75;
+        this.shakeReturn    = 500;
     }
 
     public Counter(FontFactory fontFactory) {

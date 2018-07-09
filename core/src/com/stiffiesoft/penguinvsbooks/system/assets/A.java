@@ -28,8 +28,8 @@ public class A {
     public static final AssetDescriptor<TextureAtlas> defaultBookEnemyAtlas = new AssetDescriptor<>("sprites/game/enemies/defaultBookEnemy/default_book_enemy.atlas", TextureAtlas.class);
 
     //Player
-    public static final AssetDescriptor<Texture> playerIdle = new AssetDescriptor<>("sprites/player/player_idle.png", Texture.class);
-    public static final AssetDescriptor<Texture> playerProjectile = new AssetDescriptor<>("sprites/player/player_projectile.png", Texture.class);
+    public static final AssetDescriptor<Texture> playerIdle = new AssetDescriptor<>("sprites/game/player/player_idle.png", Texture.class);
+    public static final AssetDescriptor<Texture> playerProjectile = new AssetDescriptor<>("sprites/game/player/player_projectile.png", Texture.class);
 
     //Menu
     public static final AssetDescriptor<Texture> menuLogo = new AssetDescriptor<>("sprites/menu/menu_logo.png", Texture.class);
@@ -42,7 +42,7 @@ public class A {
 
     //Effects
     public static final AssetDescriptor<Texture> screenBorder = new AssetDescriptor<>("effects/border_screen.png", Texture.class);
-    public static final AssetDescriptor<Texture> screenFader = new AssetDescriptor<>("sprites/effects/screenfade.png", Texture.class);
+    public static final AssetDescriptor<Texture> screenFader = new AssetDescriptor<>("effects/screenfade.png", Texture.class);
 
     //System
     public static final AssetDescriptor<BitmapFont> defaultFont = new AssetDescriptor<>("fonts/default.fnt", BitmapFont.class);

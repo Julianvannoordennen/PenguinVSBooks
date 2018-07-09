@@ -29,13 +29,13 @@ public class FontFactory {
 
     public GlyphLayout createGlyph(String text, BitmapFont font) {
 
-        GlyphLayout layout = new GlyphLayout(font,text,new Color(0.67f, 0.67f, 0.67f, 1),C.sW(),Align.center,true);
+        GlyphLayout layout = new GlyphLayout(font,text,DefinedColors.GREY,C.sW(),Align.center,true);
         return layout;
     }
 
     public GlyphLayout createCounterGlyph(String text, BitmapFont font) {
 
-        GlyphLayout layout = new GlyphLayout(font,text,new Color(0.67f, 0.67f, 0.67f, 1),C.pW() * 10,Align.center,true);
+        GlyphLayout layout = new GlyphLayout(font,text,DefinedColors.DARK_RED,C.pW() * 10,Align.center,true);
         return layout;
     }
 }
