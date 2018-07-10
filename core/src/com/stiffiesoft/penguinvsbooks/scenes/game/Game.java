@@ -6,7 +6,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.stiffiesoft.penguinvsbooks.Main;
-import com.stiffiesoft.penguinvsbooks.objects.game.enemies.counters.Counter;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.counters.Lifes;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.counters.Score;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.EnemyFactory;
@@ -14,9 +13,11 @@ import com.stiffiesoft.penguinvsbooks.objects.game.enemies.targetting.EnemyTarge
 import com.stiffiesoft.penguinvsbooks.objects.game.player.Player;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileFactory;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileListCleaner;
+import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.Explosion;
 import com.stiffiesoft.penguinvsbooks.scenes.BaseScene;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.CollisionDetector;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.DynamicRenderingList;
+import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 
 public class Game extends BaseScene {
@@ -81,7 +82,7 @@ public class Game extends BaseScene {
         projectileListCleaner.update();
 
         //Render the world
-        //debugRenderer.render(world, box2DCamera.combined);
+//        debugRenderer.render(world, box2DCamera.combined);
 
         //Tell world how much times he need to check the collision
         world.step(C.dT(), 6, 2);

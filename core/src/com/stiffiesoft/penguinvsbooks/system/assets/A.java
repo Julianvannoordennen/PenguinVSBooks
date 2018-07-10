@@ -31,6 +31,9 @@ public class A {
     public static final AssetDescriptor<Texture> playerIdle = new AssetDescriptor<>("sprites/game/player/player_idle.png", Texture.class);
     public static final AssetDescriptor<Texture> playerProjectile = new AssetDescriptor<>("sprites/game/player/player_projectile.png", Texture.class);
 
+    //Powerups
+    public static final AssetDescriptor<Texture> explosion = new AssetDescriptor<>("sprites/game/projectiles/explosion.png", Texture.class);
+
     //Menu
     public static final AssetDescriptor<Texture> menuLogo = new AssetDescriptor<>("sprites/menu/menu_logo.png", Texture.class);
     public static final AssetDescriptor<Texture> playButton = new AssetDescriptor<>("sprites/menu/button_play.png", Texture.class);
