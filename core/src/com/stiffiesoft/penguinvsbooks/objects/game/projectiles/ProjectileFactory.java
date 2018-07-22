@@ -3,20 +3,25 @@ package com.stiffiesoft.penguinvsbooks.objects.game.projectiles;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.EnemyList;
+import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerDamageExplosion;
+import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerDamageExplosionBodyTask;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerProjectile;
+import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerProjectileBodyTask;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
+import com.stiffiesoft.penguinvsbooks.system.collision.BodyFactory;
+import com.stiffiesoft.penguinvsbooks.system.collision.BodyTask;
 
 import java.util.Random;
 
 public class ProjectileFactory {
 
-    private World world;
     private ProjectileList projectileList;
+    private BodyFactory bodyFactory;
 
-    public ProjectileFactory(World world) {
-        this.world = world;
+    public ProjectileFactory(BodyFactory bodyFactory) {
         this.projectileList = new ProjectileList();
+        this.bodyFactory = bodyFactory;
     }
 
     public PlayerProjectile createPlayerProjectile(Transform transform) {
@@ -26,28 +31,34 @@ public class ProjectileFactory {
         transform.setScale(new Vector2(0.5f, 0.5f));
 
         //Create projectile and apply the transform send in parameter
-        PlayerProjectile projectile = new PlayerProjectile(transform, world, projectileList);
+        PlayerProjectile projectile = new PlayerProjectile(transform, projectileList);
 
         //Add projectile to the list so the program can keep track of it
-        projectileList.add((Projectile)projectile);
+        projectileList.add(projectile);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new PlayerProjectileBodyTask(projectile));
 
         //Return to projectile
         return projectile;
     }
 
-    public Explosion createBaseExplosion(Transform transform) {
+    public Explosion createPlayerDamageExplosion(Transform transform) {
 
         //Manipulate transform
-        transform.setSize(new Vector2(C.pH() * 50, C.pH() * 50));
-        transform.setCenter(new Vector2(C.pH() * 25, C.pH() * 25));
+        transform.setRotation(0);
+        transform.setScale(new Vector2(15f, 15f));
 
         //Create projectile and apply the transform send in parameter
-        Explosion explosion = new Explosion(transform,world,projectileList);
+        PlayerDamageExplosion explosion = new PlayerDamageExplosion(transform,projectileList);
 
         //Add projectile to projectilelist
         projectileList.add(explosion);
 
-        //Return projectile
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new PlayerDamageExplosionBodyTask(explosion));
+
+        //Return explosion
         return explosion;
     }
 

@@ -187,6 +187,8 @@ public class Transform implements Cloneable {
     }
 
     public static void pushInBody(Transform transform, Body body) {
+
+        //Push the transform inside the body
         body.setTransform(transform.getPositionCenter(), 0);
     }
 

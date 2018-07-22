@@ -1,4 +1,4 @@
-package com.stiffiesoft.penguinvsbooks.scenes.game.utility;
+package com.stiffiesoft.penguinvsbooks.system.collision;
 
 /*
 

@@ -1,4 +1,4 @@
-package com.stiffiesoft.penguinvsbooks.objects.game.enemies.counters;
+package com.stiffiesoft.penguinvsbooks.objects.game.counters;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.EnemyListListener;

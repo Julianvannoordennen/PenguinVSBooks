@@ -4,9 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.TimeUtils;
-import com.stiffiesoft.penguinvsbooks.Main;
-import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Collidable;
-import com.stiffiesoft.penguinvsbooks.scenes.menu.StartMenu;
+import com.stiffiesoft.penguinvsbooks.system.collision.Collidable;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 import com.stiffiesoft.penguinvsbooks.system.input.K;
@@ -107,8 +105,13 @@ public class PlayerStateMoving implements PlayerState {
     @Override
     public void onCollision(Collidable other) {
 
-        //Die
-        Main main = player.getGame().getMain();
-        main.setScreen(new StartMenu(main));
+        //Tell counter that there is some damage
+        player.getPlayerListeners().forEach(playerListener -> playerListener.onPlayerDamage(player));
+
+        //Clone the transform of the player
+        Transform explosionTransform = player.getTransform().clone();
+
+        //Create a damage explosion
+        player.getProjectileFactory().createPlayerDamageExplosion(explosionTransform);
     }
 }

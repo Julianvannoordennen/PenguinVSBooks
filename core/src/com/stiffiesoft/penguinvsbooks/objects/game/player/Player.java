@@ -8,7 +8,12 @@ import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileFactory
 import com.stiffiesoft.penguinvsbooks.scenes.game.Game;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.*;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
+import com.stiffiesoft.penguinvsbooks.scenes.menu.StartMenu;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
+import com.stiffiesoft.penguinvsbooks.system.collision.Collidable;
+import com.stiffiesoft.penguinvsbooks.system.collision.CollisionTypes;
+
+import java.util.ArrayList;
 
 public class Player implements Transformable, Renderable, Collidable {
 
@@ -17,8 +22,12 @@ public class Player implements Transformable, Renderable, Collidable {
     private Body body;
     private Game game;
     private ProjectileFactory projectileFactory;
+    private ArrayList<PlayerListener> playerListeners;
 
-    public Player(World world, Game game, ProjectileFactory projectileFactory) {
+    public Player(Game game, ProjectileFactory projectileFactory) {
+
+        //Create array for listeners
+        playerListeners = new ArrayList<>();
 
         //Position player in the center of the screen
         transform = new Transform(C.sW() / 2,C.sH() / 2,C.pH() * 5, C.pH() * 5,1,1,0);
@@ -34,36 +43,14 @@ public class Player implements Transformable, Renderable, Collidable {
 
         //Set start state
         state = new PlayerStateMoving(this);
-
-        //Create body
-        createBody(world);
     }
 
-    private void createBody(World world) {
+    public void addListener(PlayerListener playerListener) {
+        playerListeners.add(playerListener);
+    }
 
-        //Create body
-        BodyDef bodyDef = new BodyDef();
-        bodyDef.type = BodyDef.BodyType.DynamicBody; //Player will be dynamic, making the enemies would have cost a lot of performance
-        bodyDef.position.set(transform.getPosition());
-        body = world.createBody(bodyDef);
-
-        //Create shape that works as the collision area
-        CircleShape collisionShape = new CircleShape();
-        collisionShape.setPosition(new Vector2(0,0));
-        collisionShape.setRadius(transform.getWidth() / 3f);
-
-        //Create filter for fixture
-        Filter filter = new Filter();
-        filter.categoryBits = CollisionTypes.PLAYER;    //I am
-        filter.maskBits = CollisionTypes.ENEMY;         //I hit
-
-        //Create fixture for collision
-        Fixture fixture = body.createFixture(collisionShape, 0);
-        fixture.setUserData(this);
-        fixture.setFilterData(filter);
-
-        //Dispose the shape since we don't need it anymore
-        collisionShape.dispose();
+    public ArrayList<PlayerListener> getPlayerListeners() {
+        return playerListeners;
     }
 
     //Get the game from the player context, will be used in the states
@@ -98,5 +85,17 @@ public class Player implements Transformable, Renderable, Collidable {
 
             //The state of the player will decide what to do with the collision
             state.onCollision(other);
+    }
+
+    public void die() {
+
+        //Stop and go to main menu
+        game.getMain().setScreen(new StartMenu(game.getMain()));
+    }
+
+
+    @Override
+    public void setBody(Body body) {
+        this.body = body;
     }
 }

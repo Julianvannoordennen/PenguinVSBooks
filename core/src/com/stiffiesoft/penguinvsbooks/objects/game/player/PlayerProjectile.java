@@ -12,10 +12,10 @@ public class PlayerProjectile extends LinearProjectile {
 
     private float rotateSpeed;
 
-    public PlayerProjectile(Transform transform, World world, ProjectileList projectileList) {
+    public PlayerProjectile(Transform transform, ProjectileList projectileList) {
 
         //Use the default settings from the projectile
-        super(transform, world, projectileList);
+        super(transform, projectileList);
 
         //Set rotate speed
         rotateSpeed = 250;

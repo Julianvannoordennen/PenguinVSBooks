@@ -1,14 +1,10 @@
-package com.stiffiesoft.penguinvsbooks.objects.game.enemies.counters;
+package com.stiffiesoft.penguinvsbooks.objects.game.counters;
 
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Renderable;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 import com.stiffiesoft.penguinvsbooks.system.text.FontFactory;
-import com.stiffiesoft.penguinvsbooks.system.text.S;
-
-import java.awt.*;
 
 public class Counter implements Renderable {
 
