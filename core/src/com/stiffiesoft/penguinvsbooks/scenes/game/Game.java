@@ -90,7 +90,7 @@ public class Game extends BaseScene {
         debugRenderer.render(world, box2DCamera.combined);
 
         //Tell world how much times he need to check the collision
-        world.step(C.dT(), 0, 2);
+        world.step(0, 0, 0);
 
         //Dispose objects that are not required anymore
         projectileFactory.getProjectileList().dispose();
