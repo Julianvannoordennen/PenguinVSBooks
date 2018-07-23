@@ -1,6 +1,7 @@
 package com.stiffiesoft.penguinvsbooks.objects.game.counters;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.Enemy;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.EnemyListListener;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 import com.stiffiesoft.penguinvsbooks.system.text.FontFactory;
@@ -30,7 +31,7 @@ public class Score extends Counter implements EnemyListListener {
     }
 
     @Override
-    public void onEnemyDisposed() {
+    public void onEnemyDisposed(Enemy enemy) {
 
         //Add score
         apply(increment);

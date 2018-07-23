@@ -12,7 +12,6 @@ public abstract class Pickup implements Transformable, Renderable, Collidable {
 
     protected Transform transform;
     protected Body body;
-    protected String name;
     protected PowerupFactory powerupFactory;
     protected PickupList pickupList;
 

@@ -12,7 +12,6 @@ public class GrenadePickup extends Pickup {
 
     public GrenadePickup(Transform transform, PowerupFactory powerupFactory, PickupList pickupList) {
         super(transform, powerupFactory, pickupList);
-        this.name = S.grenade();
     }
 
     @Override

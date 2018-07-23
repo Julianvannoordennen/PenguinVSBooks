@@ -70,6 +70,7 @@ public class Game extends BaseScene {
         //Add all connections
         bodyFactory.addTask(new PlayerBodyTask(player));
         enemyFactory.getEnemyList().addListener(score);
+        enemyFactory.getEnemyList().addListener(pickupFactory);
         player.addListener(lifes);
 
         //Add all items that can be rendered to the renderlist

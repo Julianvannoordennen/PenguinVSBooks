@@ -56,7 +56,7 @@ public class EnemyList implements Renderable {
             iterator.remove();
 
             //Call listeners
-            for(EnemyListListener listener : listeners) listener.onEnemyDisposed();
+            for(EnemyListListener listener : listeners) listener.onEnemyDisposed(enemy);
         }
     }
 }
