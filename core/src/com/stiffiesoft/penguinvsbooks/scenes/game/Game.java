@@ -12,6 +12,8 @@ import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.EnemyFactory
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.targetting.EnemyTargetSystem;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.Player;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerBodyTask;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.PickupFactory;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.PowerupFactory;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileFactory;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileListCleaner;
 import com.stiffiesoft.penguinvsbooks.scenes.BaseScene;
@@ -27,6 +29,8 @@ public class Game extends BaseScene {
     private World world;
     private DynamicRenderingList renderList;
     private Player player;
+    private PickupFactory pickupFactory;
+    private PowerupFactory powerupFactory;
     private BodyFactory bodyFactory;
     private EnemyFactory enemyFactory;
     private ProjectileFactory projectileFactory;
@@ -54,12 +58,14 @@ public class Game extends BaseScene {
         bodyFactory = new BodyFactory(world);
         enemyFactory = new EnemyFactory(bodyFactory);
         projectileFactory = new ProjectileFactory(bodyFactory);
+        powerupFactory = new PowerupFactory(projectileFactory);
+        pickupFactory = new PickupFactory(bodyFactory, powerupFactory);
 
         //Create all single instances that will be used inside the game
         player = new Player(this, projectileFactory);
-        projectileListCleaner = new ProjectileListCleaner(projectileFactory.getProjectileList());
         score = new Score(getMain().getFontFactory());
         lifes = new Lifes(getMain().getFontFactory());
+        projectileListCleaner = new ProjectileListCleaner(projectileFactory.getProjectileList());
 
         //Add all connections
         bodyFactory.addTask(new PlayerBodyTask(player));
@@ -70,9 +76,13 @@ public class Game extends BaseScene {
         renderList = new DynamicRenderingList();
         renderList.add(projectileFactory.getProjectileList());
         renderList.add(enemyFactory.getEnemyList());
+        renderList.add(pickupFactory.getPickupList());
         renderList.add(player);
         renderList.add(score);
         renderList.add(lifes);
+
+
+        pickupFactory.createGrenadePickup(new Vector2(C.sW() / 4, C.sH() / 4));
     }
 
     @Override
@@ -81,13 +91,14 @@ public class Game extends BaseScene {
         //Update all systems
         enemyFactory.update();
         projectileListCleaner.update();
+        powerupFactory.getPowerupList().update();
         bodyFactory.executeTasks();
 
         //Render all objects
         renderList.render(batch);
 
         //Render the world
-        debugRenderer.render(world, box2DCamera.combined);
+//        debugRenderer.render(world, box2DCamera.combined);
 
         //Tell world how much times he need to check the collision
         world.step(0, 0, 0);
@@ -95,6 +106,7 @@ public class Game extends BaseScene {
         //Dispose objects that are not required anymore
         projectileFactory.getProjectileList().dispose();
         enemyFactory.getEnemyList().dispose();
+        pickupFactory.getPickupList().dispose();
     }
 
     @Override

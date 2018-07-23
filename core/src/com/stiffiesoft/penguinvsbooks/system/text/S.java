@@ -3,8 +3,10 @@ package com.stiffiesoft.penguinvsbooks.system.text;
 //Strings class, for getting text in correct language
 public class S {
 
+    //Current language
     public static Language l = Language.ENGLISH;
 
+    //Menu strings
     public static String pressSpacebarToContinue() {
         if (l == Language.DUTCH) return "Druk op 'spatie' om door te gaan !";
         else return "Press 'spacebar' to continue !";
@@ -40,6 +42,7 @@ public class S {
         else return "Show ingame upgrades";
     }
 
+    //Counter strings
     public static String score() {
         if (l == Language.DUTCH) return "Punten";
         else return "Score";
@@ -48,5 +51,11 @@ public class S {
     public static String lifes() {
         if (l == Language.DUTCH) return "Levens";
         else return "Lifes";
+    }
+
+    //Pickup strings
+    public static String grenade() {
+        if (l == Language.DUTCH) return "Granaat";
+        else return "Grenade";
     }
 }

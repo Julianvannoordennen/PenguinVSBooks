@@ -1,4 +1,4 @@
-package com.stiffiesoft.penguinvsbooks.objects.game.player;
+package com.stiffiesoft.penguinvsbooks.objects.game.projectiles;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
@@ -7,9 +7,9 @@ import com.stiffiesoft.penguinvsbooks.system.collision.BodyTask;
 import com.stiffiesoft.penguinvsbooks.system.collision.Collidable;
 import com.stiffiesoft.penguinvsbooks.system.collision.CollisionTypes;
 
-public class PlayerBodyTask extends BodyTask {
+public class DefaultExplosionBodyTask extends BodyTask {
 
-    public PlayerBodyTask(Collidable collidable) {
+    public DefaultExplosionBodyTask(Collidable collidable) {
         super(collidable);
     }
 
@@ -21,29 +21,30 @@ public class PlayerBodyTask extends BodyTask {
 
         //Create body
         BodyDef bodyDef = new BodyDef();
-        bodyDef.type = BodyDef.BodyType.DynamicBody; //Player will be dynamic, making the enemies would have cost a lot of performance
+        bodyDef.type = BodyDef.BodyType.DynamicBody; //Projectile will be dynamic, making all enemies dynamic will take more performance
         bodyDef.position.set(transform.getPosition());
         Body body = world.createBody(bodyDef);
 
         //Create shape that works as the collision area
         CircleShape collisionShape = new CircleShape();
         collisionShape.setPosition(new Vector2(0,0));
-        collisionShape.setRadius(transform.getWidth() / 3f);
+        collisionShape.setRadius((transform.getWidth() * transform.getXScale()) / 2);
 
         //Create filter for fixture
         Filter filter = new Filter();
-        filter.categoryBits = CollisionTypes.PLAYER;                            //I am
-        filter.maskBits = CollisionTypes.ENEMY | CollisionTypes.PICKUP;         //I hit
+        filter.categoryBits = CollisionTypes.PROJECTILE;    //I am
+        filter.maskBits = CollisionTypes.ENEMY;             //I hit
 
         //Create fixture for collision
         Fixture fixture = body.createFixture(collisionShape, 0);
         fixture.setUserData(collidable);
         fixture.setFilterData(filter);
+        fixture.setSensor(true);
 
         //Dispose the shape since we don't need it anymore
         collisionShape.dispose();
 
-        //Return body
+        //Return the body
         return body;
     }
 }

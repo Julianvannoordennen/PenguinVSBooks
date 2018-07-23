@@ -1,4 +1,4 @@
-package com.stiffiesoft.penguinvsbooks.objects.game.player;
+package com.stiffiesoft.penguinvsbooks.objects.game.powerups.base;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
@@ -7,9 +7,9 @@ import com.stiffiesoft.penguinvsbooks.system.collision.BodyTask;
 import com.stiffiesoft.penguinvsbooks.system.collision.Collidable;
 import com.stiffiesoft.penguinvsbooks.system.collision.CollisionTypes;
 
-public class PlayerDamageExplosionBodyTask extends BodyTask {
+public class PickupBodyTask extends BodyTask {
 
-    public PlayerDamageExplosionBodyTask(Collidable collidable) {
+    public PickupBodyTask(Collidable collidable) {
         super(collidable);
     }
 
@@ -21,30 +21,29 @@ public class PlayerDamageExplosionBodyTask extends BodyTask {
 
         //Create body
         BodyDef bodyDef = new BodyDef();
-        bodyDef.type = BodyDef.BodyType.DynamicBody; //Projectile will be dynamic, making all enemies dynamic will take more performance
+        bodyDef.type = BodyDef.BodyType.StaticBody;
         bodyDef.position.set(transform.getPosition());
         Body body = world.createBody(bodyDef);
 
         //Create shape that works as the collision area
         CircleShape collisionShape = new CircleShape();
         collisionShape.setPosition(new Vector2(0,0));
-        collisionShape.setRadius((transform.getWidth() * transform.getXScale()) / 2);
+        collisionShape.setRadius(transform.getWidth() / 2f);
 
         //Create filter for fixture
         Filter filter = new Filter();
-        filter.categoryBits = CollisionTypes.PROJECTILE;    //I am
-        filter.maskBits = CollisionTypes.ENEMY;             //I hit
+        filter.categoryBits = CollisionTypes.PICKUP;    //I am
+        filter.maskBits = CollisionTypes.PLAYER;        //I hit
 
         //Create fixture for collision
         Fixture fixture = body.createFixture(collisionShape, 0);
         fixture.setUserData(collidable);
         fixture.setFilterData(filter);
-        fixture.setSensor(true);
 
         //Dispose the shape since we don't need it anymore
         collisionShape.dispose();
 
-        //Return the body
+        //Return body
         return body;
     }
 }

@@ -1,18 +1,12 @@
 package com.stiffiesoft.penguinvsbooks.objects.game.projectiles;
 
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.World;
-import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.EnemyList;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerDamageExplosion;
-import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerDamageExplosionBodyTask;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerProjectileBodyTask;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.GrenadeExplosion;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
-import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 import com.stiffiesoft.penguinvsbooks.system.collision.BodyFactory;
-import com.stiffiesoft.penguinvsbooks.system.collision.BodyTask;
-
-import java.util.Random;
 
 public class ProjectileFactory {
 
@@ -47,7 +41,7 @@ public class ProjectileFactory {
 
         //Manipulate transform
         transform.setRotation(0);
-        transform.setScale(new Vector2(15f, 15f));
+        transform.setScale(new Vector2(20f, 20f));
 
         //Create projectile and apply the transform send in parameter
         PlayerDamageExplosion explosion = new PlayerDamageExplosion(transform,projectileList);
@@ -56,7 +50,26 @@ public class ProjectileFactory {
         projectileList.add(explosion);
 
         //Add bodytask for the projectile
-        bodyFactory.addTask(new PlayerDamageExplosionBodyTask(explosion));
+        bodyFactory.addTask(new DefaultExplosionBodyTask(explosion));
+
+        //Return explosion
+        return explosion;
+    }
+
+    public Explosion createGrenadeExplosion(Transform transform) {
+
+        //Manipulate transform
+        transform.setRotation(0);
+        transform.setScale(new Vector2(12f, 12f));
+
+        //Create projectile and apply the transform send in parameter
+        GrenadeExplosion explosion = new GrenadeExplosion(transform,projectileList);
+
+        //Add projectile to projectilelist
+        projectileList.add(explosion);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new DefaultExplosionBodyTask(explosion));
 
         //Return explosion
         return explosion;

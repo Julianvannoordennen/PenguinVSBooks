@@ -53,7 +53,6 @@ public class LinearProjectile implements Transformable, Collidable, Renderable, 
         return body;
     }
 
-
     @Override
     public void setBody(Body body) {
         this.body = body;

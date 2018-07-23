@@ -93,6 +93,10 @@ public class Player implements Transformable, Renderable, Collidable {
         game.getMain().setScreen(new StartMenu(game.getMain()));
     }
 
+    @Override
+    public Body getBody() {
+        return body;
+    }
 
     @Override
     public void setBody(Body body) {
