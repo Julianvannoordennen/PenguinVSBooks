@@ -5,7 +5,7 @@ import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 
 public interface Collidable {
 
-    void onCollision(Collidable other, short collisionType);
+    void onCollisionEnter(Collidable other, short collisionType);
     Transform getTransform();
     void setBody(Body body);
     Body getBody();

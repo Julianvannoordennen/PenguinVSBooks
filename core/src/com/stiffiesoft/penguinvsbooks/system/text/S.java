@@ -58,4 +58,9 @@ public class S {
         if (l == Language.DUTCH) return "Granaat";
         else return "Grenade";
     }
+
+    public static String cookie() {
+        if (l == Language.DUTCH) return "Koekje";
+        else return "Cookie";
+    }
 }

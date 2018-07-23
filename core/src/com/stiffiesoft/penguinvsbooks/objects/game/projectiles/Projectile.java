@@ -10,4 +10,5 @@ public interface Projectile {
     void render(SpriteBatch batch);
     Transform getTransform();
     Body getBody();
+    boolean doesDamage();
 }

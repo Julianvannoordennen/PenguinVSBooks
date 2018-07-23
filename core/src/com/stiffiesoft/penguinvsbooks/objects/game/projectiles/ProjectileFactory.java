@@ -4,7 +4,9 @@ import com.badlogic.gdx.math.Vector2;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerDamageExplosion;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerProjectileBodyTask;
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.GrenadeExplosion;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookieBodyTask;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookieProjectile;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.grenade.GrenadeExplosion;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.collision.BodyFactory;
 
@@ -18,6 +20,11 @@ public class ProjectileFactory {
         this.bodyFactory = bodyFactory;
     }
 
+    public ProjectileList getProjectileList() {
+        return projectileList;
+    }
+
+    /***** Create methods *****/
     public PlayerProjectile createPlayerProjectile(Transform transform) {
 
         //Manipulate transform
@@ -36,8 +43,7 @@ public class ProjectileFactory {
         //Return to projectile
         return projectile;
     }
-
-    public Explosion createPlayerDamageExplosion(Transform transform) {
+    public PlayerDamageExplosion createPlayerDamageExplosion(Transform transform) {
 
         //Manipulate transform
         transform.setRotation(0);
@@ -55,8 +61,7 @@ public class ProjectileFactory {
         //Return explosion
         return explosion;
     }
-
-    public Explosion createGrenadeExplosion(Transform transform) {
+    public GrenadeExplosion createGrenadeExplosion(Transform transform) {
 
         //Manipulate transform
         transform.setRotation(0);
@@ -74,8 +79,22 @@ public class ProjectileFactory {
         //Return explosion
         return explosion;
     }
+    public CookieProjectile createCookieProjectile(Transform transform) {
 
-    public ProjectileList getProjectileList() {
-        return projectileList;
+        //Manipulate transform
+        transform.setRotation(0);
+        transform.setScale(new Vector2(1f, 1f));
+
+        //Create projectile and apply the transform send in parameter
+        CookieProjectile cookieProjectile = new CookieProjectile(transform,projectileList);
+
+        //Add projectile to projectilelist
+        projectileList.add(cookieProjectile);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new CookieBodyTask(cookieProjectile));
+
+        //Return explosion
+        return cookieProjectile;
     }
 }

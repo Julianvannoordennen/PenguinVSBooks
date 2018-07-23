@@ -1,4 +1,4 @@
-package com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances;
+package com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.grenade;
 
 import com.badlogic.gdx.math.Vector2;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.PickupCatalogueItem;

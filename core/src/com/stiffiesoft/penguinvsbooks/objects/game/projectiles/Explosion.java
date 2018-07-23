@@ -66,8 +66,6 @@ public class Explosion implements Renderable, Projectile, Collidable {
         }
     }
 
-
-
     @Override
     public Transform getTransform() {
         return transform;
@@ -85,7 +83,12 @@ public class Explosion implements Renderable, Projectile, Collidable {
     }
 
     @Override
-    public void onCollision(Collidable other, short collisionType) {
+    public void onCollisionEnter(Collidable other, short collisionType) {
 
+    }
+
+    @Override
+    public boolean doesDamage() {
+        return true;
     }
 }

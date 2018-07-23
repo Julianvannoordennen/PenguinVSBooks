@@ -5,7 +5,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.Enemy;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.EnemyListListener;
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.GrenadePickup;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookiePickup;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.grenade.GrenadePickup;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 import com.stiffiesoft.penguinvsbooks.system.collision.BodyFactory;
@@ -32,24 +33,6 @@ public class PickupFactory implements EnemyListListener {
         this.spawnChanche = 25;
         this.spawnDelay = 1000; //1 second
         updateTime();
-    }
-
-    public GrenadePickup createGrenadePickup(Vector2 position) {
-
-        //Create default transform for pickup
-        Transform transform = new Transform(position.x, position.y,C.pH() * 5, C.pH() * 5,1,1,0);
-
-        //Create pickup and apply the transform send in parameter
-        GrenadePickup pickup = new GrenadePickup(transform, powerupFactory, pickupList);
-
-        //Add pickup to the list so the program can keep track of it
-        pickupList.add(pickup);
-
-        //Add bodytask for the projectile
-        bodyFactory.addTask(new PickupBodyTask(pickup));
-
-        //Return to projectile
-        return pickup;
     }
 
     public PickupList getPickupList() {
@@ -102,5 +85,41 @@ public class PickupFactory implements EnemyListListener {
 
         //Check if the random integer is correct
         return MathUtils.random(0, spawnChanche) == 0;
+    }
+
+    /***** Create Methods *****/
+    public GrenadePickup createGrenadePickup(Vector2 position) {
+
+        //Create default transform for pickup
+        Transform transform = new Transform(position.x, position.y,C.pH() * 5, C.pH() * 5,1,1,0);
+
+        //Create pickup and apply the transform send in parameter
+        GrenadePickup pickup = new GrenadePickup(transform, powerupFactory, pickupList);
+
+        //Add pickup to the list so the program can keep track of it
+        pickupList.add(pickup);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new PickupBodyTask(pickup));
+
+        //Return to projectile
+        return pickup;
+    }
+    public CookiePickup createCookiePickup(Vector2 position) {
+
+        //Create default transform for pickup
+        Transform transform = new Transform(position.x, position.y,C.pH() * 5, C.pH() * 5,1,1,0);
+
+        //Create pickup and apply the transform send in parameter
+        CookiePickup pickup = new CookiePickup(transform, powerupFactory, pickupList);
+
+        //Add pickup to the list so the program can keep track of it
+        pickupList.add(pickup);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new PickupBodyTask(pickup));
+
+        //Return to projectile
+        return pickup;
     }
 }

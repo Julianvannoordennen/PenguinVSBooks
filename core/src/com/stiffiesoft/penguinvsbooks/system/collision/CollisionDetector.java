@@ -20,8 +20,8 @@ public class CollisionDetector implements ContactListener {
         Short typeB = fixtureB.getFilterData().categoryBits;
 
         //Execute the onCollide method on both of these, include the other object in the parameters
-        collidableA.onCollision(collidableB, typeB);
-        collidableB.onCollision(collidableA, typeA);
+        collidableA.onCollisionEnter(collidableB, typeB);
+        collidableB.onCollisionEnter(collidableA, typeA);
     }
 
     @Override public void endContact(Contact contact) {}

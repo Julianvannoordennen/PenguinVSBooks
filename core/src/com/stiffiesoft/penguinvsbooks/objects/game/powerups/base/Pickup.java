@@ -34,7 +34,7 @@ public abstract class Pickup implements Transformable, Renderable, Collidable {
     }
 
     @Override
-    public void onCollision(Collidable other, short type) {
+    public void onCollisionEnter(Collidable other, short type) {
 
         //Only enemy collisions will be handled here, pickup collisions will be handled in the pickup itself
         if (type == CollisionTypes.PLAYER) {

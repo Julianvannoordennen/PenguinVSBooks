@@ -18,7 +18,7 @@ public class PlayerProjectile extends LinearProjectile {
         super(transform, projectileList);
 
         //Set rotate speed
-        rotateSpeed = 250;
+        rotateSpeed = 500;
     }
 
     @Override
@@ -27,7 +27,7 @@ public class PlayerProjectile extends LinearProjectile {
         //Rotate the sprite, for design purposes
         transform.rotate(rotateSpeed * C.cGT());
 
-        //Draw player sprite
+        //Draw projectile sprite
         Transform.draw(batch, A.m.get(A.playerProjectile), transform);
         super.render(batch);
     }

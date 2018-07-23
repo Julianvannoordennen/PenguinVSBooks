@@ -73,12 +73,12 @@ public class Game extends BaseScene {
         enemyFactory.getEnemyList().addListener(pickupFactory);
         player.addListener(lifes);
 
-        //Add all items that can be rendered to the renderlist
+        //Add all items that can be rendered to the renderlist, from beneath to above
         renderList = new DynamicRenderingList();
-        renderList.add(projectileFactory.getProjectileList());
-        renderList.add(enemyFactory.getEnemyList());
         renderList.add(pickupFactory.getPickupList());
+        renderList.add(projectileFactory.getProjectileList());
         renderList.add(player);
+        renderList.add(enemyFactory.getEnemyList());
         renderList.add(score);
         renderList.add(lifes);
 

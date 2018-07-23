@@ -7,6 +7,7 @@ import com.stiffiesoft.penguinvsbooks.effects.SpriteAnimation;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.Enemy;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.EnemyList;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.targetting.EnemyTargetUpdater;
+import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.Projectile;
 import com.stiffiesoft.penguinvsbooks.system.collision.Collidable;
 import com.stiffiesoft.penguinvsbooks.system.collision.CollisionTypes;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transformable;
@@ -69,13 +70,20 @@ public class DefaultBookEnemy implements Transformable, Enemy, Collidable {
     }
 
     @Override
-    public void onCollision(Collidable other, short type) {
+    public void onCollisionEnter(Collidable other, short type) {
 
         //Check if it's a projectile
-        if (type == CollisionTypes.PROJECTILE)
+        if (type == CollisionTypes.PROJECTILE) {
 
-            //Destroy enemy
-            enemyList.destroy(this);
+            //Cast to projectile
+            Projectile projectile = (Projectile)other;
+
+            //Check if projectile does damage
+            if (projectile.doesDamage())
+
+                //Destroy enemy
+                enemyList.destroy(this);
+        }
     }
 
     @Override

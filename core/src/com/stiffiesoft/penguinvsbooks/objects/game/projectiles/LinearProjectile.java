@@ -37,7 +37,7 @@ public class LinearProjectile implements Transformable, Collidable, Renderable, 
     }
 
     @Override
-    public void onCollision(Collidable other, short collisionType) {
+    public void onCollisionEnter(Collidable other, short collisionType) {
 
         //Destroy self
         projectileList.destroy(this);
@@ -56,5 +56,10 @@ public class LinearProjectile implements Transformable, Collidable, Renderable, 
     @Override
     public void setBody(Body body) {
         this.body = body;
+    }
+
+    @Override
+    public boolean doesDamage() {
+        return true;
     }
 }

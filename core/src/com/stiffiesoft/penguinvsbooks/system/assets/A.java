@@ -33,6 +33,7 @@ public class A {
 
     //Pickups
     public static final AssetDescriptor<Texture> grenadePickup = new AssetDescriptor<>("sprites/game/powerups/grenade/grenade_pickup.png", Texture.class);
+    public static final AssetDescriptor<Texture> cookiePickup = new AssetDescriptor<>("sprites/game/powerups/cookie/cookie_pickup.png", Texture.class);
 
     //Powerups
     public static final AssetDescriptor<Texture> explosion = new AssetDescriptor<>("sprites/game/projectiles/explosion.png", Texture.class);
