@@ -1,6 +1,7 @@
 package com.stiffiesoft.penguinvsbooks.objects.game.player;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.TimeUtils;
@@ -18,7 +19,12 @@ public class PlayerStateMoving implements PlayerState {
     private float defaultMovementSpeed;
     private float currentMovementSpeed;
     private long fireRate;
-    private long next;
+    private long nextFire;
+    private long flickerRate;
+    private long nextFlicker;
+    private Boolean flickerOn;
+    private long flickerLast;
+    private long flickerLength;
 
     public PlayerStateMoving(Player player) {
 
@@ -30,12 +36,26 @@ public class PlayerStateMoving implements PlayerState {
         currentMovementSpeed = defaultMovementSpeed;
 
         //Create fire rate, now the player cannot fire books every tick
-        fireRate = 100;
-        updateTime();
+        fireRate = 50;
+        flickerRate = 100;
+        flickerOn = true;
+        flickerLength = 3000;
+        updateFire();
+        updateFlicker();
+        updateFlickerDuration();
     }
 
-    private void updateTime() {
-        next = TimeUtils.millis() + fireRate;
+    private void updateFire() {
+        nextFire = TimeUtils.millis() + fireRate;
+    }
+
+    private void updateFlicker() {
+        flickerOn = !flickerOn;
+        nextFlicker = TimeUtils.millis() + flickerRate;
+    }
+
+    private void updateFlickerDuration() {
+        flickerLast = TimeUtils.millis() + flickerLength;
     }
 
     public void updateMovement() {
@@ -50,7 +70,6 @@ public class PlayerStateMoving implements PlayerState {
 
             //Move down
             player.getTransform().applyPosition(new Vector2(0, -currentMovementSpeed * C.cGT()));
-
         }
 
         if (Gdx.input.isKeyPressed(K.left())) { //A
@@ -68,10 +87,10 @@ public class PlayerStateMoving implements PlayerState {
     public void updateAttack() {
 
         //Check if the mouse button is being pressed
-        if (Gdx.input.isButtonPressed(K.attack()) && TimeUtils.millis() >= next) {
+        if (Gdx.input.isButtonPressed(K.attack()) && TimeUtils.millis() >= nextFire) {
 
             //Now we have to wait before we can fire again
-            updateTime();
+            updateFire();
 
             //Clone the transform of the player
             Transform projectileTransform = player.getTransform().clone();
@@ -91,6 +110,9 @@ public class PlayerStateMoving implements PlayerState {
         updateMovement();
         updateAttack();
 
+
+        if (!player.canReceiveDamage() && flickerLast == -1) updateFlickerDuration();
+
         //Look at cursor
         player.getTransform().setRotation(
                 C.getAngleInDegrees(
@@ -99,15 +121,45 @@ public class PlayerStateMoving implements PlayerState {
                 )
         );
 
-        //Draw player sprite
-        Transform.draw(batch, A.m.get(A.playerIdle), player.getTransform());
+        //Check if the player can receive damage
+        if (player.canReceiveDamage()) {
+
+            //Just draw the player
+            Transform.draw(batch, A.m.get(A.playerIdle), player.getTransform());
+
+        } else {
+
+            //Flicker sprite if he can't be damaged
+            Color color = batch.getColor();
+            if (TimeUtils.millis() >= nextFlicker)
+                updateFlicker();
+            if (TimeUtils.millis() >= flickerLast) {
+                player.canReceiveDamage(true);
+                flickerLast = -1;
+            }
+
+            //Change color
+            batch.setColor(new Color(color.r, color.g, color.b, flickerOn ? 0.2f : 0.4f));
+
+            //Draw player sprite
+            Transform.draw(batch, A.m.get(A.playerIdle), player.getTransform());
+
+            //Restore color
+            batch.setColor(color);
+        }
     }
 
     @Override
     public void onCollision(Collidable other) {
 
+        //Check if player is immortal
+        if (!player.canReceiveDamage()) return;
+
         //Tell counter that there is some damage
         player.getPlayerListeners().forEach(playerListener -> playerListener.onPlayerDamage(player));
+
+        //Make player temporary immortal
+        player.canReceiveDamage(false);
 
         //Create screen flash
         player.getGame().getScreenFlasher().flash(DefinedColors.DAMAGE_FLASH);
@@ -118,4 +170,6 @@ public class PlayerStateMoving implements PlayerState {
         //Create a damage explosion
         player.getProjectileFactory().createPlayerDamageExplosion(explosionTransform);
     }
+
+
 }

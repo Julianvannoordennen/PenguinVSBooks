@@ -24,6 +24,7 @@ public class Player implements Transformable, Renderable, Collidable {
     private Game game;
     private ProjectileFactory projectileFactory;
     private ArrayList<PlayerListener> playerListeners;
+    private Boolean canReceiveDamage;
 
     public Player(Game game, ProjectileFactory projectileFactory) {
 
@@ -47,6 +48,7 @@ public class Player implements Transformable, Renderable, Collidable {
 
         //Set this player as the main player
         Player.main = this;
+        canReceiveDamage = false;
     }
 
     public void addListener(PlayerListener playerListener) {
@@ -105,5 +107,13 @@ public class Player implements Transformable, Renderable, Collidable {
     @Override
     public void setBody(Body body) {
         this.body = body;
+    }
+
+    public Boolean canReceiveDamage() {
+        return canReceiveDamage;
+    }
+
+    public void canReceiveDamage(Boolean canReceiveDamage) {
+        this.canReceiveDamage = canReceiveDamage;
     }
 }

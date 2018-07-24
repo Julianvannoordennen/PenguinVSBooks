@@ -10,6 +10,8 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.Coo
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.grenade.GrenadeExplosion;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.LaserBodyTask;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.LaserProjectile;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.teleporter.TeleporterExplosion;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.teleporter.TeleporterShock;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.collision.BodyFactory;
 
@@ -119,5 +121,34 @@ public class ProjectileFactory {
 
         //Return explosion
         return laserProjectile;
+    }
+    public TeleporterExplosion createTeleporterExplosion(Transform transform) {
+
+        //Manipulate transform
+        transform.setRotation(0);
+        transform.setScale(new Vector2(8f, 8f));
+
+        //Create projectile and apply the transform send in parameter
+        TeleporterExplosion explosion = new TeleporterExplosion(transform,projectileList);
+
+        //Add projectile to projectilelist
+        projectileList.add(explosion);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new DefaultExplosionBodyTask(explosion));
+
+        //Return explosion
+        return explosion;
+    }
+    public TeleporterShock createTeleporterShock(Transform transform) {
+
+        //Create projectile and apply the transform send in parameter
+        TeleporterShock shock = new TeleporterShock(transform,projectileList);
+
+        //Add projectile to projectilelist
+        projectileList.add(shock);
+
+        //Return explosion
+        return shock;
     }
 }

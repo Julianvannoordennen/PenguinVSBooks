@@ -13,17 +13,6 @@ import java.lang.reflect.Modifier;
 //Asset manager
 public class A {
 
-    //Manager
-    public static final AssetManager m = new AssetManager();
-    public static void dispose() {
-        m.dispose();
-    }
-
-
-
-
-    // ##### Asset definitions ##### //
-
     //Enemies
     public static final AssetDescriptor<TextureAtlas> defaultBookEnemyAtlas = new AssetDescriptor<>("sprites/game/enemies/defaultBookEnemy/default_book_enemy.atlas", TextureAtlas.class);
 
@@ -35,10 +24,12 @@ public class A {
     public static final AssetDescriptor<Texture> grenadePickup = new AssetDescriptor<>("sprites/game/powerups/grenade/grenade_pickup.png", Texture.class);
     public static final AssetDescriptor<Texture> cookiePickup = new AssetDescriptor<>("sprites/game/powerups/cookie/cookie_pickup.png", Texture.class);
     public static final AssetDescriptor<Texture> laserPickup = new AssetDescriptor<>("sprites/game/powerups/laser/laser_pickup.png", Texture.class);
+    public static final AssetDescriptor<TextureAtlas> teleporterPickup = new AssetDescriptor<>("sprites/game/powerups/teleporter/teleporter_pickup.atlas", TextureAtlas.class);
 
     //Powerups
     public static final AssetDescriptor<Texture> explosion = new AssetDescriptor<>("sprites/game/projectiles/explosion.png", Texture.class);
     public static final AssetDescriptor<Texture> laserPowerup = new AssetDescriptor<>("sprites/game/powerups/laser/laser_powerup.png", Texture.class);
+    public static final AssetDescriptor<TextureAtlas> teleporterShock = new AssetDescriptor<>("sprites/game/powerups/teleporter/teleporter_shock.atlas", TextureAtlas.class);
 
     //Menu
     public static final AssetDescriptor<Texture> menuLogo = new AssetDescriptor<>("sprites/menu/menu_logo.png", Texture.class);
@@ -56,10 +47,11 @@ public class A {
     //System
     public static final AssetDescriptor<BitmapFont> defaultFont = new AssetDescriptor<>("fonts/default.fnt", BitmapFont.class);
 
-    // ##### End asset definitions ##### //
-
-
-
+    //Manager
+    public static final AssetManager m = new AssetManager();
+    public static void dispose() {
+        m.dispose();
+    }
 
     //Load all assets automaticaly, because I'm lazy
     public static void load() {

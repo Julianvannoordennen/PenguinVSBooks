@@ -86,11 +86,9 @@ public class Game extends BaseScene {
         renderList.add(screenFlasher);
 
 
-        pickupFactory.createLaserPickup(new Vector2(C.sW() / 4, C.sH() / 4));
-        pickupFactory.createLaserPickup(new Vector2(C.sW() / 5, C.sH() / 5));
-        pickupFactory.createLaserPickup(new Vector2(C.sW() / 6, C.sH() / 6));
-
-        screenFlasher.flash(new Color(1,0,0,1));
+        pickupFactory.createTeleporterPickup(new Vector2(C.sW() / 4, C.sH() / 4));
+        pickupFactory.createTeleporterPickup(new Vector2(C.sW() / 5, C.sH() / 5));
+        pickupFactory.createTeleporterPickup(new Vector2(C.sW() / 8, C.sH() / 8));
     }
 
     @Override

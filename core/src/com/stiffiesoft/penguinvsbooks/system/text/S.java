@@ -68,4 +68,9 @@ public class S {
         if (l == Language.DUTCH) return "Laser";
         else return "Laser";
     }
+
+    public static String teleporter() {
+        if (l == Language.DUTCH) return "Teleporteerder";
+        else return "Teleporter";
+    }
 }

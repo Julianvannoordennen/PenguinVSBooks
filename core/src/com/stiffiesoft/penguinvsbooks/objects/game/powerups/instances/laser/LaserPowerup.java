@@ -38,7 +38,7 @@ public class LaserPowerup extends Powerup {
             transform.setHeight(C.sH());
 
             //Define position
-            if (startAtPlayer)
+            if (startAtPlayer && Player.main != null)
                 transform.setPosition(new Vector2(Player.main.getTransform().getXPosition(),0));
             else
                 transform.setPosition(new Vector2(MathUtils.random(C.pW() * 20, C.sW() - (C.pW() * 20)), 0));
@@ -51,7 +51,7 @@ public class LaserPowerup extends Powerup {
             float height = MathUtils.random(-(C.sH() - (C.pH() * 40)),-(C.pH() * 20));
 
             //Define position
-            if (startAtPlayer)
+            if (startAtPlayer && Player.main != null)
                 transform.setPosition(new Vector2(C.sH() - C.pH() * 20,Player.main.getTransform().getYPosition() - C.pH() * 80));
             else
                 transform.setPosition(new Vector2(C.sH() - C.pH() * 20,height));
