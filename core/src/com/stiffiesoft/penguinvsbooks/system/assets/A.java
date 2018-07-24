@@ -31,6 +31,17 @@ public class A {
     public static final AssetDescriptor<Texture> laserPowerup = new AssetDescriptor<>("sprites/game/powerups/laser/laser_powerup.png", Texture.class);
     public static final AssetDescriptor<TextureAtlas> teleporterShock = new AssetDescriptor<>("sprites/game/powerups/teleporter/teleporter_shock.atlas", TextureAtlas.class);
 
+    //Junk
+    public static final AssetDescriptor<Texture> defaultBookEnemyJunk1 = new AssetDescriptor<>("sprites/game/enemies/defaultBookEnemy/default_book_enemy_junk_1.png", Texture.class);
+    public static final AssetDescriptor<Texture> defaultBookEnemyJunk2 = new AssetDescriptor<>("sprites/game/enemies/defaultBookEnemy/default_book_enemy_junk_2.png", Texture.class);
+
+    //Effects
+    public static final AssetDescriptor<Texture> screenBorder = new AssetDescriptor<>("effects/border_screen.png", Texture.class);
+    public static final AssetDescriptor<Texture> screenFader = new AssetDescriptor<>("effects/screenfade.png", Texture.class);
+
+    //System
+    public static final AssetDescriptor<BitmapFont> defaultFont = new AssetDescriptor<>("fonts/default.fnt", BitmapFont.class);
+
     //Menu
     public static final AssetDescriptor<Texture> menuLogo = new AssetDescriptor<>("sprites/menu/menu_logo.png", Texture.class);
     public static final AssetDescriptor<Texture> playButton = new AssetDescriptor<>("sprites/menu/button_play.png", Texture.class);
@@ -39,13 +50,6 @@ public class A {
     public static final AssetDescriptor<Texture> archievementsButton = new AssetDescriptor<>("sprites/menu/button_archievements.png", Texture.class);
     public static final AssetDescriptor<Texture> settingsButton = new AssetDescriptor<>("sprites/menu/button_settings.png", Texture.class);
     public static final AssetDescriptor<Texture> quitButton = new AssetDescriptor<>("sprites/menu/button_quit.png", Texture.class);
-
-    //Effects
-    public static final AssetDescriptor<Texture> screenBorder = new AssetDescriptor<>("effects/border_screen.png", Texture.class);
-    public static final AssetDescriptor<Texture> screenFader = new AssetDescriptor<>("effects/screenfade.png", Texture.class);
-
-    //System
-    public static final AssetDescriptor<BitmapFont> defaultFont = new AssetDescriptor<>("fonts/default.fnt", BitmapFont.class);
 
     //Manager
     public static final AssetManager m = new AssetManager();

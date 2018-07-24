@@ -47,7 +47,7 @@ public class TeleporterShock implements Projectile, Transformable {
         batch.setColor(color);
 
         //Check if the shock has to fade away
-        if (this.fadeSpeed <= 0.01f)
+        if (this.intensity <= 0.01f)
 
             //Destroy shock
             projectileList.destroy(this);

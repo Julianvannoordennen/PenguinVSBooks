@@ -5,6 +5,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.instances.DefaultBookEnemy;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.instances.DefaultBookEnemyBodyTask;
+import com.stiffiesoft.penguinvsbooks.objects.game.junk.JunkFactory;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 import com.stiffiesoft.penguinvsbooks.system.collision.BodyFactory;
 
@@ -12,18 +13,20 @@ import java.util.Random;
 
 public class EnemyFactory {
 
-    private long spawnRate;
     private EnemyList enemyList;
+    private long spawnRate;
     private long next;
     private int edgeCorrection;
     private Random random;
     private BodyFactory bodyFactory;
+    private JunkFactory junkFactory;
 
-    public EnemyFactory(BodyFactory bodyFactory) {
+    public EnemyFactory(BodyFactory bodyFactory, JunkFactory junkFactory) {
         edgeCorrection = 250;
         spawnRate = 25; //1000 = 1 second
         this.bodyFactory = bodyFactory;
         this.enemyList = new EnemyList();
+        this.junkFactory = junkFactory;
         random = new Random();
         updateTime();
     }
@@ -48,7 +51,7 @@ public class EnemyFactory {
     public void spawnEnemy() {
 
         //Create enemy
-        DefaultBookEnemy enemy = new DefaultBookEnemy(enemyList);
+        DefaultBookEnemy enemy = new DefaultBookEnemy(enemyList, junkFactory);
 
         //Get position around the edge of the screen
         Vector2 position;

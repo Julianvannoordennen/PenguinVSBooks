@@ -51,7 +51,7 @@ public class ProjectileList implements Renderable {
             Body body = projectile.getBody();
 
             //Destroy fixtures and object
-            for(Fixture fixture : body.getFixtureList()) body.destroyFixture(fixture);
+            if (body != null) for(Fixture fixture : body.getFixtureList()) body.destroyFixture(fixture);
             projectiles.remove(projectile);
             iterator.remove();
         }

@@ -12,6 +12,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.counters.Lifes;
 import com.stiffiesoft.penguinvsbooks.objects.game.counters.Score;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.EnemyFactory;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.targetting.EnemyTargetSystem;
+import com.stiffiesoft.penguinvsbooks.objects.game.junk.JunkFactory;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.Player;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerBodyTask;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.PickupFactory;
@@ -19,6 +20,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.PowerupFactory;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileFactory;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileListCleaner;
 import com.stiffiesoft.penguinvsbooks.scenes.BaseScene;
+import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.collision.BodyFactory;
 import com.stiffiesoft.penguinvsbooks.system.collision.CollisionDetector;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.DynamicRenderingList;
@@ -36,6 +38,7 @@ public class Game extends BaseScene {
     private BodyFactory bodyFactory;
     private EnemyFactory enemyFactory;
     private ProjectileFactory projectileFactory;
+    private JunkFactory junkFactory;
     private ProjectileListCleaner projectileListCleaner;
     private Score score;
     private Lifes lifes;
@@ -57,8 +60,9 @@ public class Game extends BaseScene {
         debugRenderer = new Box2DDebugRenderer();
 
         //Create all factories that will be used inside the game
+        junkFactory = new JunkFactory();
         bodyFactory = new BodyFactory(world);
-        enemyFactory = new EnemyFactory(bodyFactory);
+        enemyFactory = new EnemyFactory(bodyFactory, junkFactory);
         projectileFactory = new ProjectileFactory(bodyFactory, screenFlasher);
         powerupFactory = new PowerupFactory(projectileFactory);
         pickupFactory = new PickupFactory(bodyFactory, powerupFactory, screenFlasher);
@@ -77,6 +81,7 @@ public class Game extends BaseScene {
 
         //Add all items that can be rendered to the renderlist, from beneath to above
         renderList = new DynamicRenderingList();
+        renderList.add(junkFactory.getJunkList());
         renderList.add(pickupFactory.getPickupList());
         renderList.add(player);
         renderList.add(enemyFactory.getEnemyList());
@@ -113,6 +118,7 @@ public class Game extends BaseScene {
         projectileFactory.getProjectileList().dispose();
         enemyFactory.getEnemyList().dispose();
         pickupFactory.getPickupList().dispose();
+        junkFactory.getJunkList().dispose();
     }
 
     @Override

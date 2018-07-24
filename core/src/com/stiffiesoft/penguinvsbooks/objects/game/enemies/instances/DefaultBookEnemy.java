@@ -7,6 +7,7 @@ import com.stiffiesoft.penguinvsbooks.effects.SpriteAnimation;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.Enemy;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.EnemyList;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.targetting.EnemyTargetUpdater;
+import com.stiffiesoft.penguinvsbooks.objects.game.junk.JunkFactory;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.Projectile;
 import com.stiffiesoft.penguinvsbooks.system.collision.Collidable;
 import com.stiffiesoft.penguinvsbooks.system.collision.CollisionTypes;
@@ -24,8 +25,9 @@ public class DefaultBookEnemy implements Transformable, Enemy, Collidable {
     private float currentMovementSpeed;
     private Body body;
     private EnemyList enemyList;
+    private JunkFactory junkFactory;
 
-    public DefaultBookEnemy(EnemyList enemyList) {
+    public DefaultBookEnemy(EnemyList enemyList, JunkFactory junkFactory) {
 
         //Transform
         transform = new Transform(256, 256, C.pH() * 5, C.pH() * 5, 1, 1, 0);
@@ -38,8 +40,9 @@ public class DefaultBookEnemy implements Transformable, Enemy, Collidable {
         //Enemy target updater
         this.targetUpdater = new EnemyTargetUpdater(this);
 
-        //Save the enemy list
+        //Save dependencies
         this.enemyList = enemyList;
+        this.junkFactory = junkFactory;
     }
 
     public void render(SpriteBatch batch) {
@@ -79,10 +82,14 @@ public class DefaultBookEnemy implements Transformable, Enemy, Collidable {
             Projectile projectile = (Projectile)other;
 
             //Check if projectile does damage
-            if (projectile.doesDamage())
+            if (projectile.doesDamage()) {
+
+                //Create junk
+                junkFactory.createDefaultEnemyDyingJunk(transform);
 
                 //Destroy enemy
                 enemyList.destroy(this);
+            }
         }
     }
 
