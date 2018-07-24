@@ -85,4 +85,9 @@ public class CookieProjectile implements Projectile, Transformable, Collidable {
     public boolean doesDamage() {
         return false;
     }
+
+    @Override
+    public boolean outsideAllowed() {
+        return true;
+    }
 }

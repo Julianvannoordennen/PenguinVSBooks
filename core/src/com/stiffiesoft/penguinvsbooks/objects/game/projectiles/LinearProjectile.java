@@ -62,4 +62,9 @@ public class LinearProjectile implements Transformable, Collidable, Renderable, 
     public boolean doesDamage() {
         return true;
     }
+
+    @Override
+    public boolean outsideAllowed() {
+        return true;
+    }
 }

@@ -2,6 +2,7 @@ package com.stiffiesoft.penguinvsbooks.objects.game.powerups.base;
 
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookiePowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.grenade.GrenadePowerup;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.LaserPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileFactory;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 
@@ -35,6 +36,17 @@ public class PowerupFactory {
 
         //Create powerup
         CookiePowerup powerup = new CookiePowerup(projectileFactory, powerupList, transform);
+
+        //Add powerup to the list so the program can keep track of it
+        powerupList.add(powerup);
+
+        //Return powerup
+        return powerup;
+    }
+    public LaserPowerup createLaserPowerup(Transform transform) {
+
+        //Create powerup
+        LaserPowerup powerup = new LaserPowerup(projectileFactory, powerupList, transform);
 
         //Add powerup to the list so the program can keep track of it
         powerupList.add(powerup);

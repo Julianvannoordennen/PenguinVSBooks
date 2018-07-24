@@ -16,7 +16,7 @@ public class CookiePowerup extends Powerup {
     protected void start() {
 
         //Create cookie
-        CookieProjectile cookieProjectile = projectileFactory.createCookieProjectile(initial);
+        projectileFactory.createCookieProjectile(initial);
 
         //Done, destroy the powerup
         powerupList.destroy(this);

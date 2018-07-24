@@ -1,11 +1,13 @@
 package com.stiffiesoft.penguinvsbooks.scenes.game;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.stiffiesoft.penguinvsbooks.Main;
+import com.stiffiesoft.penguinvsbooks.effects.ScreenFlasher;
 import com.stiffiesoft.penguinvsbooks.objects.game.counters.Lifes;
 import com.stiffiesoft.penguinvsbooks.objects.game.counters.Score;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.EnemyFactory;
@@ -57,7 +59,7 @@ public class Game extends BaseScene {
         //Create all factories that will be used inside the game
         bodyFactory = new BodyFactory(world);
         enemyFactory = new EnemyFactory(bodyFactory);
-        projectileFactory = new ProjectileFactory(bodyFactory);
+        projectileFactory = new ProjectileFactory(bodyFactory, screenFlasher);
         powerupFactory = new PowerupFactory(projectileFactory);
         pickupFactory = new PickupFactory(bodyFactory, powerupFactory);
 
@@ -76,14 +78,19 @@ public class Game extends BaseScene {
         //Add all items that can be rendered to the renderlist, from beneath to above
         renderList = new DynamicRenderingList();
         renderList.add(pickupFactory.getPickupList());
-        renderList.add(projectileFactory.getProjectileList());
         renderList.add(player);
         renderList.add(enemyFactory.getEnemyList());
+        renderList.add(projectileFactory.getProjectileList());
         renderList.add(score);
         renderList.add(lifes);
+        renderList.add(screenFlasher);
 
 
-        pickupFactory.createGrenadePickup(new Vector2(C.sW() / 4, C.sH() / 4));
+        pickupFactory.createLaserPickup(new Vector2(C.sW() / 4, C.sH() / 4));
+        pickupFactory.createLaserPickup(new Vector2(C.sW() / 5, C.sH() / 5));
+        pickupFactory.createLaserPickup(new Vector2(C.sW() / 6, C.sH() / 6));
+
+        screenFlasher.flash(new Color(1,0,0,1));
     }
 
     @Override

@@ -7,12 +7,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.stiffiesoft.penguinvsbooks.Main;
 import com.stiffiesoft.penguinvsbooks.effects.Border;
 import com.stiffiesoft.penguinvsbooks.effects.ScreenFader;
+import com.stiffiesoft.penguinvsbooks.effects.ScreenFlasher;
 
 public abstract class BaseScene implements Screen {
 
     protected Main main;
     private SpriteBatch batch;
     private Border border;
+    protected ScreenFlasher screenFlasher;
 
     public BaseScene(Main main) {
 
@@ -20,6 +22,7 @@ public abstract class BaseScene implements Screen {
         this.main               = main;
         this.batch              = main.getBatch();
         this.border             = new Border();
+        this.screenFlasher      = new ScreenFlasher();
     }
 
     @Override
@@ -39,6 +42,7 @@ public abstract class BaseScene implements Screen {
         //Render
         onRender(batch);
         border.render(batch);
+        screenFlasher.render(batch);
 
         //End
         batch.end();

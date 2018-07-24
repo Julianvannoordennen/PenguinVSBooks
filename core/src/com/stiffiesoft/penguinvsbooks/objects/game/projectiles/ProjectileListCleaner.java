@@ -37,11 +37,15 @@ public class ProjectileListCleaner {
             //Check each projectile
             for (Projectile projectile : projectileList.get()) {
 
-                //Get the projectile position
-                Vector2 position = projectile.getTransform().getPosition();
+                //Check if the projectile is not allowed to be outside of the screen
+                if (!projectile.outsideAllowed()) {
 
-                //Destroy projectile when outside screen
-                if (C.oS(position)) projectileList.destroy(projectile);
+                    //Get the projectile position
+                    Vector2 position = projectile.getTransform().getPosition();
+
+                    //Destroy projectile when outside screen
+                    if (C.oS(position)) projectileList.destroy(projectile);
+                }
             }
         }
     }

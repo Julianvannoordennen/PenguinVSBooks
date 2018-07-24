@@ -7,6 +7,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.Enemy;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.EnemyListListener;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookiePickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.grenade.GrenadePickup;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.LaserPickup;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 import com.stiffiesoft.penguinvsbooks.system.collision.BodyFactory;
@@ -112,6 +113,23 @@ public class PickupFactory implements EnemyListListener {
 
         //Create pickup and apply the transform send in parameter
         CookiePickup pickup = new CookiePickup(transform, powerupFactory, pickupList);
+
+        //Add pickup to the list so the program can keep track of it
+        pickupList.add(pickup);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new PickupBodyTask(pickup));
+
+        //Return to projectile
+        return pickup;
+    }
+    public LaserPickup createLaserPickup(Vector2 position) {
+
+        //Create default transform for pickup
+        Transform transform = new Transform(position.x, position.y,C.pH() * 5, C.pH() * 5,1,1,0);
+
+        //Create pickup and apply the transform send in parameter
+        LaserPickup pickup = new LaserPickup(transform, powerupFactory, pickupList);
 
         //Add pickup to the list so the program can keep track of it
         pickupList.add(pickup);

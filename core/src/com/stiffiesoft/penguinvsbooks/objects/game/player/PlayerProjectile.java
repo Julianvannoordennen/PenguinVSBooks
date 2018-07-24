@@ -31,4 +31,9 @@ public class PlayerProjectile extends LinearProjectile {
         Transform.draw(batch, A.m.get(A.playerProjectile), transform);
         super.render(batch);
     }
+
+    @Override
+    public boolean outsideAllowed() {
+        return false;
+    }
 }

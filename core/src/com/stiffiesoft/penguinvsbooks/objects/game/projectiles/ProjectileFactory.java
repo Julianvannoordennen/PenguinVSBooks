@@ -1,12 +1,15 @@
 package com.stiffiesoft.penguinvsbooks.objects.game.projectiles;
 
 import com.badlogic.gdx.math.Vector2;
+import com.stiffiesoft.penguinvsbooks.effects.ScreenFlasher;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerDamageExplosion;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerProjectileBodyTask;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookieBodyTask;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookieProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.grenade.GrenadeExplosion;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.LaserBodyTask;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.LaserProjectile;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.collision.BodyFactory;
 
@@ -14,10 +17,12 @@ public class ProjectileFactory {
 
     private ProjectileList projectileList;
     private BodyFactory bodyFactory;
+    private ScreenFlasher screenFlasher;
 
-    public ProjectileFactory(BodyFactory bodyFactory) {
+    public ProjectileFactory(BodyFactory bodyFactory, ScreenFlasher screenFlasher) {
         this.projectileList = new ProjectileList();
         this.bodyFactory = bodyFactory;
+        this.screenFlasher = screenFlasher;
     }
 
     public ProjectileList getProjectileList() {
@@ -25,24 +30,6 @@ public class ProjectileFactory {
     }
 
     /***** Create methods *****/
-    public PlayerProjectile createPlayerProjectile(Transform transform) {
-
-        //Manipulate transform
-        transform.setRotation(0);
-        transform.setScale(new Vector2(0.5f, 0.5f));
-
-        //Create projectile and apply the transform send in parameter
-        PlayerProjectile projectile = new PlayerProjectile(transform, projectileList);
-
-        //Add projectile to the list so the program can keep track of it
-        projectileList.add(projectile);
-
-        //Add bodytask for the projectile
-        bodyFactory.addTask(new PlayerProjectileBodyTask(projectile));
-
-        //Return to projectile
-        return projectile;
-    }
     public PlayerDamageExplosion createPlayerDamageExplosion(Transform transform) {
 
         //Manipulate transform
@@ -79,6 +66,24 @@ public class ProjectileFactory {
         //Return explosion
         return explosion;
     }
+    public PlayerProjectile createPlayerProjectile(Transform transform) {
+
+        //Manipulate transform
+        transform.setRotation(0);
+        transform.setScale(new Vector2(0.5f, 0.5f));
+
+        //Create projectile and apply the transform send in parameter
+        PlayerProjectile projectile = new PlayerProjectile(transform, projectileList);
+
+        //Add projectile to the list so the program can keep track of it
+        projectileList.add(projectile);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new PlayerProjectileBodyTask(projectile));
+
+        //Return to projectile
+        return projectile;
+    }
     public CookieProjectile createCookieProjectile(Transform transform) {
 
         //Manipulate transform
@@ -96,5 +101,23 @@ public class ProjectileFactory {
 
         //Return explosion
         return cookieProjectile;
+    }
+    public LaserProjectile createLaserProjectile(Transform transform) {
+
+        //Manipulate transform
+        transform.setRotation(0);
+        transform.setScale(new Vector2(1f, 1f));
+
+        //Create projectile and apply the transform send in parameter
+        LaserProjectile laserProjectile = new LaserProjectile(transform,projectileList, screenFlasher);
+
+        //Add projectile to projectilelist
+        projectileList.add(laserProjectile);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new LaserBodyTask(laserProjectile));
+
+        //Return explosion
+        return laserProjectile;
     }
 }

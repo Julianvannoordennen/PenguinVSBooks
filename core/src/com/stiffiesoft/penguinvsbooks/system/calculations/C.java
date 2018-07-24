@@ -35,6 +35,10 @@ public class C {
         return (float)(getAngleInRadians(p1, p2) * 180 / Math.PI);
     }
 
+    public static float degreesToRadians(float value) {
+        return value  / 57.295779513f;
+    }
+
     //Check if vector is outside screen
     public static boolean oS(Vector2 position) {
         return (position.x < 0 || position.x > sW() || position.y < 0 || position.y > sH());

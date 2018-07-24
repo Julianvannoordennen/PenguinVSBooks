@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
+import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 
 public class Transform implements Cloneable {
 
@@ -188,8 +189,12 @@ public class Transform implements Cloneable {
 
     public static void pushInBody(Transform transform, Body body) {
 
-        //Push the transform inside the body
-        body.setTransform(transform.getPositionCenter(), 0);
+        //Check if not null
+        if (body != null) {
+
+            //Push the transform inside the body
+            body.setTransform(transform.getPositionCenter(), C.degreesToRadians(transform.getRotation()));
+        }
     }
 
     @Override

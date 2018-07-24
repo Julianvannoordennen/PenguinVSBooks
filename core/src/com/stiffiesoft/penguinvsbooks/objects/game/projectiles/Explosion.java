@@ -91,4 +91,9 @@ public class Explosion implements Renderable, Projectile, Collidable {
     public boolean doesDamage() {
         return true;
     }
+
+    @Override
+    public boolean outsideAllowed() {
+        return true;
+    }
 }

@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 public class Player implements Transformable, Renderable, Collidable {
 
+    public static Player main;
     private PlayerState state;
     private Transform transform;
     private Body body;
@@ -43,6 +44,9 @@ public class Player implements Transformable, Renderable, Collidable {
 
         //Set start state
         state = new PlayerStateMoving(this);
+
+        //Set this player as the main player
+        Player.main = this;
     }
 
     public void addListener(PlayerListener playerListener) {

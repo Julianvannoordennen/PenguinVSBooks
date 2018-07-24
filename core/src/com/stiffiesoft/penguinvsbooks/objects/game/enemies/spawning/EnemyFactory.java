@@ -20,7 +20,7 @@ public class EnemyFactory {
     private BodyFactory bodyFactory;
 
     public EnemyFactory(BodyFactory bodyFactory) {
-        edgeCorrection = 50;
+        edgeCorrection = 250;
         spawnRate = 25; //1000 = 1 second
         this.bodyFactory = bodyFactory;
         this.enemyList = new EnemyList();

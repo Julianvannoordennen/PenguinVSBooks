@@ -11,4 +11,5 @@ public interface Projectile {
     Transform getTransform();
     Body getBody();
     boolean doesDamage();
+    boolean outsideAllowed();
 }
