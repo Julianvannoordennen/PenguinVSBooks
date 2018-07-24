@@ -80,6 +80,10 @@ public abstract class BaseScene implements Screen {
         return main;
     }
 
+    public ScreenFlasher getScreenFlasher() {
+        return screenFlasher;
+    }
+
     //Abstract methods
     protected abstract void onRender(SpriteBatch batch);
     protected abstract void onDispose();

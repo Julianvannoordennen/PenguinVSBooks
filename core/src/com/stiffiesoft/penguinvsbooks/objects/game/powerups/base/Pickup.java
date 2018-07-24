@@ -2,11 +2,13 @@ package com.stiffiesoft.penguinvsbooks.objects.game.powerups.base;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.Body;
+import com.stiffiesoft.penguinvsbooks.effects.ScreenFlasher;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Renderable;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transformable;
 import com.stiffiesoft.penguinvsbooks.system.collision.Collidable;
 import com.stiffiesoft.penguinvsbooks.system.collision.CollisionTypes;
+import com.stiffiesoft.penguinvsbooks.system.text.DefinedColors;
 
 public abstract class Pickup implements Transformable, Renderable, Collidable {
 
@@ -14,11 +16,13 @@ public abstract class Pickup implements Transformable, Renderable, Collidable {
     protected Body body;
     protected PowerupFactory powerupFactory;
     protected PickupList pickupList;
+    private ScreenFlasher screenFlasher;
 
-    public Pickup(Transform transform, PowerupFactory powerupFactory, PickupList pickupList) {
+    public Pickup(Transform transform, PowerupFactory powerupFactory, PickupList pickupList, ScreenFlasher screenFlasher) {
         this.transform = transform;
         this.powerupFactory = powerupFactory;
         this.pickupList = pickupList;
+        this.screenFlasher = screenFlasher;
     }
 
     @Override
@@ -38,6 +42,9 @@ public abstract class Pickup implements Transformable, Renderable, Collidable {
 
         //Only enemy collisions will be handled here, pickup collisions will be handled in the pickup itself
         if (type == CollisionTypes.PLAYER) {
+
+            //Flash the screen
+            screenFlasher.flash(DefinedColors.PICKUP_FLASH);
 
             //Picked up the pickup, execute pickup script
             onPickup();

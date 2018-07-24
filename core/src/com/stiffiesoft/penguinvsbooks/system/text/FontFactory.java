@@ -1,6 +1,5 @@
 package com.stiffiesoft.penguinvsbooks.system.text;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.utils.Align;
@@ -29,13 +28,13 @@ public class FontFactory {
 
     public GlyphLayout createGlyph(String text, BitmapFont font) {
 
-        GlyphLayout layout = new GlyphLayout(font,text,DefinedColors.GREY,C.sW(),Align.center,true);
+        GlyphLayout layout = new GlyphLayout(font,text,DefinedColors.SECONDARY,C.sW(),Align.center,true);
         return layout;
     }
 
     public GlyphLayout createCounterGlyph(String text, BitmapFont font) {
 
-        GlyphLayout layout = new GlyphLayout(font,text,DefinedColors.DARK_RED,C.pW() * 10,Align.center,true);
+        GlyphLayout layout = new GlyphLayout(font,text,DefinedColors.PRIMARY,C.pW() * 10,Align.center,true);
         return layout;
     }
 }

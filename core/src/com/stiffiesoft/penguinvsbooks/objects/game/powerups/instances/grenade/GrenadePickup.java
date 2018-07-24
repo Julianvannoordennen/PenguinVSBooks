@@ -1,6 +1,7 @@
 package com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.grenade;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.stiffiesoft.penguinvsbooks.effects.ScreenFlasher;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.Pickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.PickupList;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.PowerupFactory;
@@ -10,8 +11,8 @@ import com.stiffiesoft.penguinvsbooks.system.text.S;
 
 public class GrenadePickup extends Pickup {
 
-    public GrenadePickup(Transform transform, PowerupFactory powerupFactory, PickupList pickupList) {
-        super(transform, powerupFactory, pickupList);
+    public GrenadePickup(Transform transform, PowerupFactory powerupFactory, PickupList pickupList, ScreenFlasher screenFlasher) {
+        super(transform, powerupFactory, pickupList, screenFlasher);
     }
 
     @Override

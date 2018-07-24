@@ -1,6 +1,7 @@
 package com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.stiffiesoft.penguinvsbooks.effects.ScreenFlasher;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.Pickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.PickupList;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.PowerupFactory;
@@ -9,8 +10,8 @@ import com.stiffiesoft.penguinvsbooks.system.assets.A;
 
 public class CookiePickup extends Pickup {
 
-    public CookiePickup(Transform transform, PowerupFactory powerupFactory, PickupList pickupList) {
-        super(transform, powerupFactory, pickupList);
+    public CookiePickup(Transform transform, PowerupFactory powerupFactory, PickupList pickupList, ScreenFlasher screenFlasher) {
+        super(transform, powerupFactory, pickupList, screenFlasher);
     }
 
     @Override

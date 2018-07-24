@@ -2,7 +2,6 @@ package com.stiffiesoft.penguinvsbooks.scenes.menu;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
@@ -45,7 +44,7 @@ public class LoadScene implements Screen {
         main.getBatch().begin();
 
         //Show loading percentage
-        GlyphLayout layout = new GlyphLayout(font,Math.round(A.m.getProgress() * 100) + "%",DefinedColors.DARK_RED,C.sW(),Align.center,true);
+        GlyphLayout layout = new GlyphLayout(font,Math.round(A.m.getProgress() * 100) + "%",DefinedColors.PRIMARY,C.sW(),Align.center,true);
         font.draw(main.getBatch(), layout, 0, (C.sH() / 2) + (layout.height / 2));
 
         //Done loading?

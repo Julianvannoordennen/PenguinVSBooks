@@ -10,6 +10,7 @@ import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 import com.stiffiesoft.penguinvsbooks.system.input.K;
 import com.stiffiesoft.penguinvsbooks.system.input.M;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
+import com.stiffiesoft.penguinvsbooks.system.text.DefinedColors;
 
 public class PlayerStateMoving implements PlayerState {
 
@@ -107,6 +108,9 @@ public class PlayerStateMoving implements PlayerState {
 
         //Tell counter that there is some damage
         player.getPlayerListeners().forEach(playerListener -> playerListener.onPlayerDamage(player));
+
+        //Create screen flash
+        player.getGame().getScreenFlasher().flash(DefinedColors.DAMAGE_FLASH);
 
         //Clone the transform of the player
         Transform explosionTransform = player.getTransform().clone();

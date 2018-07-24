@@ -61,7 +61,7 @@ public class Game extends BaseScene {
         enemyFactory = new EnemyFactory(bodyFactory);
         projectileFactory = new ProjectileFactory(bodyFactory, screenFlasher);
         powerupFactory = new PowerupFactory(projectileFactory);
-        pickupFactory = new PickupFactory(bodyFactory, powerupFactory);
+        pickupFactory = new PickupFactory(bodyFactory, powerupFactory, screenFlasher);
 
         //Create all single instances that will be used inside the game
         player = new Player(this, projectileFactory);
