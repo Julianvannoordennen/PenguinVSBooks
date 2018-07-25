@@ -6,6 +6,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.stiffiesoft.penguinvsbooks.effects.SpriteAnimation;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.Projectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileList;
+import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transformable;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
@@ -19,15 +20,15 @@ public class TeleporterShock implements Projectile, Transformable {
     private float intensity;
     private float fadeSpeed;
 
-    public TeleporterShock(Transform transform, ProjectileList projectileList) {
+    public TeleporterShock(Transform transform, GameContext context) {
 
         //Save values
-        this.transform = transform;
-        this.projectileList = projectileList;
-        animation = new SpriteAnimation(A.m.get(A.teleporterShock), 30);
+        this.transform      = transform;
+        this.projectileList = context.getProjectileList();
+        this.animation      = new SpriteAnimation(A.m.get(A.teleporterShock), 30);
 
-        this.intensity = 1;
-        this.fadeSpeed = 2;
+        this.intensity      = 1;
+        this.fadeSpeed      = 2;
     }
 
     @Override

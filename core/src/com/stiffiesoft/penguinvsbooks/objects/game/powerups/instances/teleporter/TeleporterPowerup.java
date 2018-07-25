@@ -6,20 +6,21 @@ import com.stiffiesoft.penguinvsbooks.objects.game.player.Player;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.Powerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.PowerupList;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileFactory;
+import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 
 public class TeleporterPowerup extends Powerup {
 
-    public TeleporterPowerup(ProjectileFactory projectileFactory, PowerupList powerupList, Transform initial) {
-        super(projectileFactory, powerupList, initial);
+    public TeleporterPowerup(GameContext context, Transform initial) {
+        super(context, initial);
     }
 
     @Override
     protected void start() {
 
         //Create new position vector
-        Vector2 currentPosition = Player.main.getTransform().getPosition();
+        Vector2 currentPosition = player.getTransform().getPosition();
         Vector2 randomPosition = currentPosition;
         float distance = currentPosition.dst(randomPosition);
 
@@ -50,10 +51,10 @@ public class TeleporterPowerup extends Powerup {
         shockTransform.setSize(new Vector2(distance, distance / 4));
 
         //Apply new position to the player
-        Player.main.getTransform().setPosition(randomPosition);
+        player.getTransform().setPosition(randomPosition);
 
         //Make player immortal
-        Player.main.canReceiveDamage(false);
+        player.canReceiveDamage(false);
 
         //Done, destroy the powerup
         powerupList.destroy(this);

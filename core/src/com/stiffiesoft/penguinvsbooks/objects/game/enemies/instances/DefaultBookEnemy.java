@@ -9,6 +9,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.EnemyList;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.targetting.EnemyTargetUpdater;
 import com.stiffiesoft.penguinvsbooks.objects.game.junk.JunkFactory;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.Projectile;
+import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.system.collision.Collidable;
 import com.stiffiesoft.penguinvsbooks.system.collision.CollisionTypes;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transformable;
@@ -27,22 +28,18 @@ public class DefaultBookEnemy implements Transformable, Enemy, Collidable {
     private EnemyList enemyList;
     private JunkFactory junkFactory;
 
-    public DefaultBookEnemy(EnemyList enemyList, JunkFactory junkFactory) {
+    public DefaultBookEnemy(GameContext context) {
 
         //Transform
         transform = new Transform(256, 256, C.pH() * 5, C.pH() * 5, 1, 1, 0);
-        defaultMovementSpeed = 50;
-        currentMovementSpeed = defaultMovementSpeed;
+        defaultMovementSpeed    = 50;
+        currentMovementSpeed    = defaultMovementSpeed;
 
-        //Sprite Animation
-        currentSpriteAnimation = new SpriteAnimation(A.m.get(A.defaultBookEnemyAtlas), 30);
-
-        //Enemy target updater
-        this.targetUpdater = new EnemyTargetUpdater(this);
-
-        //Save dependencies
-        this.enemyList = enemyList;
-        this.junkFactory = junkFactory;
+        //Create properties
+        currentSpriteAnimation  = new SpriteAnimation(A.m.get(A.defaultBookEnemyAtlas), 30);
+        this.targetUpdater      = new EnemyTargetUpdater(this);
+        this.enemyList          = context.getEnemyList();
+        this.junkFactory        = context.getJunkFactory();
     }
 
     public void render(SpriteBatch batch) {

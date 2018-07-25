@@ -10,6 +10,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.Coo
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.grenade.GrenadePickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.LaserPickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.teleporter.TeleporterPickup;
+import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 import com.stiffiesoft.penguinvsbooks.system.collision.BodyFactory;
@@ -22,27 +23,23 @@ public class PickupFactory implements EnemyListListener {
     private BodyFactory bodyFactory;
     private PowerupFactory powerupFactory;
     private ScreenFlasher screenFlasher;
+    private GameContext context;
     private int pickupLimit;
     private int spawnChanche;
     private int spawnDelay;
     private long nextSpawn;
 
-    public PickupFactory(BodyFactory bodyFactory, PowerupFactory powerupFactory, ScreenFlasher screenFlasher) {
-        this.pickupList = //new PickupList();
-        this.pickupCatalogue = new PickupCatalogue();
-
-        this.powerupFactory = powerupFactory;
-        this.bodyFactory = bodyFactory;
-        this.screenFlasher = screenFlasher;
-
-        this.pickupLimit = 5;
-        this.spawnChanche = 25;
-        this.spawnDelay = 1000; //1 second
+    public PickupFactory(GameContext context) {
+        this.pickupList         = context.getPickupList();
+        this.pickupCatalogue    = context.getPickupCatalogue();
+        this.powerupFactory     = context.getPowerupFactory();
+        this.bodyFactory        = context.getBodyFactory();
+        this.screenFlasher      = context.getScreenFlasher();
+        this.context            = context;
+        this.pickupLimit        = 5;
+        this.spawnChanche       = 25;
+        this.spawnDelay         = 1000; //1 second
         updateTime();
-    }
-
-    public PickupList getPickupList() {
-        return pickupList;
     }
 
     private void updateTime() {
@@ -109,7 +106,7 @@ public class PickupFactory implements EnemyListListener {
     public GrenadePickup createGrenadePickup(Vector2 position) {
 
         //Create pickup and apply the transform send in parameter
-        GrenadePickup pickup = new GrenadePickup(beforePickup(position), powerupFactory, pickupList, screenFlasher);
+        GrenadePickup pickup = new GrenadePickup(beforePickup(position), context);
 
         //Add bodytask for the projectile
         bodyFactory.addTask(new PickupBodyTask(pickup));
@@ -123,7 +120,7 @@ public class PickupFactory implements EnemyListListener {
     public CookiePickup createCookiePickup(Vector2 position) {
 
         //Create pickup and apply the transform send in parameter
-        CookiePickup pickup = new CookiePickup(beforePickup(position), powerupFactory, pickupList, screenFlasher);
+        CookiePickup pickup = new CookiePickup(beforePickup(position), context);
 
         //Add bodytask for the projectile
         bodyFactory.addTask(new PickupBodyTask(pickup));
@@ -137,7 +134,7 @@ public class PickupFactory implements EnemyListListener {
     public LaserPickup createLaserPickup(Vector2 position) {
 
         //Create pickup and apply the transform send in parameter
-        LaserPickup pickup = new LaserPickup(beforePickup(position), powerupFactory, pickupList, screenFlasher);
+        LaserPickup pickup = new LaserPickup(beforePickup(position), context);
 
         //Add bodytask for the projectile
         bodyFactory.addTask(new PickupBodyTask(pickup));
@@ -151,7 +148,7 @@ public class PickupFactory implements EnemyListListener {
     public TeleporterPickup createTeleporterPickup(Vector2 position) {
 
         //Create pickup and apply the transform send in parameter
-        TeleporterPickup pickup = new TeleporterPickup(beforePickup(position), powerupFactory, pickupList, screenFlasher);
+        TeleporterPickup pickup = new TeleporterPickup(beforePickup(position), context);
 
         //Add bodytask for the projectile
         bodyFactory.addTask(new PickupBodyTask(pickup));

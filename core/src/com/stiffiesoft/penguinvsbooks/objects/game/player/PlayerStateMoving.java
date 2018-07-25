@@ -5,6 +5,9 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.TimeUtils;
+import com.stiffiesoft.penguinvsbooks.effects.ScreenFlasher;
+import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileFactory;
+import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.system.collision.Collidable;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
@@ -16,6 +19,8 @@ import com.stiffiesoft.penguinvsbooks.system.text.DefinedColors;
 public class PlayerStateMoving implements PlayerState {
 
     private Player player;
+    private ScreenFlasher screenFlasher;
+    private ProjectileFactory projectileFactory;
     private float defaultMovementSpeed;
     private float currentMovementSpeed;
     private long fireRate;
@@ -26,20 +31,22 @@ public class PlayerStateMoving implements PlayerState {
     private long flickerLast;
     private long flickerLength;
 
-    public PlayerStateMoving(Player player) {
+    public PlayerStateMoving(Player player, GameContext context) {
 
         //We can see the player as the context for this state
-        this.player = player;
+        this.player             = player;
+        this.screenFlasher      = context.getScreenFlasher();
+        this.projectileFactory  = context.getProjectileFactory();
 
         //Apply speed to the player
-        defaultMovementSpeed = 200;
-        currentMovementSpeed = defaultMovementSpeed;
+        defaultMovementSpeed    = 200;
+        currentMovementSpeed    = defaultMovementSpeed;
 
         //Create fire rate, now the player cannot fire books every tick
-        fireRate = 50;
-        flickerRate = 100;
-        flickerOn = true;
-        flickerLength = 3000;
+        fireRate                = 50;
+        flickerRate             = 100;
+        flickerOn               = true;
+        flickerLength           = 3000;
         updateFire();
         updateFlicker();
         updateFlickerDuration();
@@ -99,7 +106,7 @@ public class PlayerStateMoving implements PlayerState {
             projectileTransform.setMovementAngle((float)Math.toRadians(projectileTransform.getRotation()));
 
             //Create projectile using the projectilefactory
-            player.getProjectileFactory().createPlayerProjectile(projectileTransform);
+            projectileFactory.createPlayerProjectile(projectileTransform);
         }
     }
 
@@ -109,7 +116,6 @@ public class PlayerStateMoving implements PlayerState {
         //Update interaction methods
         updateMovement();
         updateAttack();
-
 
         if (!player.canReceiveDamage() && flickerLast == -1) updateFlickerDuration();
 
@@ -162,13 +168,13 @@ public class PlayerStateMoving implements PlayerState {
         player.canReceiveDamage(false);
 
         //Create screen flash
-        player.getGame().getScreenFlasher().flash(DefinedColors.DAMAGE_FLASH);
+        screenFlasher.flash(DefinedColors.DAMAGE_FLASH);
 
         //Clone the transform of the player
         Transform explosionTransform = player.getTransform().clone();
 
         //Create a damage explosion
-        player.getProjectileFactory().createPlayerDamageExplosion(explosionTransform);
+        projectileFactory.createPlayerDamageExplosion(explosionTransform);
     }
 
 

@@ -1,11 +1,11 @@
 package com.stiffiesoft.penguinvsbooks.objects.game.player;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
+import com.stiffiesoft.penguinvsbooks.Main;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.targetting.EnemyTargetSystem;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileFactory;
-import com.stiffiesoft.penguinvsbooks.scenes.game.Game;
+import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.*;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.scenes.menu.StartMenu;
@@ -17,16 +17,14 @@ import java.util.ArrayList;
 
 public class Player implements Transformable, Renderable, Collidable {
 
-    public static Player main;
+    private Main main;
     private PlayerState state;
     private Transform transform;
     private Body body;
-    private Game game;
-    private ProjectileFactory projectileFactory;
     private ArrayList<PlayerListener> playerListeners;
     private Boolean canReceiveDamage;
 
-    public Player(Game game, ProjectileFactory projectileFactory) {
+    public Player(GameContext context) {
 
         //Create array for listeners
         playerListeners = new ArrayList<>();
@@ -37,17 +35,11 @@ public class Player implements Transformable, Renderable, Collidable {
         //Register the player as a enemy target
         EnemyTargetSystem.registerTarget(this);
 
-        //We need to save the game variable since the player can change game scenes (For example when dying, the game will return to the menu)
-        this.game = game;
-
-        //Save the projectile factory
-        this.projectileFactory = projectileFactory;
+        //Save from context
+        this.main = context.getMain();
 
         //Set start state
-        state = new PlayerStateMoving(this);
-
-        //Set this player as the main player
-        Player.main = this;
+        state = new PlayerStateMoving(this, context);
         canReceiveDamage = false;
     }
 
@@ -57,15 +49,6 @@ public class Player implements Transformable, Renderable, Collidable {
 
     public ArrayList<PlayerListener> getPlayerListeners() {
         return playerListeners;
-    }
-
-    //Get the game from the player context, will be used in the states
-    public Game getGame() {
-        return game;
-    }
-
-    public ProjectileFactory getProjectileFactory() {
-        return this.projectileFactory;
     }
 
     @Override
@@ -95,8 +78,8 @@ public class Player implements Transformable, Renderable, Collidable {
 
     public void die() {
 
-        //Stop and go to main menu
-        game.getMain().setScreen(new StartMenu(game.getMain()));
+        //Stop and go to primary menu
+        main.setScreen(new StartMenu(main));
     }
 
     @Override

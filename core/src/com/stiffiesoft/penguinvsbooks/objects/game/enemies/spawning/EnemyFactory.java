@@ -6,6 +6,7 @@ import com.badlogic.gdx.utils.TimeUtils;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.instances.DefaultBookEnemy;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.instances.DefaultBookEnemyBodyTask;
 import com.stiffiesoft.penguinvsbooks.objects.game.junk.JunkFactory;
+import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 import com.stiffiesoft.penguinvsbooks.system.collision.BodyFactory;
 
@@ -19,15 +20,15 @@ public class EnemyFactory {
     private int edgeCorrection;
     private Random random;
     private BodyFactory bodyFactory;
-    private JunkFactory junkFactory;
+    private GameContext context;
 
-    public EnemyFactory(BodyFactory bodyFactory, JunkFactory junkFactory) {
-        edgeCorrection = 250;
-        spawnRate = 25; //1000 = 1 second
-        this.bodyFactory = bodyFactory;
-        this.enemyList = //new EnemyList();
-        this.junkFactory = junkFactory;
-        random = new Random();
+    public EnemyFactory(GameContext context) {
+        edgeCorrection      = 250;
+        spawnRate           = 25; //1000 = 1 second
+        this.bodyFactory    = context.getBodyFactory();
+        this.enemyList      = context.getEnemyList();
+        this.context        = context;
+        random              = new Random();
         updateTime();
     }
 
@@ -51,7 +52,7 @@ public class EnemyFactory {
     public void spawnEnemy() {
 
         //Create enemy
-        DefaultBookEnemy enemy = new DefaultBookEnemy(enemyList, junkFactory);
+        DefaultBookEnemy enemy = new DefaultBookEnemy(context);
 
         //Get position around the edge of the screen
         Vector2 position;
@@ -92,9 +93,5 @@ public class EnemyFactory {
 
         //Create body task for enemy
         bodyFactory.addTask(new DefaultBookEnemyBodyTask(enemy));
-    }
-
-    public EnemyList getEnemyList() {
-        return this.enemyList;
     }
 }

@@ -6,15 +6,15 @@ import com.badlogic.gdx.math.Vector2;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.Player;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.Powerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.PowerupList;
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookieProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileFactory;
+import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 
 public class LaserPowerup extends Powerup {
 
-    public LaserPowerup(ProjectileFactory projectileFactory, PowerupList powerupList, Transform initial) {
-        super(projectileFactory, powerupList, initial);
+    public LaserPowerup(GameContext context, Transform initial) {
+        super(context, initial);
     }
 
     @Override
@@ -38,8 +38,8 @@ public class LaserPowerup extends Powerup {
             transform.setHeight(C.sH());
 
             //Define position
-            if (startAtPlayer && Player.main != null)
-                transform.setPosition(new Vector2(Player.main.getTransform().getXPosition(),0));
+            if (startAtPlayer && player != null)
+                transform.setPosition(new Vector2(player.getTransform().getXPosition(),0));
             else
                 transform.setPosition(new Vector2(MathUtils.random(C.pW() * 20, C.sW() - (C.pW() * 20)), 0));
 
@@ -51,8 +51,8 @@ public class LaserPowerup extends Powerup {
             float height = MathUtils.random(-(C.sH() - (C.pH() * 40)),-(C.pH() * 20));
 
             //Define position
-            if (startAtPlayer && Player.main != null)
-                transform.setPosition(new Vector2(C.sH() - C.pH() * 20,Player.main.getTransform().getYPosition() - C.pH() * 80));
+            if (startAtPlayer && player != null)
+                transform.setPosition(new Vector2(C.sH() - C.pH() * 20,player.getTransform().getYPosition() - C.pH() * 80));
             else
                 transform.setPosition(new Vector2(C.sH() - C.pH() * 20,height));
         }

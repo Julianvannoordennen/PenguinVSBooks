@@ -5,27 +5,26 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.grenade.Gr
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.LaserPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.teleporter.TeleporterPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileFactory;
+import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 
 public class PowerupFactory {
 
     private PowerupList powerupList;
     private ProjectileFactory projectileFactory;
+    private GameContext context;
 
-    public PowerupFactory(ProjectileFactory projectileFactory) {
-        this.powerupList = //new PowerupList();
-        this.projectileFactory = projectileFactory;
-    }
-
-    public PowerupList getPowerupList() {
-        return powerupList;
+    public PowerupFactory(GameContext context) {
+        this.powerupList        = context.getPowerupList();
+        this.projectileFactory  = context.getProjectileFactory();
+        this.context            = context;
     }
 
     /***** Create methods *****/
     public GrenadePowerup createGrenadePowerup(Transform transform) {
 
         //Create powerup
-        GrenadePowerup powerup = new GrenadePowerup(projectileFactory, powerupList, transform);
+        GrenadePowerup powerup = new GrenadePowerup(context, transform);
 
         //Add powerup to the list so the program can keep track of it
         powerupList.add(powerup);
@@ -36,7 +35,7 @@ public class PowerupFactory {
     public CookiePowerup createCookiePowerup(Transform transform) {
 
         //Create powerup
-        CookiePowerup powerup = new CookiePowerup(projectileFactory, powerupList, transform);
+        CookiePowerup powerup = new CookiePowerup(context, transform);
 
         //Add powerup to the list so the program can keep track of it
         powerupList.add(powerup);
@@ -47,7 +46,7 @@ public class PowerupFactory {
     public LaserPowerup createLaserPowerup(Transform transform) {
 
         //Create powerup
-        LaserPowerup powerup = new LaserPowerup(projectileFactory, powerupList, transform);
+        LaserPowerup powerup = new LaserPowerup(context, transform);
 
         //Add powerup to the list so the program can keep track of it
         powerupList.add(powerup);
@@ -58,7 +57,7 @@ public class PowerupFactory {
     public TeleporterPowerup createTeleporterPowerup(Transform transform) {
 
         //Create powerup
-        TeleporterPowerup powerup = new TeleporterPowerup(projectileFactory, powerupList, transform);
+        TeleporterPowerup powerup = new TeleporterPowerup(context, transform);
 
         //Add powerup to the list so the program can keep track of it
         powerupList.add(powerup);

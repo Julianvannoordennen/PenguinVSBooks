@@ -1,6 +1,7 @@
 package com.stiffiesoft.penguinvsbooks.system.collision;
 
 import com.badlogic.gdx.physics.box2d.World;
+import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -10,9 +11,9 @@ public class BodyFactory {
     private ArrayList<BodyTask> tasks;
     private World world;
 
-    public BodyFactory(World world) {
-        tasks = new ArrayList<>();
-        this.world = world;
+    public BodyFactory(GameContext context) {
+        this.tasks = new ArrayList<>();
+        this.world = context.getWorld();
     }
 
     //Add a single task to the queue

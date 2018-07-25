@@ -12,6 +12,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.Lase
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.LaserProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.teleporter.TeleporterExplosion;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.teleporter.TeleporterShock;
+import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.collision.BodyFactory;
 
@@ -20,15 +21,13 @@ public class ProjectileFactory {
     private ProjectileList projectileList;
     private BodyFactory bodyFactory;
     private ScreenFlasher screenFlasher;
+    private GameContext context;
 
-    public ProjectileFactory(BodyFactory bodyFactory, ScreenFlasher screenFlasher) {
-        this.projectileList //= new ProjectileList();
-        this.bodyFactory = bodyFactory;
-        this.screenFlasher = screenFlasher;
-    }
-
-    public ProjectileList getProjectileList() {
-        return projectileList;
+    public ProjectileFactory(GameContext context) {
+        this.projectileList = context.getProjectileList();
+        this.bodyFactory    = context.getBodyFactory();
+        this.screenFlasher  = context.getScreenFlasher();
+        this.context        = context;
     }
 
     /***** Create methods *****/
@@ -39,7 +38,7 @@ public class ProjectileFactory {
         transform.setScale(new Vector2(20f, 20f));
 
         //Create projectile and apply the transform send in parameter
-        PlayerDamageExplosion explosion = new PlayerDamageExplosion(transform,projectileList);
+        PlayerDamageExplosion explosion = new PlayerDamageExplosion(transform,context);
 
         //Add projectile to projectilelist
         projectileList.add(explosion);
@@ -57,7 +56,7 @@ public class ProjectileFactory {
         transform.setScale(new Vector2(12f, 12f));
 
         //Create projectile and apply the transform send in parameter
-        GrenadeExplosion explosion = new GrenadeExplosion(transform,projectileList);
+        GrenadeExplosion explosion = new GrenadeExplosion(transform,context);
 
         //Add projectile to projectilelist
         projectileList.add(explosion);
@@ -75,7 +74,7 @@ public class ProjectileFactory {
         transform.setScale(new Vector2(0.5f, 0.5f));
 
         //Create projectile and apply the transform send in parameter
-        PlayerProjectile projectile = new PlayerProjectile(transform, projectileList);
+        PlayerProjectile projectile = new PlayerProjectile(transform, context);
 
         //Add projectile to the list so the program can keep track of it
         projectileList.add(projectile);
@@ -93,7 +92,7 @@ public class ProjectileFactory {
         transform.setScale(new Vector2(1f, 1f));
 
         //Create projectile and apply the transform send in parameter
-        CookieProjectile cookieProjectile = new CookieProjectile(transform,projectileList);
+        CookieProjectile cookieProjectile = new CookieProjectile(transform,context);
 
         //Add projectile to projectilelist
         projectileList.add(cookieProjectile);
@@ -111,7 +110,7 @@ public class ProjectileFactory {
         transform.setScale(new Vector2(1f, 1f));
 
         //Create projectile and apply the transform send in parameter
-        LaserProjectile laserProjectile = new LaserProjectile(transform,projectileList, screenFlasher);
+        LaserProjectile laserProjectile = new LaserProjectile(transform,context);
 
         //Add projectile to projectilelist
         projectileList.add(laserProjectile);
@@ -129,7 +128,7 @@ public class ProjectileFactory {
         transform.setScale(new Vector2(8f, 8f));
 
         //Create projectile and apply the transform send in parameter
-        TeleporterExplosion explosion = new TeleporterExplosion(transform,projectileList);
+        TeleporterExplosion explosion = new TeleporterExplosion(transform,context);
 
         //Add projectile to projectilelist
         projectileList.add(explosion);
@@ -143,7 +142,7 @@ public class ProjectileFactory {
     public TeleporterShock createTeleporterShock(Transform transform) {
 
         //Create projectile and apply the transform send in parameter
-        TeleporterShock shock = new TeleporterShock(transform,projectileList);
+        TeleporterShock shock = new TeleporterShock(transform,context);
 
         //Add projectile to projectilelist
         projectileList.add(shock);

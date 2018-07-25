@@ -3,14 +3,15 @@ package com.stiffiesoft.penguinvsbooks.objects.game.counters;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.Player;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerListener;
+import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 import com.stiffiesoft.penguinvsbooks.system.text.FontFactory;
 import com.stiffiesoft.penguinvsbooks.system.text.S;
 
 public class Lifes extends Counter implements PlayerListener {
 
-    public Lifes(FontFactory fontFactory) {
-        super(fontFactory);
+    public Lifes(GameContext context) {
+        super(context);
         value = 43242;
     }
 

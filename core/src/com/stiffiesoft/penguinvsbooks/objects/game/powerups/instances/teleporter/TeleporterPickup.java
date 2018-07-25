@@ -6,6 +6,7 @@ import com.stiffiesoft.penguinvsbooks.effects.SpriteAnimation;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.Pickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.PickupList;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.PowerupFactory;
+import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
 
@@ -13,8 +14,8 @@ public class TeleporterPickup extends Pickup {
 
     private SpriteAnimation animation;
 
-    public TeleporterPickup(Transform transform, PowerupFactory powerupFactory, PickupList pickupList, ScreenFlasher screenFlasher) {
-        super(transform, powerupFactory, pickupList, screenFlasher);
+    public TeleporterPickup(Transform transform, GameContext context) {
+        super(transform, context);
         animation = new SpriteAnimation(A.m.get(A.teleporterPickup), 30);
     }
 

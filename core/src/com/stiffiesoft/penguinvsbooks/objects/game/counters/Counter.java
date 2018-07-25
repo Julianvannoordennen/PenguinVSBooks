@@ -2,6 +2,7 @@ package com.stiffiesoft.penguinvsbooks.objects.game.counters;
 
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Renderable;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 import com.stiffiesoft.penguinvsbooks.system.text.FontFactory;
@@ -16,18 +17,18 @@ public class Counter implements Renderable {
     protected float shakeCurrent;
     private float shakeLimit;
 
-    public Counter(FontFactory fontFactory, int value) {
+    public Counter(GameContext context, int value) {
         this.value          = value;
+        this.fontFactory    = context.getFontFactory();
         this.font           = fontFactory.createSmallFont();
-        this.fontFactory    = fontFactory;
         this.shakeIntensity = 25;
         this.shakeCurrent   = 0;
         this.shakeLimit     = 75;
         this.shakeReturn    = 500;
     }
 
-    public Counter(FontFactory fontFactory) {
-        this(fontFactory,0);
+    public Counter(GameContext context) {
+        this(context,0);
     }
 
     public int get() {

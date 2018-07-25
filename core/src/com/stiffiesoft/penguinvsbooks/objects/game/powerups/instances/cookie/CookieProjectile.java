@@ -5,6 +5,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.targetting.EnemyTargetSystem;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.Projectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileList;
+import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transformable;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
@@ -17,14 +18,14 @@ public class CookieProjectile implements Projectile, Transformable, Collidable {
     private ProjectileList projectileList;
     private int amount;
 
-    public CookieProjectile(Transform transform, ProjectileList projectileList) {
+    public CookieProjectile(Transform transform, GameContext context) {
 
         //Save values
-        this.transform = transform;
-        this.projectileList = projectileList;
+        this.transform          = transform;
+        this.projectileList     = context.getProjectileList();
 
         //How many bookbites does the cookie contain?
-        amount = 5000;
+        amount                  = 5000;
 
         //Add cookie to the targetting list
         EnemyTargetSystem.registerTarget(this);

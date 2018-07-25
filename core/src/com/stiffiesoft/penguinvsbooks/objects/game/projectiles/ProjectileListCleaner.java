@@ -2,6 +2,7 @@ package com.stiffiesoft.penguinvsbooks.objects.game.projectiles;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.TimeUtils;
+import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 
 import java.util.Iterator;
@@ -12,10 +13,10 @@ public class ProjectileListCleaner {
     private long next;
     private ProjectileList projectileList;
 
-    public ProjectileListCleaner(ProjectileList projectileList) {
+    public ProjectileListCleaner(GameContext context) {
 
         //Save list
-        this.projectileList = projectileList;
+        this.projectileList = context.getProjectileList();
 
         //Create fire rate, now the player cannot fire books every tick
         cleanRate = 1000; //Once a second

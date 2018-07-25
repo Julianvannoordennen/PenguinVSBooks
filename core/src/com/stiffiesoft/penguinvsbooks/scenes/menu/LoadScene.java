@@ -18,7 +18,7 @@ public class LoadScene implements Screen {
 
     public LoadScene(Main main) {
 
-        //Save main
+        //Save primary
         this.main = main;
 
         //Load font manually

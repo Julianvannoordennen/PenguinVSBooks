@@ -13,10 +13,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.junk.JunkFactory;
 import com.stiffiesoft.penguinvsbooks.objects.game.junk.JunkList;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.Player;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerBodyTask;
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.PickupFactory;
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.PickupList;
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.PowerupFactory;
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.PowerupList;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.*;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileFactory;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileList;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileListCleaner;
@@ -61,6 +58,7 @@ public class GameContext {
     //Other
     private ProjectileListCleaner projectileListCleaner;
     private Player player;
+    private PickupCatalogue pickupCatalogue;
 
     public GameContext(Main main) {
         load(main);
@@ -68,12 +66,16 @@ public class GameContext {
 
     private void load(Main main) {
 
-        //Save the main
-        this.main                       = main;
+        /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-        //Load collision system
+             ! WARNING ! - Do not edit the order of this list, prevent NULL issues - ! WARNING !
+
+         * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+        //Create priority instances
+        this.main                       = main;
         this.world                      = new World(new Vector2(0,0),true);
-        this.world.setContactListener(new CollisionDetector());
+        this.pickupCatalogue            = main.getPickupCatalogue();
 
         //Load effects
         this.border                     = new Border();
@@ -86,23 +88,23 @@ public class GameContext {
         this.powerupList                = new PowerupList();
         this.pickupList                 = new PickupList();
         this.projectileList             = new ProjectileList();
+        this.projectileListCleaner      = new ProjectileListCleaner(this);
 
         //Create all factories that will be used inside the game
-        this.junkFactory                = new JunkFactory();
-        this.bodyFactory                = new BodyFactory(world);
-        this.enemyFactory               = new EnemyFactory(bodyFactory, junkFactory);
-        this.projectileFactory          = new ProjectileFactory(bodyFactory, screenFlasher);
-        this.powerupFactory             = new PowerupFactory(projectileFactory);
-        this.pickupFactory              = new PickupFactory(bodyFactory, powerupFactory, screenFlasher);
         this.fontFactory                = main.getFontFactory();
+        this.junkFactory                = new JunkFactory(this);
+        this.bodyFactory                = new BodyFactory(this);
+        this.enemyFactory               = new EnemyFactory(this);
+        this.projectileFactory          = new ProjectileFactory(this);
+        this.powerupFactory             = new PowerupFactory(this);
+        this.pickupFactory              = new PickupFactory(this);
+
+        //Create player
+        this.player                     = new Player(this);
 
         //Create all counters
-        this.score                      = new Score(fontFactory);
-        this.lifes                      = new Lifes(fontFactory);
-
-        //Create other instances
-        this.projectileListCleaner      = new ProjectileListCleaner(projectileFactory.getProjectileList());
-        this.player                     = new Player(this, projectileFactory);
+        this.score                      = new Score(this);
+        this.lifes                      = new Lifes(this);
 
         //Connect
         connect();
@@ -122,9 +124,10 @@ public class GameContext {
         renderList.add(screenFlasher);
 
         //Add all connections
+        world.setContactListener(new CollisionDetector());
         bodyFactory.addTask(new PlayerBodyTask(player));
-        enemyFactory.getEnemyList().addListener(score);
-        enemyFactory.getEnemyList().addListener(pickupFactory);
+        enemyList.addListener(score);
+        enemyList.addListener(pickupFactory);
         player.addListener(lifes);
     }
 
@@ -210,5 +213,9 @@ public class GameContext {
 
     public ProjectileList getProjectileList() {
         return projectileList;
+    }
+
+    public PickupCatalogue getPickupCatalogue() {
+        return pickupCatalogue;
     }
 }

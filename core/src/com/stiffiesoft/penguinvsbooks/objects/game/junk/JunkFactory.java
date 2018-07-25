@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.instances.DefaultBookEnemyJunk;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.grenade.GrenadePowerup;
+import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 
@@ -12,13 +13,11 @@ import java.util.ArrayList;
 public class JunkFactory {
 
     private JunkList junkList;
+    private GameContext context;
 
-    public JunkFactory() {
-        this.junkList =
-    }
-
-    public JunkList getJunkList() {
-        return junkList;
+    public JunkFactory(GameContext context) {
+        this.junkList   = context.getJunkList();
+        this.context    = context;
     }
 
     private void extractJunk(ArrayList<Junk> junk) {
@@ -58,7 +57,7 @@ public class JunkFactory {
         //Create junk package
         transform.setSize(new Vector2(C.pH() * 3.5f, C.pH() * 3.5f));
         transform.setScale(new Vector2(1,1));
-        JunkPackage junk = new DefaultBookEnemyJunk(transform, junkList);
+        JunkPackage junk = new DefaultBookEnemyJunk(transform, context);
 
         //Apply default actions on the junk
         extractJunk(junk.getJunk());

@@ -3,6 +3,7 @@ package com.stiffiesoft.penguinvsbooks.objects.game.powerups.base;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.stiffiesoft.penguinvsbooks.effects.ScreenFlasher;
+import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Renderable;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transformable;
@@ -18,11 +19,11 @@ public abstract class Pickup implements Transformable, Renderable, Collidable {
     protected PickupList pickupList;
     private ScreenFlasher screenFlasher;
 
-    public Pickup(Transform transform, PowerupFactory powerupFactory, PickupList pickupList, ScreenFlasher screenFlasher) {
-        this.transform = transform;
-        this.powerupFactory = powerupFactory;
-        this.pickupList = pickupList;
-        this.screenFlasher = screenFlasher;
+    public Pickup(Transform transform, GameContext context) {
+        this.transform      = transform;
+        this.powerupFactory = context.getPowerupFactory();
+        this.pickupList     = context.getPickupList();
+        this.screenFlasher  = context.getScreenFlasher();
     }
 
     @Override

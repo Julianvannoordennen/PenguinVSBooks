@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.World;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.LinearProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileList;
+import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
@@ -12,10 +13,10 @@ public class PlayerProjectile extends LinearProjectile {
 
     private float rotateSpeed;
 
-    public PlayerProjectile(Transform transform, ProjectileList projectileList) {
+    public PlayerProjectile(Transform transform, GameContext context) {
 
         //Use the default settings from the projectile
-        super(transform, projectileList);
+        super(transform, context);
 
         //Set rotate speed
         rotateSpeed = 500;

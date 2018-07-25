@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
+import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Renderable;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
@@ -20,10 +21,10 @@ public class Explosion implements Renderable, Projectile, Collidable {
     protected float rotationSpeed;
     protected ProjectileList projectileList;
 
-    public Explosion(Transform transform, ProjectileList projectileList) {
+    public Explosion(Transform transform, GameContext context) {
 
         //Save variables
-        this.projectileList = projectileList;
+        this.projectileList = context.getProjectileList();
         this.transform = transform;
         this.decreaseSpeed = 25f;
         this.rotationSpeed = 100f;

@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.TimeUtils;
+import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 
@@ -16,14 +17,14 @@ public class LyingJunk extends Junk {
     protected float currentFadeAmount;
     protected boolean fade;
 
-    public LyingJunk(Transform transform, JunkList junkList, Texture texture) {
-        super(transform, junkList, texture);
-        currentFadeAmount = 1;
-        decreaseSpeed = 1;
-        fadeSpeed = 1;
-        fadeDelay = 3000;
-        fadeWait = 0;
-        fade = false;
+    public LyingJunk(Transform transform, GameContext context, Texture texture) {
+        super(transform, context, texture);
+        currentFadeAmount   = 1;
+        decreaseSpeed       = 1;
+        fadeSpeed           = 1;
+        fadeDelay           = 3000;
+        fadeWait            = 0;
+        fade                = false;
     }
 
     public void setFadeDelay(long fadeDelay) {

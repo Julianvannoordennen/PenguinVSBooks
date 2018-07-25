@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.TimeUtils;
 import com.stiffiesoft.penguinvsbooks.effects.ScreenFlasher;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.LinearProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileList;
+import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
@@ -22,11 +23,11 @@ public class LaserProjectile extends LinearProjectile {
     private long flashTime;
     private ScreenFlasher screenFlasher;
 
-    public LaserProjectile(Transform transform, ProjectileList projectileList, ScreenFlasher screenFlasher) {
+    public LaserProjectile(Transform transform, GameContext context) {
 
         //Use the default settings from the projectile
-        super(transform, projectileList);
-        this.screenFlasher = screenFlasher;
+        super(transform, context);
+        this.screenFlasher = context.getScreenFlasher();
 
         //Disable speed
         speed = 0;

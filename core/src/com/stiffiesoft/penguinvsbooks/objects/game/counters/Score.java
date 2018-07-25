@@ -3,6 +3,7 @@ package com.stiffiesoft.penguinvsbooks.objects.game.counters;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.Enemy;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.EnemyListListener;
+import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 import com.stiffiesoft.penguinvsbooks.system.text.FontFactory;
 import com.stiffiesoft.penguinvsbooks.system.text.S;
@@ -12,8 +13,8 @@ public class Score extends Counter implements EnemyListListener {
     private int defaultIncrement;
     private int increment;
 
-    public Score(FontFactory fontFactory) {
-        super(fontFactory);
+    public Score(GameContext context) {
+        super(context);
 
         //Set score values
         defaultIncrement = 10;
