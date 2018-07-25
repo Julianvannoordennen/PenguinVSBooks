@@ -9,9 +9,6 @@ import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
 
-import static com.stiffiesoft.penguinvsbooks.system.assets.A.defaultBookEnemyJunk1;
-import static com.stiffiesoft.penguinvsbooks.system.assets.A.defaultBookEnemyJunk2;
-
 public class DefaultBookEnemyJunk extends JunkPackage {
 
     public DefaultBookEnemyJunk(Transform transform, GameContext context) {
@@ -22,12 +19,12 @@ public class DefaultBookEnemyJunk extends JunkPackage {
     protected void loadJunk() {
 
         //Load all junk parts that will appear
-        junk.add(new LyingJunk(transform.clone(),context,A.m.get(defaultBookEnemyJunk1)));
+        junk.add(new FlyingJunk(transform.clone(),context,A.m.get(A.defaultBookEnemyJunk1)));
 
         //Randomize some different junk parts
-        if (MathUtils.randomBoolean()) junk.add(new FlyingJunk(transform.clone(),context,A.m.get(defaultBookEnemyJunk1)));
-        if (MathUtils.randomBoolean()) junk.add(new FlyingJunk(transform.clone(),context,A.m.get(defaultBookEnemyJunk2)));
-        if (MathUtils.randomBoolean()) junk.add(new FlyingJunk(transform.clone(),context,A.m.get(defaultBookEnemyJunk2)));
-        if (MathUtils.randomBoolean()) junk.add(new FlyingJunk(transform.clone(),context,A.m.get(defaultBookEnemyJunk2)));
+        if (MathUtils.randomBoolean()) junk.add(new FlyingJunk(transform.clone(),context,A.m.get(A.defaultBookEnemyJunk1)));
+        if (MathUtils.randomBoolean()) junk.add(new FlyingJunk(transform.clone(),context,A.m.get(A.defaultBookEnemyJunk2)));
+        if (MathUtils.randomBoolean()) junk.add(new FlyingJunk(transform.clone(),context,A.m.get(A.defaultBookEnemyJunk2)));
+        if (MathUtils.randomBoolean()) junk.add(new FlyingJunk(transform.clone(),context,A.m.get(A.defaultBookEnemyJunk2)));
     }
 }

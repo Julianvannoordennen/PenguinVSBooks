@@ -3,6 +3,8 @@ package com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.targetting.EnemyTargetSystem;
+import com.stiffiesoft.penguinvsbooks.objects.game.junk.JunkFactory;
+import com.stiffiesoft.penguinvsbooks.objects.game.junk.JunkList;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.Projectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileList;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
@@ -16,6 +18,7 @@ public class CookieProjectile implements Projectile, Transformable, Collidable {
     private Body body;
     private Transform transform;
     private ProjectileList projectileList;
+    private JunkFactory junkFactory;
     private int amount;
 
     public CookieProjectile(Transform transform, GameContext context) {
@@ -23,6 +26,7 @@ public class CookieProjectile implements Projectile, Transformable, Collidable {
         //Save values
         this.transform          = transform;
         this.projectileList     = context.getProjectileList();
+        this.junkFactory        = context.getJunkFactory();
 
         //How many bookbites does the cookie contain?
         amount                  = 5000;
@@ -62,6 +66,9 @@ public class CookieProjectile implements Projectile, Transformable, Collidable {
 
         //Decrease the amount of the cookie
         amount--;
+
+        //Create junk
+        junkFactory.createCookieJunk(transform);
 
         //Check if there is no cookie left
         checkAmount();

@@ -34,6 +34,10 @@ public class A {
     //Junk
     public static final AssetDescriptor<Texture> defaultBookEnemyJunk1 = new AssetDescriptor<>("sprites/game/enemies/defaultBookEnemy/default_book_enemy_junk_1.png", Texture.class);
     public static final AssetDescriptor<Texture> defaultBookEnemyJunk2 = new AssetDescriptor<>("sprites/game/enemies/defaultBookEnemy/default_book_enemy_junk_2.png", Texture.class);
+    public static final AssetDescriptor<Texture> explosionDust = new AssetDescriptor<>("sprites/game/projectiles/explosion_dust.png", Texture.class);
+    public static final AssetDescriptor<Texture> pickupSpark = new AssetDescriptor<>("sprites/game/powerups/pickup_spark.png", Texture.class);
+    public static final AssetDescriptor<Texture> cookieJunk1 = new AssetDescriptor<>("sprites/game/powerups/cookie/cookie_junk_1.png", Texture.class);
+    public static final AssetDescriptor<Texture> cookieJunk2 = new AssetDescriptor<>("sprites/game/powerups/cookie/cookie_junk_2.png", Texture.class);
 
     //Effects
     public static final AssetDescriptor<Texture> screenBorder = new AssetDescriptor<>("effects/border_screen.png", Texture.class);

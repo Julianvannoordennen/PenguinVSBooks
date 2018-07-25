@@ -37,14 +37,20 @@ public class TeleporterPowerup extends Powerup {
             distance = currentPosition.dst(randomPosition);
         }
 
+        //Create transforms from the aquired positions
+        Transform current   = initial.clone();
+        Transform chosen    = initial.clone();
+        current.setPosition(currentPosition);
+        chosen.setPosition(randomPosition);
+
+        //Create junk at the current and chosen position
+        junkFactory.createTeleporterJunk(current);
+        junkFactory.createTeleporterJunk(chosen);
+
         //Create explosion at the chosen position
-        Transform transform = initial.clone();
-        transform.setPosition(randomPosition);
-        projectileFactory.createTeleporterExplosion(transform);
+        projectileFactory.createTeleporterExplosion(chosen);
 
         //Create shock and manipulate its transform
-        Transform current = initial.clone();
-        current.setPosition(currentPosition);
         TeleporterShock shock = projectileFactory.createTeleporterShock(current);
         Transform shockTransform = shock.getTransform();
         shockTransform.setRotation(C.getAngleInDegrees(currentPosition,randomPosition));

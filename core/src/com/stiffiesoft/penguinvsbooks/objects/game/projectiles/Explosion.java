@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
+import com.stiffiesoft.penguinvsbooks.objects.game.junk.JunkFactory;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Renderable;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
@@ -25,12 +26,15 @@ public class Explosion implements Renderable, Projectile, Collidable {
 
         //Save variables
         this.projectileList = context.getProjectileList();
-        this.transform = transform;
-        this.decreaseSpeed = 25f;
-        this.rotationSpeed = 100f;
+        this.transform      = transform;
+        this.decreaseSpeed  = 25f;
+        this.rotationSpeed  = 100f;
 
         //Change explosion color
         color = new Color(1f,0.1f,0.1f,1);
+
+        //Create dust
+        context.getJunkFactory().createDefaultExplosionDust(transform);
     }
 
     @Override
@@ -63,6 +67,8 @@ public class Explosion implements Renderable, Projectile, Collidable {
 
         //Destroy if too small
         if (transform.getXScale() <= 0.01f) {
+
+            //Remove from the projectile list
             projectileList.destroy(this);
         }
     }
