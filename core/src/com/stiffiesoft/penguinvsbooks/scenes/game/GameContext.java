@@ -11,6 +11,10 @@ import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.EnemyFactory
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.EnemyList;
 import com.stiffiesoft.penguinvsbooks.objects.game.junk.JunkFactory;
 import com.stiffiesoft.penguinvsbooks.objects.game.junk.JunkList;
+import com.stiffiesoft.penguinvsbooks.objects.game.notifications.NotificationFactory;
+import com.stiffiesoft.penguinvsbooks.objects.game.notifications.NotificationList;
+import com.stiffiesoft.penguinvsbooks.objects.game.notifications.PauseChecker;
+import com.stiffiesoft.penguinvsbooks.objects.game.notifications.PauseWindow;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.Player;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerBodyTask;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.*;
@@ -36,6 +40,7 @@ public class GameContext {
 
     //Lists
     private DynamicRenderingList renderList;
+    private NotificationList notificationList;
     private EnemyList enemyList;
     private JunkList junkList;
     private PickupList pickupList;
@@ -50,10 +55,15 @@ public class GameContext {
     private ProjectileFactory projectileFactory;
     private JunkFactory junkFactory;
     private FontFactory fontFactory;
+    private NotificationFactory notificationFactory;
 
     //Counters
     private Score score;
     private Lifes lifes;
+
+    //Pause
+    private PauseWindow pauseWindow;
+    private PauseChecker pauseChecker;
 
     //Other
     private ProjectileListCleaner projectileListCleaner;
@@ -83,6 +93,7 @@ public class GameContext {
 
         //Create all lists
         this.renderList                 = new DynamicRenderingList();
+        this.notificationList           = new NotificationList();
         this.enemyList                  = new EnemyList();
         this.junkList                   = new JunkList();
         this.powerupList                = new PowerupList();
@@ -98,9 +109,14 @@ public class GameContext {
         this.projectileFactory          = new ProjectileFactory(this);
         this.powerupFactory             = new PowerupFactory(this);
         this.pickupFactory              = new PickupFactory(this);
+        this.notificationFactory        = new NotificationFactory(this);
 
         //Create player
         this.player                     = new Player(this);
+
+        //Create pause items
+        this.pauseWindow                = new PauseWindow(this);
+        this.pauseChecker               = new PauseChecker(this);
 
         //Create all counters
         this.score                      = new Score(this);
@@ -122,6 +138,7 @@ public class GameContext {
         renderList.add(lifes);
         renderList.add(border);
         renderList.add(screenFlasher);
+        renderList.add(pauseWindow);
 
         //Add all connections
         world.setContactListener(new CollisionDetector());
@@ -217,5 +234,21 @@ public class GameContext {
 
     public PickupCatalogue getPickupCatalogue() {
         return pickupCatalogue;
+    }
+
+    public NotificationList getNotificationList() {
+        return notificationList;
+    }
+
+    public NotificationFactory getNotificationFactory() {
+        return notificationFactory;
+    }
+
+    public PauseWindow getPauseWindow() {
+        return pauseWindow;
+    }
+
+    public PauseChecker getPauseChecker() {
+        return pauseChecker;
     }
 }

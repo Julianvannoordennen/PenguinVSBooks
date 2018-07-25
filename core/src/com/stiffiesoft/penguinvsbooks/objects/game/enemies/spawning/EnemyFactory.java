@@ -18,7 +18,6 @@ public class EnemyFactory {
     private long spawnRate;
     private long next;
     private int edgeCorrection;
-    private Random random;
     private BodyFactory bodyFactory;
     private GameContext context;
 
@@ -28,7 +27,6 @@ public class EnemyFactory {
         this.bodyFactory    = context.getBodyFactory();
         this.enemyList      = context.getEnemyList();
         this.context        = context;
-        random              = new Random();
         updateTime();
     }
 
@@ -55,36 +53,8 @@ public class EnemyFactory {
         DefaultBookEnemy enemy = new DefaultBookEnemy(context);
 
         //Get position around the edge of the screen
-        Vector2 position;
-        switch (random.nextInt(4)) {
-            case 0:
-                position = new Vector2(
-                        random.nextInt((int)C.sW()),
-                        (int)C.sH() + edgeCorrection
-                );
-                break;
+        Vector2 position = C.pOS(edgeCorrection);
 
-            case 1:
-                position = new Vector2(
-                        random.nextInt((int)C.sW()),
-                        -edgeCorrection
-                );
-                break;
-
-            case 2:
-                position = new Vector2(
-                        -edgeCorrection,
-                        random.nextInt((int)C.sH())
-                );
-                break;
-
-            default:
-                position = new Vector2(
-                        (int)C.sW() + edgeCorrection,
-                        random.nextInt((int)C.sH())
-                );
-                break;
-        }
         //Set position
         enemy.getTransform().setPosition(position);
 

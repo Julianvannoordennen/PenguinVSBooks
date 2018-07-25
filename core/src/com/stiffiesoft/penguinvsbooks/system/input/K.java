@@ -9,6 +9,7 @@ public class K {
     static int left = 29;
     static int right = 32;
     static int attack = 0;
+    static int pause = 131;
 
     //Get methods
     public static int up       ()              { return up;            }
@@ -16,6 +17,7 @@ public class K {
     public static int left     ()              { return left;          }
     public static int right    ()              { return right;         }
     public static int attack   ()              { return attack;        }
+    public static int pause    ()              { return pause;         }
 
     //Set methods
     public static void up      (int value)     { up        = value;    }
@@ -23,4 +25,5 @@ public class K {
     public static void left    (int value)     { left      = value;    }
     public static void right   (int value)     { right     = value;    }
     public static void attack  (int value)     { attack    = value;    }
+    public static void pause   (int value)     { pause     = value;    }
 }

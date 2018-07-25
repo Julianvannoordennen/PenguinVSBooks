@@ -43,6 +43,9 @@ public class A {
     public static final AssetDescriptor<Texture> screenBorder = new AssetDescriptor<>("effects/border_screen.png", Texture.class);
     public static final AssetDescriptor<Texture> screenFader = new AssetDescriptor<>("effects/screenfade.png", Texture.class);
 
+    //Notifications
+    public static final AssetDescriptor<Texture> notificationWindow = new AssetDescriptor<>("sprites/game/notifications/notification_window.png", Texture.class);
+
     //System
     public static final AssetDescriptor<BitmapFont> defaultFont = new AssetDescriptor<>("fonts/default.fnt", BitmapFont.class);
 

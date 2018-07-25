@@ -47,6 +47,7 @@ public class Game extends BaseScene {
     protected void onRender(SpriteBatch batch) {
 
         //Update all systems
+        context.getPauseChecker().update();
         context.getEnemyFactory().update();
         context.getProjectileListCleaner().update();
         context.getPowerupList().update();
@@ -65,6 +66,7 @@ public class Game extends BaseScene {
         context.getPickupList().dispose();
         context.getPowerupList().dispose();
         context.getJunkList().dispose();
+        context.getNotificationList().dispose();
     }
 
     @Override

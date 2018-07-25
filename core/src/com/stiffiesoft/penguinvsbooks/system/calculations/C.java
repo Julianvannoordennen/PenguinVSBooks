@@ -1,6 +1,7 @@
 package com.stiffiesoft.penguinvsbooks.system.calculations;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 
@@ -42,5 +43,40 @@ public class C {
     //Check if vector is outside screen
     public static boolean oS(Vector2 position) {
         return (position.x < 0 || position.x > sW() || position.y < 0 || position.y > sH());
+    }
+
+    //Get position outside screen
+    public static Vector2 pOS(int edgeCorrection) {
+        Vector2 position;
+        switch (MathUtils.random(3)) {
+            case 0:
+                position = new Vector2(
+                        MathUtils.random(-edgeCorrection, C.sW() + edgeCorrection),
+                        (int)C.sH() + edgeCorrection
+                );
+                break;
+
+            case 1:
+                position = new Vector2(
+                        MathUtils.random(-edgeCorrection, C.sW() + edgeCorrection),
+                        -edgeCorrection
+                );
+                break;
+
+            case 2:
+                position = new Vector2(
+                        -edgeCorrection,
+                        MathUtils.random(-edgeCorrection, C.sH() + edgeCorrection)
+                );
+                break;
+
+            default:
+                position = new Vector2(
+                        (int)C.sW() + edgeCorrection,
+                        MathUtils.random(-edgeCorrection, C.sH() + edgeCorrection)
+                );
+                break;
+        }
+        return position;
     }
 }

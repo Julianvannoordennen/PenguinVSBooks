@@ -37,4 +37,10 @@ public class FontFactory {
         GlyphLayout layout = new GlyphLayout(font,text,DefinedColors.PRIMARY,C.pW() * 10,Align.center,true);
         return layout;
     }
+
+    public GlyphLayout createNotificationGlyph(String text, BitmapFont font) {
+
+        GlyphLayout layout = new GlyphLayout(font,text,DefinedColors.PRIMARY,C.pW() * 30,Align.center,true);
+        return layout;
+    }
 }
