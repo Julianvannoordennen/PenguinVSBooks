@@ -14,7 +14,7 @@ public class JunkFactory {
     private JunkList junkList;
 
     public JunkFactory() {
-        this.junkList = new JunkList();
+        this.junkList =
     }
 
     public JunkList getJunkList() {

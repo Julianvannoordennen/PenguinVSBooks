@@ -28,7 +28,7 @@ public class PickupFactory implements EnemyListListener {
     private long nextSpawn;
 
     public PickupFactory(BodyFactory bodyFactory, PowerupFactory powerupFactory, ScreenFlasher screenFlasher) {
-        this.pickupList = new PickupList();
+        this.pickupList = //new PickupList();
         this.pickupCatalogue = new PickupCatalogue();
 
         this.powerupFactory = powerupFactory;

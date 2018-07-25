@@ -22,7 +22,7 @@ public class ProjectileFactory {
     private ScreenFlasher screenFlasher;
 
     public ProjectileFactory(BodyFactory bodyFactory, ScreenFlasher screenFlasher) {
-        this.projectileList = new ProjectileList();
+        this.projectileList //= new ProjectileList();
         this.bodyFactory = bodyFactory;
         this.screenFlasher = screenFlasher;
     }

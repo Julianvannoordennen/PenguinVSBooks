@@ -13,7 +13,7 @@ public class PowerupFactory {
     private ProjectileFactory projectileFactory;
 
     public PowerupFactory(ProjectileFactory projectileFactory) {
-        this.powerupList = new PowerupList();
+        this.powerupList = //new PowerupList();
         this.projectileFactory = projectileFactory;
     }
 

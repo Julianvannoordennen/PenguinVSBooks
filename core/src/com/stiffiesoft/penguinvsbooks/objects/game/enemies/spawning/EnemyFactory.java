@@ -25,7 +25,7 @@ public class EnemyFactory {
         edgeCorrection = 250;
         spawnRate = 25; //1000 = 1 second
         this.bodyFactory = bodyFactory;
-        this.enemyList = new EnemyList();
+        this.enemyList = //new EnemyList();
         this.junkFactory = junkFactory;
         random = new Random();
         updateTime();

@@ -13,16 +13,12 @@ public abstract class BaseScene implements Screen {
 
     protected Main main;
     private SpriteBatch batch;
-    private Border border;
-    protected ScreenFlasher screenFlasher;
 
     public BaseScene(Main main) {
 
         //Load default scene items
         this.main               = main;
         this.batch              = main.getBatch();
-        this.border             = new Border();
-        this.screenFlasher      = new ScreenFlasher();
     }
 
     @Override
@@ -41,8 +37,6 @@ public abstract class BaseScene implements Screen {
 
         //Render
         onRender(batch);
-        border.render(batch);
-        screenFlasher.render(batch);
 
         //End
         batch.end();
@@ -78,10 +72,6 @@ public abstract class BaseScene implements Screen {
 
     public Main getMain() {
         return main;
-    }
-
-    public ScreenFlasher getScreenFlasher() {
-        return screenFlasher;
     }
 
     //Abstract methods
