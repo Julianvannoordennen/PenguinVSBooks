@@ -6,6 +6,6 @@ import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 public class PauseNotificationContent extends TextNotificationContent {
 
     public PauseNotificationContent(GameContext context) {
-        super("texttexttexttexttexttexttexttexttexttexttexttexttexttext", context);
+        super("Pause", context);
     }
 }

@@ -21,13 +21,9 @@ public abstract class TextNotificationContent extends NotificationContent {
         super();
 
         FontFactory factory = context.getFontFactory();
-        this.font           = factory.createSmallFont();
+        this.font           = factory.createTinyFont();
         this.fontGlyph      = factory.createNotificationGlyph(content, font);
         this.content        = content;
-    }
-
-    public String getContent() {
-        return content;
     }
 
     private void checkClick() {
