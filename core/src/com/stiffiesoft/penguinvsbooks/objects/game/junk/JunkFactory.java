@@ -3,6 +3,7 @@ package com.stiffiesoft.penguinvsbooks.objects.game.junk;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.instances.DefaultBookEnemyJunk;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bomb.BombJunk;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookieJunk;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.grenade.GrenadePowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.teleporter.TeleporterJunk;
@@ -104,6 +105,20 @@ public class JunkFactory {
         transform.setSize(new Vector2(C.pH() * 2f, C.pH() * 2f));
         transform.setScale(new Vector2(1,1));
         JunkPackage junk = new TeleporterJunk(transform, context);
+
+        //Apply default actions on the junk
+        extractJunk(junk.getJunk());
+
+        //Return junk
+        return junk;
+    }
+    public JunkPackage createRollingBombJunk(Transform transform) {
+
+        //Create junk package
+        transform = transform.clone();
+        transform.setSize(new Vector2(C.pH() * 2f, C.pH() * 2f));
+        transform.setScale(new Vector2(1,1));
+        JunkPackage junk = new BombJunk(transform, context);
 
         //Apply default actions on the junk
         extractJunk(junk.getJunk());

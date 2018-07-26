@@ -78,4 +78,9 @@ public class S {
         if (l == Language.DUTCH) return "Magneet";
         else return "Magnet";
     }
+
+    public static String bomb() {
+        if (l == Language.DUTCH) return "Bom";
+        else return "Bomb";
+    }
 }

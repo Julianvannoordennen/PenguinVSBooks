@@ -6,6 +6,9 @@ import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerDamageExplosion;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerProjectileBodyTask;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.Pickup;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bomb.BombExplosion;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bomb.BombProjectile;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bomb.BombProjectileBodyTask;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookieBodyTask;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookieProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.grenade.GrenadeExplosion;
@@ -36,6 +39,7 @@ public class ProjectileFactory {
     public PlayerDamageExplosion createPlayerDamageExplosion(Transform transform) {
 
         //Manipulate transform
+        transform = transform.clone();
         transform.setRotation(0);
         transform.setScale(new Vector2(20f, 20f));
 
@@ -54,6 +58,7 @@ public class ProjectileFactory {
     public GrenadeExplosion createGrenadeExplosion(Transform transform) {
 
         //Manipulate transform
+        transform = transform.clone();
         transform.setRotation(0);
         transform.setScale(new Vector2(12f, 12f));
 
@@ -72,6 +77,7 @@ public class ProjectileFactory {
     public PlayerProjectile createPlayerProjectile(Transform transform) {
 
         //Manipulate transform
+        transform = transform.clone();
         transform.setRotation(0);
         transform.setScale(new Vector2(0.5f, 0.5f));
 
@@ -90,6 +96,7 @@ public class ProjectileFactory {
     public CookieProjectile createCookieProjectile(Transform transform) {
 
         //Manipulate transform
+        transform = transform.clone();
         transform.setRotation(0);
         transform.setScale(new Vector2(1f, 1f));
 
@@ -108,6 +115,7 @@ public class ProjectileFactory {
     public LaserProjectile createLaserProjectile(Transform transform) {
 
         //Manipulate transform
+        transform = transform.clone();
         transform.setRotation(0);
         transform.setScale(new Vector2(1f, 1f));
 
@@ -126,6 +134,7 @@ public class ProjectileFactory {
     public TeleporterExplosion createTeleporterExplosion(Transform transform) {
 
         //Manipulate transform
+        transform = transform.clone();
         transform.setRotation(0);
         transform.setScale(new Vector2(8f, 8f));
 
@@ -144,6 +153,7 @@ public class ProjectileFactory {
     public TeleporterShock createTeleporterShock(Transform transform) {
 
         //Create projectile and apply the transform send in parameter
+        transform = transform.clone();
         TeleporterShock shock = new TeleporterShock(transform,context);
 
         //Add projectile to projectilelist
@@ -162,5 +172,39 @@ public class ProjectileFactory {
 
         //Return explosion
         return shock;
+    }
+    public BombProjectile createBombProjectile(Transform transform) {
+
+        //Create projectile and apply the transform send in parameter
+        transform = transform.clone();
+        BombProjectile projectile = new BombProjectile(transform,context);
+
+        //Add projectile to projectilelist
+        projectileList.add(projectile);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new BombProjectileBodyTask(projectile));
+
+        //Return projectile
+        return projectile;
+    }
+    public BombExplosion createBombExplosion(Transform transform) {
+
+        //Manipulate transform
+        transform = transform.clone();
+        transform.setRotation(0);
+        transform.setScale(new Vector2(12f, 12f));
+
+        //Create explosion and apply the transform send in parameter
+        BombExplosion explosion = new BombExplosion(transform,context);
+
+        //Add explosion to projectilelist
+        projectileList.add(explosion);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new DefaultExplosionBodyTask(explosion));
+
+        //Return explosion
+        return explosion;
     }
 }

@@ -1,5 +1,6 @@
 package com.stiffiesoft.penguinvsbooks.objects.game.powerups.base;
 
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bomb.BombCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookieCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.grenade.GrenadeCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.LaserCatalogueItem;
@@ -28,6 +29,7 @@ public class PickupCatalogue {
         pickupCatalogueItems.add(new LaserCatalogueItem());
         pickupCatalogueItems.add(new TeleporterCatalogueItem());
         pickupCatalogueItems.add(new MagnetCatalogueItem());
+        pickupCatalogueItems.add(new BombCatalogueItem());
     }
 
     private void loadGeneralData() {
