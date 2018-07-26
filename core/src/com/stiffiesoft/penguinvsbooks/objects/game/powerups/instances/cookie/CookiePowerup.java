@@ -11,6 +11,7 @@ public class CookiePowerup extends Powerup {
 
     public CookiePowerup(GameContext context, Transform initial) {
         super(context, initial);
+        start();
     }
 
     @Override

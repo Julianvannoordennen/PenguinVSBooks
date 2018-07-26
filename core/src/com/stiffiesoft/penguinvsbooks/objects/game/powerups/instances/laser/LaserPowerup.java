@@ -15,6 +15,7 @@ public class LaserPowerup extends Powerup {
 
     public LaserPowerup(GameContext context, Transform initial) {
         super(context, initial);
+        start();
     }
 
     @Override

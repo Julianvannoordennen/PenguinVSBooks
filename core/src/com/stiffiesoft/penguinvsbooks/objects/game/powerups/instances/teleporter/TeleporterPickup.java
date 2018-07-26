@@ -23,7 +23,7 @@ public class TeleporterPickup extends Pickup {
     public void onPickup() {
 
         //Create the powerup using the powerup factory
-        powerupFactory.createTeleporterPowerup(transform);
+        powerupFactory.createTeleporterPowerup(transform, this);
     }
 
     @Override

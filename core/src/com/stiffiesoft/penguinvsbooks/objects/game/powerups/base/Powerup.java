@@ -22,7 +22,6 @@ public abstract class Powerup {
         this.powerupList        = context.getPowerupList();
         this.player             = context.getPlayer();
         this.initial            = initial;
-        start();
     }
 
     protected abstract void start();

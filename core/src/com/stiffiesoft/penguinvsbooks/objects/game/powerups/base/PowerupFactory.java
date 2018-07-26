@@ -54,10 +54,10 @@ public class PowerupFactory {
         //Return powerup
         return powerup;
     }
-    public TeleporterPowerup createTeleporterPowerup(Transform transform) {
+    public TeleporterPowerup createTeleporterPowerup(Transform transform, Pickup creator) {
 
         //Create powerup
-        TeleporterPowerup powerup = new TeleporterPowerup(context, transform);
+        TeleporterPowerup powerup = new TeleporterPowerup(context, creator, transform);
 
         //Add powerup to the list so the program can keep track of it
         powerupList.add(powerup);
