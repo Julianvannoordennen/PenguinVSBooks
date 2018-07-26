@@ -5,11 +5,13 @@ import com.stiffiesoft.penguinvsbooks.effects.ScreenFlasher;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerDamageExplosion;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerProjectileBodyTask;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.Pickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookieBodyTask;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookieProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.grenade.GrenadeExplosion;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.LaserBodyTask;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.LaserProjectile;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.magnet.MagnetShock;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.teleporter.TeleporterExplosion;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.teleporter.TeleporterShock;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
@@ -143,6 +145,17 @@ public class ProjectileFactory {
 
         //Create projectile and apply the transform send in parameter
         TeleporterShock shock = new TeleporterShock(transform,context);
+
+        //Add projectile to projectilelist
+        projectileList.add(shock);
+
+        //Return explosion
+        return shock;
+    }
+    public MagnetShock createMagnetShock(Pickup pickup) {
+
+        //Create projectile and apply the transform send in parameter
+        MagnetShock shock = new MagnetShock(pickup,context);
 
         //Add projectile to projectilelist
         projectileList.add(shock);

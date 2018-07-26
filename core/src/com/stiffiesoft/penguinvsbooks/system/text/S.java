@@ -73,4 +73,9 @@ public class S {
         if (l == Language.DUTCH) return "Teleporteerder";
         else return "Teleporter";
     }
+
+    public static String magnet() {
+        if (l == Language.DUTCH) return "Magneet";
+        else return "Magnet";
+    }
 }
