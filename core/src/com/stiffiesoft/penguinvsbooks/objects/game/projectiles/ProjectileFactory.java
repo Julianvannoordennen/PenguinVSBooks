@@ -12,6 +12,9 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bomb.BombP
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookieBodyTask;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookieProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.grenade.GrenadeExplosion;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.katana.KatanaBodyTask;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.katana.KatanaProjectile;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.katana.KatanaThrowProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.LaserBodyTask;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.LaserProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.magnet.MagnetShock;
@@ -206,5 +209,39 @@ public class ProjectileFactory {
 
         //Return explosion
         return explosion;
+    }
+    public KatanaProjectile createKatanaProjectile(Transform transform) {
+
+        //Manipulate transform
+        transform = transform.clone();
+
+        //Create explosion and apply the transform send in parameter
+        KatanaProjectile projectile = new KatanaProjectile(transform,context);
+
+        //Add explosion to projectilelist
+        projectileList.add(projectile);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new KatanaBodyTask(projectile));
+
+        //Return explosion
+        return projectile;
+    }
+    public KatanaThrowProjectile createKatanaThrowProjectile(Transform transform) {
+
+        //Manipulate transform
+        transform = transform.clone();
+
+        //Create explosion and apply the transform send in parameter
+        KatanaThrowProjectile projectile = new KatanaThrowProjectile(transform,context);
+
+        //Add explosion to projectilelist
+        projectileList.add(projectile);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new KatanaBodyTask(projectile));
+
+        //Return explosion
+        return projectile;
     }
 }

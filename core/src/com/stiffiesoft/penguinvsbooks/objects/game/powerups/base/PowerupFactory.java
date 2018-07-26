@@ -3,6 +3,7 @@ package com.stiffiesoft.penguinvsbooks.objects.game.powerups.base;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bomb.BombPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookiePowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.grenade.GrenadePowerup;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.katana.KatanaPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.LaserPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.magnet.MagnetPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.teleporter.TeleporterPowerup;
@@ -82,6 +83,17 @@ public class PowerupFactory {
 
         //Create powerup
         BombPowerup powerup = new BombPowerup(context, transform.clone());
+
+        //Add powerup to the list so the program can keep track of it
+        powerupList.add(powerup);
+
+        //Return powerup
+        return powerup;
+    }
+    public KatanaPowerup createKatanaPowerup(Transform transform) {
+
+        //Create powerup
+        KatanaPowerup powerup = new KatanaPowerup(context, transform.clone());
 
         //Add powerup to the list so the program can keep track of it
         powerupList.add(powerup);

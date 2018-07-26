@@ -2,12 +2,12 @@ package com.stiffiesoft.penguinvsbooks.objects.game.junk;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
-import com.stiffiesoft.penguinvsbooks.objects.game.enemies.instances.DefaultBookEnemyJunk;
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bomb.BombJunk;
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookieJunk;
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.grenade.GrenadePowerup;
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.teleporter.TeleporterJunk;
-import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ExplosionJunk;
+import com.stiffiesoft.penguinvsbooks.objects.game.enemies.instances.DefaultBookEnemyJunkPackage;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bomb.BombJunkPackage;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookieJunkPackage;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.katana.KatanaJunkPackage;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.teleporter.TeleporterJunkPackage;
+import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ExplosionJunkPackage;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
@@ -62,7 +62,7 @@ public class JunkFactory {
         transform = transform.clone();
         transform.setSize(new Vector2(C.pH() * 3.5f, C.pH() * 3.5f));
         transform.setScale(new Vector2(1,1));
-        JunkPackage junk = new DefaultBookEnemyJunk(transform, context);
+        JunkPackage junk = new DefaultBookEnemyJunkPackage(transform, context);
 
         //Apply default actions on the junk
         extractJunk(junk.getJunk());
@@ -76,7 +76,7 @@ public class JunkFactory {
         transform = transform.clone();
         transform.setSize(new Vector2(C.pH() * 16f, C.pH() * 16f));
         transform.setScale(new Vector2(1,1));
-        JunkPackage junk = new ExplosionJunk(transform, context);
+        JunkPackage junk = new ExplosionJunkPackage(transform, context);
 
         //Apply default actions on the junk
         extractJunk(junk.getJunk());
@@ -90,7 +90,7 @@ public class JunkFactory {
         transform = transform.clone();
         transform.setSize(new Vector2(C.pH() * 2f, C.pH() * 2f));
         transform.setScale(new Vector2(1,1));
-        JunkPackage junk = new CookieJunk(transform, context);
+        JunkPackage junk = new CookieJunkPackage(transform, context);
 
         //Apply default actions on the junk
         extractJunk(junk.getJunk());
@@ -104,7 +104,7 @@ public class JunkFactory {
         transform = transform.clone();
         transform.setSize(new Vector2(C.pH() * 2f, C.pH() * 2f));
         transform.setScale(new Vector2(1,1));
-        JunkPackage junk = new TeleporterJunk(transform, context);
+        JunkPackage junk = new TeleporterJunkPackage(transform, context);
 
         //Apply default actions on the junk
         extractJunk(junk.getJunk());
@@ -118,7 +118,20 @@ public class JunkFactory {
         transform = transform.clone();
         transform.setSize(new Vector2(C.pH() * 2f, C.pH() * 2f));
         transform.setScale(new Vector2(1,1));
-        JunkPackage junk = new BombJunk(transform, context);
+        JunkPackage junk = new BombJunkPackage(transform, context);
+
+        //Apply default actions on the junk
+        extractJunk(junk.getJunk());
+
+        //Return junk
+        return junk;
+    }
+    public JunkPackage createKatanaJunk(Transform transform) {
+
+        //Create junk package
+        transform = transform.clone();
+        transform.setSize(new Vector2(C.pH() * 20f, C.pH() * 1f));
+        JunkPackage junk = new KatanaJunkPackage(transform, context);
 
         //Apply default actions on the junk
         extractJunk(junk.getJunk());

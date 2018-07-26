@@ -83,4 +83,9 @@ public class S {
         if (l == Language.DUTCH) return "Bom";
         else return "Bomb";
     }
+
+    public static String katana() {
+        if (l == Language.DUTCH) return "Katana";
+        else return "Katana";
+    }
 }

@@ -17,7 +17,7 @@ public class FlyingJunk extends Junk {
         super(transform, context, texture);
         fadeSpeed           = 1;
         currentFadeAmount   = 1f;
-        defaultColor        = new Color(0,0,0,0);
+        defaultColor        = new Color(1,1,1,0);
     }
 
     public void setFadeSpeed(float fadeSpeed) {
@@ -44,9 +44,9 @@ public class FlyingJunk extends Junk {
         batch.setColor(color);
 
         //Check if the shock has to fade away
-        if (this.currentFadeAmount <= 0.01f)
+        if (this.currentFadeAmount <= 0.01f) {
 
             //Destroy shock
-            junkList.destroy(this);
+            junkList.destroy(this);}
     }
 }

@@ -9,25 +9,40 @@ import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Renderable;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 
 public class ProjectileList implements Renderable {
 
+    private ArrayList<Projectile> queuingProjectiles;
     private ArrayList<Projectile> projectiles;
     private ArrayList<Projectile> disposableProjectiles;
 
     public ProjectileList() {
+        queuingProjectiles      = new ArrayList<>();
         projectiles             = new ArrayList<>();
         disposableProjectiles   = new ArrayList<>();
     }
 
     public void add(Projectile projectile) {
-        projectiles.add(projectile);
+        queuingProjectiles.add(projectile);
     }
 
     public void render(SpriteBatch batch) {
-        for(Projectile projectile : projectiles)
+
+        //Go through all items
+        for (Projectile projectile : projectiles)
             projectile.render(batch);
+
+        //Done? Add all projectiles that have been added
+        Iterator iterator = queuingProjectiles.iterator();
+        while(iterator.hasNext()) {
+
+            //Get projectile
+            Projectile projectile = (Projectile)iterator.next();
+            projectiles.add(projectile);
+            iterator.remove();
+        }
     }
 
     public ArrayList<Projectile> get() {
