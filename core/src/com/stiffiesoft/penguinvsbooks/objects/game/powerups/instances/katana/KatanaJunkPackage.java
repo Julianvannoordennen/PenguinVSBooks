@@ -16,6 +16,6 @@ public class KatanaJunkPackage extends JunkPackage {
 
         //Add junk parts
         junk.add(new KatanaSlashJunk(transform.clone(),context,A.m.get(A.pickupSpark)));
-        junk.add(new KatanaSparkJunk(transform.clone(),context,A.m.get(A.pickupSpark)));
+//        junk.add(new KatanaSparkJunk(transform.clone(),context,A.m.get(A.pickupSpark)));
     }
 }
