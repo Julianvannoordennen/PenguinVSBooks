@@ -24,7 +24,7 @@ public class BombProjectile extends LinearProjectile {
         super(transform, context);
         projectileFactory   = context.getProjectileFactory();
         animation           = new SpriteAnimation(A.m.get(A.bombProjectile), 30);
-        speed               = 500f;
+        speed               = C.pH() * 50;
         junkFactory         = context.getJunkFactory();
 
         //Change movement angle

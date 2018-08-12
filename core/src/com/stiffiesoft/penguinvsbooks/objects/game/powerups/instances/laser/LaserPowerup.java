@@ -72,7 +72,7 @@ public class LaserPowerup extends Powerup {
         //Decide if the laser will stand still, move to the left or the right and in which speed
         boolean move = MathUtils.randomBoolean();
         boolean inverted = MathUtils.randomBoolean();
-        float speed = move ? MathUtils.random(50f,150f) : 0;
+        float speed = move ? MathUtils.random(C.pH() * 5,C.pH() * 15) : 0;
         speed = inverted ? -speed : speed;
         laserProjectile.setMovement(horizontal,speed);
 

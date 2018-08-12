@@ -30,7 +30,7 @@ public class JunkFactory {
         for (Junk junkPart : junk) {
 
             //Randomize junk
-            junkPart.setSpeed(MathUtils.random(350f,500f));
+            junkPart.setSpeed(MathUtils.random(C.pH() * 35,C.pH() * 50));
             junkPart.getTransform().setRotation(MathUtils.random(0,359));
             junkPart.getTransform().setMovementAngle(MathUtils.random(0,359));
 
@@ -40,14 +40,14 @@ public class JunkFactory {
 
                 //Randomize junk
                 LyingJunk lyingJunk = (LyingJunk)junkPart;
-                lyingJunk.setDecreaseSpeed(MathUtils.random(450f, 550f));
+                lyingJunk.setDecreaseSpeed(MathUtils.random(C.pH() * 45, C.pH() * 55));
                 lyingJunk.setFadeDelay(MathUtils.random(250, 1000));
 
             } else if (className.equals("FlyingJunk")) {
 
                 //Randomize junk
                 FlyingJunk flyingJunk = (FlyingJunk)junkPart;
-                flyingJunk.setFadeSpeed(MathUtils.random(1.5f, 2.5f));
+                flyingJunk.setFadeSpeed(MathUtils.random(C.pH() * 0.15f, C.pH() * 0.25f));
             }
 
             //Add junk to the junklist

@@ -23,8 +23,8 @@ public class Counter implements Renderable {
         this.font           = fontFactory.createSmallFont();
         this.shakeIntensity = 25;
         this.shakeCurrent   = 0;
-        this.shakeLimit     = 75;
-        this.shakeReturn    = 500;
+        this.shakeLimit     = C.pH() * 7.5f;
+        this.shakeReturn    = C.pH() * 50;
     }
 
     public Counter(GameContext context) {

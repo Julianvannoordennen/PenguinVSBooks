@@ -19,7 +19,7 @@ public abstract class Junk implements Transformable, Renderable {
         this.transform  = transform;
         this.junkList   = context.getJunkList();
         this.texture    = texture;
-        this.speed      = 1;
+        this.speed      = C.pH() * 1;
     }
 
     public void setSpeed(float speed) {

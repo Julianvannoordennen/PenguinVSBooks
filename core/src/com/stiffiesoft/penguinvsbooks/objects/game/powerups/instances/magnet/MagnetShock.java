@@ -29,7 +29,7 @@ public class MagnetShock extends LinearProjectile {
         this.junkFactory        = context.getJunkFactory();
         this.animation          = new SpriteAnimation(A.m.get(A.magnetShock), 30);
         this.pickupList         = context.getPickupList();
-        this.speed              = 500;
+        this.speed              = C.pH() * 50;
 
         //Create junk
         junkFactory.createTeleporterJunk(pickup.getTransform());

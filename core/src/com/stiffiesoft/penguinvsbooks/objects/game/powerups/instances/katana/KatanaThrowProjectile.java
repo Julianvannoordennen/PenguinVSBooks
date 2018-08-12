@@ -23,7 +23,7 @@ public class KatanaThrowProjectile extends LinearProjectile {
         //Use the default settings from the projectile
         super(transform, context);
         projectileFactory   = context.getProjectileFactory();
-        speed               = 500f;
+        speed               = C.pH() * 50;
         junkFactory         = context.getJunkFactory();
         rotationSpeed       = 1000;
 
