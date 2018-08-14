@@ -88,4 +88,14 @@ public class S {
         if (l == Language.DUTCH) return "Katana";
         else return "Katana";
     }
+
+    public static String extraLife() {
+        if (l == Language.DUTCH) return "Extra leven";
+        else return "Extra extralife";
+    }
+
+    public static String megaLife() {
+        if (l == Language.DUTCH) return "Mega leven";
+        else return "Mega extralife";
+    }
 }

@@ -2,10 +2,12 @@ package com.stiffiesoft.penguinvsbooks.objects.game.powerups.base;
 
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bomb.BombCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookieCatalogueItem;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.extralife.ExtraLifeCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.grenade.GrenadeCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.katana.KatanaCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.LaserCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.magnet.MagnetCatalogueItem;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.megalife.MegaLifeCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.teleporter.TeleporterCatalogueItem;
 
 import java.util.ArrayList;
@@ -32,6 +34,8 @@ public class PickupCatalogue {
         pickupCatalogueItems.add(new MagnetCatalogueItem());
         pickupCatalogueItems.add(new BombCatalogueItem());
         pickupCatalogueItems.add(new KatanaCatalogueItem());
+        pickupCatalogueItems.add(new ExtraLifeCatalogueItem());
+        pickupCatalogueItems.add(new MegaLifeCatalogueItem());
     }
 
     private void loadGeneralData() {

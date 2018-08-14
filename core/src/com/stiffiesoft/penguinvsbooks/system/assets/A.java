@@ -28,6 +28,8 @@ public class A {
     public static final AssetDescriptor<TextureAtlas> magnetPickup = new AssetDescriptor<>("sprites/game/powerups/magnet/magnet_pickup.atlas", TextureAtlas.class);
     public static final AssetDescriptor<TextureAtlas> bombPickup = new AssetDescriptor<>("sprites/game/powerups/bomb/bomb_pickup.atlas", TextureAtlas.class);
     public static final AssetDescriptor<Texture> katanaPickup = new AssetDescriptor<>("sprites/game/powerups/katana/katana_pickup.png", Texture.class);
+    public static final AssetDescriptor<Texture> extraLifePickup = new AssetDescriptor<>("sprites/game/powerups/extralife/extra_life_pickup.png", Texture.class);
+    public static final AssetDescriptor<Texture> megaLifePickup = new AssetDescriptor<>("sprites/game/powerups/megaLife/mega_life_pickup.png", Texture.class);
 
     //Powerups
     public static final AssetDescriptor<Texture> explosion = new AssetDescriptor<>("sprites/game/projectiles/explosion.png", Texture.class);

@@ -2,10 +2,12 @@ package com.stiffiesoft.penguinvsbooks.objects.game.powerups.base;
 
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bomb.BombPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookiePowerup;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.extralife.ExtraLifePowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.grenade.GrenadePowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.katana.KatanaPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.LaserPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.magnet.MagnetPowerup;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.megalife.MegaLifePowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.teleporter.TeleporterPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileFactory;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
@@ -94,6 +96,28 @@ public class PowerupFactory {
 
         //Create powerup
         KatanaPowerup powerup = new KatanaPowerup(context, transform.clone());
+
+        //Add powerup to the list so the program can keep track of it
+        powerupList.add(powerup);
+
+        //Return powerup
+        return powerup;
+    }
+    public ExtraLifePowerup createExtraLifePowerup(Transform transform) {
+
+        //Create powerup
+        ExtraLifePowerup powerup = new ExtraLifePowerup(context, transform.clone());
+
+        //Add powerup to the list so the program can keep track of it
+        powerupList.add(powerup);
+
+        //Return powerup
+        return powerup;
+    }
+    public MegaLifePowerup createMegaLifePowerup(Transform transform) {
+
+        //Create powerup
+        MegaLifePowerup powerup = new MegaLifePowerup(context, transform.clone());
 
         //Add powerup to the list so the program can keep track of it
         powerupList.add(powerup);
