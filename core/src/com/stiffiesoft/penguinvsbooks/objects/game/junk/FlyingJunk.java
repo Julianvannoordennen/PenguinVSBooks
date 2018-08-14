@@ -25,16 +25,28 @@ public class FlyingJunk extends Junk {
     }
 
     @Override
-    public void render(SpriteBatch batch) {
+    public void update() {
 
-        //Move forward
-        super.render(batch);
+        //Update super
+        super.update();
+
+        //Fade
+        this.currentFadeAmount -= this.fadeSpeed * C.cGT();
+
+        //Check if the shock has to fade away
+        if (this.currentFadeAmount <= 0.01f)
+
+            //Destroy shock
+            junkList.destroy(this);
+    }
+
+    @Override
+    public void render(SpriteBatch batch) {
 
         //Get default color
         Color color = batch.getColor();
 
         //Change color
-        this.currentFadeAmount -= this.fadeSpeed * C.cGT();
         batch.setColor(new Color(defaultColor.r, defaultColor.g, defaultColor.b, this.currentFadeAmount));
 
         //Draw texture
@@ -42,11 +54,5 @@ public class FlyingJunk extends Junk {
 
         //Restore color
         batch.setColor(color);
-
-        //Check if the shock has to fade away
-        if (this.currentFadeAmount <= 0.01f) {
-
-            //Destroy shock
-            junkList.destroy(this);}
     }
 }

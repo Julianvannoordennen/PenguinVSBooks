@@ -24,9 +24,6 @@ public class Score extends Counter implements EnemyListListener {
     @Override
     public void render(SpriteBatch batch) {
 
-        //Return shake
-        returnShake();
-
         //Draw the text including the score
         font.draw(batch, fontFactory.createCounterGlyph(S.score() + "\n" + value,this.font), C.pW() * 2, (C.sH() - (C.pW() * 2)) + shakeCurrent);
     }

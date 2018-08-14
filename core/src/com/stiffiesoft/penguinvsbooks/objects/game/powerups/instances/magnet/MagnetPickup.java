@@ -24,10 +24,19 @@ public class MagnetPickup extends Pickup {
     }
 
     @Override
+    public void update() {
+
+        //Update super
+        super.update();
+
+        //Update animation
+        animation.update();
+    }
+
+    @Override
     public void render(SpriteBatch batch) {
 
         //Draw powerup sprite
         animation.render(batch, transform);
-        super.render(batch);
     }
 }

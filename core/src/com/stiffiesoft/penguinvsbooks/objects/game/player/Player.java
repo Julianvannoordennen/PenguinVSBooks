@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.*;
 import com.stiffiesoft.penguinvsbooks.Main;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.targetting.EnemyTargetSystem;
-import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileFactory;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.*;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
@@ -15,7 +14,7 @@ import com.stiffiesoft.penguinvsbooks.system.collision.CollisionTypes;
 
 import java.util.ArrayList;
 
-public class Player implements Transformable, Renderable, Collidable {
+public class Player implements Transformable, GameObject, Collidable {
 
     private Main main;
     private PlayerState state;
@@ -57,13 +56,20 @@ public class Player implements Transformable, Renderable, Collidable {
     }
 
     @Override
+    public void update() {
+
+        //Update state if it exists
+        if (state != null) state.update();
+
+        //Update body
+        Transform.pushInBody(transform, body);
+    }
+
+    @Override
     public void render(SpriteBatch batch) {
 
         //Update state if it exists
         if (state != null) state.render(batch);
-
-        //Update body
-        Transform.pushInBody(transform, body);
     }
 
     @Override

@@ -27,10 +27,20 @@ public class TeleporterPickup extends Pickup {
     }
 
     @Override
+    public void update() {
+
+        //Update super
+        super.update();
+
+        //Update animation
+        animation.update();
+    }
+
+
+    @Override
     public void render(SpriteBatch batch) {
 
         //Render animation
         animation.render(batch, transform);
-        super.render(batch);
     }
 }

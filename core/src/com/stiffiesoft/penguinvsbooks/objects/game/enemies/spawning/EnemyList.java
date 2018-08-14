@@ -3,13 +3,12 @@ package com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Fixture;
-import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.Projectile;
-import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Renderable;
+import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObject;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class EnemyList implements Renderable {
+public class EnemyList implements GameObject {
 
     private ArrayList<Enemy> enemies;
     private ArrayList<Enemy> disposableEnemies;
@@ -29,6 +28,13 @@ public class EnemyList implements Renderable {
         listeners.add(listener);
     }
 
+    @Override
+    public void update() {
+        for(Enemy enemy : enemies)
+            enemy.update();
+    }
+
+    @Override
     public void render(SpriteBatch batch) {
         for(Enemy enemy : enemies)
             enemy.render(batch);

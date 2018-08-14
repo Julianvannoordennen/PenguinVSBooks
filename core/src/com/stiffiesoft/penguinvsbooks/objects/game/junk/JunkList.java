@@ -1,12 +1,12 @@
 package com.stiffiesoft.penguinvsbooks.objects.game.junk;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Renderable;
+import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObject;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class JunkList implements Renderable {
+public class JunkList implements GameObject {
 
     private ArrayList<Junk> junkList;
     private ArrayList<Junk> disposableJunkList;
@@ -18,6 +18,11 @@ public class JunkList implements Renderable {
 
     public void add(Junk junk) {
         junkList.add(junk);
+    }
+
+    public void update() {
+        for(Junk junk : junkList)
+            junk.update();
     }
 
     public void render(SpriteBatch batch) {

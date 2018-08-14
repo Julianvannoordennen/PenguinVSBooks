@@ -36,14 +36,20 @@ public class KatanaThrowProjectile extends LinearProjectile {
     }
 
     @Override
-    public void render(SpriteBatch batch) {
+    public void update() {
+
+        //Move in correct direction
+        super.update();
 
         //Rotate katana
         transform.rotate(this.rotationSpeed * C.cGT());
+    }
+
+    @Override
+    public void render(SpriteBatch batch) {
 
         //Draw projectile sprite
         Transform.draw(batch, A.m.get(A.katanaPickup), transform);
-        super.render(batch);
     }
 
     @Override

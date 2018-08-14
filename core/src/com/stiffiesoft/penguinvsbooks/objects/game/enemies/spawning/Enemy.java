@@ -6,6 +6,7 @@ import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 
 public interface Enemy {
 
+    void update();
     void render(SpriteBatch batch);
     Body getBody();
     Transform getTransform();

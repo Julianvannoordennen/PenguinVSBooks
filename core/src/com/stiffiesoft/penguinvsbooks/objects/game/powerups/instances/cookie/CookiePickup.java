@@ -27,6 +27,5 @@ public class CookiePickup extends Pickup {
 
         //Draw powerup sprite
         Transform.draw(batch, A.m.get(A.cookiePickup), transform);
-        super.render(batch);
     }
 }

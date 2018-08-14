@@ -17,7 +17,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.*;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileFactory;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileList;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileListCleaner;
-import com.stiffiesoft.penguinvsbooks.scenes.game.utility.DynamicRenderingList;
+import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObjectList;
 import com.stiffiesoft.penguinvsbooks.system.collision.BodyFactory;
 import com.stiffiesoft.penguinvsbooks.system.collision.CollisionDetector;
 import com.stiffiesoft.penguinvsbooks.system.text.FontFactory;
@@ -35,7 +35,7 @@ public class GameContext {
     private ScreenFlasher screenFlasher;
 
     //Lists
-    private DynamicRenderingList renderList;
+    private GameObjectList gameObjectList;
     private EnemyList enemyList;
     private JunkList junkList;
     private PickupList pickupList;
@@ -82,7 +82,7 @@ public class GameContext {
         this.screenFlasher              = new ScreenFlasher();
 
         //Create all lists
-        this.renderList                 = new DynamicRenderingList();
+        this.gameObjectList = new GameObjectList();
         this.enemyList                  = new EnemyList();
         this.junkList                   = new JunkList();
         this.powerupList                = new PowerupList();
@@ -113,15 +113,15 @@ public class GameContext {
     private void connect() {
 
         //Add all items that need to be rendered, in order from background to foreground
-        renderList.add(junkList);
-        renderList.add(pickupList);
-        renderList.add(player);
-        renderList.add(projectileList);
-        renderList.add(enemyList);
-        renderList.add(score);
-        renderList.add(lifes);
-        renderList.add(border);
-        renderList.add(screenFlasher);
+        gameObjectList.add(junkList);
+        gameObjectList.add(pickupList);
+        gameObjectList.add(player);
+        gameObjectList.add(projectileList);
+        gameObjectList.add(enemyList);
+        gameObjectList.add(score);
+        gameObjectList.add(lifes);
+        gameObjectList.add(border);
+        gameObjectList.add(screenFlasher);
 
         //Add all connections
         world.setContactListener(new CollisionDetector());
@@ -147,8 +147,8 @@ public class GameContext {
         return screenFlasher;
     }
 
-    public DynamicRenderingList getRenderList() {
-        return renderList;
+    public GameObjectList getGameObjectList() {
+        return gameObjectList;
     }
 
     public PickupFactory getPickupFactory() {

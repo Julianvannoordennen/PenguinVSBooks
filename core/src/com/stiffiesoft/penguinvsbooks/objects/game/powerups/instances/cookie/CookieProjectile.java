@@ -4,16 +4,16 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.targetting.EnemyTargetSystem;
 import com.stiffiesoft.penguinvsbooks.objects.game.junk.JunkFactory;
-import com.stiffiesoft.penguinvsbooks.objects.game.junk.JunkList;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.Projectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileList;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
+import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObject;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transformable;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
 import com.stiffiesoft.penguinvsbooks.system.collision.Collidable;
 
-public class CookieProjectile implements Projectile, Transformable, Collidable {
+public class CookieProjectile implements Projectile, Transformable, Collidable, GameObject {
 
     private Body body;
     private Transform transform;
@@ -36,16 +36,20 @@ public class CookieProjectile implements Projectile, Transformable, Collidable {
     }
 
     @Override
-    public void render(SpriteBatch batch) {
+    public void update() {
 
         //Switch colliding state, now the enemies will see it as a new contact every time
         body.setActive(!body.isActive());
 
-        //Draw projectile sprite
-        Transform.draw(batch, A.m.get(A.cookiePickup), transform);
-
         //Update body
         Transform.pushInBody(transform, body);
+    }
+
+    @Override
+    public void render(SpriteBatch batch) {
+
+        //Draw projectile sprite
+        Transform.draw(batch, A.m.get(A.cookiePickup), transform);
     }
 
     private void checkAmount() {

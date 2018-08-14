@@ -3,11 +3,11 @@ package com.stiffiesoft.penguinvsbooks.effects;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Renderable;
+import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObject;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 
-public class Border implements Renderable {
+public class Border implements GameObject {
 
     private Sprite sideTop;
     private Sprite sideLeft;
@@ -46,6 +46,10 @@ public class Border implements Renderable {
         sideRight.setOrigin(sideRight.getWidth() / 2, sideRight.getHeight() / 2);
         sideRight.setRotation(90);
         sideRight.setPosition(C.sW() - ((sideRight.getWidth() / 2) + (size / 2)),(C.sH() / 2) - (size / 2));
+    }
+
+    @Override
+    public void update() {
     }
 
     @Override

@@ -25,6 +25,5 @@ public class KatanaPickup extends Pickup {
 
         //Draw powerup sprite
         Transform.draw(batch,A.m.get(A.katanaPickup), transform);
-        super.render(batch);
     }
 }

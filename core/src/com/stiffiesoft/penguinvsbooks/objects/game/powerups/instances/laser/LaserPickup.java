@@ -27,6 +27,5 @@ public class LaserPickup extends Pickup {
 
         //Draw powerup sprite
         Transform.draw(batch, A.m.get(A.laserPickup), transform);
-        super.render(batch);
     }
 }

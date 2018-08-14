@@ -3,11 +3,11 @@ package com.stiffiesoft.penguinvsbooks.objects.game.counters;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
-import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Renderable;
+import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObject;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 import com.stiffiesoft.penguinvsbooks.system.text.FontFactory;
 
-public class Counter implements Renderable {
+public class Counter implements GameObject {
 
     protected int value;
     protected BitmapFont font;
@@ -56,10 +56,14 @@ public class Counter implements Renderable {
     }
 
     @Override
-    public void render(SpriteBatch batch) {
+    public void update() {
 
         //Return shake
         returnShake();
+    }
+
+    @Override
+    public void render(SpriteBatch batch) {
 
         //Draw the text including the score
         font.draw(batch, value + "", C.pW() * 5, (C.sH() + (C.pW() * -5)) + shakeCurrent);
