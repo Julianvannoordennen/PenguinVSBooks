@@ -1,7 +1,6 @@
 package com.stiffiesoft.penguinvsbooks.objects.game.notifications;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Renderable;
 
 import java.util.ArrayList;
 import java.util.Iterator;

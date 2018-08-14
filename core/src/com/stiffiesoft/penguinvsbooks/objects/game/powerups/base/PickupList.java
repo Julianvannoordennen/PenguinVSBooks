@@ -39,7 +39,6 @@ public class PickupList implements GameObject {
     }
 
     public ArrayList<Pickup> getPickupsByClassName(String name) {
-        System.out.println(1);
         ArrayList<Pickup> pickups = new ArrayList<>();
         for(Pickup pickup : this.pickups) {
             if (pickup.getClass().getSimpleName().equals(name))

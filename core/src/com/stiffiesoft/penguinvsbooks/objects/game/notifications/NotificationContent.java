@@ -5,7 +5,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.Pickup;
-import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Renderable;
 
 import java.util.ArrayList;
 import java.util.Iterator;

@@ -4,13 +4,13 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
-import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Renderable;
+import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObject;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transformable;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 
-public class PauseWindow implements Renderable, Transformable {
+public class PauseWindow implements GameObject, Transformable {
 
     private NotificationContent currentNotificationContent;
     private GameContext context;
@@ -26,8 +26,8 @@ public class PauseWindow implements Renderable, Transformable {
         this.context                    = context;
         this.notificationList           = context.getNotificationList();
         this.texture                    = A.m.get(A.notificationWindow);
-        this.movementSpeed              = 2500;
-        this.fallSpeed                  = 25;
+        this.movementSpeed              = C.pH() * 250;
+        this.fallSpeed                  = C.pH() * 2.5f;
         this.transform                  = new Transform(0,0,C.pW() * 33, C.pH() * 33,1,1,0);
         this.targetPosition             = new Vector2((C.sW() / 2) - (transform.getWidth() / 2), (C.sH() / 2) - (transform.getHeight() / 2));
         reset();
@@ -53,6 +53,11 @@ public class PauseWindow implements Renderable, Transformable {
 
         //Since we have the notification, we can remove the notification from the notificationlist
         notificationList.destroy(currentNotificationContent);
+    }
+
+    @Override
+    public void update() {
+
     }
 
     @Override

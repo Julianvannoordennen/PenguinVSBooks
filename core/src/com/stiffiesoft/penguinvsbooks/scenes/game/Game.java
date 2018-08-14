@@ -19,7 +19,6 @@ public class Game extends BaseScene {
     private Box2DDebugRenderer debugRenderer;
     private OrthographicCamera box2DCamera;
 
-
     public Game(Main main) {
         super(main);
 
@@ -44,15 +43,19 @@ public class Game extends BaseScene {
     @Override
     protected void onRender(SpriteBatch batch) {
 
-        //Update all systems
-        context.getPauseChecker().update();
-        context.getEnemyFactory().update();
-        context.getProjectileListCleaner().update();
-        context.getPowerupList().update();
-        context.getBodyFactory().executeTasks();
+        //Check if the pause window is turned off
+        if (C.cGT() != 0) {
 
-        //Update all objects
-        context.getGameObjectList().update();
+            //Update all systems
+            context.getPauseChecker().update();
+            context.getEnemyFactory().update();
+            context.getProjectileListCleaner().update();
+            context.getPowerupList().update();
+            context.getBodyFactory().update();
+
+            //Update all objects
+            context.getGameObjectList().update();
+        }
 
         //Render all objects
         context.getGameObjectList().render(batch);
@@ -60,6 +63,14 @@ public class Game extends BaseScene {
         //Tell world how much times he need to check the collision
         context.getWorld().step(0, 0, 0);
 //        debugRenderer.render(context.getWorld(), box2DCamera.combined);
+
+        //Check if the pause window is turned on
+        if (C.cGT() == 0) {
+
+            //Update and render pause window
+            context.getPauseWindow().update();
+            context.getPauseWindow().render(batch);
+        }
 
         //Dispose objects that are not required anymore
         context.getProjectileList().dispose();

@@ -22,7 +22,7 @@ public class BodyFactory {
     }
 
     //Execute all tasks inside the tasks arraylist, will be executed each frame
-    public void executeTasks() {
+    public void update() {
 
         //Get the iterator from the tasks array, we need the iterator so we can remove instances from the arraylist
         Iterator iterator = this.tasks.iterator();

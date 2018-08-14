@@ -42,7 +42,6 @@ public class KatanaBodyTask extends BodyTask {
 
         //Dispose the shape since we don't need it anymore
         collisionShape.dispose();
-        System.out.println();
         //Return body
         return body;
     }
