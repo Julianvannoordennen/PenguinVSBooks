@@ -32,7 +32,7 @@ public class DefaultBookEnemy implements Transformable, Enemy, Collidable {
 
         //Transform
         transform = new Transform(256, 256, C.pH() * 5, C.pH() * 5, 1, 1, 0);
-        defaultMovementSpeed    = 50;
+        defaultMovementSpeed    = C.pH() * 5;
         currentMovementSpeed    = defaultMovementSpeed;
 
         //Create properties

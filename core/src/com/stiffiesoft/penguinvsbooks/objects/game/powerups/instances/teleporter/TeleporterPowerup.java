@@ -3,6 +3,8 @@ package com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.teleporte
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.Player;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.Pickup;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.PickupList;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.Powerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.PowerupList;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileFactory;
@@ -10,10 +12,18 @@ import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 
+import java.util.ArrayList;
+
 public class TeleporterPowerup extends Powerup {
 
-    public TeleporterPowerup(GameContext context, Transform initial) {
+    private PickupList pickupList;
+    private Pickup pickup;
+
+    public TeleporterPowerup(GameContext context, Pickup pickup, Transform initial) {
         super(context, initial);
+        this.pickupList = context.getPickupList();
+        this.pickup = pickup;
+        start();
     }
 
     @Override
@@ -22,19 +32,35 @@ public class TeleporterPowerup extends Powerup {
         //Create new position vector
         Vector2 currentPosition = player.getTransform().getPosition();
         Vector2 randomPosition = currentPosition;
-        float distance = currentPosition.dst(randomPosition);
+        float distance = 0;
 
-        //Check if the distance isn't too close to the player
-        while (distance < C.pW() * 25) {
+        //Check if there is another teleporter pickup available
+        ArrayList<Pickup> nextTeleporter = pickupList.getPickupsByClassName("TeleporterPickup");
+        if (nextTeleporter.size() > 1) {
 
-            //Grab a random position at the screen
-            randomPosition = new Vector2(
-                    MathUtils.random(C.pW() * 10, C.sW() - (C.pW() * 10)),
-                    MathUtils.random(C.pH() * 10, C.sH() - (C.pH() * 10))
-            );
+            //Check if we are not grabbing ourself
+            for (Pickup pickup : nextTeleporter) {
+                if (pickup != this.pickup) {
 
-            //Calculate distance
-            distance = currentPosition.dst(randomPosition);
+                    //Use the pickup position as the target position
+                    randomPosition  = pickup.getTransform().getPositionCenter();
+                    distance        = currentPosition.dst(randomPosition);
+                }
+            }
+        } else {
+
+            //Check if the distance isn't too close to the player
+            while (distance < C.pW() * 25) {
+
+                //Grab a random position at the screen
+                randomPosition = new Vector2(
+                        MathUtils.random(C.pW() * 10, C.sW() - (C.pW() * 10)),
+                        MathUtils.random(C.pH() * 10, C.sH() - (C.pH() * 10))
+                );
+
+                //Calculate distance
+                distance = currentPosition.dst(randomPosition);
+            }
         }
 
         //Create transforms from the aquired positions

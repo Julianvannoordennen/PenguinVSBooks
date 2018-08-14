@@ -8,9 +8,9 @@ import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
 
-public class ExplosionJunk extends JunkPackage {
+public class ExplosionJunkPackage extends JunkPackage {
 
-    public ExplosionJunk(Transform transform, GameContext context) {
+    public ExplosionJunkPackage(Transform transform, GameContext context) {
         super(transform, context);
     }
 

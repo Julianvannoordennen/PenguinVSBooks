@@ -132,8 +132,8 @@ public class GameContext {
         renderList.add(junkList);
         renderList.add(pickupList);
         renderList.add(player);
-        renderList.add(enemyList);
         renderList.add(projectileList);
+        renderList.add(enemyList);
         renderList.add(score);
         renderList.add(lifes);
         renderList.add(border);

@@ -9,9 +9,9 @@ import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
 
-public class DefaultBookEnemyJunk extends JunkPackage {
+public class DefaultBookEnemyJunkPackage extends JunkPackage {
 
-    public DefaultBookEnemyJunk(Transform transform, GameContext context) {
+    public DefaultBookEnemyJunkPackage(Transform transform, GameContext context) {
         super(transform, context);
     }
 

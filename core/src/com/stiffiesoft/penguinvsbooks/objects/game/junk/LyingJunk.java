@@ -20,7 +20,7 @@ public class LyingJunk extends Junk {
     public LyingJunk(Transform transform, GameContext context, Texture texture) {
         super(transform, context, texture);
         currentFadeAmount   = 1;
-        decreaseSpeed       = 1;
+        decreaseSpeed       = C.pH() * 0.1f;
         fadeSpeed           = 1;
         fadeDelay           = 3000;
         fadeWait            = 0;

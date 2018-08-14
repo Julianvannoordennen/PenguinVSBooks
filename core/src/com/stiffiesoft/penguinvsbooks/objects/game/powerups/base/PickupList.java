@@ -31,6 +31,16 @@ public class PickupList implements Renderable {
         return pickups;
     }
 
+    public ArrayList<Pickup> getPickupsByClassName(String name) {
+        System.out.println(1);
+        ArrayList<Pickup> pickups = new ArrayList<>();
+        for(Pickup pickup : this.pickups) {
+            if (pickup.getClass().getSimpleName().equals(name))
+                pickups.add(pickup);
+        }
+        return pickups;
+    }
+
     public void destroy(Pickup pickup) {
 
         //Place item in special dispose list

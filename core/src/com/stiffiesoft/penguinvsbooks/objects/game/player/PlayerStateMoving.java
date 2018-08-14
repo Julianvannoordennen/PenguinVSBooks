@@ -39,7 +39,7 @@ public class PlayerStateMoving implements PlayerState {
         this.projectileFactory  = context.getProjectileFactory();
 
         //Apply speed to the player
-        defaultMovementSpeed    = 200;
+        defaultMovementSpeed    = C.pH() * 20;
         currentMovementSpeed    = defaultMovementSpeed;
 
         //Create fire rate, now the player cannot fire books every tick

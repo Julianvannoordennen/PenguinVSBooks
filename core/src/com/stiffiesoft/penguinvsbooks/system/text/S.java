@@ -73,4 +73,19 @@ public class S {
         if (l == Language.DUTCH) return "Teleporteerder";
         else return "Teleporter";
     }
+
+    public static String magnet() {
+        if (l == Language.DUTCH) return "Magneet";
+        else return "Magnet";
+    }
+
+    public static String bomb() {
+        if (l == Language.DUTCH) return "Bom";
+        else return "Bomb";
+    }
+
+    public static String katana() {
+        if (l == Language.DUTCH) return "Katana";
+        else return "Katana";
+    }
 }

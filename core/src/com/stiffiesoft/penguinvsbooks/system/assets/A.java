@@ -25,11 +25,16 @@ public class A {
     public static final AssetDescriptor<Texture> cookiePickup = new AssetDescriptor<>("sprites/game/powerups/cookie/cookie_pickup.png", Texture.class);
     public static final AssetDescriptor<Texture> laserPickup = new AssetDescriptor<>("sprites/game/powerups/laser/laser_pickup.png", Texture.class);
     public static final AssetDescriptor<TextureAtlas> teleporterPickup = new AssetDescriptor<>("sprites/game/powerups/teleporter/teleporter_pickup.atlas", TextureAtlas.class);
+    public static final AssetDescriptor<TextureAtlas> magnetPickup = new AssetDescriptor<>("sprites/game/powerups/magnet/magnet_pickup.atlas", TextureAtlas.class);
+    public static final AssetDescriptor<TextureAtlas> bombPickup = new AssetDescriptor<>("sprites/game/powerups/bomb/bomb_pickup.atlas", TextureAtlas.class);
+    public static final AssetDescriptor<Texture> katanaPickup = new AssetDescriptor<>("sprites/game/powerups/katana/katana_pickup.png", Texture.class);
 
     //Powerups
     public static final AssetDescriptor<Texture> explosion = new AssetDescriptor<>("sprites/game/projectiles/explosion.png", Texture.class);
     public static final AssetDescriptor<Texture> laserPowerup = new AssetDescriptor<>("sprites/game/powerups/laser/laser_powerup.png", Texture.class);
     public static final AssetDescriptor<TextureAtlas> teleporterShock = new AssetDescriptor<>("sprites/game/powerups/teleporter/teleporter_shock.atlas", TextureAtlas.class);
+    public static final AssetDescriptor<TextureAtlas> magnetShock = new AssetDescriptor<>("sprites/game/powerups/magnet/magnet_shock.atlas", TextureAtlas.class);
+    public static final AssetDescriptor<TextureAtlas> bombProjectile = new AssetDescriptor<>("sprites/game/powerups/bomb/bomb_projectile.atlas", TextureAtlas.class);
 
     //Junk
     public static final AssetDescriptor<Texture> defaultBookEnemyJunk1 = new AssetDescriptor<>("sprites/game/enemies/defaultBookEnemy/default_book_enemy_junk_1.png", Texture.class);

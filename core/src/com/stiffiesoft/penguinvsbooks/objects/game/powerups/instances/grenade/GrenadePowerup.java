@@ -10,6 +10,7 @@ public class GrenadePowerup extends Powerup {
 
     public GrenadePowerup(GameContext context, Transform initial) {
         super(context, initial);
+        start();
     }
 
     @Override

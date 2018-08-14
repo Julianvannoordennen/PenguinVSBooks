@@ -38,9 +38,8 @@ public class Game extends BaseScene {
 
         //Create some single instances
         PickupFactory pickupFactory = context.getPickupFactory();
-        pickupFactory.createTeleporterPickup(new Vector2(C.sW() / 4, C.sH() / 4));
-        pickupFactory.createTeleporterPickup(new Vector2(C.sW() / 5, C.sH() / 5));
-        pickupFactory.createTeleporterPickup(new Vector2(C.sW() / 8, C.sH() / 8));
+        pickupFactory.createMagnetPickup(new Vector2(C.sW() / 3, C.sH() / 3));
+        pickupFactory.createKatanaPickup(new Vector2(C.sW() / 16, C.sH() / 16));
     }
 
     @Override
