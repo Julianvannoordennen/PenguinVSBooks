@@ -7,12 +7,13 @@ import com.stiffiesoft.penguinvsbooks.effects.SpriteAnimation;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.Projectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileList;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
+import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObject;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transformable;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 
-public class TeleporterShock implements Projectile, Transformable {
+public class TeleporterShock implements Projectile, Transformable, GameObject {
 
     private Transform transform;
     private ProjectileList projectileList;
@@ -32,13 +33,28 @@ public class TeleporterShock implements Projectile, Transformable {
     }
 
     @Override
+    public void update() {
+
+        //Change intensity
+        this.intensity -= this.fadeSpeed * C.cGT();
+
+        //Check if the shock has to fade away
+        if (this.intensity <= 0.01f)
+
+            //Destroy shock
+            projectileList.destroy(this);
+
+        //Update animation
+        animation.update();
+    }
+
+    @Override
     public void render(SpriteBatch batch) {
 
         //Get default color
         Color color = batch.getColor();
 
         //Change color
-        this.intensity -= this.fadeSpeed * C.cGT();
         batch.setColor(new Color(color.r, color.g, color.b, this.intensity));
 
         //Draw projectile sprite
@@ -46,12 +62,6 @@ public class TeleporterShock implements Projectile, Transformable {
 
         //Restore color
         batch.setColor(color);
-
-        //Check if the shock has to fade away
-        if (this.intensity <= 0.01f)
-
-            //Destroy shock
-            projectileList.destroy(this);
     }
 
     @Override

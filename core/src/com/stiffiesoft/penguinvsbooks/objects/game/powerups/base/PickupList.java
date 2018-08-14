@@ -3,12 +3,12 @@ package com.stiffiesoft.penguinvsbooks.objects.game.powerups.base;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Fixture;
-import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Renderable;
+import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObject;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class PickupList implements Renderable {
+public class PickupList implements GameObject {
 
     private ArrayList<Pickup> pickups;
     private ArrayList<Pickup> disposablePickups;
@@ -22,6 +22,13 @@ public class PickupList implements Renderable {
         pickups.add(pickup);
     }
 
+    @Override
+    public void update() {
+        for(Pickup pickup : pickups)
+            pickup.update();
+    }
+
+    @Override
     public void render(SpriteBatch batch) {
         for(Pickup pickup : pickups)
             pickup.render(batch);

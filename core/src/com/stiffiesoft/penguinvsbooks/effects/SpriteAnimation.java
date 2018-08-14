@@ -26,10 +26,15 @@ public class SpriteAnimation {
         elapsedTime = 0f;
     }
 
+    public void update() {
+
+        //Increase time
+        elapsedTime += C.cGT();
+    }
+
     public void render(SpriteBatch batch, Transform transform) {
 
-        //Draw and increase time
-        elapsedTime += C.cGT();
+        //Draw
         Transform.draw(batch, (TextureRegion)animation.getKeyFrame(elapsedTime,true), transform);
     }
 }

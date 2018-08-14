@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.TimeUtils;
 import com.stiffiesoft.penguinvsbooks.effects.ScreenFlasher;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileFactory;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
+import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObject;
 import com.stiffiesoft.penguinvsbooks.system.collision.Collidable;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
@@ -16,7 +17,7 @@ import com.stiffiesoft.penguinvsbooks.system.input.M;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.text.DefinedColors;
 
-public class PlayerStateMoving implements PlayerState {
+public class PlayerStateMoving implements PlayerState, GameObject {
 
     private Player player;
     private ScreenFlasher screenFlasher;
@@ -111,7 +112,7 @@ public class PlayerStateMoving implements PlayerState {
     }
 
     @Override
-    public void render(SpriteBatch batch) {
+    public void update() {
 
         //Update interaction methods
         updateMovement();
@@ -127,6 +128,20 @@ public class PlayerStateMoving implements PlayerState {
                 )
         );
 
+        //Check if we need to flicker
+        if (!player.canReceiveDamage()) {
+            if (TimeUtils.millis() >= nextFlicker)
+                updateFlicker();
+            if (TimeUtils.millis() >= flickerLast) {
+                player.canReceiveDamage(true);
+                flickerLast = -1;
+            }
+        }
+    }
+
+    @Override
+    public void render(SpriteBatch batch) {
+
         //Check if the player can receive damage
         if (player.canReceiveDamage()) {
 
@@ -137,12 +152,6 @@ public class PlayerStateMoving implements PlayerState {
 
             //Flicker sprite if he can't be damaged
             Color color = batch.getColor();
-            if (TimeUtils.millis() >= nextFlicker)
-                updateFlicker();
-            if (TimeUtils.millis() >= flickerLast) {
-                player.canReceiveDamage(true);
-                flickerLast = -1;
-            }
 
             //Change color
             batch.setColor(new Color(color.r, color.g, color.b, flickerOn ? 0.2f : 0.4f));

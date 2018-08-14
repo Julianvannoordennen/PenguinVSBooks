@@ -45,25 +45,13 @@ public class LaserProjectile extends LinearProjectile {
     }
 
     @Override
-    public void render(SpriteBatch batch) {
+    public void update() {
 
-        //Move
-        super.render(batch);
+        //Move in correct direction
+        super.update();
 
         //Flash scale
         transform.setXScale(defaultXScale + MathUtils.random(0f, flashIntensity));
-
-        //Get default color
-        Color color = batch.getColor();
-
-        //Change color
-        batch.setColor(new Color(this.color.r, this.color.g, this.color.b, 1));
-
-        //Draw projectile sprite
-        Transform.draw(batch, A.m.get(A.laserPowerup), transform);
-
-        //Restore color
-        batch.setColor(color);
 
         //Check if duration is done
         if (TimeUtils.millis() > destroyTime)
@@ -80,7 +68,22 @@ public class LaserProjectile extends LinearProjectile {
             //Flash screen
             screenFlasher.flash(new Color(this.color.r,this.color.b,this.color.g,0.5f));
         }
+    }
 
+    @Override
+    public void render(SpriteBatch batch) {
+
+        //Get default color
+        Color color = batch.getColor();
+
+        //Change color
+        batch.setColor(new Color(this.color.r, this.color.g, this.color.b, 1));
+
+        //Draw projectile sprite
+        Transform.draw(batch, A.m.get(A.laserPowerup), transform);
+
+        //Restore color
+        batch.setColor(color);
     }
 
     public void setMovement(boolean horizontal, float speed) {

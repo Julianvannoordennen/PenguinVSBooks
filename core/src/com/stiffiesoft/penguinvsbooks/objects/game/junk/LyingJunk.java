@@ -36,7 +36,10 @@ public class LyingJunk extends Junk {
     }
 
     @Override
-    public void render(SpriteBatch batch) {
+    public void update() {
+
+        //Update super
+        super.update();
 
         //Is junk still moving
         if (speed >= 0.01f) {
@@ -57,11 +60,28 @@ public class LyingJunk extends Junk {
         //Does the junk need to fade away?
         if (TimeUtils.millis() > fadeWait && fade) {
 
+            //Change color
+            this.currentFadeAmount -= this.fadeSpeed * C.cGT();
+
+            //Check if the junk has to fade away
+            if (this.currentFadeAmount <= 0.01f) {
+
+                //Destroy
+                junkList.destroy(this);
+            }
+        }
+    }
+
+    @Override
+    public void render(SpriteBatch batch) {
+
+        //Does the junk need to fade away?
+        if (TimeUtils.millis() > fadeWait && fade) {
+
             //Get default color
             Color color = batch.getColor();
 
             //Change color
-            this.currentFadeAmount -= this.fadeSpeed * C.cGT();
             batch.setColor(new Color(color.r, color.g, color.b, this.currentFadeAmount));
 
             //Draw texture
@@ -70,20 +90,10 @@ public class LyingJunk extends Junk {
             //Restore color
             batch.setColor(color);
 
-            //Check if the junk has to fade away
-            if (this.currentFadeAmount <= 0.01f) {
-
-                //Destroy
-                junkList.destroy(this);
-            }
-
         } else {
 
             //Draw texture
             Transform.draw(batch, texture, transform);
         }
-
-        //Move forward
-        super.render(batch);
     }
 }

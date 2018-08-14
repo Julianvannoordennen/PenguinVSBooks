@@ -3,11 +3,11 @@ package com.stiffiesoft.penguinvsbooks.effects;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Renderable;
+import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObject;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 
-public class ScreenFlasher implements Renderable {
+public class ScreenFlasher implements GameObject {
 
     private Sprite layer;
     private Color color;
@@ -28,6 +28,24 @@ public class ScreenFlasher implements Renderable {
     }
 
     @Override
+    public void update() {
+
+        //Check if there is a flash going on
+        if (color != null) {
+
+            //Change intensity from the color
+            this.color = new Color(this.color.r, this.color.g, this.color.b, this.color.a - (decreaseSpeed * C.cGT()));
+
+            //Check if the alpha is below zero
+            if (this.color.a <= 0) {
+
+                //Clear color, flash is done
+                color = null;
+            }
+        }
+    }
+
+    @Override
     public void render(SpriteBatch batch) {
 
         //Check if there is a flash going on
@@ -37,7 +55,6 @@ public class ScreenFlasher implements Renderable {
             Color color = batch.getColor();
 
             //Change color
-            this.color = new Color(this.color.r, this.color.g, this.color.b, this.color.a - (decreaseSpeed * C.cGT()));
             batch.setColor(this.color);
 
             //Draw current layer
@@ -45,13 +62,6 @@ public class ScreenFlasher implements Renderable {
 
             //Restore color
             batch.setColor(color);
-
-            //Check if the alpha is below zero
-            if (this.color.a <= 0) {
-
-                //Clear color, flash is done
-                color = null;
-            }
         }
     }
 }

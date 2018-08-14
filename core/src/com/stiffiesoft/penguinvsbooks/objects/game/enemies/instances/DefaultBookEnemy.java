@@ -10,6 +10,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.enemies.targetting.EnemyTarge
 import com.stiffiesoft.penguinvsbooks.objects.game.junk.JunkFactory;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.Projectile;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
+import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObject;
 import com.stiffiesoft.penguinvsbooks.system.collision.Collidable;
 import com.stiffiesoft.penguinvsbooks.system.collision.CollisionTypes;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transformable;
@@ -17,7 +18,7 @@ import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 
-public class DefaultBookEnemy implements Transformable, Enemy, Collidable {
+public class DefaultBookEnemy implements Transformable, Enemy, Collidable, GameObject {
 
     private SpriteAnimation currentSpriteAnimation;
     private Transform transform;
@@ -42,13 +43,11 @@ public class DefaultBookEnemy implements Transformable, Enemy, Collidable {
         this.junkFactory        = context.getJunkFactory();
     }
 
-    public void render(SpriteBatch batch) {
+    @Override
+    public void update() {
 
         //Update targetting system
         targetUpdater.update();
-
-        //Render animation
-        currentSpriteAnimation.render(batch, transform);
 
         //Set movement angle
         Transformable target = targetUpdater.getTarget();
@@ -60,8 +59,16 @@ public class DefaultBookEnemy implements Transformable, Enemy, Collidable {
         //Move towards target
         transform.moveInDirection( currentMovementSpeed * C.cGT());
 
-        //Update body
+        //Update body and spriteanimation
+        currentSpriteAnimation.update();
         Transform.pushInBody(transform, body);
+    }
+
+    @Override
+    public void render(SpriteBatch batch) {
+
+        //Render animation
+        currentSpriteAnimation.render(batch, transform);
     }
 
     @Override

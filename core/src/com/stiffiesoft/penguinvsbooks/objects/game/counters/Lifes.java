@@ -18,9 +18,6 @@ public class Lifes extends Counter implements PlayerListener {
     @Override
     public void render(SpriteBatch batch) {
 
-        //Return shake
-        returnShake();
-
         //Draw the text including the lifes
         font.draw(batch, fontFactory.createCounterGlyph(S.lifes() + "\n" + value,this.font), C.sW() - (C.pW() * 12), (C.sH() - (C.pW() * 2)) + shakeCurrent);
     }

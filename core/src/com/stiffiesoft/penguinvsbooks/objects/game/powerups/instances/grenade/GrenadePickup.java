@@ -28,6 +28,5 @@ public class GrenadePickup extends Pickup {
 
         //Draw powerup sprite
         Transform.draw(batch, A.m.get(A.grenadePickup), transform);
-        super.render(batch);
     }
 }

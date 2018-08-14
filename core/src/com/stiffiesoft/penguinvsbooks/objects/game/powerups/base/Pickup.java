@@ -1,17 +1,16 @@
 package com.stiffiesoft.penguinvsbooks.objects.game.powerups.base;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.stiffiesoft.penguinvsbooks.effects.ScreenFlasher;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
-import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Renderable;
+import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObject;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transformable;
 import com.stiffiesoft.penguinvsbooks.system.collision.Collidable;
 import com.stiffiesoft.penguinvsbooks.system.collision.CollisionTypes;
 import com.stiffiesoft.penguinvsbooks.system.text.DefinedColors;
 
-public abstract class Pickup implements Transformable, Renderable, Collidable {
+public abstract class Pickup implements Transformable, GameObject, Collidable {
 
     protected Transform transform;
     protected Body body;
@@ -32,7 +31,7 @@ public abstract class Pickup implements Transformable, Renderable, Collidable {
     }
 
     @Override
-    public void render(SpriteBatch batch) {
+    public void update() {
 
         //Update body
         Transform.pushInBody(transform, body);

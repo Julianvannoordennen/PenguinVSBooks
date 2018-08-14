@@ -1,16 +1,13 @@
 package com.stiffiesoft.penguinvsbooks.objects.game.projectiles;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.*;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 import com.stiffiesoft.penguinvsbooks.system.collision.Collidable;
-import com.stiffiesoft.penguinvsbooks.system.collision.CollisionTypes;
 
-public class LinearProjectile implements Transformable, Collidable, Renderable, Projectile {
+public abstract class LinearProjectile implements Transformable, Collidable, GameObject, Projectile {
 
     protected Transform transform;
     protected Body body;
@@ -28,7 +25,7 @@ public class LinearProjectile implements Transformable, Collidable, Renderable, 
     }
 
     @Override
-    public void render(SpriteBatch batch) {
+    public void update() {
 
         //Move towards target
         transform.moveInDirection( speed * C.cGT());

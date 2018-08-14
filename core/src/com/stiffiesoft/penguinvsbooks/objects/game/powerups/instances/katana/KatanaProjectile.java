@@ -4,20 +4,20 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.utils.TimeUtils;
-import com.stiffiesoft.penguinvsbooks.objects.game.enemies.targetting.EnemyTargetSystem;
 import com.stiffiesoft.penguinvsbooks.objects.game.junk.JunkFactory;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.Player;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.Projectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileFactory;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileList;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
+import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObject;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transformable;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 import com.stiffiesoft.penguinvsbooks.system.collision.Collidable;
 
-public class KatanaProjectile implements Projectile, Transformable, Collidable {
+public class KatanaProjectile implements Projectile, Transformable, Collidable, GameObject {
 
     private Body body;
     private Transform transform;
@@ -42,7 +42,7 @@ public class KatanaProjectile implements Projectile, Transformable, Collidable {
     }
 
     @Override
-    public void render(SpriteBatch batch) {
+    public void update() {
 
         //Rotate katana
         transform.rotate(this.rotationSpeed * C.cGT());
@@ -52,9 +52,6 @@ public class KatanaProjectile implements Projectile, Transformable, Collidable {
 
             //Set position to player
             transform.setPosition(player.getTransform().getPositionCenter());
-
-        //Draw projectile sprite
-        Transform.draw(batch, A.m.get(A.katanaPickup), transform);
 
         //Update body
         Transform.pushInBody(transform, body);
@@ -68,6 +65,13 @@ public class KatanaProjectile implements Projectile, Transformable, Collidable {
             //Destroy laser
             projectileList.destroy(this);
         }
+    }
+
+    @Override
+    public void render(SpriteBatch batch) {
+
+        //Draw projectile sprite
+        Transform.draw(batch, A.m.get(A.katanaPickup), transform);
     }
 
     @Override

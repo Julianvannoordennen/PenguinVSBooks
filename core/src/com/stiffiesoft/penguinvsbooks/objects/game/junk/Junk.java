@@ -1,14 +1,13 @@
 package com.stiffiesoft.penguinvsbooks.objects.game.junk;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
-import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Renderable;
+import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObject;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transformable;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 
-public abstract class Junk implements Transformable, Renderable {
+public abstract class Junk implements Transformable, GameObject {
 
     protected Transform transform;
     protected JunkList junkList;
@@ -32,7 +31,7 @@ public abstract class Junk implements Transformable, Renderable {
     }
 
     @Override
-    public void render(SpriteBatch batch) {
+    public void update() {
 
         //Move forward
         transform.moveInDirection(speed * C.cGT());

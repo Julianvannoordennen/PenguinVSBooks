@@ -36,19 +36,16 @@ public class MagnetShock extends LinearProjectile {
     }
 
     @Override
-    public void render(SpriteBatch batch) {
+    public void update() {
+
+        //Update super
+        super.update();
 
         //Set angle to move to
         transform.setMovementAngle(C.getAngleInRadians(transform.getPosition(), player.getTransform().getPosition()));
 
         //Move it to the player
         transform.moveInDirection(this.speed * C.cGT());
-
-        //Render a shock at the pickup
-        animation.render(batch, transform);
-
-        //Draw projectile sprite
-        super.render(batch);
 
         //Check if pickup exists in list
         if (!this.pickupList.get().contains(pickup)) {
@@ -59,6 +56,16 @@ public class MagnetShock extends LinearProjectile {
             //Destroy projectile
             projectileList.destroy(this);
         }
+
+        //Update animation
+        animation.update();
+    }
+
+    @Override
+    public void render(SpriteBatch batch) {
+
+        //Render a shock at the pickup
+        animation.render(batch, transform);
     }
 
     @Override

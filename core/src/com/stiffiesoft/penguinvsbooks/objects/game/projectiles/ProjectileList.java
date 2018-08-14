@@ -1,18 +1,14 @@
 package com.stiffiesoft.penguinvsbooks.objects.game.projectiles;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Fixture;
-import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.Enemy;
-import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Renderable;
-import com.stiffiesoft.penguinvsbooks.system.calculations.C;
+import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObject;
 
 import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 
-public class ProjectileList implements Renderable {
+public class ProjectileList implements GameObject {
 
     private ArrayList<Projectile> queuingProjectiles;
     private ArrayList<Projectile> projectiles;
@@ -26,6 +22,13 @@ public class ProjectileList implements Renderable {
 
     public void add(Projectile projectile) {
         queuingProjectiles.add(projectile);
+    }
+
+    public void update() {
+
+        //Go through all items
+        for (Projectile projectile : projectiles)
+            projectile.update();
     }
 
     public void render(SpriteBatch batch) {

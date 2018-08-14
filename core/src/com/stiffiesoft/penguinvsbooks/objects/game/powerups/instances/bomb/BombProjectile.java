@@ -36,14 +36,23 @@ public class BombProjectile extends LinearProjectile {
     }
 
     @Override
-    public void render(SpriteBatch batch) {
+    public void update() {
+
+        //Execute super
+        super.update();
 
         //Create junk
         junkFactory.createRollingBombJunk(transform);
 
+        //Update animation
+        animation.update();
+    }
+
+    @Override
+    public void render(SpriteBatch batch) {
+
         //Draw projectile sprite
         animation.render(batch, transform);
-        super.render(batch);
     }
 
     @Override

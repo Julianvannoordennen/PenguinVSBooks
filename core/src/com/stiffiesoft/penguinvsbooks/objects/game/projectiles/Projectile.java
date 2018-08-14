@@ -7,6 +7,7 @@ import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 
 public interface Projectile {
 
+    void update();
     void render(SpriteBatch batch);
     Transform getTransform();
     Body getBody();

@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.physics.box2d.World;
 import com.stiffiesoft.penguinvsbooks.Main;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.targetting.EnemyTargetSystem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.PickupFactory;
@@ -52,8 +51,11 @@ public class Game extends BaseScene {
         context.getPowerupList().update();
         context.getBodyFactory().executeTasks();
 
+        //Update all objects
+        context.getGameObjectList().update();
+
         //Render all objects
-        context.getRenderList().render(batch);
+        context.getGameObjectList().render(batch);
 
         //Tell world how much times he need to check the collision
         context.getWorld().step(0, 0, 0);

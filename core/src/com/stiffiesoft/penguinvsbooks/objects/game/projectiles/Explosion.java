@@ -4,16 +4,14 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.World;
-import com.stiffiesoft.penguinvsbooks.objects.game.junk.JunkFactory;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
-import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Renderable;
+import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObject;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 import com.stiffiesoft.penguinvsbooks.system.collision.Collidable;
 
-public class Explosion implements Renderable, Projectile, Collidable {
+public class Explosion implements GameObject, Projectile, Collidable {
 
     protected Color color;
     protected Transform transform;
@@ -38,7 +36,7 @@ public class Explosion implements Renderable, Projectile, Collidable {
     }
 
     @Override
-    public void render(SpriteBatch batch) {
+    public void update() {
 
         //Decrease size
         Vector2 newScale = new Vector2(transform.getXScale() - (decreaseSpeed * C.cGT()), transform.getYScale() - (decreaseSpeed * C.cGT()));
@@ -46,6 +44,13 @@ public class Explosion implements Renderable, Projectile, Collidable {
 
         //Rotate
         transform.rotate(rotationSpeed * C.cGT());
+
+        //Check scale
+        checkScale();
+    }
+
+    @Override
+    public void render(SpriteBatch batch) {
 
         //Get default color
         Color color = batch.getColor();
@@ -58,9 +63,6 @@ public class Explosion implements Renderable, Projectile, Collidable {
 
         //Restore color
         batch.setColor(color);
-
-        //Check scale
-        checkScale();
     }
 
     protected void checkScale() {

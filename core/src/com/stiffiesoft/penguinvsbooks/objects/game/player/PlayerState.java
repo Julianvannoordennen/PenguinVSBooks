@@ -5,6 +5,7 @@ import com.stiffiesoft.penguinvsbooks.system.collision.Collidable;
 
 public interface PlayerState {
 
+    void update();
     void render(SpriteBatch batch);
     void onCollision(Collidable other);
 }
