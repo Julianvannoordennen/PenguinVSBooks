@@ -10,4 +10,5 @@ public class DefinedColors {
     public static final Color DAMAGE_FLASH      = PRIMARY;
     public static final Color EXTRA_LIFE_FLASH  = Color.PINK;
     public static final Color MEGA_LIFE_FLASH   = Color.GOLD;
+    public static final Color NUKE_FLASH        = PRIMARY;
 }

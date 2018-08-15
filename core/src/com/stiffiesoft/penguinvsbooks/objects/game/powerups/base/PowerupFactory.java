@@ -1,6 +1,7 @@
 package com.stiffiesoft.penguinvsbooks.objects.game.powerups.base;
 
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bomb.BombPowerup;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.boomerang.BoomerangPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookiePowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.earthquake.EarthquakePowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.extralife.ExtraLifePowerup;
@@ -9,6 +10,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.katana.Kat
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.LaserPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.magnet.MagnetPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.megalife.MegaLifePowerup;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.nuke.NukePowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.teleporter.TeleporterPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileFactory;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
@@ -130,6 +132,28 @@ public class PowerupFactory {
 
         //Create powerup
         EarthquakePowerup powerup = new EarthquakePowerup(context, transform.clone());
+
+        //Add powerup to the list so the program can keep track of it
+        powerupList.add(powerup);
+
+        //Return powerup
+        return powerup;
+    }
+    public NukePowerup createNukePowerup(Transform transform) {
+
+        //Create powerup
+        NukePowerup powerup = new NukePowerup(context, transform.clone());
+
+        //Add powerup to the list so the program can keep track of it
+        powerupList.add(powerup);
+
+        //Return powerup
+        return powerup;
+    }
+    public BoomerangPowerup createBoomerangPowerup(Transform transform) {
+
+        //Create powerup
+        BoomerangPowerup powerup = new BoomerangPowerup(context, transform.clone());
 
         //Add powerup to the list so the program can keep track of it
         powerupList.add(powerup);

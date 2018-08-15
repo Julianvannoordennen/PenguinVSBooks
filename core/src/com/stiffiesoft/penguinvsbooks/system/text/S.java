@@ -103,4 +103,14 @@ public class S {
         if (l == Language.DUTCH) return "Aardbeving";
         else return "Earthquake";
     }
+
+    public static String nuke() {
+        if (l == Language.DUTCH) return "Atoombom";
+        else return "Nuke";
+    }
+
+    public static String boomerang() {
+        if (l == Language.DUTCH) return "Boemerang";
+        else return "Boomerang";
+    }
 }

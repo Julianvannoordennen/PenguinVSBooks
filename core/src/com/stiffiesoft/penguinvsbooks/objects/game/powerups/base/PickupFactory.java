@@ -7,6 +7,7 @@ import com.stiffiesoft.penguinvsbooks.effects.ScreenFlasher;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.Enemy;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.EnemyListListener;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bomb.BombPickup;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.boomerang.BoomerangPickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookiePickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.earthquake.EarthquakePickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.extralife.ExtraLifePickup;
@@ -15,6 +16,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.katana.Kat
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.LaserPickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.magnet.MagnetPickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.megalife.MegaLifePickup;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.nuke.NukePickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.teleporter.TeleporterPickup;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
@@ -239,6 +241,34 @@ public class PickupFactory implements EnemyListListener {
 
         //Create pickup and apply the transform send in parameter
         EarthquakePickup pickup = new EarthquakePickup(beforePickup(position), context);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new PickupBodyTask(pickup));
+
+        //Execute default tasks
+        afterPickup(pickup);
+
+        //Return to projectile
+        return pickup;
+    }
+    public NukePickup createNukePickup(Vector2 position) {
+
+        //Create pickup and apply the transform send in parameter
+        NukePickup pickup = new NukePickup(beforePickup(position), context);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new PickupBodyTask(pickup));
+
+        //Execute default tasks
+        afterPickup(pickup);
+
+        //Return to projectile
+        return pickup;
+    }
+    public BoomerangPickup createBoomerangPickup(Vector2 position) {
+
+        //Create pickup and apply the transform send in parameter
+        BoomerangPickup pickup = new BoomerangPickup(beforePickup(position), context);
 
         //Add bodytask for the projectile
         bodyFactory.addTask(new PickupBodyTask(pickup));

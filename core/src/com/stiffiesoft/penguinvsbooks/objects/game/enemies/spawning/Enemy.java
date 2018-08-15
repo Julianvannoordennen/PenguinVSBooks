@@ -6,6 +6,7 @@ import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 
 public interface Enemy {
 
+    void die();
     void update();
     void render(SpriteBatch batch);
     float getDefaultSpeed();

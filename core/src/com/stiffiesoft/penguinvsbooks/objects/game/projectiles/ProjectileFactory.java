@@ -9,6 +9,8 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.Pickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bomb.BombExplosion;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bomb.BombProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bomb.BombProjectileBodyTask;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.boomerang.BoomerangBodyTask;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.boomerang.BoomerangProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookieBodyTask;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookieProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.grenade.GrenadeExplosion;
@@ -240,6 +242,23 @@ public class ProjectileFactory {
 
         //Add bodytask for the projectile
         bodyFactory.addTask(new KatanaBodyTask(projectile));
+
+        //Return explosion
+        return projectile;
+    }
+    public BoomerangProjectile createBoomerangProjectile(Transform transform) {
+
+        //Manipulate transform
+        transform = transform.clone();
+
+        //Create and apply the transform send in parameter
+        BoomerangProjectile projectile = new BoomerangProjectile(transform,context);
+
+        //Add explosion to projectilelist
+        projectileList.add(projectile);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new BoomerangBodyTask(projectile));
 
         //Return explosion
         return projectile;

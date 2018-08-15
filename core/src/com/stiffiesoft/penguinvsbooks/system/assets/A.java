@@ -31,6 +31,8 @@ public class A {
     public static final AssetDescriptor<Texture> extraLifePickup = new AssetDescriptor<>("sprites/game/powerups/extralife/extra_life_pickup.png", Texture.class);
     public static final AssetDescriptor<Texture> megaLifePickup = new AssetDescriptor<>("sprites/game/powerups/megaLife/mega_life_pickup.png", Texture.class);
     public static final AssetDescriptor<Texture> earthquakePickup = new AssetDescriptor<>("sprites/game/powerups/earthquake/earthquake_pickup.png", Texture.class);
+    public static final AssetDescriptor<Texture> nukePickup = new AssetDescriptor<>("sprites/game/powerups/nuke/nuke_pickup.png", Texture.class);
+    public static final AssetDescriptor<TextureAtlas> boomerangPickup = new AssetDescriptor<>("sprites/game/powerups/boomerang/boomerang_pickup.atlas", TextureAtlas.class);
 
     //Powerups
     public static final AssetDescriptor<Texture> explosion = new AssetDescriptor<>("sprites/game/projectiles/explosion.png", Texture.class);
@@ -38,6 +40,7 @@ public class A {
     public static final AssetDescriptor<TextureAtlas> teleporterShock = new AssetDescriptor<>("sprites/game/powerups/teleporter/teleporter_shock.atlas", TextureAtlas.class);
     public static final AssetDescriptor<TextureAtlas> magnetShock = new AssetDescriptor<>("sprites/game/powerups/magnet/magnet_shock.atlas", TextureAtlas.class);
     public static final AssetDescriptor<TextureAtlas> bombProjectile = new AssetDescriptor<>("sprites/game/powerups/bomb/bomb_projectile.atlas", TextureAtlas.class);
+    public static final AssetDescriptor<Texture> boomerangProjectile = new AssetDescriptor<>("sprites/game/powerups/boomerang/boomerang_projectile.png", Texture.class);
 
     //Junk
     public static final AssetDescriptor<Texture> defaultBookEnemyJunk1 = new AssetDescriptor<>("sprites/game/enemies/defaultBookEnemy/default_book_enemy_junk_1.png", Texture.class);

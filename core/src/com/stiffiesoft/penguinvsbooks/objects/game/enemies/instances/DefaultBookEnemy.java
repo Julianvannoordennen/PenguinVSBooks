@@ -44,6 +44,16 @@ public class DefaultBookEnemy implements Transformable, Enemy, Collidable, GameO
     }
 
     @Override
+    public void die() {
+
+        //Create junk
+        junkFactory.createDefaultEnemyDyingJunk(transform);
+
+        //Destroy enemy
+        enemyList.destroy(this);
+    }
+
+    @Override
     public void update() {
 
         //Update targetting system
@@ -96,14 +106,8 @@ public class DefaultBookEnemy implements Transformable, Enemy, Collidable, GameO
             Projectile projectile = (Projectile)other;
 
             //Check if projectile does damage
-            if (projectile.doesDamage()) {
-
-                //Create junk
-                junkFactory.createDefaultEnemyDyingJunk(transform);
-
-                //Destroy enemy
-                enemyList.destroy(this);
-            }
+            if (projectile.doesDamage())
+                die();
         }
     }
 
