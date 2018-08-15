@@ -8,6 +8,8 @@ public interface Enemy {
 
     void update();
     void render(SpriteBatch batch);
+    float getDefaultSpeed();
+    void setSpeed(float speed);
     Body getBody();
     Transform getTransform();
 }

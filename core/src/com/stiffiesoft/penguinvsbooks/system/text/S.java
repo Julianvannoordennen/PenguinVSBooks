@@ -98,4 +98,9 @@ public class S {
         if (l == Language.DUTCH) return "Mega leven";
         else return "Mega extralife";
     }
+
+    public static String earthquake() {
+        if (l == Language.DUTCH) return "Aardbeving";
+        else return "Earthquake";
+    }
 }

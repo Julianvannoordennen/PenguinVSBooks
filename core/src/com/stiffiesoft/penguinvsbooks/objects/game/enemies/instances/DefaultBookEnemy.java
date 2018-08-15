@@ -72,6 +72,16 @@ public class DefaultBookEnemy implements Transformable, Enemy, Collidable, GameO
     }
 
     @Override
+    public float getDefaultSpeed() {
+        return defaultMovementSpeed;
+    }
+
+    @Override
+    public void setSpeed(float speed) {
+        currentMovementSpeed = speed;
+    }
+
+    @Override
     public Transform getTransform() {
         return transform;
     }

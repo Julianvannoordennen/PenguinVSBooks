@@ -1,7 +1,9 @@
 package com.stiffiesoft.penguinvsbooks.scenes.game;
 
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.*;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.stiffiesoft.penguinvsbooks.Main;
@@ -37,9 +39,8 @@ public class Game extends BaseScene {
         //Create some single instances
         PickupFactory pickupFactory = context.getPickupFactory();
         pickupFactory.createMagnetPickup(new Vector2(C.sW() / 3, C.sH() / 3));
-        pickupFactory.createKatanaPickup(new Vector2(C.sW() / 16, C.sH() / 16));
         pickupFactory.createExtraLifePickup(new Vector2(C.sW() / 6, C.sH() / 6));
-        pickupFactory.createMegaLifePickup(new Vector2(C.sW() / 25, C.sH() / 25));
+        pickupFactory.createEarthquakePickup(new Vector2(C.sW() / 25, C.sH() / 25));
     }
 
     @Override

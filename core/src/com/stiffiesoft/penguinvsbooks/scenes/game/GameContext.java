@@ -5,6 +5,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.stiffiesoft.penguinvsbooks.Main;
 import com.stiffiesoft.penguinvsbooks.effects.Border;
 import com.stiffiesoft.penguinvsbooks.effects.ScreenFlasher;
+import com.stiffiesoft.penguinvsbooks.effects.ScreenShaker;
 import com.stiffiesoft.penguinvsbooks.objects.game.counters.Lifes;
 import com.stiffiesoft.penguinvsbooks.objects.game.counters.Score;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.EnemyFactory;
@@ -35,6 +36,7 @@ public class GameContext {
     private World world;
 
     //Effects
+    private ScreenShaker screenShaker;
     private Border border;
     private ScreenFlasher screenFlasher;
 
@@ -88,6 +90,7 @@ public class GameContext {
         this.pickupCatalogue            = main.getPickupCatalogue();
 
         //Load effects
+        this.screenShaker               = new ScreenShaker();
         this.border                     = new Border();
         this.screenFlasher              = new ScreenFlasher();
 
@@ -137,6 +140,7 @@ public class GameContext {
         gameObjectList.add(score);
         gameObjectList.add(lifes);
         gameObjectList.add(border);
+        gameObjectList.add(screenShaker);
         gameObjectList.add(screenFlasher);
 
         //Add all connections
@@ -161,6 +165,10 @@ public class GameContext {
 
     public ScreenFlasher getScreenFlasher() {
         return screenFlasher;
+    }
+
+    public ScreenShaker getScreenShaker() {
+        return screenShaker;
     }
 
     public GameObjectList getGameObjectList() {

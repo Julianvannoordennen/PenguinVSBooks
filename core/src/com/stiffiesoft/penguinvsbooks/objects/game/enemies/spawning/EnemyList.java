@@ -24,6 +24,10 @@ public class EnemyList implements GameObject {
         enemies.add(enemy);
     }
 
+    public ArrayList<Enemy> getArray() {
+        return enemies;
+    }
+
     public void addListener(EnemyListListener listener) {
         listeners.add(listener);
     }
