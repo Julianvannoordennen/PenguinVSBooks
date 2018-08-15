@@ -113,4 +113,9 @@ public class S {
         if (l == Language.DUTCH) return "Boemerang";
         else return "Boomerang";
     }
+
+    public static String plasmaTurret() {
+        if (l == Language.DUTCH) return "Plasma Geschuttoren";
+        else return "Plasma Turret";
+    }
 }

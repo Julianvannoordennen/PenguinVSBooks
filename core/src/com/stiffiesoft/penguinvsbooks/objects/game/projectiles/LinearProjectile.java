@@ -1,6 +1,7 @@
 package com.stiffiesoft.penguinvsbooks.objects.game.projectiles;
 
 import com.badlogic.gdx.physics.box2d.*;
+import com.stiffiesoft.penguinvsbooks.objects.game.junk.JunkFactory;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.*;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
@@ -13,12 +14,14 @@ public abstract class LinearProjectile implements Transformable, Collidable, Gam
     protected Body body;
     protected float speed;
     protected ProjectileList projectileList;
+    protected JunkFactory junkFactory;
 
     public LinearProjectile(Transform transform, GameContext context) {
 
         //Save values
         this.transform      = transform;
         this.projectileList = context.getProjectileList();
+        this.junkFactory    = context.getJunkFactory();
 
         //Set default speed
         speed               = 1000f;

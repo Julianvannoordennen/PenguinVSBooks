@@ -17,6 +17,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.Lase
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.magnet.MagnetPickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.megalife.MegaLifePickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.nuke.NukePickup;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.plasmaturret.PlasmaTurretPickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.teleporter.TeleporterPickup;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
@@ -269,6 +270,20 @@ public class PickupFactory implements EnemyListListener {
 
         //Create pickup and apply the transform send in parameter
         BoomerangPickup pickup = new BoomerangPickup(beforePickup(position), context);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new PickupBodyTask(pickup));
+
+        //Execute default tasks
+        afterPickup(pickup);
+
+        //Return to projectile
+        return pickup;
+    }
+    public PlasmaTurretPickup createPlasmaTurretPickup(Vector2 position) {
+
+        //Create pickup and apply the transform send in parameter
+        PlasmaTurretPickup pickup = new PlasmaTurretPickup(beforePickup(position), context);
 
         //Add bodytask for the projectile
         bodyFactory.addTask(new PickupBodyTask(pickup));

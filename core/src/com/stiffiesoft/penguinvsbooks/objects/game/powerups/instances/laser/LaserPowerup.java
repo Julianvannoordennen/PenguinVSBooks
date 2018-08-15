@@ -10,6 +10,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileFactory
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
+import com.stiffiesoft.penguinvsbooks.system.text.DefinedColors;
 
 public class LaserPowerup extends Powerup {
 
@@ -66,8 +67,7 @@ public class LaserPowerup extends Powerup {
         laserProjectile.setFlashSize(MathUtils.random(1f,2f), 0.25f);
 
         //Set color
-        Color[] colors = {Color.RED, Color.BLUE,Color.GREEN, Color.YELLOW, Color.WHITE, Color.CYAN, Color.CORAL, Color.LIME, Color.MAGENTA, Color.ORANGE, Color.PINK, Color.ORANGE, Color.PURPLE, Color.VIOLET};
-        laserProjectile.setColor(colors[MathUtils.random(0,colors.length - 1)]);
+        laserProjectile.setColor(DefinedColors.POWERUP_RANDOM_COLORS[MathUtils.random(0,DefinedColors.POWERUP_RANDOM_COLORS.length - 1)]);
 
         //Decide if the laser will stand still, move to the left or the right and in which speed
         boolean move = MathUtils.randomBoolean();

@@ -11,6 +11,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.Lase
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.magnet.MagnetCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.megalife.MegaLifeCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.nuke.NukeCatalogueItem;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.plasmaturret.PlasmaTurretCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.teleporter.TeleporterCatalogueItem;
 
 import java.util.ArrayList;
@@ -42,6 +43,7 @@ public class PickupCatalogue {
         pickupCatalogueItems.add(new EarthquakeCatalogueItem());
         pickupCatalogueItems.add(new NukeCatalogueItem());
         pickupCatalogueItems.add(new BoomerangCatalogueItem());
+        pickupCatalogueItems.add(new PlasmaTurretCatalogueItem());
     }
 
     private void loadGeneralData() {

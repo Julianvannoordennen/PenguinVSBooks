@@ -20,6 +20,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.katana.Kat
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.LaserBodyTask;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.LaserProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.magnet.MagnetShock;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.plasmaturret.*;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.teleporter.TeleporterExplosion;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.teleporter.TeleporterShock;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
@@ -262,5 +263,83 @@ public class ProjectileFactory {
 
         //Return explosion
         return projectile;
+    }
+    public PlasmaTurretMount createPlasmaTurretMount(Transform transform) {
+
+        //Manipulate transform
+        transform = transform.clone();
+
+        //Create and apply the transform send in parameter
+        PlasmaTurretMount projectile = new PlasmaTurretMount(transform,context);
+
+        //Add explosion to projectilelist
+        projectileList.add(projectile);
+
+        //Return explosion
+        return projectile;
+    }
+    public PlasmaTurretLaser createPlasmaTurretLaser(Transform transform) {
+
+        //Manipulate transform
+        transform = transform.clone();
+
+        //Create and apply the transform send in parameter
+        PlasmaTurretLaser projectile = new PlasmaTurretLaser(transform,context);
+
+        //Add explosion to projectilelist
+        projectileList.add(projectile);
+
+        //Return explosion
+        return projectile;
+    }
+    public PlasmaTurretProjectile createPlasmaTurretProjectile(Transform transform) {
+
+        //Manipulate transform
+        transform = transform.clone();
+
+        //Create and apply the transform send in parameter
+        PlasmaTurretProjectile projectile = new PlasmaTurretProjectile(transform,context);
+
+        //Add explosion to projectilelist
+        projectileList.add(projectile);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new PlasmaTurretBodyTask(projectile));
+
+        //Return explosion
+        return projectile;
+    }
+    public PlasmaTurretCrash createPlasmaTurretCrash(Transform transform) {
+
+        //Manipulate transform
+        transform = transform.clone();
+
+        //Create and apply the transform send in parameter
+        PlasmaTurretCrash projectile = new PlasmaTurretCrash(transform,context);
+
+        //Add explosion to projectilelist
+        projectileList.add(projectile);
+
+        //Return explosion
+        return projectile;
+    }
+    public PlasmaTurretExplosion createPlasmaTurretExplosion(Transform transform) {
+
+        //Manipulate transform
+        transform = transform.clone();
+        transform.setRotation(0);
+        transform.setScale(new Vector2(6f, 6f));
+
+        //Create and apply the transform send in parameter
+        PlasmaTurretExplosion explosion = new PlasmaTurretExplosion(transform,context);
+
+        //Add explosion to projectilelist
+        projectileList.add(explosion);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new DefaultExplosionBodyTask(explosion));
+
+        //Return explosion
+        return explosion;
     }
 }

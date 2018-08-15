@@ -6,6 +6,8 @@ import com.stiffiesoft.penguinvsbooks.objects.game.enemies.instances.DefaultBook
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bomb.BombJunkPackage;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookieJunkPackage;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.katana.KatanaJunkPackage;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.plasmaturret.PlasmaTurretJunkPackage;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.plasmaturret.PlasmaTurretProjectileJunkPackage;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.teleporter.TeleporterJunkPackage;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ExplosionJunkPackage;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
@@ -132,6 +134,34 @@ public class JunkFactory {
         transform = transform.clone();
         transform.setSize(new Vector2(C.pH() * 20f, C.pH() * 1f));
         JunkPackage junk = new KatanaJunkPackage(transform, context);
+
+        //Apply default actions on the junk
+        extractJunk(junk.getJunk());
+
+        //Return junk
+        return junk;
+    }
+    public JunkPackage createPlasmaTurretProjectileJunk(Transform transform) {
+
+        //Create junk package
+        transform = transform.clone();
+        transform.setSize(new Vector2(C.pH() * 2f, C.pH() * 2f));
+        transform.setScale(new Vector2(1,1));
+        JunkPackage junk = new PlasmaTurretProjectileJunkPackage(transform, context);
+
+        //Apply default actions on the junk
+        extractJunk(junk.getJunk());
+
+        //Return junk
+        return junk;
+    }
+    public JunkPackage createPlasmaTurretJunk(Transform transform) {
+
+        //Create junk package
+        transform = transform.clone();
+        transform.setSize(new Vector2(C.pH() * 2f, C.pH() * 2f));
+        transform.setScale(new Vector2(1,1));
+        JunkPackage junk = new PlasmaTurretJunkPackage(transform, context);
 
         //Apply default actions on the junk
         extractJunk(junk.getJunk());
