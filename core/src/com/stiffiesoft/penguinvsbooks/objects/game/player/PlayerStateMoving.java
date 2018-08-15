@@ -44,7 +44,7 @@ public class PlayerStateMoving implements PlayerState, GameObject {
         currentMovementSpeed    = defaultMovementSpeed;
 
         //Create fire rate, now the player cannot fire books every tick
-        fireRate                = 50;
+        fireRate                = 125;
         flickerRate             = 100;
         flickerOn               = true;
         flickerLength           = 3000;

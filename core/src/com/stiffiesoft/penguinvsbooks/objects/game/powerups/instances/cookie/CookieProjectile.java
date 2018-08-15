@@ -49,7 +49,7 @@ public class CookieProjectile implements Projectile, Transformable, Collidable, 
     public void render(SpriteBatch batch) {
 
         //Draw projectile sprite
-        Transform.draw(batch, A.m.get(A.cookiePickup), transform);
+        Transform.draw(batch, A.m.get(A.cookiePowerup), transform);
     }
 
     private void checkAmount() {

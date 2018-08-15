@@ -38,8 +38,8 @@ public class Game extends BaseScene {
 
         //Create some single instances
         PickupFactory pickupFactory = context.getPickupFactory();
-        pickupFactory.createPlasmaTurretPickup(new Vector2(C.sW() / 3, C.sH() / 3));
-        pickupFactory.createPlasmaTurretPickup(new Vector2(C.sW() / 6, C.sH() / 6));
+        pickupFactory.createExtraLifePickup(new Vector2(C.sW() / 3, C.sH() / 3));
+        pickupFactory.createMegaLifePickup(new Vector2(C.sW() / 6, C.sH() / 6));
         pickupFactory.createPlasmaTurretPickup(new Vector2(C.sW() / 25, C.sH() / 25));
     }
 

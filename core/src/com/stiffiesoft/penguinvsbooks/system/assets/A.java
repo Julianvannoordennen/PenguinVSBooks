@@ -22,14 +22,14 @@ public class A {
 
     //Pickups
     public static final AssetDescriptor<Texture> grenadePickup                  = new AssetDescriptor<>("sprites/game/powerups/grenade/grenade_pickup.png", Texture.class);
-    public static final AssetDescriptor<Texture> cookiePickup                   = new AssetDescriptor<>("sprites/game/powerups/cookie/cookie_pickup.png", Texture.class);
+    public static final AssetDescriptor<TextureAtlas> cookiePickup              = new AssetDescriptor<>("sprites/game/powerups/cookie/cookie_pickup.atlas", TextureAtlas.class);
     public static final AssetDescriptor<Texture> laserPickup                    = new AssetDescriptor<>("sprites/game/powerups/laser/laser_pickup.png", Texture.class);
     public static final AssetDescriptor<TextureAtlas> teleporterPickup          = new AssetDescriptor<>("sprites/game/powerups/teleporter/teleporter_pickup.atlas", TextureAtlas.class);
     public static final AssetDescriptor<TextureAtlas> magnetPickup              = new AssetDescriptor<>("sprites/game/powerups/magnet/magnet_pickup.atlas", TextureAtlas.class);
     public static final AssetDescriptor<TextureAtlas> bombPickup                = new AssetDescriptor<>("sprites/game/powerups/bomb/bomb_pickup.atlas", TextureAtlas.class);
     public static final AssetDescriptor<Texture> katanaPickup                   = new AssetDescriptor<>("sprites/game/powerups/katana/katana_pickup.png", Texture.class);
-    public static final AssetDescriptor<Texture> extraLifePickup                = new AssetDescriptor<>("sprites/game/powerups/extralife/extra_life_pickup.png", Texture.class);
-    public static final AssetDescriptor<Texture> megaLifePickup                 = new AssetDescriptor<>("sprites/game/powerups/megaLife/mega_life_pickup.png", Texture.class);
+    public static final AssetDescriptor<TextureAtlas> extraLifePickup           = new AssetDescriptor<>("sprites/game/powerups/extralife/extra_life_pickup.atlas", TextureAtlas.class);
+    public static final AssetDescriptor<TextureAtlas> megaLifePickup            = new AssetDescriptor<>("sprites/game/powerups/megaLife/mega_life_pickup.atlas", TextureAtlas.class);
     public static final AssetDescriptor<Texture> earthquakePickup               = new AssetDescriptor<>("sprites/game/powerups/earthquake/earthquake_pickup.png", Texture.class);
     public static final AssetDescriptor<Texture> nukePickup                     = new AssetDescriptor<>("sprites/game/powerups/nuke/nuke_pickup.png", Texture.class);
     public static final AssetDescriptor<TextureAtlas> boomerangPickup           = new AssetDescriptor<>("sprites/game/powerups/boomerang/boomerang_pickup.atlas", TextureAtlas.class);
@@ -37,6 +37,7 @@ public class A {
 
     //Powerups
     public static final AssetDescriptor<Texture> explosion                      = new AssetDescriptor<>("sprites/game/projectiles/explosion.png", Texture.class);
+    public static final AssetDescriptor<Texture> cookiePowerup                  = new AssetDescriptor<>("sprites/game/powerups/cookie/cookie_powerup.png", Texture.class);
     public static final AssetDescriptor<Texture> laserPowerup                   = new AssetDescriptor<>("sprites/game/powerups/laser/laser_powerup.png", Texture.class);
     public static final AssetDescriptor<TextureAtlas> teleporterShock           = new AssetDescriptor<>("sprites/game/powerups/teleporter/teleporter_shock.atlas", TextureAtlas.class);
     public static final AssetDescriptor<TextureAtlas> magnetShock               = new AssetDescriptor<>("sprites/game/powerups/magnet/magnet_shock.atlas", TextureAtlas.class);
