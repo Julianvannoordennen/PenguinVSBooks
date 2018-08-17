@@ -5,8 +5,6 @@ import com.badlogic.gdx.utils.TimeUtils;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 
-import java.util.Iterator;
-
 public class ProjectileListCleaner {
 
     private long cleanRate;
@@ -36,7 +34,7 @@ public class ProjectileListCleaner {
             updateTime();
 
             //Check each projectile
-            for (Projectile projectile : projectileList.get()) {
+            for (Projectile projectile : projectileList.getArray()) {
 
                 //Check if the projectile is not allowed to be outside of the screen
                 if (!projectile.outsideAllowed()) {

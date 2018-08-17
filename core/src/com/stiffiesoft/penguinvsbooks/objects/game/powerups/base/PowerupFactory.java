@@ -6,6 +6,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.Coo
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.earthquake.EarthquakePowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.extralife.ExtraLifePowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.grenade.GrenadePowerup;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.hacker.HackerPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.katana.KatanaPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.LaserPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.magnet.MagnetPowerup;
@@ -30,10 +31,10 @@ public class PowerupFactory {
     }
 
     /***** Create methods *****/
-    public GrenadePowerup createGrenadePowerup(Transform transform) {
+    public Powerup createGrenadePowerup(Transform transform) {
 
         //Create powerup
-        GrenadePowerup powerup = new GrenadePowerup(context, transform.clone());
+        Powerup powerup = new GrenadePowerup(context, transform.clone());
 
         //Add powerup to the list so the program can keep track of it
         powerupList.add(powerup);
@@ -41,10 +42,10 @@ public class PowerupFactory {
         //Return powerup
         return powerup;
     }
-    public CookiePowerup createCookiePowerup(Transform transform) {
+    public Powerup createCookiePowerup(Transform transform) {
 
         //Create powerup
-        CookiePowerup powerup = new CookiePowerup(context, transform.clone());
+        Powerup powerup = new CookiePowerup(context, transform.clone());
 
         //Add powerup to the list so the program can keep track of it
         powerupList.add(powerup);
@@ -52,10 +53,10 @@ public class PowerupFactory {
         //Return powerup
         return powerup;
     }
-    public LaserPowerup createLaserPowerup(Transform transform) {
+    public Powerup createLaserPowerup(Transform transform) {
 
         //Create powerup
-        LaserPowerup powerup = new LaserPowerup(context, transform.clone());
+        Powerup powerup = new LaserPowerup(context, transform.clone());
 
         //Add powerup to the list so the program can keep track of it
         powerupList.add(powerup);
@@ -63,10 +64,10 @@ public class PowerupFactory {
         //Return powerup
         return powerup;
     }
-    public TeleporterPowerup createTeleporterPowerup(Transform transform, Pickup creator) {
+    public Powerup createTeleporterPowerup(Transform transform, Pickup creator) {
 
         //Create powerup
-        TeleporterPowerup powerup = new TeleporterPowerup(context, creator, transform.clone());
+        Powerup powerup = new TeleporterPowerup(context, creator, transform.clone());
 
         //Add powerup to the list so the program can keep track of it
         powerupList.add(powerup);
@@ -74,10 +75,10 @@ public class PowerupFactory {
         //Return powerup
         return powerup;
     }
-    public MagnetPowerup createMagnetPowerup(Transform transform, Pickup creator) {
+    public Powerup createMagnetPowerup(Transform transform, Pickup creator) {
 
         //Create powerup
-        MagnetPowerup powerup = new MagnetPowerup(context, creator, transform.clone());
+        Powerup powerup = new MagnetPowerup(context, creator, transform.clone());
 
         //Add powerup to the list so the program can keep track of it
         powerupList.add(powerup);
@@ -85,10 +86,10 @@ public class PowerupFactory {
         //Return powerup
         return powerup;
     }
-    public BombPowerup createBombPowerup(Transform transform) {
+    public Powerup createBombPowerup(Transform transform) {
 
         //Create powerup
-        BombPowerup powerup = new BombPowerup(context, transform.clone());
+        Powerup powerup = new BombPowerup(context, transform.clone());
 
         //Add powerup to the list so the program can keep track of it
         powerupList.add(powerup);
@@ -96,10 +97,10 @@ public class PowerupFactory {
         //Return powerup
         return powerup;
     }
-    public KatanaPowerup createKatanaPowerup(Transform transform) {
+    public Powerup createKatanaPowerup(Transform transform) {
 
         //Create powerup
-        KatanaPowerup powerup = new KatanaPowerup(context, transform.clone());
+        Powerup powerup = new KatanaPowerup(context, transform.clone());
 
         //Add powerup to the list so the program can keep track of it
         powerupList.add(powerup);
@@ -107,10 +108,10 @@ public class PowerupFactory {
         //Return powerup
         return powerup;
     }
-    public ExtraLifePowerup createExtraLifePowerup(Transform transform) {
+    public Powerup createExtraLifePowerup(Transform transform) {
 
         //Create powerup
-        ExtraLifePowerup powerup = new ExtraLifePowerup(context, transform.clone());
+        Powerup powerup = new ExtraLifePowerup(context, transform.clone());
 
         //Add powerup to the list so the program can keep track of it
         powerupList.add(powerup);
@@ -118,10 +119,10 @@ public class PowerupFactory {
         //Return powerup
         return powerup;
     }
-    public MegaLifePowerup createMegaLifePowerup(Transform transform) {
+    public Powerup createMegaLifePowerup(Transform transform) {
 
         //Create powerup
-        MegaLifePowerup powerup = new MegaLifePowerup(context, transform.clone());
+        Powerup powerup = new MegaLifePowerup(context, transform.clone());
 
         //Add powerup to the list so the program can keep track of it
         powerupList.add(powerup);
@@ -129,10 +130,10 @@ public class PowerupFactory {
         //Return powerup
         return powerup;
     }
-    public EarthquakePowerup createEarthquakePowerup(Transform transform) {
+    public Powerup createEarthquakePowerup(Transform transform) {
 
         //Create powerup
-        EarthquakePowerup powerup = new EarthquakePowerup(context, transform.clone());
+        Powerup powerup = new EarthquakePowerup(context, transform.clone());
 
         //Add powerup to the list so the program can keep track of it
         powerupList.add(powerup);
@@ -140,10 +141,10 @@ public class PowerupFactory {
         //Return powerup
         return powerup;
     }
-    public NukePowerup createNukePowerup(Transform transform) {
+    public Powerup createNukePowerup(Transform transform) {
 
         //Create powerup
-        NukePowerup powerup = new NukePowerup(context, transform.clone());
+        Powerup powerup = new NukePowerup(context, transform.clone());
 
         //Add powerup to the list so the program can keep track of it
         powerupList.add(powerup);
@@ -151,10 +152,10 @@ public class PowerupFactory {
         //Return powerup
         return powerup;
     }
-    public BoomerangPowerup createBoomerangPowerup(Transform transform) {
+    public Powerup createBoomerangPowerup(Transform transform) {
 
         //Create powerup
-        BoomerangPowerup powerup = new BoomerangPowerup(context, transform.clone());
+        Powerup powerup = new BoomerangPowerup(context, transform.clone());
 
         //Add powerup to the list so the program can keep track of it
         powerupList.add(powerup);
@@ -162,10 +163,21 @@ public class PowerupFactory {
         //Return powerup
         return powerup;
     }
-    public PlasmaTurretPowerup createPlasmaTurretPowerup(Transform transform) {
+    public Powerup createPlasmaTurretPowerup(Transform transform) {
 
         //Create powerup
-        PlasmaTurretPowerup powerup = new PlasmaTurretPowerup(context, transform.clone());
+        Powerup powerup = new PlasmaTurretPowerup(context, transform.clone());
+
+        //Add powerup to the list so the program can keep track of it
+        powerupList.add(powerup);
+
+        //Return powerup
+        return powerup;
+    }
+    public Powerup createHackerPowerup(Transform transform) {
+
+        //Create powerup
+        Powerup powerup = new HackerPowerup(context, transform.clone());
 
         //Add powerup to the list so the program can keep track of it
         powerupList.add(powerup);

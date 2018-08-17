@@ -118,4 +118,9 @@ public class S {
         if (l == Language.DUTCH) return "Plasma Geschuttoren";
         else return "Plasma Turret";
     }
+
+    public static String hacker() {
+        if (l == Language.DUTCH) return "Hacker";
+        else return "Hacker";
+    }
 }

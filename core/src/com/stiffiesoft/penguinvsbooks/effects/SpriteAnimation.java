@@ -4,6 +4,9 @@ import com.badlogic.gdx.graphics.g2d.*;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 public class SpriteAnimation {
 
     private TextureAtlas texture;
@@ -12,18 +15,28 @@ public class SpriteAnimation {
     private float elapsedTime;
     private float width;
     private float height;
+    private float framesPerSecond;
 
-    public SpriteAnimation(TextureAtlas textureAtlas,float framesPerSecond) {
+    public SpriteAnimation(TextureAtlas textureAtlas, float framesPerSecond) {
 
         //Load textureatlas
-        texture = textureAtlas;
-        sprite = new Sprite();
+        this.framesPerSecond    = framesPerSecond;
+        this.texture            = textureAtlas;
+        this.sprite             = new Sprite();
 
         //Create animation
-        animation = new Animation(1f/framesPerSecond, texture.getRegions());
+        this.animation          = new Animation(1f/framesPerSecond, texture.getRegions());
 
         //Set time and size
-        elapsedTime = 0f;
+        this.elapsedTime        = 0f;
+    }
+
+    public void reverse() {
+
+        //Revert the regions array inside the animation
+        Object[] frames = animation.getKeyFrames();
+        Collections.reverse(Arrays.asList(frames));
+        animation = new Animation(1f/framesPerSecond, frames);
     }
 
     public void update() {

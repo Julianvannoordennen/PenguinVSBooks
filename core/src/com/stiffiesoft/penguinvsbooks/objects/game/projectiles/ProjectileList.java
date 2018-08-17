@@ -48,7 +48,7 @@ public class ProjectileList implements GameObject {
         }
     }
 
-    public ArrayList<Projectile> get() {
+    public ArrayList<Projectile> getArray() {
         return projectiles;
     }
 

@@ -12,6 +12,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.Coo
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.earthquake.EarthquakePickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.extralife.ExtraLifePickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.grenade.GrenadePickup;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.hacker.HackerPickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.katana.KatanaPickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.LaserPickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.magnet.MagnetPickup;
@@ -112,10 +113,10 @@ public class PickupFactory implements EnemyListListener {
     }
 
     /***** Create Methods *****/
-    public GrenadePickup createGrenadePickup(Vector2 position) {
+    public Pickup createGrenadePickup(Vector2 position) {
 
         //Create pickup and apply the transform send in parameter
-        GrenadePickup pickup = new GrenadePickup(beforePickup(position), context);
+        Pickup pickup = new GrenadePickup(beforePickup(position), context);
 
         //Add bodytask for the projectile
         bodyFactory.addTask(new PickupBodyTask(pickup));
@@ -126,10 +127,10 @@ public class PickupFactory implements EnemyListListener {
         //Return to projectile
         return pickup;
     }
-    public CookiePickup createCookiePickup(Vector2 position) {
+    public Pickup createCookiePickup(Vector2 position) {
 
         //Create pickup and apply the transform send in parameter
-        CookiePickup pickup = new CookiePickup(beforePickup(position), context);
+        Pickup pickup = new CookiePickup(beforePickup(position), context);
 
         //Add bodytask for the projectile
         bodyFactory.addTask(new PickupBodyTask(pickup));
@@ -140,10 +141,10 @@ public class PickupFactory implements EnemyListListener {
         //Return to projectile
         return pickup;
     }
-    public LaserPickup createLaserPickup(Vector2 position) {
+    public Pickup createLaserPickup(Vector2 position) {
 
         //Create pickup and apply the transform send in parameter
-        LaserPickup pickup = new LaserPickup(beforePickup(position), context);
+        Pickup pickup = new LaserPickup(beforePickup(position), context);
 
         //Add bodytask for the projectile
         bodyFactory.addTask(new PickupBodyTask(pickup));
@@ -154,10 +155,10 @@ public class PickupFactory implements EnemyListListener {
         //Return to projectile
         return pickup;
     }
-    public TeleporterPickup createTeleporterPickup(Vector2 position) {
+    public Pickup createTeleporterPickup(Vector2 position) {
 
         //Create pickup and apply the transform send in parameter
-        TeleporterPickup pickup = new TeleporterPickup(beforePickup(position), context);
+        Pickup pickup = new TeleporterPickup(beforePickup(position), context);
 
         //Add bodytask for the projectile
         bodyFactory.addTask(new PickupBodyTask(pickup));
@@ -168,10 +169,10 @@ public class PickupFactory implements EnemyListListener {
         //Return to projectile
         return pickup;
     }
-    public MagnetPickup createMagnetPickup(Vector2 position) {
+    public Pickup createMagnetPickup(Vector2 position) {
 
         //Create pickup and apply the transform send in parameter
-        MagnetPickup pickup = new MagnetPickup(beforePickup(position), context);
+        Pickup pickup = new MagnetPickup(beforePickup(position), context);
 
         //Add bodytask for the projectile
         bodyFactory.addTask(new PickupBodyTask(pickup));
@@ -182,10 +183,10 @@ public class PickupFactory implements EnemyListListener {
         //Return to projectile
         return pickup;
     }
-    public BombPickup createBombPickup(Vector2 position) {
+    public Pickup createBombPickup(Vector2 position) {
 
         //Create pickup and apply the transform send in parameter
-        BombPickup pickup = new BombPickup(beforePickup(position), context);
+        Pickup pickup = new BombPickup(beforePickup(position), context);
 
         //Add bodytask for the projectile
         bodyFactory.addTask(new PickupBodyTask(pickup));
@@ -196,10 +197,10 @@ public class PickupFactory implements EnemyListListener {
         //Return to projectile
         return pickup;
     }
-    public KatanaPickup createKatanaPickup(Vector2 position) {
+    public Pickup createKatanaPickup(Vector2 position) {
 
         //Create pickup and apply the transform send in parameter
-        KatanaPickup pickup = new KatanaPickup(beforePickup(position), context);
+        Pickup pickup = new KatanaPickup(beforePickup(position), context);
 
         //Add bodytask for the projectile
         bodyFactory.addTask(new PickupBodyTask(pickup));
@@ -210,10 +211,10 @@ public class PickupFactory implements EnemyListListener {
         //Return to projectile
         return pickup;
     }
-    public ExtraLifePickup createExtraLifePickup(Vector2 position) {
+    public Pickup createExtraLifePickup(Vector2 position) {
 
         //Create pickup and apply the transform send in parameter
-        ExtraLifePickup pickup = new ExtraLifePickup(beforePickup(position), context);
+        Pickup pickup = new ExtraLifePickup(beforePickup(position), context);
 
         //Add bodytask for the projectile
         bodyFactory.addTask(new PickupBodyTask(pickup));
@@ -224,10 +225,10 @@ public class PickupFactory implements EnemyListListener {
         //Return to projectile
         return pickup;
     }
-    public MegaLifePickup createMegaLifePickup(Vector2 position) {
+    public Pickup createMegaLifePickup(Vector2 position) {
 
         //Create pickup and apply the transform send in parameter
-        MegaLifePickup pickup = new MegaLifePickup(beforePickup(position), context);
+        Pickup pickup = new MegaLifePickup(beforePickup(position), context);
 
         //Add bodytask for the projectile
         bodyFactory.addTask(new PickupBodyTask(pickup));
@@ -238,10 +239,10 @@ public class PickupFactory implements EnemyListListener {
         //Return to projectile
         return pickup;
     }
-    public EarthquakePickup createEarthquakePickup(Vector2 position) {
+    public Pickup createEarthquakePickup(Vector2 position) {
 
         //Create pickup and apply the transform send in parameter
-        EarthquakePickup pickup = new EarthquakePickup(beforePickup(position), context);
+        Pickup pickup = new EarthquakePickup(beforePickup(position), context);
 
         //Add bodytask for the projectile
         bodyFactory.addTask(new PickupBodyTask(pickup));
@@ -252,10 +253,10 @@ public class PickupFactory implements EnemyListListener {
         //Return to projectile
         return pickup;
     }
-    public NukePickup createNukePickup(Vector2 position) {
+    public Pickup createNukePickup(Vector2 position) {
 
         //Create pickup and apply the transform send in parameter
-        NukePickup pickup = new NukePickup(beforePickup(position), context);
+        Pickup pickup = new NukePickup(beforePickup(position), context);
 
         //Add bodytask for the projectile
         bodyFactory.addTask(new PickupBodyTask(pickup));
@@ -266,10 +267,10 @@ public class PickupFactory implements EnemyListListener {
         //Return to projectile
         return pickup;
     }
-    public BoomerangPickup createBoomerangPickup(Vector2 position) {
+    public Pickup createBoomerangPickup(Vector2 position) {
 
         //Create pickup and apply the transform send in parameter
-        BoomerangPickup pickup = new BoomerangPickup(beforePickup(position), context);
+        Pickup pickup = new BoomerangPickup(beforePickup(position), context);
 
         //Add bodytask for the projectile
         bodyFactory.addTask(new PickupBodyTask(pickup));
@@ -280,10 +281,24 @@ public class PickupFactory implements EnemyListListener {
         //Return to projectile
         return pickup;
     }
-    public PlasmaTurretPickup createPlasmaTurretPickup(Vector2 position) {
+    public Pickup createPlasmaTurretPickup(Vector2 position) {
 
         //Create pickup and apply the transform send in parameter
-        PlasmaTurretPickup pickup = new PlasmaTurretPickup(beforePickup(position), context);
+        Pickup pickup = new PlasmaTurretPickup(beforePickup(position), context);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new PickupBodyTask(pickup));
+
+        //Execute default tasks
+        afterPickup(pickup);
+
+        //Return to projectile
+        return pickup;
+    }
+    public Pickup createHackerPickup(Vector2 position) {
+
+        //Create pickup and apply the transform send in parameter
+        Pickup pickup = new HackerPickup(beforePickup(position), context);
 
         //Add bodytask for the projectile
         bodyFactory.addTask(new PickupBodyTask(pickup));

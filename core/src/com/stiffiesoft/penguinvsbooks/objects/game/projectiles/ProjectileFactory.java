@@ -14,6 +14,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.boomerang.
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookieBodyTask;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookieProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.grenade.GrenadeExplosion;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.hacker.HackerProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.katana.KatanaBodyTask;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.katana.KatanaProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.katana.KatanaThrowProjectile;
@@ -341,5 +342,19 @@ public class ProjectileFactory {
 
         //Return explosion
         return explosion;
+    }
+    public HackerProjectile createHackerProjectile(Transform transform) {
+
+        //Manipulate transform
+        transform = transform.clone();
+
+        //Create and apply the transform send in parameter
+        HackerProjectile projectile = new HackerProjectile(transform,context);
+
+        //Add explosion to projectilelist
+        projectileList.add(projectile);
+
+        //Return explosion
+        return projectile;
     }
 }

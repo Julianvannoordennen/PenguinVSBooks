@@ -135,8 +135,8 @@ public class GameContext {
         gameObjectList.add(junkList);
         gameObjectList.add(pickupList);
         gameObjectList.add(player);
-        gameObjectList.add(projectileList);
         gameObjectList.add(enemyList);
+        gameObjectList.add(projectileList);
         gameObjectList.add(score);
         gameObjectList.add(lifes);
         gameObjectList.add(border);

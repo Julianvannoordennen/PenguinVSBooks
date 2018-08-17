@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 
-//Calc class, minimized because it will get used a lot
+//Calc class, minimized because it will getArray used a lot
 public class C {
 
     //Get whole screen width and height

@@ -34,6 +34,7 @@ public class A {
     public static final AssetDescriptor<Texture> nukePickup                     = new AssetDescriptor<>("sprites/game/powerups/nuke/nuke_pickup.png", Texture.class);
     public static final AssetDescriptor<TextureAtlas> boomerangPickup           = new AssetDescriptor<>("sprites/game/powerups/boomerang/boomerang_pickup.atlas", TextureAtlas.class);
     public static final AssetDescriptor<Texture> plasmaTurretPickup             = new AssetDescriptor<>("sprites/game/powerups/plasmaturret/plasma_turret_pickup.png", Texture.class);
+    public static final AssetDescriptor<TextureAtlas> hackerPickup              = new AssetDescriptor<>("sprites/game/powerups/hacker/hacker_pickup.atlas", TextureAtlas.class);
 
     //Powerups
     public static final AssetDescriptor<Texture> explosion                      = new AssetDescriptor<>("sprites/game/projectiles/explosion.png", Texture.class);
@@ -46,6 +47,8 @@ public class A {
     public static final AssetDescriptor<Texture> plasmaTurretPowerup            = new AssetDescriptor<>("sprites/game/powerups/plasmaturret/plasma_turret_powerup.png", Texture.class);
     public static final AssetDescriptor<Texture> plasmaTurretProjectile         = new AssetDescriptor<>("sprites/game/powerups/plasmaturret/plasma_turret_projectile.png", Texture.class);
     public static final AssetDescriptor<TextureAtlas> plasmaTurretPowerupFire   = new AssetDescriptor<>("sprites/game/powerups/plasmaturret/plasma_turret_powerup_fire.atlas", TextureAtlas.class);
+    public static final AssetDescriptor<TextureAtlas> hackerProjectile          = new AssetDescriptor<>("sprites/game/powerups/hacker/hacker_projectile.atlas", TextureAtlas.class);
+    public static final AssetDescriptor<TextureAtlas> hackerEnemy               = new AssetDescriptor<>("sprites/game/powerups/hacker/hacker_enemy.atlas", TextureAtlas.class);
 
     //Junk
     public static final AssetDescriptor<Texture> defaultBookEnemyJunk1          = new AssetDescriptor<>("sprites/game/enemies/defaultBookEnemy/default_book_enemy_junk_1.png", Texture.class);

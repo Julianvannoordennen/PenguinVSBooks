@@ -121,4 +121,8 @@ public class DefaultBookEnemy implements Transformable, Enemy, Collidable, GameO
     public void setBody(Body body) {
         this.body = body;
     }
+
+    public void setAnimation(SpriteAnimation animation) {
+        this.currentSpriteAnimation = animation;
+    }
 }
