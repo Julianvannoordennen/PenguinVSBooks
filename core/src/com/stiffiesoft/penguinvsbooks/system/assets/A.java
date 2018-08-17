@@ -35,6 +35,7 @@ public class A {
     public static final AssetDescriptor<TextureAtlas> boomerangPickup           = new AssetDescriptor<>("sprites/game/powerups/boomerang/boomerang_pickup.atlas", TextureAtlas.class);
     public static final AssetDescriptor<Texture> plasmaTurretPickup             = new AssetDescriptor<>("sprites/game/powerups/plasmaturret/plasma_turret_pickup.png", Texture.class);
     public static final AssetDescriptor<TextureAtlas> hackerPickup              = new AssetDescriptor<>("sprites/game/powerups/hacker/hacker_pickup.atlas", TextureAtlas.class);
+    public static final AssetDescriptor<TextureAtlas> dyslexiaPickup            = new AssetDescriptor<>("sprites/game/powerups/dyslexia/dyslexia_pickup.atlas", TextureAtlas.class);
 
     //Powerups
     public static final AssetDescriptor<Texture> explosion                      = new AssetDescriptor<>("sprites/game/projectiles/explosion.png", Texture.class);
@@ -49,6 +50,7 @@ public class A {
     public static final AssetDescriptor<TextureAtlas> plasmaTurretPowerupFire   = new AssetDescriptor<>("sprites/game/powerups/plasmaturret/plasma_turret_powerup_fire.atlas", TextureAtlas.class);
     public static final AssetDescriptor<TextureAtlas> hackerProjectile          = new AssetDescriptor<>("sprites/game/powerups/hacker/hacker_projectile.atlas", TextureAtlas.class);
     public static final AssetDescriptor<TextureAtlas> hackerEnemy               = new AssetDescriptor<>("sprites/game/powerups/hacker/hacker_enemy.atlas", TextureAtlas.class);
+    public static final AssetDescriptor<TextureAtlas> dyslexiaEnemy             = new AssetDescriptor<>("sprites/game/powerups/dyslexia/dyslexia_enemy.atlas", TextureAtlas.class);
 
     //Junk
     public static final AssetDescriptor<Texture> defaultBookEnemyJunk1          = new AssetDescriptor<>("sprites/game/enemies/defaultBookEnemy/default_book_enemy_junk_1.png", Texture.class);
@@ -62,6 +64,7 @@ public class A {
     public static final AssetDescriptor<Texture> plasmaTurretJunk3              = new AssetDescriptor<>("sprites/game/powerups/plasmaturret/plasma_turret_junk_3.png", Texture.class);
     public static final AssetDescriptor<Texture> plasmaTurretJunk4              = new AssetDescriptor<>("sprites/game/powerups/plasmaturret/plasma_turret_junk_4.png", Texture.class);
     public static final AssetDescriptor<Texture> plasmaTurretJunk5              = new AssetDescriptor<>("sprites/game/powerups/plasmaturret/plasma_turret_junk_5.png", Texture.class);
+    public static final AssetDescriptor<Texture> dyslexiaJunk                   = new AssetDescriptor<>("sprites/game/powerups/dyslexia/dyslexia_junk.png", Texture.class);
 
     //Effects
     public static final AssetDescriptor<Texture> screenBorder                   = new AssetDescriptor<>("effects/border_screen.png", Texture.class);

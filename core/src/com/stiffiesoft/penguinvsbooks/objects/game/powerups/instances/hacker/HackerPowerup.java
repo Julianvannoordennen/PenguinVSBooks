@@ -47,7 +47,7 @@ public class HackerPowerup  extends Powerup {
             Enemy enemy     = enemies.get(random);
 
             //Create a hack projectile and assign the enemy to it
-            HackerProjectile projectile = projectileFactory.createHackerProjectile(initial.clone());
+            HackerProjectile projectile = (HackerProjectile)projectileFactory.createHackerProjectile(initial.clone());
             projectile.setEnemy(enemy);
 
             //Decrease hack amount

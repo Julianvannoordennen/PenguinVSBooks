@@ -20,8 +20,8 @@ public class PlasmaTurretPowerup extends Powerup {
     protected void start() {
 
         //Create plasma turret
-        PlasmaTurretLaser laser = projectileFactory.createPlasmaTurretLaser(initial);
-        PlasmaTurretMount mount = projectileFactory.createPlasmaTurretMount(initial);
+        PlasmaTurretLaser laser = (PlasmaTurretLaser)projectileFactory.createPlasmaTurretLaser(initial);
+        PlasmaTurretMount mount = (PlasmaTurretMount)projectileFactory.createPlasmaTurretMount(initial);
         laser.setMount(mount);
 
         //Done, destroy the powerup

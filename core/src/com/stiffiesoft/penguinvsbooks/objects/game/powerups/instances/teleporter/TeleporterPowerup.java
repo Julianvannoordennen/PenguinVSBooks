@@ -77,7 +77,7 @@ public class TeleporterPowerup extends Powerup {
         projectileFactory.createTeleporterExplosion(chosen);
 
         //Create shock and manipulate its transform
-        TeleporterShock shock = projectileFactory.createTeleporterShock(current);
+        TeleporterShock shock = (TeleporterShock)projectileFactory.createTeleporterShock(current);
         Transform shockTransform = shock.getTransform();
         shockTransform.setRotation(C.getAngleInDegrees(currentPosition,randomPosition));
         shockTransform.setSize(new Vector2(distance, distance / 4));

@@ -23,7 +23,7 @@ public class LaserPowerup extends Powerup {
     protected void start() {
 
         //Create laser
-        LaserProjectile laserProjectile = projectileFactory.createLaserProjectile(initial);
+        LaserProjectile laserProjectile = (LaserProjectile)projectileFactory.createLaserProjectile(initial);
 
         //Vertical or horizontal
         boolean horizontal = MathUtils.randomBoolean();

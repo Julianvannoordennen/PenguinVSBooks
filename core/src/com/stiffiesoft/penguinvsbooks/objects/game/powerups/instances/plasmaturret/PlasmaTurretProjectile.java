@@ -16,7 +16,7 @@ public class PlasmaTurretProjectile extends LinearProjectile {
 
         //Use the default settings from the projectile
         super(transform, context);
-        speed               = 2000f;
+        speed               = C.pH() * 200;
     }
 
     @Override

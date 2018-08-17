@@ -123,4 +123,9 @@ public class S {
         if (l == Language.DUTCH) return "Hacker";
         else return "Hacker";
     }
+
+    public static String dyslexia() {
+        if (l == Language.DUTCH) return "Dyslexie";
+        else return "Dyslexia";
+    }
 }
