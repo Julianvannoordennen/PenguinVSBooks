@@ -11,6 +11,7 @@ import com.stiffiesoft.penguinvsbooks.scenes.menu.StartMenu;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 import com.stiffiesoft.penguinvsbooks.system.collision.Collidable;
 import com.stiffiesoft.penguinvsbooks.system.collision.CollisionTypes;
+import com.stiffiesoft.penguinvsbooks.system.rendering.DepthProfiles;
 
 import java.util.ArrayList;
 
@@ -104,5 +105,10 @@ public class Player implements Transformable, GameObject, Collidable {
 
     public void canReceiveDamage(Boolean canReceiveDamage) {
         this.canReceiveDamage = canReceiveDamage;
+    }
+
+    @Override
+    public int getDepth() {
+        return DepthProfiles.PLAYER;
     }
 }

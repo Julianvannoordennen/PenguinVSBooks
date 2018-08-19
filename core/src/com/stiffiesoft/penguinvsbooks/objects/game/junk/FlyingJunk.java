@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
+import com.stiffiesoft.penguinvsbooks.system.rendering.DepthProfiles;
 
 public class FlyingJunk extends Junk {
 
@@ -54,5 +55,10 @@ public class FlyingJunk extends Junk {
 
         //Restore color
         batch.setColor(color);
+    }
+
+    @Override
+    public int getDepth() {
+        return DepthProfiles.JUNK_FOREGROUND;
     }
 }

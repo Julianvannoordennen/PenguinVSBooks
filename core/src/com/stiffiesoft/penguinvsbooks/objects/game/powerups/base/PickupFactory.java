@@ -25,7 +25,6 @@ import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 import com.stiffiesoft.penguinvsbooks.system.collision.BodyFactory;
-import com.stiffiesoft.penguinvsbooks.system.text.DefinedColors;
 
 public class PickupFactory implements EnemyListListener {
 

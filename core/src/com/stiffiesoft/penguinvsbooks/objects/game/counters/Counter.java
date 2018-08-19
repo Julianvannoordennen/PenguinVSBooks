@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObject;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
+import com.stiffiesoft.penguinvsbooks.system.rendering.DepthProfiles;
 import com.stiffiesoft.penguinvsbooks.system.text.FontFactory;
 
 public class Counter implements GameObject {
@@ -73,5 +74,10 @@ public class Counter implements GameObject {
 
         //Dispose
         font.dispose();
+    }
+
+    @Override
+    public int getDepth() {
+        return DepthProfiles.COUNTERS;
     }
 }

@@ -7,6 +7,7 @@ import com.badlogic.gdx.utils.TimeUtils;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
+import com.stiffiesoft.penguinvsbooks.system.rendering.DepthProfiles;
 
 public class LyingJunk extends Junk {
 
@@ -95,5 +96,10 @@ public class LyingJunk extends Junk {
             //Draw texture
             Transform.draw(batch, texture, transform);
         }
+    }
+
+    @Override
+    public int getDepth() {
+        return DepthProfiles.JUNK_BACKGROUND;
     }
 }

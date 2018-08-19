@@ -8,7 +8,8 @@ import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transformable;
 import com.stiffiesoft.penguinvsbooks.system.collision.Collidable;
 import com.stiffiesoft.penguinvsbooks.system.collision.CollisionTypes;
-import com.stiffiesoft.penguinvsbooks.system.text.DefinedColors;
+import com.stiffiesoft.penguinvsbooks.system.rendering.DefinedColors;
+import com.stiffiesoft.penguinvsbooks.system.rendering.DepthProfiles;
 
 public abstract class Pickup implements Transformable, GameObject, Collidable {
 
@@ -64,5 +65,10 @@ public abstract class Pickup implements Transformable, GameObject, Collidable {
     @Override
     public Body getBody() {
         return body;
+    }
+
+    @Override
+    public int getDepth() {
+        return DepthProfiles.PICKUPS;
     }
 }

@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObject;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
+import com.stiffiesoft.penguinvsbooks.system.rendering.DepthProfiles;
 
 public class ScreenShaker implements GameObject {
 
@@ -79,5 +80,10 @@ public class ScreenShaker implements GameObject {
 
         //Show the camera
         batch.setProjectionMatrix(shakeCamera.combined);
+    }
+
+    @Override
+    public int getDepth() {
+        return DepthProfiles.INVISIBLE;
     }
 }

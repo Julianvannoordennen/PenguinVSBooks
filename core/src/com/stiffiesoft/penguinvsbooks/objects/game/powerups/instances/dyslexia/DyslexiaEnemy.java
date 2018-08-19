@@ -12,6 +12,7 @@ import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 import com.stiffiesoft.penguinvsbooks.system.collision.Collidable;
+import com.stiffiesoft.penguinvsbooks.system.rendering.DepthProfiles;
 
 public class DyslexiaEnemy extends LinearProjectile {
 
@@ -90,5 +91,10 @@ public class DyslexiaEnemy extends LinearProjectile {
     @Override
     public boolean outsideAllowed() {
         return false;
+    }
+
+    @Override
+    public int getDepth() {
+        return DepthProfiles.ENEMIES;
     }
 }

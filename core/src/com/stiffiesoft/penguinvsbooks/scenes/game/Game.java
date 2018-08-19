@@ -65,7 +65,7 @@ public class Game extends BaseScene {
 
         //Tell world how much times he need to check the collision
         context.getWorld().step(0, 0, 0);
-        debugRenderer.render(context.getWorld(), box2DCamera.combined);
+//        debugRenderer.render(context.getWorld(), box2DCamera.combined);
 
         //Check if the pause window is turned on
         if (C.cGT() == 0) {

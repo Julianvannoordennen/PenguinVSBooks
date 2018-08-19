@@ -12,6 +12,7 @@ import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transformable;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
 import com.stiffiesoft.penguinvsbooks.system.collision.Collidable;
+import com.stiffiesoft.penguinvsbooks.system.rendering.DepthProfiles;
 
 public class CookieProjectile implements Projectile, Transformable, Collidable, GameObject {
 
@@ -101,5 +102,10 @@ public class CookieProjectile implements Projectile, Transformable, Collidable, 
     @Override
     public boolean outsideAllowed() {
         return true;
+    }
+
+    @Override
+    public int getDepth() {
+        return DepthProfiles.PROJECTILES_BACKGROUND;
     }
 }

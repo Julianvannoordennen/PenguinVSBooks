@@ -13,6 +13,7 @@ import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObject;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transformable;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
+import com.stiffiesoft.penguinvsbooks.system.rendering.DepthProfiles;
 
 public class HackerProjectile implements Projectile, Transformable, GameObject {
 
@@ -112,5 +113,10 @@ public class HackerProjectile implements Projectile, Transformable, GameObject {
     @Override
     public boolean outsideAllowed() {
         return true;
+    }
+
+    @Override
+    public int getDepth() {
+        return DepthProfiles.PROJECTILES_FOREGROUND;
     }
 }

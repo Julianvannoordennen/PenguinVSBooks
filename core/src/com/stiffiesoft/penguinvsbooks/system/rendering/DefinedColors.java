@@ -1,4 +1,4 @@
-package com.stiffiesoft.penguinvsbooks.system.text;
+package com.stiffiesoft.penguinvsbooks.system.rendering;
 
 import com.badlogic.gdx.graphics.Color;
 

@@ -11,6 +11,7 @@ import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
+import com.stiffiesoft.penguinvsbooks.system.rendering.DepthProfiles;
 
 public class MagnetShock extends LinearProjectile {
 
@@ -71,5 +72,10 @@ public class MagnetShock extends LinearProjectile {
     @Override
     public boolean outsideAllowed() {
         return true;
+    }
+
+    @Override
+    public int getDepth() {
+        return DepthProfiles.PROJECTILES_FOREGROUND;
     }
 }

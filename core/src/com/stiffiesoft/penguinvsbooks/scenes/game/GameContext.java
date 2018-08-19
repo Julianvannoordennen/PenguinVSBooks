@@ -80,7 +80,7 @@ public class GameContext {
 
         /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-             ! WARNING ! - Do not edit the order of this list, prevent NULL issues - ! WARNING !
+             ! WARNING ! - Do not edit the order of this list to prevent NULL issues - ! WARNING !
 
          * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 

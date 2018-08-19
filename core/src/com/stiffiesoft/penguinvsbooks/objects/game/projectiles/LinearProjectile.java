@@ -7,6 +7,7 @@ import com.stiffiesoft.penguinvsbooks.scenes.game.utility.*;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 import com.stiffiesoft.penguinvsbooks.system.collision.Collidable;
+import com.stiffiesoft.penguinvsbooks.system.rendering.DepthProfiles;
 
 public abstract class LinearProjectile implements Transformable, Collidable, GameObject, Projectile {
 
@@ -67,5 +68,10 @@ public abstract class LinearProjectile implements Transformable, Collidable, Gam
     @Override
     public boolean outsideAllowed() {
         return true;
+    }
+
+    @Override
+    public int getDepth() {
+        return DepthProfiles.PROJECTILES_BACKGROUND;
     }
 }

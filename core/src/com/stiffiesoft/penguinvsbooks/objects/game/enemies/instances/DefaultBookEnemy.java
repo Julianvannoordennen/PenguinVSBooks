@@ -17,6 +17,7 @@ import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transformable;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
+import com.stiffiesoft.penguinvsbooks.system.rendering.DepthProfiles;
 
 public class DefaultBookEnemy implements Transformable, Enemy, Collidable, GameObject {
 
@@ -124,5 +125,10 @@ public class DefaultBookEnemy implements Transformable, Enemy, Collidable, GameO
 
     public void setAnimation(SpriteAnimation animation) {
         this.currentSpriteAnimation = animation;
+    }
+
+    @Override
+    public int getDepth() {
+        return DepthProfiles.ENEMIES;
     }
 }

@@ -15,7 +15,8 @@ import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 import com.stiffiesoft.penguinvsbooks.system.input.K;
 import com.stiffiesoft.penguinvsbooks.system.input.M;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
-import com.stiffiesoft.penguinvsbooks.system.text.DefinedColors;
+import com.stiffiesoft.penguinvsbooks.system.rendering.DefinedColors;
+import com.stiffiesoft.penguinvsbooks.system.rendering.DepthProfiles;
 
 public class PlayerStateMoving implements PlayerState, GameObject {
 
@@ -186,5 +187,8 @@ public class PlayerStateMoving implements PlayerState, GameObject {
         projectileFactory.createPlayerDamageExplosion(explosionTransform);
     }
 
-
+    @Override
+    public int getDepth() {
+        return DepthProfiles.PLAYER;
+    }
 }

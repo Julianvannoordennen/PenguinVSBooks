@@ -9,7 +9,7 @@ import com.badlogic.gdx.utils.Align;
 import com.stiffiesoft.penguinvsbooks.Main;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
-import com.stiffiesoft.penguinvsbooks.system.text.DefinedColors;
+import com.stiffiesoft.penguinvsbooks.system.rendering.DefinedColors;
 
 public class LoadScene implements Screen {
 

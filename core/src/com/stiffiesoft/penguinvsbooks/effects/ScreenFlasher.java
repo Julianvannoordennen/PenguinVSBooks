@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObject;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
+import com.stiffiesoft.penguinvsbooks.system.rendering.DepthProfiles;
 
 public class ScreenFlasher implements GameObject {
 
@@ -63,5 +64,10 @@ public class ScreenFlasher implements GameObject {
             //Restore color
             batch.setColor(color);
         }
+    }
+
+    @Override
+    public int getDepth() {
+        return DepthProfiles.SCREEN_FLASHER;
     }
 }

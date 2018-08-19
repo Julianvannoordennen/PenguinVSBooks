@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObject;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
+import com.stiffiesoft.penguinvsbooks.system.rendering.DepthProfiles;
 
 public class Border implements GameObject {
 
@@ -60,5 +61,10 @@ public class Border implements GameObject {
         sideBottom.draw(batch);
         sideLeft.draw(batch);
         sideRight.draw(batch);
+    }
+
+    @Override
+    public int getDepth() {
+        return DepthProfiles.SCREEN_BORDER;
     }
 }

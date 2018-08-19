@@ -20,6 +20,7 @@ import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 import com.stiffiesoft.penguinvsbooks.system.collision.Collidable;
 import com.stiffiesoft.penguinvsbooks.system.input.K;
 import com.stiffiesoft.penguinvsbooks.system.input.M;
+import com.stiffiesoft.penguinvsbooks.system.rendering.DepthProfiles;
 
 public class PlasmaTurretMount implements Projectile, Transformable, GameObject {
 
@@ -135,5 +136,10 @@ public class PlasmaTurretMount implements Projectile, Transformable, GameObject 
     @Override
     public boolean outsideAllowed() {
         return true;
+    }
+
+    @Override
+    public int getDepth() {
+        return DepthProfiles.PROJECTILES_BACKGROUND;
     }
 }

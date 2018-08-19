@@ -10,7 +10,7 @@ import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 
 import java.util.ArrayList;
 
-public class HackerPowerup  extends Powerup {
+public class HackerPowerup extends Powerup {
 
     private ArrayList<Projectile> projectiles;
     private ArrayList<Enemy> enemies;

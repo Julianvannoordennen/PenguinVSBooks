@@ -18,6 +18,7 @@ import com.stiffiesoft.penguinvsbooks.system.assets.A;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 import com.stiffiesoft.penguinvsbooks.system.input.K;
 import com.stiffiesoft.penguinvsbooks.system.input.M;
+import com.stiffiesoft.penguinvsbooks.system.rendering.DepthProfiles;
 
 public class PlasmaTurretCrash implements Projectile, Transformable, GameObject {
 
@@ -103,5 +104,10 @@ public class PlasmaTurretCrash implements Projectile, Transformable, GameObject 
     @Override
     public boolean outsideAllowed() {
         return true;
+    }
+
+    @Override
+    public int getDepth() {
+        return DepthProfiles.JUNK_BACKGROUND;
     }
 }

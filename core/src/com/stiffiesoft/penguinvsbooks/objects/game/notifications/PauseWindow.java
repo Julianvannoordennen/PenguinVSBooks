@@ -9,6 +9,7 @@ import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transformable;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
+import com.stiffiesoft.penguinvsbooks.system.rendering.DepthProfiles;
 
 public class PauseWindow implements GameObject, Transformable {
 
@@ -125,5 +126,10 @@ public class PauseWindow implements GameObject, Transformable {
     @Override
     public Transform getTransform() {
         return transform;
+    }
+
+    @Override
+    public int getDepth() {
+        return DepthProfiles.NOTIFICATIONS;
     }
 }

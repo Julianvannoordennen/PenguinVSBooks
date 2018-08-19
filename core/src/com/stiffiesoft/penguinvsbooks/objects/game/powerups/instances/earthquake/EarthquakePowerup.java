@@ -1,17 +1,11 @@
 package com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.earthquake;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.TimeUtils;
-import com.stiffiesoft.penguinvsbooks.effects.ScreenFlasher;
 import com.stiffiesoft.penguinvsbooks.effects.ScreenShaker;
-import com.stiffiesoft.penguinvsbooks.objects.game.counters.Lifes;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.Enemy;
-import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.EnemyList;
-import com.stiffiesoft.penguinvsbooks.objects.game.junk.JunkFactory;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.Powerup;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
-import com.stiffiesoft.penguinvsbooks.system.text.DefinedColors;
 
 import java.util.ArrayList;
 

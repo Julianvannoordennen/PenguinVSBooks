@@ -6,4 +6,5 @@ public interface GameObject {
 
     void update();
     void render(SpriteBatch batch);
+    int getDepth();
 }

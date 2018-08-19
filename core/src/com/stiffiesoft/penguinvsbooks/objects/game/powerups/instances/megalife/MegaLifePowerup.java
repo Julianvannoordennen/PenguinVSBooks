@@ -6,7 +6,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.counters.Lifes;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.Powerup;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
-import com.stiffiesoft.penguinvsbooks.system.text.DefinedColors;
+import com.stiffiesoft.penguinvsbooks.system.rendering.DefinedColors;
 
 public class MegaLifePowerup extends Powerup {
 

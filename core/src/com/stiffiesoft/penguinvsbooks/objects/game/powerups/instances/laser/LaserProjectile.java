@@ -13,6 +13,7 @@ import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 import com.stiffiesoft.penguinvsbooks.system.collision.Collidable;
+import com.stiffiesoft.penguinvsbooks.system.rendering.DepthProfiles;
 
 public class LaserProjectile extends LinearProjectile {
 
@@ -102,4 +103,9 @@ public class LaserProjectile extends LinearProjectile {
 
     @Override
     public void onCollisionEnter(Collidable other, short collisionType) {}
+
+    @Override
+    public int getDepth() {
+        return DepthProfiles.PROJECTILES_LASER;
+    }
 }
