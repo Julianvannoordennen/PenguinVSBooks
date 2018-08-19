@@ -29,16 +29,6 @@ public class ProjectileList {
         gameObjectList.add((GameObject)projectile);
     }
 
-//        //Done? Add all projectiles that have been added
-//        Iterator iterator = queuingProjectiles.iterator();
-//        while(iterator.hasNext()) {
-//
-//            //Get projectile
-//            Projectile projectile = (Projectile)iterator.next();
-//            projectiles.add(projectile);
-//            iterator.remove();
-//        }
-
     public ArrayList<Projectile> getArray() {
         return projectiles;
     }
@@ -47,6 +37,21 @@ public class ProjectileList {
 
         //Place item in special dispose list
         disposableProjectiles.add(projectile);
+    }
+
+    public ArrayList<Projectile> getByClassName(String className) {
+
+        //Keep track of a list which will contain all projectiles from this specific class
+        ArrayList<Projectile> projectilesByClass = new ArrayList<>();
+
+        //Go through each projectile to see if it is from the correct class
+        for (Projectile projectile : projectiles) {
+            if (projectile.getClass().getSimpleName().equals(className))
+                projectilesByClass.add(projectile);
+        }
+
+        //Return the list
+        return projectilesByClass;
     }
 
     public void dispose() {
@@ -63,6 +68,15 @@ public class ProjectileList {
             if (body != null) for(Fixture fixture : body.getFixtureList()) body.destroyFixture(fixture);
             projectiles.remove(projectile);
             gameObjectList.remove((GameObject)projectile);
+            iterator.remove();
+        }
+
+        //Check each projectile in the queue list
+        iterator = queuingProjectiles.iterator();
+        while(iterator.hasNext()) {
+
+            //Place in normal list
+            projectiles.add((Projectile)iterator.next());
             iterator.remove();
         }
     }

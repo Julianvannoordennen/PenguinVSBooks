@@ -6,6 +6,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.Coo
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.dyslexia.DyslexiaPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.earthquake.EarthquakePowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.extralife.ExtraLifePowerup;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.flamethrower.FlameThrowerPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.grenade.GrenadePowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.hacker.HackerPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.katana.KatanaPowerup;
@@ -190,6 +191,17 @@ public class PowerupFactory {
 
         //Create powerup
         Powerup powerup = new DyslexiaPowerup(context, transform.clone());
+
+        //Add powerup to the list so the program can keep track of it
+        powerupList.add(powerup);
+
+        //Return powerup
+        return powerup;
+    }
+    public Powerup createFlameThrowerPowerup(Transform transform) {
+
+        //Create powerup
+        Powerup powerup = new FlameThrowerPowerup(context, transform.clone());
 
         //Add powerup to the list so the program can keep track of it
         powerupList.add(powerup);

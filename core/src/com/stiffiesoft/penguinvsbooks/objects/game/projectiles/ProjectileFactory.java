@@ -15,6 +15,9 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.Coo
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookieProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.dyslexia.DyslexiaEnemyBodyTask;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.dyslexia.DyslexiaEnemy;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.flamethrower.FlameThrowerBase;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.flamethrower.FlameThrowerBodyTask;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.flamethrower.FlameThrowerProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.grenade.GrenadeExplosion;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.hacker.HackerProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.katana.KatanaBodyTask;
@@ -373,6 +376,37 @@ public class ProjectileFactory {
 
         //Add bodytask for the projectile
         bodyFactory.addTask(new DyslexiaEnemyBodyTask((Collidable)projectile));
+
+        //Return explosion
+        return projectile;
+    }
+    public Projectile createFlameThrowerBase(Transform transform) {
+
+        //Manipulate transform
+        transform = transform.clone();
+
+        //Create and apply the transform send in parameter
+        Projectile projectile = new FlameThrowerBase(transform,context);
+
+        //Add explosion to projectilelist
+        projectileList.add(projectile);
+
+        //Return explosion
+        return projectile;
+    }
+    public Projectile createFlameThrowerProjectile(Transform transform) {
+
+        //Manipulate transform
+        transform = transform.clone();
+
+        //Create and apply the transform send in parameter
+        Projectile projectile = new FlameThrowerProjectile(transform,context);
+
+        //Add explosion to projectilelist
+        projectileList.add(projectile);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new FlameThrowerBodyTask((Collidable)projectile, 0));
 
         //Return explosion
         return projectile;

@@ -36,6 +36,7 @@ public class A {
     public static final AssetDescriptor<Texture> plasmaTurretPickup             = new AssetDescriptor<>("sprites/game/powerups/plasmaturret/plasma_turret_pickup.png", Texture.class);
     public static final AssetDescriptor<TextureAtlas> hackerPickup              = new AssetDescriptor<>("sprites/game/powerups/hacker/hacker_pickup.atlas", TextureAtlas.class);
     public static final AssetDescriptor<TextureAtlas> dyslexiaPickup            = new AssetDescriptor<>("sprites/game/powerups/dyslexia/dyslexia_pickup.atlas", TextureAtlas.class);
+    public static final AssetDescriptor<TextureAtlas> flameThrowerPickup        = new AssetDescriptor<>("sprites/game/powerups/flameThrower/flame_thrower_pickup.atlas", TextureAtlas.class);
 
     //Powerups
     public static final AssetDescriptor<Texture> explosion                      = new AssetDescriptor<>("sprites/game/projectiles/explosion.png", Texture.class);

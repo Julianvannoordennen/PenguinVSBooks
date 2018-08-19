@@ -6,6 +6,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.enemies.instances.DefaultBook
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bomb.BombJunkPackage;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookieJunkPackage;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.dyslexia.DyslexiaJunkPackage;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.flamethrower.FlameThrowerJunkPackage;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.katana.KatanaJunkPackage;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.plasmaturret.PlasmaTurretJunkPackage;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.plasmaturret.PlasmaTurretProjectileJunkPackage;
@@ -177,6 +178,20 @@ public class JunkFactory {
         transform.setSize(new Vector2(C.pH() * 2f, C.pH() * 2f));
         transform.setScale(new Vector2(1,1));
         JunkPackage junk = new DyslexiaJunkPackage(transform, context);
+
+        //Apply default actions on the junk
+        extractJunk(junk.getJunk());
+
+        //Return junk
+        return junk;
+    }
+    public JunkPackage createFlameThrowerJunk(Transform transform) {
+
+        //Create junk package
+        transform = transform.clone();
+        transform.setSize(new Vector2(C.pH() * 2f, C.pH() * 2f));
+        transform.setScale(new Vector2(1,1));
+        JunkPackage junk = new FlameThrowerJunkPackage(transform, context);
 
         //Apply default actions on the junk
         extractJunk(junk.getJunk());
