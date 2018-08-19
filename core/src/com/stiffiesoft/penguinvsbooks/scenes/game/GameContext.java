@@ -97,11 +97,11 @@ public class GameContext {
         //Create all lists
         this.notificationList           = new NotificationList();
         this.gameObjectList             = new GameObjectList();
-        this.enemyList                  = new EnemyList();
-        this.junkList                   = new JunkList();
+        this.enemyList                  = new EnemyList(this);
+        this.junkList                   = new JunkList(this);
         this.powerupList                = new PowerupList();
-        this.pickupList                 = new PickupList();
-        this.projectileList             = new ProjectileList();
+        this.pickupList                 = new PickupList(this);
+        this.projectileList             = new ProjectileList(this);
         this.projectileListCleaner      = new ProjectileListCleaner(this);
 
         //Create all factories that will be used inside the game
@@ -132,11 +132,11 @@ public class GameContext {
     private void connect() {
 
         //Add all items that need to be rendered, in order from background to foreground
-        gameObjectList.add(junkList);
-        gameObjectList.add(pickupList);
+//        gameObjectList.add(junkList);
+//        gameObjectList.add(pickupList);
         gameObjectList.add(player);
-        gameObjectList.add(enemyList);
-        gameObjectList.add(projectileList);
+//        gameObjectList.add(enemyList);
+//        gameObjectList.add(projectileList);
         gameObjectList.add(score);
         gameObjectList.add(lifes);
         gameObjectList.add(border);

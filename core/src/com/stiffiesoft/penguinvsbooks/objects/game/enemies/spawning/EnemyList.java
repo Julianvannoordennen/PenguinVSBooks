@@ -4,18 +4,22 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Fixture;
+import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObject;
+import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObjectList;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class EnemyList implements GameObject {
+public class EnemyList {
 
+    private GameObjectList gameObjectList;
     private ArrayList<Enemy> enemies;
     private ArrayList<Enemy> disposableEnemies;
     private ArrayList<EnemyListListener> listeners;
 
-    public EnemyList() {
+    public EnemyList(GameContext context) {
+        gameObjectList      = context.getGameObjectList();
         enemies             = new ArrayList<>();
         disposableEnemies   = new ArrayList<>();
         listeners           = new ArrayList<>();
@@ -23,6 +27,7 @@ public class EnemyList implements GameObject {
 
     public void add(Enemy enemy) {
         enemies.add(enemy);
+        gameObjectList.add((GameObject)enemy);
     }
 
     public ArrayList<Enemy> getArray() {
@@ -31,18 +36,6 @@ public class EnemyList implements GameObject {
 
     public void addListener(EnemyListListener listener) {
         listeners.add(listener);
-    }
-
-    @Override
-    public void update() {
-        for(Enemy enemy : enemies)
-            enemy.update();
-    }
-
-    @Override
-    public void render(SpriteBatch batch) {
-        for(Enemy enemy : enemies)
-            enemy.render(batch);
     }
 
     public void destroy(Enemy enemy) {
@@ -96,6 +89,7 @@ public class EnemyList implements GameObject {
             //Destroy fixtures and object
             for(Fixture fixture : body.getFixtureList()) body.destroyFixture(fixture);
             enemies.remove(enemy);
+            gameObjectList.remove((GameObject)enemy);
             iterator.remove();
 
             //Call listeners
