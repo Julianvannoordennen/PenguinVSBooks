@@ -17,6 +17,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.nuke.NukeP
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.plasmaturret.PlasmaTurretPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.saw.SawPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.teleporter.TeleporterPowerup;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.wizard.WizardPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileFactory;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
@@ -214,6 +215,17 @@ public class PowerupFactory {
 
         //Create powerup
         Powerup powerup = new SawPowerup(context, transform.clone());
+
+        //Add powerup to the list so the program can keep track of it
+        powerupList.add(powerup);
+
+        //Return powerup
+        return powerup;
+    }
+    public Powerup createWizardPowerup(Transform transform) {
+
+        //Create powerup
+        Powerup powerup = new WizardPowerup(context, transform.clone());
 
         //Add powerup to the list so the program can keep track of it
         powerupList.add(powerup);

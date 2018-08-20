@@ -39,10 +39,10 @@ public class Game extends BaseScene {
         //Create some single instances
         PickupFactory pickupFactory = context.getPickupFactory();
         Vector2 s = new Vector2(C.sW() / 4, C.sH() / 4);
-        pickupFactory.createDyslexiaPickup(new Vector2(s.x, s.y));
-        pickupFactory.createDyslexiaPickup(new Vector2(s.x * 3, s.y));
-        pickupFactory.createDyslexiaPickup(new Vector2(s.x, s.y * 3));
-        pickupFactory.createDyslexiaPickup(new Vector2(s.x * 3, s.y * 3));
+        pickupFactory.createWizardPickup(new Vector2(s.x, s.y));
+        pickupFactory.createWizardPickup(new Vector2(s.x * 3, s.y));
+        pickupFactory.createWizardPickup(new Vector2(s.x, s.y * 3));
+        pickupFactory.createWizardPickup(new Vector2(s.x * 3, s.y * 3));
     }
 
     @Override

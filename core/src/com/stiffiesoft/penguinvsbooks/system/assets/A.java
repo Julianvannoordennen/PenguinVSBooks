@@ -38,6 +38,7 @@ public class A {
     public static final AssetDescriptor<TextureAtlas> dyslexiaPickup            = new AssetDescriptor<>("sprites/game/powerups/dyslexia/dyslexia_pickup.atlas", TextureAtlas.class);
     public static final AssetDescriptor<TextureAtlas> flameThrowerPickup        = new AssetDescriptor<>("sprites/game/powerups/flameThrower/flame_thrower_pickup.atlas", TextureAtlas.class);
     public static final AssetDescriptor<Texture> sawPickup                      = new AssetDescriptor<>("sprites/game/powerups/saw/saw_pickup.png", Texture.class);
+    public static final AssetDescriptor<TextureAtlas> wizardPickup              = new AssetDescriptor<>("sprites/game/powerups/wizard/wizard_pickup.atlas", TextureAtlas.class);
 
     //Powerups
     public static final AssetDescriptor<Texture> explosion                      = new AssetDescriptor<>("sprites/game/projectiles/explosion.png", Texture.class);
@@ -53,6 +54,15 @@ public class A {
     public static final AssetDescriptor<TextureAtlas> hackerProjectile          = new AssetDescriptor<>("sprites/game/powerups/hacker/hacker_projectile.atlas", TextureAtlas.class);
     public static final AssetDescriptor<TextureAtlas> hackerEnemy               = new AssetDescriptor<>("sprites/game/powerups/hacker/hacker_enemy.atlas", TextureAtlas.class);
     public static final AssetDescriptor<TextureAtlas> dyslexiaEnemy             = new AssetDescriptor<>("sprites/game/powerups/dyslexia/dyslexia_enemy.atlas", TextureAtlas.class);
+    public static final AssetDescriptor<TextureAtlas> wizardEnemy               = new AssetDescriptor<>("sprites/game/powerups/wizard/wizard_enemy.atlas", TextureAtlas.class);
+    public static final AssetDescriptor<Texture> wizardProjectile1              = new AssetDescriptor<>("sprites/game/powerups/wizard/wizard_projectile_1.png", Texture.class);
+    public static final AssetDescriptor<Texture> wizardProjectile2              = new AssetDescriptor<>("sprites/game/powerups/wizard/wizard_projectile_2.png", Texture.class);
+    public static final AssetDescriptor<Texture> wizardProjectile3              = new AssetDescriptor<>("sprites/game/powerups/wizard/wizard_projectile_3.png", Texture.class);
+    public static final AssetDescriptor<Texture> wizardProjectile4              = new AssetDescriptor<>("sprites/game/powerups/wizard/wizard_projectile_4.png", Texture.class);
+    public static final AssetDescriptor<Texture> wizardProjectile5              = new AssetDescriptor<>("sprites/game/powerups/wizard/wizard_projectile_5.png", Texture.class);
+    public static final AssetDescriptor<Texture> wizardProjectile6              = new AssetDescriptor<>("sprites/game/powerups/wizard/wizard_projectile_6.png", Texture.class);
+    public static final AssetDescriptor<Texture> wizardProjectile7              = new AssetDescriptor<>("sprites/game/powerups/wizard/wizard_projectile_7.png", Texture.class);
+    public static final AssetDescriptor<Texture> wizardProjectile8              = new AssetDescriptor<>("sprites/game/powerups/wizard/wizard_projectile_8.png", Texture.class);
 
     //Junk
     public static final AssetDescriptor<Texture> defaultBookEnemyJunk1          = new AssetDescriptor<>("sprites/game/enemies/defaultBookEnemy/default_book_enemy_junk_1.png", Texture.class);

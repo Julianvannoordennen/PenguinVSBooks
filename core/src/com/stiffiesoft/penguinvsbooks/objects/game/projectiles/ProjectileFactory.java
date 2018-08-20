@@ -31,6 +31,8 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.saw.SawBod
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.saw.SawProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.teleporter.TeleporterExplosion;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.teleporter.TeleporterShock;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.wizard.WizardEnemy;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.wizard.WizardProjectile;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
@@ -428,6 +430,38 @@ public class ProjectileFactory {
 
         //Add bodytask for the projectile
         bodyFactory.addTask(new SawBodyTask((Collidable)projectile));
+
+        //Return explosion
+        return projectile;
+    }
+    public Projectile createWizardEnemy(Transform transform) {
+
+        //Manipulate transform
+        transform = transform.clone();
+
+        //Create and apply the transform send in parameter
+        Projectile projectile = new WizardEnemy(transform,context);
+
+        //Add explosion to projectilelist
+        projectileList.add(projectile);
+
+        //Return explosion
+        return projectile;
+    }
+    public Projectile createWizardProjectile(Transform transform) {
+
+        //Manipulate transform
+        transform = transform.clone();
+        transform.setScale(new Vector2(0.5f, 0.5f));
+
+        //Create and apply the transform send in parameter
+        Projectile projectile = new WizardProjectile(transform,context);
+
+        //Add explosion to projectilelist
+        projectileList.add(projectile);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new PlasmaTurretBodyTask((Collidable)projectile));
 
         //Return explosion
         return projectile;

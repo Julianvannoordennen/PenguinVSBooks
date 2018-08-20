@@ -17,6 +17,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.nuke.NukeC
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.plasmaturret.PlasmaTurretCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.saw.SawCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.teleporter.TeleporterCatalogueItem;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.wizard.WizardCatalogueItem;
 
 import java.util.ArrayList;
 
@@ -52,6 +53,7 @@ public class PickupCatalogue {
         pickupCatalogueItems.add(new DyslexiaCatalogueItem());
         pickupCatalogueItems.add(new FlameThrowerCatalogueItem());
         pickupCatalogueItems.add(new SawCatalogueItem());
+        pickupCatalogueItems.add(new WizardCatalogueItem());
     }
 
     private void loadGeneralData() {
