@@ -97,6 +97,15 @@ public class PickupFactory implements EnemyListListener {
         pickupList.add(pickup);
     }
 
+    public void forceSpawn(Vector2 position) {
+
+        //Update time
+        updateTime();
+
+        //Spawn a random pickup
+        spawnRandom(position);
+    }
+
     @Override
     public void onEnemyDisposed(Enemy enemy) {
 
@@ -104,14 +113,7 @@ public class PickupFactory implements EnemyListListener {
         Vector2 position = enemy.getTransform().getPosition();
 
         //Check if the factory is going to create a pickup
-        if (willSpawn(position)) {
-
-            //Update time
-            updateTime();
-
-            //Spawn a random pickup
-            spawnRandom(position);
-        }
+        if (willSpawn(position)) forceSpawn(position);
     }
 
     /***** Create Methods *****/

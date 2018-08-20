@@ -2,6 +2,7 @@ package com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.dyslexia;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.stiffiesoft.penguinvsbooks.effects.SpriteAnimation;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.Enemy;
@@ -21,30 +22,36 @@ public class DyslexiaEnemy extends LinearProjectile {
     private EnemyList enemyList;
     private int health;
     private Transform playerTransform;
+    private Vector2 playerDifference;
 
     public DyslexiaEnemy(Transform transform, GameContext context) {
 
         //Use the default settings from the projectile
         super(transform, context);
-        animation       = new SpriteAnimation(A.m.get(A.dyslexiaEnemy),20);
-        speed           = C.pH() * 10;
-        enemyList       = context.getEnemyList();
-        nearestEnemy    = enemyList.getNearest(transform.getPosition());
-        health          = 150;
-        playerTransform = context.getPlayer().getTransform();
+        animation           = new SpriteAnimation(A.m.get(A.dyslexiaEnemy),20);
+        speed               = C.pH() * 10;
+        enemyList           = context.getEnemyList();
+        nearestEnemy        = enemyList.getNearest(transform.getPosition());
+        health              = 150;
+        playerTransform     = context.getPlayer().getTransform();
+        playerDifference    = new Vector2(MathUtils.random(-C.pW() * 32, C.pW() * 32), MathUtils.random(-C.pH() * 18, C.pH() * 18));
         setMovementAngle();
     }
 
     private void setMovementAngle() {
 
         //Check if the enemy still exists
-        if (!enemyList.getArray().contains(nearestEnemy))
+        if (!enemyList.getArray().contains(nearestEnemy)) {
 
             //Get the nearest enemy
-            nearestEnemy = enemyList.getNearest(playerTransform.getPosition());
+            Vector2 searchPosition = new Vector2(playerDifference);
+            searchPosition.add(playerTransform.getPosition());
+            nearestEnemy = enemyList.getNearest(searchPosition);
 
-        //Move towards the enemy
-        transform.setMovementAngle(C.getAngleInRadians(transform.getPositionCenter(), nearestEnemy.getTransform().getPosition()));
+        } else
+
+            //Move towards the enemy
+            transform.setMovementAngle(C.getAngleInRadians(transform.getPositionCenter(), nearestEnemy.getTransform().getPosition()));
     }
 
     @Override
@@ -90,7 +97,7 @@ public class DyslexiaEnemy extends LinearProjectile {
 
     @Override
     public boolean outsideAllowed() {
-        return false;
+        return true;
     }
 
     @Override
