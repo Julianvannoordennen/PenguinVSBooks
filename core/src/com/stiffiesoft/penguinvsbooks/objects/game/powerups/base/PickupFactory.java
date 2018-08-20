@@ -21,6 +21,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.magnet.Mag
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.megalife.MegaLifePickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.nuke.NukePickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.plasmaturret.PlasmaTurretPickup;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.saw.SawPickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.teleporter.TeleporterPickup;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
@@ -328,6 +329,20 @@ public class PickupFactory implements EnemyListListener {
 
         //Create pickup and apply the transform send in parameter
         Pickup pickup = new FlameThrowerPickup(beforePickup(position), context);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new PickupBodyTask(pickup));
+
+        //Execute default tasks
+        afterPickup(pickup);
+
+        //Return to projectile
+        return pickup;
+    }
+    public Pickup createSawPickup(Vector2 position) {
+
+        //Create pickup and apply the transform send in parameter
+        Pickup pickup = new SawPickup(beforePickup(position), context);
 
         //Add bodytask for the projectile
         bodyFactory.addTask(new PickupBodyTask(pickup));

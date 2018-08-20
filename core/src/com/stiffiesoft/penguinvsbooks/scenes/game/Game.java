@@ -38,9 +38,9 @@ public class Game extends BaseScene {
 
         //Create some single instances
         PickupFactory pickupFactory = context.getPickupFactory();
-        pickupFactory.createFlameThrowerPickup(new Vector2(C.sW() / 3, C.sH() / 3));
-        pickupFactory.createFlameThrowerPickup(new Vector2(C.sW() / 6, C.sH() / 6));
-        pickupFactory.createFlameThrowerPickup(new Vector2(C.sW() / 25, C.sH() / 25));
+        pickupFactory.createSawPickup(new Vector2(C.sW() / 3, C.sH() / 3));
+        pickupFactory.createSawPickup(new Vector2(C.sW() / 6, C.sH() / 6));
+        pickupFactory.createSawPickup(new Vector2(C.sW() / 25, C.sH() / 25));
     }
 
     @Override
@@ -65,7 +65,7 @@ public class Game extends BaseScene {
 
         //Tell world how much times he need to check the collision
         context.getWorld().step(0, 0, 0);
-//        debugRenderer.render(context.getWorld(), box2DCamera.combined);
+        debugRenderer.render(context.getWorld(), box2DCamera.combined);
 
         //Check if the pause window is turned on
         if (C.cGT() == 0) {

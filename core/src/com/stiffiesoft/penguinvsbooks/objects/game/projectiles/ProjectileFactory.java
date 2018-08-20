@@ -27,10 +27,13 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.Lase
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.LaserProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.magnet.MagnetShock;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.plasmaturret.*;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.saw.SawBodyTask;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.saw.SawProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.teleporter.TeleporterExplosion;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.teleporter.TeleporterShock;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
+import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 import com.stiffiesoft.penguinvsbooks.system.collision.BodyFactory;
 import com.stiffiesoft.penguinvsbooks.system.collision.Collidable;
 
@@ -407,6 +410,24 @@ public class ProjectileFactory {
 
         //Add bodytask for the projectile
         bodyFactory.addTask(new FlameThrowerBodyTask((Collidable)projectile, 0));
+
+        //Return explosion
+        return projectile;
+    }
+    public Projectile createSawProjectile(Transform transform) {
+
+        //Manipulate transform
+        transform = transform.clone();
+        transform.setScale(new Vector2(2,2));
+
+        //Create and apply the transform send in parameter
+        Projectile projectile = new SawProjectile(transform,context);
+
+        //Add explosion to projectilelist
+        projectileList.add(projectile);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new SawBodyTask((Collidable)projectile));
 
         //Return explosion
         return projectile;

@@ -10,6 +10,8 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.flamethrow
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.katana.KatanaJunkPackage;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.plasmaturret.PlasmaTurretJunkPackage;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.plasmaturret.PlasmaTurretProjectileJunkPackage;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.saw.SawHitJunkPackage;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.saw.SawJunkPackage;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.teleporter.TeleporterJunkPackage;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ExplosionJunkPackage;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
@@ -192,6 +194,31 @@ public class JunkFactory {
         transform.setSize(new Vector2(C.pH() * 2f, C.pH() * 2f));
         transform.setScale(new Vector2(1,1));
         JunkPackage junk = new FlameThrowerJunkPackage(transform, context);
+
+        //Apply default actions on the junk
+        extractJunk(junk.getJunk());
+
+        //Return junk
+        return junk;
+    }
+    public JunkPackage createSawHitJunk(Transform transform) {
+
+        //Create junk package
+        transform = transform.clone();;
+        JunkPackage junk = new SawHitJunkPackage(transform, context);
+
+        //Apply default actions on the junk
+        extractJunk(junk.getJunk());
+
+        //Return junk
+        return junk;
+    }
+    public JunkPackage createSawJunk(Transform transform) {
+
+        //Create junk package
+        transform = transform.clone();
+        transform.setScale(new Vector2(0.33f, 0.33f));
+        JunkPackage junk = new SawJunkPackage(transform, context);
 
         //Apply default actions on the junk
         extractJunk(junk.getJunk());

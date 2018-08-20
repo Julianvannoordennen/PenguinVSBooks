@@ -133,4 +133,9 @@ public class S {
         if (l == Language.DUTCH) return "Vlammenwerper";
         else return "Flamethrower";
     }
+
+    public static String saw() {
+        if (l == Language.DUTCH) return "Zaag";
+        else return "Saw";
+    }
 }
