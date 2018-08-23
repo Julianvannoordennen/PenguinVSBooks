@@ -1,7 +1,9 @@
 package com.stiffiesoft.penguinvsbooks.objects.game.powerups.base;
 
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bomb.BombCatalogueItem;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bombbook.BombBookCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.boomerang.BoomerangCatalogueItem;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.clover.CloverCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookieCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.dyslexia.DyslexiaCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.earthquake.EarthquakeCatalogueItem;
@@ -54,6 +56,8 @@ public class PickupCatalogue {
         pickupCatalogueItems.add(new FlameThrowerCatalogueItem());
         pickupCatalogueItems.add(new SawCatalogueItem());
         pickupCatalogueItems.add(new WizardCatalogueItem());
+        pickupCatalogueItems.add(new CloverCatalogueItem());
+        pickupCatalogueItems.add(new BombBookCatalogueItem());
     }
 
     private void loadGeneralData() {

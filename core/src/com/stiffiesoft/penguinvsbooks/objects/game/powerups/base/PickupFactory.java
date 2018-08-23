@@ -7,7 +7,9 @@ import com.stiffiesoft.penguinvsbooks.effects.ScreenFlasher;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.Enemy;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.EnemyListListener;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bomb.BombPickup;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bombbook.BombBookPickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.boomerang.BoomerangPickup;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.clover.CloverPickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookiePickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.dyslexia.DyslexiaPickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.earthquake.EarthquakePickup;
@@ -360,6 +362,34 @@ public class PickupFactory implements EnemyListListener {
 
         //Create pickup and apply the transform send in parameter
         Pickup pickup = new WizardPickup(beforePickup(position), context);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new PickupBodyTask(pickup));
+
+        //Execute default tasks
+        afterPickup(pickup);
+
+        //Return to projectile
+        return pickup;
+    }
+    public Pickup createCloverPickup(Vector2 position) {
+
+        //Create pickup and apply the transform send in parameter
+        Pickup pickup = new CloverPickup(beforePickup(position), context);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new PickupBodyTask(pickup));
+
+        //Execute default tasks
+        afterPickup(pickup);
+
+        //Return to projectile
+        return pickup;
+    }
+    public Pickup createBombBookPickup(Vector2 position) {
+
+        //Create pickup and apply the transform send in parameter
+        Pickup pickup = new BombBookPickup(beforePickup(position), context);
 
         //Add bodytask for the projectile
         bodyFactory.addTask(new PickupBodyTask(pickup));

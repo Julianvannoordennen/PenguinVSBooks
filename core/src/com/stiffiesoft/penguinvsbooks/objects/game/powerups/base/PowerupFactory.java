@@ -1,7 +1,9 @@
 package com.stiffiesoft.penguinvsbooks.objects.game.powerups.base;
 
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bomb.BombPowerup;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bombbook.BombBookPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.boomerang.BoomerangPowerup;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.clover.CloverPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookiePowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.dyslexia.DyslexiaPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.earthquake.EarthquakePowerup;
@@ -226,6 +228,28 @@ public class PowerupFactory {
 
         //Create powerup
         Powerup powerup = new WizardPowerup(context, transform.clone());
+
+        //Add powerup to the list so the program can keep track of it
+        powerupList.add(powerup);
+
+        //Return powerup
+        return powerup;
+    }
+    public Powerup createCloverPowerup(Transform transform) {
+
+        //Create powerup
+        Powerup powerup = new CloverPowerup(context, transform.clone());
+
+        //Add powerup to the list so the program can keep track of it
+        powerupList.add(powerup);
+
+        //Return powerup
+        return powerup;
+    }
+    public Powerup createBombBookPowerup(Transform transform) {
+
+        //Create powerup
+        Powerup powerup = new BombBookPowerup(context, transform.clone());
 
         //Add powerup to the list so the program can keep track of it
         powerupList.add(powerup);

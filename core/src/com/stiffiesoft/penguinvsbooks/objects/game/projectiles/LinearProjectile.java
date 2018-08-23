@@ -23,6 +23,7 @@ public abstract class LinearProjectile implements Transformable, Collidable, Gam
         this.transform      = transform;
         this.projectileList = context.getProjectileList();
         this.junkFactory    = context.getJunkFactory();
+        this.body           = null;
 
         //Set default speed
         speed               = 1000f;

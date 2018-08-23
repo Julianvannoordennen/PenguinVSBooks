@@ -39,6 +39,8 @@ public class A {
     public static final AssetDescriptor<TextureAtlas> flameThrowerPickup        = new AssetDescriptor<>("sprites/game/powerups/flameThrower/flame_thrower_pickup.atlas", TextureAtlas.class);
     public static final AssetDescriptor<Texture> sawPickup                      = new AssetDescriptor<>("sprites/game/powerups/saw/saw_pickup.png", Texture.class);
     public static final AssetDescriptor<TextureAtlas> wizardPickup              = new AssetDescriptor<>("sprites/game/powerups/wizard/wizard_pickup.atlas", TextureAtlas.class);
+    public static final AssetDescriptor<TextureAtlas> cloverPickup              = new AssetDescriptor<>("sprites/game/powerups/clover/clover_pickup.atlas", TextureAtlas.class);
+    public static final AssetDescriptor<TextureAtlas> bombBookPickup            = new AssetDescriptor<>("sprites/game/powerups/bombbook/bomb_book_pickup.atlas", TextureAtlas.class);
 
     //Powerups
     public static final AssetDescriptor<Texture> explosion                      = new AssetDescriptor<>("sprites/game/projectiles/explosion.png", Texture.class);
@@ -63,6 +65,8 @@ public class A {
     public static final AssetDescriptor<Texture> wizardProjectile6              = new AssetDescriptor<>("sprites/game/powerups/wizard/wizard_projectile_6.png", Texture.class);
     public static final AssetDescriptor<Texture> wizardProjectile7              = new AssetDescriptor<>("sprites/game/powerups/wizard/wizard_projectile_7.png", Texture.class);
     public static final AssetDescriptor<Texture> wizardProjectile8              = new AssetDescriptor<>("sprites/game/powerups/wizard/wizard_projectile_8.png", Texture.class);
+    public static final AssetDescriptor<TextureAtlas> bombBookEnemy             = new AssetDescriptor<>("sprites/game/powerups/bombbook/bomb_book_enemy.atlas", TextureAtlas.class);
+    public static final AssetDescriptor<Texture> bombBookProjectile             = new AssetDescriptor<>("sprites/game/powerups/bombbook/bomb_book_projectile.png", Texture.class);
 
     //Junk
     public static final AssetDescriptor<Texture> defaultBookEnemyJunk1          = new AssetDescriptor<>("sprites/game/enemies/defaultBookEnemy/default_book_enemy_junk_1.png", Texture.class);
@@ -79,6 +83,7 @@ public class A {
     public static final AssetDescriptor<Texture> dyslexiaJunk                   = new AssetDescriptor<>("sprites/game/powerups/dyslexia/dyslexia_junk.png", Texture.class);
     public static final AssetDescriptor<Texture> sawJunk1                       = new AssetDescriptor<>("sprites/game/powerups/saw/saw_junk_1.png", Texture.class);
     public static final AssetDescriptor<Texture> sawJunk2                       = new AssetDescriptor<>("sprites/game/powerups/saw/saw_junk_2.png", Texture.class);
+    public static final AssetDescriptor<Texture> cloverJunk                     = new AssetDescriptor<>("sprites/game/powerups/clover/clover_junk.png", Texture.class);
 
     //Effects
     public static final AssetDescriptor<Texture> screenBorder                   = new AssetDescriptor<>("effects/border_screen.png", Texture.class);

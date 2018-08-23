@@ -12,7 +12,7 @@ public class Lifes extends Counter implements PlayerListener {
 
     public Lifes(GameContext context) {
         super(context);
-        value = 43242;
+        value = 5;
     }
 
     @Override

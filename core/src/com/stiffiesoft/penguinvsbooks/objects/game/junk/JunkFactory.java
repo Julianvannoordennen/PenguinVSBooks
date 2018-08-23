@@ -4,6 +4,8 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.instances.DefaultBookEnemyJunkPackage;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bomb.BombJunkPackage;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bombbook.BombBookProjectileJunkPackage;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.clover.CloverJunkPackage;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookieJunkPackage;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.dyslexia.DyslexiaJunkPackage;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.flamethrower.FlameThrowerJunkPackage;
@@ -219,6 +221,32 @@ public class JunkFactory {
         transform = transform.clone();
         transform.setScale(new Vector2(0.33f, 0.33f));
         JunkPackage junk = new SawJunkPackage(transform, context);
+
+        //Apply default actions on the junk
+        extractJunk(junk.getJunk());
+
+        //Return junk
+        return junk;
+    }
+    public JunkPackage createCloverJunk(Transform transform) {
+
+        //Create junk package
+        transform = transform.clone();
+        transform.setScale(new Vector2(0.33f, 0.33f));
+        JunkPackage junk = new CloverJunkPackage(transform, context);
+
+        //Apply default actions on the junk
+        extractJunk(junk.getJunk());
+
+        //Return junk
+        return junk;
+    }
+    public JunkPackage createBombBookProjectileJunk(Transform transform) {
+
+        //Create junk package
+        transform = transform.clone();
+        transform.setScale(new Vector2(0.33f, 0.33f));
+        JunkPackage junk = new BombBookProjectileJunkPackage(transform, context);
 
         //Apply default actions on the junk
         extractJunk(junk.getJunk());

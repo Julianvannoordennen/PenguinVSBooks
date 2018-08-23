@@ -29,7 +29,6 @@ public class PowerupList {
     }
 
     public void update() {
-
         //Update each powerup
         for(Powerup powerup : powerups)
             powerup.update();

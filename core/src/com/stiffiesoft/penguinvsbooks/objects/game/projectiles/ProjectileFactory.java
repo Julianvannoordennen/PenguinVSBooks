@@ -9,6 +9,9 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.Pickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bomb.BombExplosion;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bomb.BombProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bomb.BombProjectileBodyTask;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bombbook.BombBookEnemy;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bombbook.BombBookExplosion;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bombbook.BombBookProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.boomerang.BoomerangBodyTask;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.boomerang.BoomerangProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookieBodyTask;
@@ -43,13 +46,11 @@ public class ProjectileFactory {
 
     private ProjectileList projectileList;
     private BodyFactory bodyFactory;
-    private ScreenFlasher screenFlasher;
     private GameContext context;
 
     public ProjectileFactory(GameContext context) {
         this.projectileList = context.getProjectileList();
         this.bodyFactory    = context.getBodyFactory();
-        this.screenFlasher  = context.getScreenFlasher();
         this.context        = context;
     }
 
@@ -465,5 +466,52 @@ public class ProjectileFactory {
 
         //Return explosion
         return projectile;
+    }
+    public Projectile createBombBookEnemy(Transform transform) {
+
+        //Manipulate transform
+        transform = transform.clone();
+
+        //Create and apply the transform send in parameter
+        Projectile projectile = new BombBookEnemy(transform,context);
+
+        //Add explosion to projectilelist
+        projectileList.add(projectile);
+
+        //Return explosion
+        return projectile;
+    }
+    public Projectile createBombBookProjectile(Transform transform) {
+
+        //Manipulate transform
+        transform = transform.clone();
+
+        //Create and apply the transform send in parameter
+        Projectile projectile = new BombBookProjectile(transform,context);
+
+        //Add explosion to projectilelist
+        projectileList.add(projectile);
+
+        //Return explosion
+        return projectile;
+    }
+    public Projectile createBombBookExplosion(Transform transform) {
+
+        //Manipulate transform
+        transform = transform.clone();
+        transform.setRotation(0);
+        transform.setScale(new Vector2(12f, 12f));
+
+        //Create and apply the transform send in parameter
+        Projectile explosion = new BombBookExplosion(transform,context);
+
+        //Add explosion to projectilelist
+        projectileList.add(explosion);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new DefaultExplosionBodyTask((Collidable)explosion));
+
+        //Return explosion
+        return explosion;
     }
 }

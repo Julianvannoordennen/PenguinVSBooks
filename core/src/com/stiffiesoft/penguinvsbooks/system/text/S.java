@@ -119,4 +119,12 @@ public class S {
         if (l == Language.DUTCH) return "Tovenaar";
         else return "Wizard";
     }
+    public static String clover() {
+        if (l == Language.DUTCH) return "Klavertje vier";
+        else return "Clover";
+    }
+    public static String bombBook() {
+        if (l == Language.DUTCH) return "Bom boek";
+        else return "Bomb book";
+    }
 }

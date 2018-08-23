@@ -58,7 +58,6 @@ public class WizardEnemy extends LinearProjectile {
         targetPosition = new Vector2(newPosition);
 
         //Move towards the enemy
-        transform.setMovementAngle(C.getAngleInRadians(transform.getPositionCenter(), targetPosition));
         speed = defaultSpeed;
     }
 
@@ -67,9 +66,10 @@ public class WizardEnemy extends LinearProjectile {
 
         //Update the animation
         animation.update();
+        transform.setMovementAngle(C.getAngleInRadians(transform.getPositionCenter(), targetPosition));
 
         //Check distance between wizard and target
-        if (targetPosition.dst(transform.getPosition()) < C.pW() * 5) {
+        if (targetPosition.dst(transform.getPositionCenter()) < C.pW() * 5) {
 
             //No speed
             speed = 0;
