@@ -32,7 +32,7 @@ public class GameContext {
     //Main
     private Main main;
 
-    //Collision instances
+    //Collision normal
     private World world;
 
     //Effects
@@ -84,7 +84,7 @@ public class GameContext {
 
          * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-        //Create priority instances
+        //Create priority normal
         this.main                       = main;
         this.world                      = new World(new Vector2(0,0),true);
         this.pickupCatalogue            = main.getPickupCatalogue();

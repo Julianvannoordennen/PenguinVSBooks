@@ -36,7 +36,7 @@ public class Game extends BaseScene {
         box2DCamera.position.set(C.sW() / 2, C.sH() / 2, 0);
         debugRenderer = new Box2DDebugRenderer();
 
-        //Create some single instances
+        //Create some single normal
         PickupFactory pickupFactory = context.getPickupFactory();
         Vector2 s = new Vector2(C.sW() / 4, C.sH() / 4);
         pickupFactory.forceSpawn(new Vector2(s.x, s.y));

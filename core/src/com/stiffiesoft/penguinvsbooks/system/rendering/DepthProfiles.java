@@ -6,8 +6,8 @@ public class DepthProfiles {
 
         Depth profiles
 
-        0       = more to the background (And will likely be covered by another object
-        10000   = more to the foreground (And will likely not be covered by another object
+        0       = more to the background (And will likely be covered by another object)
+        10000   = more to the foreground (And will likely not be covered by another object)
 
      */
 
@@ -17,7 +17,7 @@ public class DepthProfiles {
     public static final int PICKUPS = 100;
     public static final int PROJECTILES_BACKGROUND = 200;
     public static final int PLAYER = 300;
-    public static final int ENEMIES = 300;
+    public static final int ENEMIES = 400;
     public static final int JUNK_FOREGROUND = 500;
     public static final int PROJECTILES_FOREGROUND = 600;
     public static final int PROJECTILES_LASER = 700;        //Laser should be above all other foreground projectiles

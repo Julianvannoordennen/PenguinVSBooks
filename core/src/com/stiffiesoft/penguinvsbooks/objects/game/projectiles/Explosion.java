@@ -68,7 +68,7 @@ public class Explosion implements GameObject, Projectile, Collidable {
 
     protected void checkScale() {
 
-        //Destroy if too small
+        //Destroy if too normal
         if (transform.getXScale() <= 0.01f) {
 
             //Remove from the projectile list

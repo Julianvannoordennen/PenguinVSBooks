@@ -1,26 +1,26 @@
 package com.stiffiesoft.penguinvsbooks.objects.game.powerups.base;
 
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bomb.BombCatalogueItem;
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.bombbook.BombBookCatalogueItem;
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.boomerang.BoomerangCatalogueItem;
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.clover.CloverCatalogueItem;
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.cookie.CookieCatalogueItem;
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.dyslexia.DyslexiaCatalogueItem;
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.earthquake.EarthquakeCatalogueItem;
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.extralife.ExtraLifeCatalogueItem;
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.flamethrower.FlameThrowerCatalogueItem;
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.grenade.GrenadeCatalogueItem;
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.hacker.HackerCatalogueItem;
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.helpingbook.HelpingBookCatalogueItem;
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.katana.KatanaCatalogueItem;
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.LaserCatalogueItem;
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.magnet.MagnetCatalogueItem;
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.megalife.MegaLifeCatalogueItem;
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.nuke.NukeCatalogueItem;
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.plasmaturret.PlasmaTurretCatalogueItem;
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.saw.SawCatalogueItem;
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.teleporter.TeleporterCatalogueItem;
-import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.wizard.WizardCatalogueItem;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.bomb.BombCatalogueItem;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.bombbook.BombBookCatalogueItem;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.boomerang.BoomerangCatalogueItem;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.clover.CloverCatalogueItem;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.cookie.CookieCatalogueItem;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.dyslexia.DyslexiaCatalogueItem;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.earthquake.EarthquakeCatalogueItem;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.extralife.ExtraLifeCatalogueItem;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.flamethrower.FlameThrowerCatalogueItem;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.grenade.GrenadeCatalogueItem;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.hacker.HackerCatalogueItem;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.helpingbook.HelpingBookCatalogueItem;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.katana.KatanaCatalogueItem;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.laser.LaserCatalogueItem;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.magnet.MagnetCatalogueItem;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.megalife.MegaLifeCatalogueItem;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.nuke.NukeCatalogueItem;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.plasmaturret.PlasmaTurretCatalogueItem;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.saw.SawCatalogueItem;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.teleporter.TeleporterCatalogueItem;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.wizard.WizardCatalogueItem;
 
 import java.util.ArrayList;
 
