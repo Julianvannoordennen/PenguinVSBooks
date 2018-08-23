@@ -17,6 +17,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.extralife.
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.flamethrower.FlameThrowerPickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.grenade.GrenadePickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.hacker.HackerPickup;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.helpingbook.HelpingBookPickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.katana.KatanaPickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.LaserPickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.magnet.MagnetPickup;
@@ -390,6 +391,20 @@ public class PickupFactory implements EnemyListListener {
 
         //Create pickup and apply the transform send in parameter
         Pickup pickup = new BombBookPickup(beforePickup(position), context);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new PickupBodyTask(pickup));
+
+        //Execute default tasks
+        afterPickup(pickup);
+
+        //Return to projectile
+        return pickup;
+    }
+    public Pickup createHelpingBookPickup(Vector2 position) {
+
+        //Create pickup and apply the transform send in parameter
+        Pickup pickup = new HelpingBookPickup(beforePickup(position), context);
 
         //Add bodytask for the projectile
         bodyFactory.addTask(new PickupBodyTask(pickup));

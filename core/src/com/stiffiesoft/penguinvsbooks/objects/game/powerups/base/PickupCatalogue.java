@@ -11,6 +11,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.extralife.
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.flamethrower.FlameThrowerCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.grenade.GrenadeCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.hacker.HackerCatalogueItem;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.helpingbook.HelpingBookCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.katana.KatanaCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.LaserCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.magnet.MagnetCatalogueItem;
@@ -58,6 +59,7 @@ public class PickupCatalogue {
         pickupCatalogueItems.add(new WizardCatalogueItem());
         pickupCatalogueItems.add(new CloverCatalogueItem());
         pickupCatalogueItems.add(new BombBookCatalogueItem());
+        pickupCatalogueItems.add(new HelpingBookCatalogueItem());
     }
 
     private void loadGeneralData() {

@@ -23,6 +23,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.flamethrow
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.flamethrower.FlameThrowerProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.grenade.GrenadeExplosion;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.hacker.HackerProjectile;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.helpingbook.HelpingBookEnemy;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.katana.KatanaBodyTask;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.katana.KatanaProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.katana.KatanaThrowProjectile;
@@ -513,5 +514,19 @@ public class ProjectileFactory {
 
         //Return explosion
         return explosion;
+    }
+    public Projectile createHelpingBookEnemy(Transform transform) {
+
+        //Manipulate transform
+        transform = transform.clone();
+
+        //Create and apply the transform send in parameter
+        Projectile projectile = new HelpingBookEnemy(transform,context);
+
+        //Add explosion to projectilelist
+        projectileList.add(projectile);
+
+        //Return explosion
+        return projectile;
     }
 }

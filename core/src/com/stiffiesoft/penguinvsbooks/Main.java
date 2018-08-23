@@ -7,6 +7,8 @@ import com.stiffiesoft.penguinvsbooks.scenes.menu.LoadScene;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
 import com.stiffiesoft.penguinvsbooks.system.text.FontFactory;
 
+//gradlew desktop:dist
+
 public class Main extends Game {
 
 	private SpriteBatch batch;

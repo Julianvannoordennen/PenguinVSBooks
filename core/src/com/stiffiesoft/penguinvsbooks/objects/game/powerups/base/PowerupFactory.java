@@ -11,6 +11,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.extralife.
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.flamethrower.FlameThrowerPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.grenade.GrenadePowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.hacker.HackerPowerup;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.helpingbook.HelpingBookPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.katana.KatanaPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.laser.LaserPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.instances.magnet.MagnetPowerup;
@@ -250,6 +251,17 @@ public class PowerupFactory {
 
         //Create powerup
         Powerup powerup = new BombBookPowerup(context, transform.clone());
+
+        //Add powerup to the list so the program can keep track of it
+        powerupList.add(powerup);
+
+        //Return powerup
+        return powerup;
+    }
+    public Powerup createHelpingBookPowerup(Transform transform) {
+
+        //Create powerup
+        Powerup powerup = new HelpingBookPowerup(context, transform.clone());
 
         //Add powerup to the list so the program can keep track of it
         powerupList.add(powerup);

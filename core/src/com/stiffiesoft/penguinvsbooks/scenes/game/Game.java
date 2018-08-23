@@ -39,10 +39,10 @@ public class Game extends BaseScene {
         //Create some single instances
         PickupFactory pickupFactory = context.getPickupFactory();
         Vector2 s = new Vector2(C.sW() / 4, C.sH() / 4);
-        pickupFactory.createBombBookPickup(new Vector2(s.x, s.y));
-        pickupFactory.createBombBookPickup(new Vector2(s.x * 3, s.y));
-        pickupFactory.createBombBookPickup(new Vector2(s.x, s.y * 3));
-        pickupFactory.createBombBookPickup(new Vector2(s.x * 3, s.y * 3));
+        pickupFactory.forceSpawn(new Vector2(s.x, s.y));
+        pickupFactory.forceSpawn(new Vector2(s.x * 3, s.y));
+        pickupFactory.forceSpawn(new Vector2(s.x, s.y * 3));
+        pickupFactory.forceSpawn(new Vector2(s.x * 3, s.y * 3));
     }
 
     @Override

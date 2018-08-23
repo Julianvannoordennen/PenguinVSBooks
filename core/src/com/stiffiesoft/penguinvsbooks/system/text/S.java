@@ -127,4 +127,8 @@ public class S {
         if (l == Language.DUTCH) return "Bom boek";
         else return "Bomb book";
     }
+    public static String helpingBook() {
+        if (l == Language.DUTCH) return "Helpend boek";
+        else return "Helping Book";
+    }
 }
