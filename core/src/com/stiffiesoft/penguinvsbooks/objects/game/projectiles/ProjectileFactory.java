@@ -5,6 +5,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerDamageExplosion;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerProjectileBodyTask;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.Pickup;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.mega.shreddercannon.*;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.bomb.BombExplosion;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.bomb.BombProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.bomb.BombProjectileBodyTask;
@@ -38,6 +39,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.wizard.Wizard
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.wizard.WizardProjectile;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
+import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 import com.stiffiesoft.penguinvsbooks.system.collision.BodyFactory;
 import com.stiffiesoft.penguinvsbooks.system.collision.Collidable;
 
@@ -523,6 +525,78 @@ public class ProjectileFactory {
 
         //Add explosion to projectilelist
         projectileList.add(projectile);
+
+        //Return explosion
+        return projectile;
+    }
+    public Projectile createShredderCannonPart(Transform transform) {
+
+        //Manipulate transform
+        transform = transform.clone();
+
+        //Create and apply the transform send in parameter
+        Projectile projectile = new ShredderCannonPart(transform,context);
+
+        //Add explosion to projectilelist
+        projectileList.add(projectile);
+
+        //Return explosion
+        return projectile;
+    }
+    public Projectile createShredderCannonExplosion(Transform transform) {
+
+        //Manipulate transform
+        transform = transform.clone();
+        transform.setSize(new Vector2(C.sH() * 5, C.sH() * 5));
+        transform.applyPosition(new Vector2(transform.getWidth() / 2, transform.getHeight() / 2));
+        transform.setRotation(0);
+        transform.setScale(new Vector2(24f, 24f));
+
+        //Create and apply the transform send in parameter
+        Projectile explosion = new ShredderCannonExplosion(transform,context);
+
+        //Add explosion to projectilelist
+        projectileList.add(explosion);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new DefaultExplosionBodyTask((Collidable)explosion));
+
+        //Return explosion
+        return explosion;
+    }
+    public Projectile createShredderCannonBase(Transform transform) {
+
+        //Manipulate transform
+        transform = transform.clone();
+        transform.setSize(new Vector2(C.pH() * 37.5f, C.pH() * 18.75f));
+        transform.setCenter(new Vector2(C.pH() * 9.375f, C.pH() * 9.375f));
+        transform.applyPosition(new Vector2(-transform.getXCenter(), -transform.getYCenter()));
+
+        //Create and apply the transform send in parameter
+        Projectile projectile = new ShredderCannonBase(transform,context);
+
+        //Add explosion to projectilelist
+        projectileList.add(projectile);
+
+        //Return explosion
+        return projectile;
+    }
+    public Projectile createShredderCannonProjectile(Transform transform) {
+
+        //Manipulate transform
+        transform = transform.clone();
+        transform.setSize(new Vector2(C.pH() * 50, C.pH() * 50));
+        transform.setCenter(new Vector2(transform.getWidth() / 2, transform.getHeight() / 2));
+        transform.applyPosition(new Vector2(transform.getWidth() / -2, transform.getHeight() / -2));
+
+        //Create and apply the transform send in parameter
+        Projectile projectile = new ShredderCannonProjectile(transform,context);
+
+        //Add explosion to projectilelist
+        projectileList.add(projectile);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new ShredderCannonProjectileBodyTask((Collidable)projectile));
 
         //Return explosion
         return projectile;

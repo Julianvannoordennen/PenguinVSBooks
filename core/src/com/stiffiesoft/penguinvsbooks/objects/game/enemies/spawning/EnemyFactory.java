@@ -20,6 +20,7 @@ public class EnemyFactory {
     private int edgeCorrection;
     private BodyFactory bodyFactory;
     private GameContext context;
+    private boolean alert;
 
     public EnemyFactory(GameContext context) {
         edgeCorrection      = 250;
@@ -27,11 +28,20 @@ public class EnemyFactory {
         this.bodyFactory    = context.getBodyFactory();
         this.enemyList      = context.getEnemyList();
         this.context        = context;
+        this.alert          = false;
         updateTime();
     }
 
+    public boolean isAlert() {
+        return alert;
+    }
+
+    public void setAlert(boolean alert) {
+        this.alert = alert;
+    }
+
     public void updateTime() {
-        next = TimeUtils.millis() + spawnRate;
+        next = TimeUtils.millis() + (alert ? spawnRate / 4 : spawnRate);
     }
 
     public void update() {

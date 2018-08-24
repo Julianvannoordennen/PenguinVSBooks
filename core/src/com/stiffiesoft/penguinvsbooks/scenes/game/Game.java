@@ -39,10 +39,20 @@ public class Game extends BaseScene {
         //Create some single normal
         PickupFactory pickupFactory = context.getPickupFactory();
         Vector2 s = new Vector2(C.sW() / 4, C.sH() / 4);
-        pickupFactory.forceSpawn(new Vector2(s.x, s.y));
-        pickupFactory.forceSpawn(new Vector2(s.x * 3, s.y));
-        pickupFactory.forceSpawn(new Vector2(s.x, s.y * 3));
-        pickupFactory.forceSpawn(new Vector2(s.x * 3, s.y * 3));
+        pickupFactory.createShredderCannonPickup(new Vector2(s.x, s.y));
+        pickupFactory.createShredderCannonPickup(new Vector2(s.x * 3, s.y));
+        pickupFactory.createShredderCannonPickup(new Vector2(s.x, s.y * 3));
+        pickupFactory.createShredderCannonPickup(new Vector2(s.x * 3, s.y * 3));
+
+        pickupFactory.createShredderCannonPickup(new Vector2(s.x, s.y));
+        pickupFactory.createShredderCannonPickup(new Vector2(s.x * 3, s.y));
+        pickupFactory.createShredderCannonPickup(new Vector2(s.x, s.y * 3));
+        pickupFactory.createShredderCannonPickup(new Vector2(s.x * 3, s.y * 3));
+
+        pickupFactory.createShredderCannonPickup(new Vector2(s.x, s.y));
+        pickupFactory.createShredderCannonPickup(new Vector2(s.x * 3, s.y));
+        pickupFactory.createShredderCannonPickup(new Vector2(s.x, s.y * 3));
+        pickupFactory.createShredderCannonPickup(new Vector2(s.x * 3, s.y * 3));
     }
 
     @Override
@@ -92,5 +102,6 @@ public class Game extends BaseScene {
         //Dispose all things that are required to dispose
         context.getScore().dispose();
         context.getLifes().dispose();
+        context.getShredderCannonCounter().dispose();
     }
 }

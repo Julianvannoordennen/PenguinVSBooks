@@ -116,8 +116,10 @@ public class PlayerStateMoving implements PlayerState, GameObject {
     public void update() {
 
         //Update interaction methods
-        updateMovement();
-        updateAttack();
+        if (!player.freeze()) {
+            updateMovement();
+            updateAttack();
+        }
 
         if (!player.canReceiveDamage() && flickerLast == -1) updateFlickerDuration();
 

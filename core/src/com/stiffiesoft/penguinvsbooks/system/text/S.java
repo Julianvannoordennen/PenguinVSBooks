@@ -51,62 +51,77 @@ public class S {
         if (l == Language.DUTCH) return "Granaat";
         else return "Grenade";
     }
+
     public static String cookie() {
         if (l == Language.DUTCH) return "Koekje";
         else return "Cookie";
     }
+
     public static String laser() {
         if (l == Language.DUTCH) return "Laser";
         else return "Laser";
     }
+
     public static String teleporter() {
         if (l == Language.DUTCH) return "Teleporteerder";
         else return "Teleporter";
     }
+
     public static String magnet() {
         if (l == Language.DUTCH) return "Magneet";
         else return "Magnet";
     }
+
     public static String bomb() {
         if (l == Language.DUTCH) return "Bom";
         else return "Bomb";
     }
+
     public static String katana() {
         if (l == Language.DUTCH) return "Katana";
         else return "Katana";
     }
+
     public static String extraLife() {
         if (l == Language.DUTCH) return "Extra leven";
         else return "Extra extralife";
     }
+
     public static String megaLife() {
         if (l == Language.DUTCH) return "Mega leven";
         else return "Mega extralife";
     }
+
     public static String earthquake() {
         if (l == Language.DUTCH) return "Aardbeving";
         else return "Earthquake";
     }
+
     public static String nuke() {
         if (l == Language.DUTCH) return "Atoombom";
         else return "Nuke";
     }
+
     public static String boomerang() {
         if (l == Language.DUTCH) return "Boemerang";
         else return "Boomerang";
     }
+
     public static String plasmaTurret() {
         if (l == Language.DUTCH) return "Plasma Geschuttoren";
         else return "Plasma Turret";
     }
+
     public static String hacker() {
         if (l == Language.DUTCH) return "Hacker";
         else return "Hacker";
     }
+
     public static String dyslexia() {
         if (l == Language.DUTCH) return "Dyslexie";
         else return "Dyslexia";
     }
+
     public static String flameThrower() {
         if (l == Language.DUTCH) return "Vlammenwerper";
         else return "Flamethrower";
@@ -115,20 +130,33 @@ public class S {
         if (l == Language.DUTCH) return "Zaag";
         else return "Saw";
     }
+
     public static String wizard() {
         if (l == Language.DUTCH) return "Tovenaar";
         else return "Wizard";
     }
+
     public static String clover() {
         if (l == Language.DUTCH) return "Klavertje vier";
         else return "Clover";
     }
+
     public static String bombBook() {
         if (l == Language.DUTCH) return "Bom boek";
         else return "Bomb book";
     }
+
     public static String helpingBook() {
         if (l == Language.DUTCH) return "Helpend boek";
         else return "Helping Book";
+    }
+
+    public static String shredderCannon() {
+        if (l == Language.DUTCH) return "Verscheurend kannon";
+        else return "Shredder Cannon";
+    }
+    public static String blueprints() {
+        if (l == Language.DUTCH) return "Blauwdrukken";
+        else return "Blueprints";
     }
 }

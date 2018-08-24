@@ -56,6 +56,10 @@ public class Counter implements GameObject {
         shakeCurrent -= (shakeCurrent > 0) ? shakeReturn * C.cGT() : 0;
     }
 
+    public void reset() {
+        set(0);
+    }
+
     @Override
     public void update() {
 

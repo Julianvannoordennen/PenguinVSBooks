@@ -19,6 +19,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.notifications.PauseWindow;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.Player;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerBodyTask;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.*;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.mega.shreddercannon.ShredderCannonCounter;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileFactory;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileList;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileListCleaner;
@@ -62,6 +63,7 @@ public class GameContext {
     //Counters
     private Score score;
     private Lifes lifes;
+    private ShredderCannonCounter shredderCannonCounter;
 
     //Pause
     private PauseWindow pauseWindow;
@@ -124,6 +126,7 @@ public class GameContext {
         //Create all counters
         this.score                      = new Score(this);
         this.lifes                      = new Lifes(this);
+        this.shredderCannonCounter      = new ShredderCannonCounter(this);
 
         //Connect
         connect();
@@ -132,13 +135,10 @@ public class GameContext {
     private void connect() {
 
         //Add all items that need to be rendered, in order from background to foreground
-//        gameObjectList.add(junkList);
-//        gameObjectList.add(pickupList);
         gameObjectList.add(player);
-//        gameObjectList.add(enemyList);
-//        gameObjectList.add(projectileList);
         gameObjectList.add(score);
         gameObjectList.add(lifes);
+        gameObjectList.add(shredderCannonCounter);
         gameObjectList.add(border);
         gameObjectList.add(screenShaker);
         gameObjectList.add(screenFlasher);
@@ -257,5 +257,9 @@ public class GameContext {
 
     public PauseChecker getPauseChecker() {
         return pauseChecker;
+    }
+
+    public ShredderCannonCounter getShredderCannonCounter() {
+        return shredderCannonCounter;
     }
 }

@@ -29,6 +29,7 @@ public class DefaultBookEnemy implements Transformable, Enemy, Collidable, GameO
     private Body body;
     private EnemyList enemyList;
     private JunkFactory junkFactory;
+    private boolean freeze;
 
     public DefaultBookEnemy(GameContext context) {
 
@@ -42,6 +43,11 @@ public class DefaultBookEnemy implements Transformable, Enemy, Collidable, GameO
         this.targetUpdater      = new EnemyTargetUpdater(this);
         this.enemyList          = context.getEnemyList();
         this.junkFactory        = context.getJunkFactory();
+        freeze                  = false;
+    }
+
+    public void freeze(boolean value) {
+        freeze = value;
     }
 
     @Override
@@ -57,22 +63,26 @@ public class DefaultBookEnemy implements Transformable, Enemy, Collidable, GameO
     @Override
     public void update() {
 
-        //Update targetting system
-        targetUpdater.update();
+        //Check if not frozen
+        if (!freeze) {
 
-        //Set movement angle
-        Transformable target = targetUpdater.getTarget();
-        if (target != null) {
-            Vector2 targetPosition = target.getTransform().getPositionCenter();
-            transform.setMovementAngle(C.getAngleInRadians(transform.getPositionCenter(), targetPosition));
+            //Update targetting system
+            targetUpdater.update();
+
+            //Set movement angle
+            Transformable target = targetUpdater.getTarget();
+            if (target != null) {
+                Vector2 targetPosition = target.getTransform().getPositionCenter();
+                transform.setMovementAngle(C.getAngleInRadians(transform.getPositionCenter(), targetPosition));
+            }
+
+            //Move towards target
+            transform.moveInDirection(currentMovementSpeed * C.cGT());
+
+            //Update body and spriteanimation
+            Transform.pushInBody(transform, body);
         }
-
-        //Move towards target
-        transform.moveInDirection( currentMovementSpeed * C.cGT());
-
-        //Update body and spriteanimation
         currentSpriteAnimation.update();
-        Transform.pushInBody(transform, body);
     }
 
     @Override

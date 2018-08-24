@@ -15,4 +15,5 @@ public interface Enemy {
     void setSpeed(float speed);
     Body getBody();
     Transform getTransform();
+    void freeze(boolean value);
 }

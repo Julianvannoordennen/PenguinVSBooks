@@ -42,6 +42,7 @@ public class A {
     public static final AssetDescriptor<TextureAtlas> cloverPickup              = new AssetDescriptor<>("sprites/game/powerups/clover/clover_pickup.atlas", TextureAtlas.class);
     public static final AssetDescriptor<TextureAtlas> bombBookPickup            = new AssetDescriptor<>("sprites/game/powerups/bombbook/bomb_book_pickup.atlas", TextureAtlas.class);
     public static final AssetDescriptor<TextureAtlas> helpingBookPickup         = new AssetDescriptor<>("sprites/game/powerups/helpingbook/helping_book_pickup.atlas", TextureAtlas.class);
+    public static final AssetDescriptor<TextureAtlas> shredderCannonPickup      = new AssetDescriptor<>("sprites/game/powerups/shreddercannon/shredder_cannon_pickup.atlas", TextureAtlas.class);
 
     //Powerups
     public static final AssetDescriptor<Texture> explosion                      = new AssetDescriptor<>("sprites/game/projectiles/explosion.png", Texture.class);
@@ -69,6 +70,11 @@ public class A {
     public static final AssetDescriptor<TextureAtlas> bombBookEnemy             = new AssetDescriptor<>("sprites/game/powerups/bombbook/bomb_book_enemy.atlas", TextureAtlas.class);
     public static final AssetDescriptor<Texture> bombBookProjectile             = new AssetDescriptor<>("sprites/game/powerups/bombbook/bomb_book_projectile.png", Texture.class);
     public static final AssetDescriptor<TextureAtlas> helpingBookEnemy          = new AssetDescriptor<>("sprites/game/powerups/helpingbook/helping_book_enemy.atlas", TextureAtlas.class);
+    public static final AssetDescriptor<Texture> shredderCannonPart1            = new AssetDescriptor<>("sprites/game/powerups/shreddercannon/shredder_cannon_part_1.png", Texture.class);
+    public static final AssetDescriptor<Texture> shredderCannonPart2            = new AssetDescriptor<>("sprites/game/powerups/shreddercannon/shredder_cannon_part_2.png", Texture.class);
+    public static final AssetDescriptor<Texture> shredderCannonPart3            = new AssetDescriptor<>("sprites/game/powerups/shreddercannon/shredder_cannon_part_3.png", Texture.class);
+    public static final AssetDescriptor<Texture> shredderCannonPart4            = new AssetDescriptor<>("sprites/game/powerups/shreddercannon/shredder_cannon_part_4.png", Texture.class);
+    public static final AssetDescriptor<Texture> shredderCannonBase             = new AssetDescriptor<>("sprites/game/powerups/shreddercannon/shredder_cannon_base.png", Texture.class);
 
     //Junk
     public static final AssetDescriptor<Texture> defaultBookEnemyJunk1          = new AssetDescriptor<>("sprites/game/enemies/defaultBookEnemy/default_book_enemy_junk_1.png", Texture.class);

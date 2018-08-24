@@ -6,6 +6,7 @@ import com.badlogic.gdx.utils.TimeUtils;
 import com.stiffiesoft.penguinvsbooks.effects.ScreenFlasher;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.Enemy;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.EnemyListListener;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.mega.shreddercannon.ShredderCannonPickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.bomb.BombPickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.bombbook.BombBookPickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.boomerang.BoomerangPickup;
@@ -405,6 +406,20 @@ public class PickupFactory implements EnemyListListener {
 
         //Create pickup and apply the transform send in parameter
         Pickup pickup = new HelpingBookPickup(beforePickup(position), context);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new PickupBodyTask(pickup));
+
+        //Execute default tasks
+        afterPickup(pickup);
+
+        //Return to projectile
+        return pickup;
+    }
+    public Pickup createShredderCannonPickup(Vector2 position) {
+
+        //Create pickup and apply the transform send in parameter
+        Pickup pickup = new ShredderCannonPickup(beforePickup(position), context);
 
         //Add bodytask for the projectile
         bodyFactory.addTask(new PickupBodyTask(pickup));

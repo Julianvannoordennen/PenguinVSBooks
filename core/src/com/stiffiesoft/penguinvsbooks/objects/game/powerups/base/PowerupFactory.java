@@ -1,5 +1,6 @@
 package com.stiffiesoft.penguinvsbooks.objects.game.powerups.base;
 
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.mega.shreddercannon.ShredderCannonPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.bomb.BombPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.bombbook.BombBookPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.boomerang.BoomerangPowerup;
@@ -262,6 +263,17 @@ public class PowerupFactory {
 
         //Create powerup
         Powerup powerup = new HelpingBookPowerup(context, transform.clone());
+
+        //Add powerup to the list so the program can keep track of it
+        powerupList.add(powerup);
+
+        //Return powerup
+        return powerup;
+    }
+    public Powerup createShredderCannonPowerup(Transform transform) {
+
+        //Create powerup
+        Powerup powerup = new ShredderCannonPowerup(context, transform.clone());
 
         //Add powerup to the list so the program can keep track of it
         powerupList.add(powerup);

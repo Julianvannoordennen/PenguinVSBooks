@@ -23,6 +23,7 @@ public class Player implements Transformable, GameObject, Collidable {
     private Body body;
     private ArrayList<PlayerListener> playerListeners;
     private Boolean canReceiveDamage;
+    private boolean freeze;
 
     public Player(GameContext context) {
 
@@ -50,6 +51,12 @@ public class Player implements Transformable, GameObject, Collidable {
     public ArrayList<PlayerListener> getPlayerListeners() {
         return playerListeners;
     }
+
+    public void freeze(boolean value) {
+        freeze = value;
+    }
+
+    public boolean freeze() { return freeze; }
 
     @Override
     public Transform getTransform() {
