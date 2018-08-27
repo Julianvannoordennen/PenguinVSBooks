@@ -1,5 +1,6 @@
 package com.stiffiesoft.penguinvsbooks.objects.game.powerups.base;
 
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.mega.gattlinggunner.GatlingGunnerCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.mega.shreddercannon.ShredderCannonCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.bomb.BombCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.bombbook.BombBookCatalogueItem;
@@ -62,6 +63,7 @@ public class PickupCatalogue {
         pickupCatalogueItems.add(new BombBookCatalogueItem());
         pickupCatalogueItems.add(new HelpingBookCatalogueItem());
         pickupCatalogueItems.add(new ShredderCannonCatalogueItem());
+        pickupCatalogueItems.add(new GatlingGunnerCatalogueItem());
     }
 
     private void loadGeneralData() {

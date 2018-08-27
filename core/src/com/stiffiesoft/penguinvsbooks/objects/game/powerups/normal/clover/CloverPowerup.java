@@ -33,13 +33,14 @@ public class CloverPowerup  extends Powerup {
                 position.add(new Vector2(MathUtils.random(-range, range), MathUtils.random(-range,range)));
 
             //Create pickup and junk
-            pickupFactory.forceSpawn(position);
+            boolean worked = pickupFactory.forceSpawn(position);
             Transform junkTransform = initial.clone();
             junkTransform.setPosition(position);
             junkFactory.createCloverJunk(junkTransform);
 
             //Decrease amount
-            amount--;
+            if (worked)
+                amount--;
         }
 
         //Done, destroy

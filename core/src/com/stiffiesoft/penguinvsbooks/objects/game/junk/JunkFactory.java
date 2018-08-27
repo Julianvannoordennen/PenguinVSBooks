@@ -3,6 +3,8 @@ package com.stiffiesoft.penguinvsbooks.objects.game.junk;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.instances.DefaultBookEnemyJunkPackage;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.mega.gattlinggunner.GatlingGunnerJunkPackage;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.mega.gattlinggunner.GatlingGunnerProjectileJunkPackage;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.bomb.BombJunkPackage;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.bombbook.BombBookProjectileJunkPackage;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.clover.CloverJunkPackage;
@@ -247,6 +249,32 @@ public class JunkFactory {
         transform = transform.clone();
         transform.setScale(new Vector2(0.33f, 0.33f));
         JunkPackage junk = new BombBookProjectileJunkPackage(transform, context);
+
+        //Apply default actions on the junk
+        extractJunk(junk.getJunk());
+
+        //Return junk
+        return junk;
+    }
+    public JunkPackage createGatlingGunnerProjectileJunk(Transform transform) {
+
+        //Create junk package
+        transform = transform.clone();
+        transform.setSize(new Vector2(C.pH() * 6f, C.pH() * 6f));
+        transform.setScale(new Vector2(1,1));
+        JunkPackage junk = new GatlingGunnerProjectileJunkPackage(transform, context);
+
+        //Apply default actions on the junk
+        extractJunk(junk.getJunk());
+
+        //Return junk
+        return junk;
+    }
+    public JunkPackage createGatlingGunnerJunk(Transform transform) {
+
+        //Create junk package
+        transform = transform.clone();
+        JunkPackage junk = new GatlingGunnerJunkPackage(transform, context);
 
         //Apply default actions on the junk
         extractJunk(junk.getJunk());

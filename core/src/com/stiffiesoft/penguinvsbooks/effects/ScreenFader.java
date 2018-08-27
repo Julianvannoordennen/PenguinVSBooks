@@ -3,81 +3,94 @@ package com.stiffiesoft.penguinvsbooks.effects;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObject;
 import com.stiffiesoft.penguinvsbooks.system.assets.A;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
+import com.stiffiesoft.penguinvsbooks.system.rendering.DepthProfiles;
 
-public class ScreenFader {
+public class ScreenFader implements GameObject {
 
     private Sprite layer;
-
     private Color color;
-    private float intensityTo;
-    private float speed;
-    private float currentIntensity;
-    private boolean increase;
-    private ScreenFaderListener listener;
+    private float fadeSpeed;
+    private float currentFade;
+    private float targetIntensity;
+    private boolean changingIntensity;
 
     public ScreenFader() {
 
         //Load screen fader layer
-        this.layer = new Sprite(A.m.get(A.screenFader));
+        this.layer              = new Sprite(A.m.get(A.screenFader));
 
-        //Initialize default variables
-        reset();
+        //Set color to null
+        this.color              = null;
+        this.fadeSpeed          = 2;
+        this.changingIntensity  = false;
     }
 
-    public void fade(Color color, float intensityFrom, float intensityTo, float speed, ScreenFaderListener listener) {
-
-        //Change default values
-        this.color = color;
-        this.currentIntensity = intensityFrom;
-        this.intensityTo = intensityTo;
-        this.speed = speed;
-        this.increase = intensityFrom <= intensityTo;
-        this.listener = listener;
+    public void fade(Color color, float intensityFrom, float intensityTo) {
+        this.color              = color;
+        this.currentFade        = intensityFrom;
+        this.targetIntensity    = intensityTo;
+        this.changingIntensity  = true;
     }
 
-    public void draw(SpriteBatch batch) {
+    public boolean isFading() {
+        return changingIntensity;
+    }
 
+    @Override
+    public void update() {
+
+        //Check if there is a fade going on
+        if (color != null && changingIntensity) {
+
+            //Change intensity from the color
+            this.color = new Color(this.color.r, this.color.g, this.color.b, currentFade);
+
+            if (targetIntensity > currentFade) {
+
+                currentFade += fadeSpeed * C.cGT();
+                if (currentFade >= targetIntensity) {
+
+                    currentFade = targetIntensity;
+                    changingIntensity = false;
+                }
+
+            } else {
+
+                currentFade -= fadeSpeed * C.cGT();
+                if (currentFade <= targetIntensity) {
+
+                    currentFade = targetIntensity;
+                    changingIntensity = false;
+                }
+            }
+        }
+    }
+
+    @Override
+    public void render(SpriteBatch batch) {
+
+        //Check if there is a flash going on
         if (color != null) {
 
             //Get default color
             Color color = batch.getColor();
 
             //Change color
-            batch.setColor(new Color(this.color.r, this.color.g, this.color.b, currentIntensity));
+            batch.setColor(this.color);
 
             //Draw current layer
             batch.draw(layer, 0, 0, C.sW(), C.sH());
 
             //Restore color
             batch.setColor(color);
-
-            //Increase current intensity
-            this.currentIntensity += (this.increase ? speed : -speed) * C.cET();
-
-            //Check if done
-            if ((this.currentIntensity >= intensityTo && this.increase) || (this.currentIntensity <= intensityTo && !this.increase)) {
-
-                //Set value
-                this.currentIntensity = intensityTo;
-
-                //Done
-                if (listener != null)
-                    listener.onFadeDone();
-
-                //Reset
-                reset();
-            }
         }
     }
 
-    private void reset() {
-
-        //Set default values
-        this.speed = 0;
-        this.intensityTo = 0;
-        this.increase = false;
-        this.listener = null;
+    @Override
+    public int getDepth() {
+        return DepthProfiles.SCREEN_FADER;
     }
 }

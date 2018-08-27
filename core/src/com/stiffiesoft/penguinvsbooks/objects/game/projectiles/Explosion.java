@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
+import com.stiffiesoft.penguinvsbooks.objects.game.junk.JunkFactory;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObject;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
@@ -20,6 +21,7 @@ public class Explosion implements GameObject, Projectile, Collidable {
     protected float decreaseSpeed;
     protected float rotationSpeed;
     protected ProjectileList projectileList;
+    protected JunkFactory junkFactory;
 
     public Explosion(Transform transform, GameContext context) {
 
@@ -28,12 +30,17 @@ public class Explosion implements GameObject, Projectile, Collidable {
         this.transform      = transform;
         this.decreaseSpeed  = 25f;
         this.rotationSpeed  = 100f;
+        this.junkFactory    = context.getJunkFactory();
 
         //Change explosion color
         color = new Color(1f,0.1f,0.1f,1);
+        start();
+    }
+
+    public void start() {
 
         //Create dust
-        context.getJunkFactory().createDefaultExplosionDust(transform);
+        junkFactory.createDefaultExplosionDust(transform);
     }
 
     @Override

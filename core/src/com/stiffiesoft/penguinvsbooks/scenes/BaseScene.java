@@ -5,9 +5,6 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.stiffiesoft.penguinvsbooks.Main;
-import com.stiffiesoft.penguinvsbooks.effects.Border;
-import com.stiffiesoft.penguinvsbooks.effects.ScreenFader;
-import com.stiffiesoft.penguinvsbooks.effects.ScreenFlasher;
 
 public abstract class BaseScene implements Screen {
 

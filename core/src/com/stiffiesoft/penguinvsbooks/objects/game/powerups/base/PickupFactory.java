@@ -6,6 +6,7 @@ import com.badlogic.gdx.utils.TimeUtils;
 import com.stiffiesoft.penguinvsbooks.effects.ScreenFlasher;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.Enemy;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.EnemyListListener;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.mega.gattlinggunner.GatlingGunnerPickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.mega.shreddercannon.ShredderCannonPickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.bomb.BombPickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.bombbook.BombBookPickup;
@@ -41,6 +42,7 @@ public class PickupFactory implements EnemyListListener {
     private PowerupFactory powerupFactory;
     private ScreenFlasher screenFlasher;
     private GameContext context;
+    private float edgeCorrection;
     private int pickupLimit;
     private int spawnChanche;
     private int spawnDelay;
@@ -53,6 +55,7 @@ public class PickupFactory implements EnemyListListener {
         this.bodyFactory        = context.getBodyFactory();
         this.screenFlasher      = context.getScreenFlasher();
         this.context            = context;
+        this.edgeCorrection     = C.pH() * 10;
         this.pickupLimit        = 5;
         this.spawnChanche       = 25;
         this.spawnDelay         = 1000; //1 second
@@ -63,13 +66,18 @@ public class PickupFactory implements EnemyListListener {
         this.nextSpawn = TimeUtils.millis() + spawnDelay;
     }
 
-    private void spawnRandom(Vector2 position) {
+    private boolean spawnRandom(Vector2 position) {
+
+        //Check if the position is not outside of the screen
+        if (C.oS(position, edgeCorrection))
+            return false;
 
         //Get a number between 0 and the maximum spawnchanche
         int random = MathUtils.random(0, pickupCatalogue.getTotalSpawnChanche());
 
         //Get the item
         pickupCatalogue.getItemBySpawnChanche(random).executeFactoryFunction(this, position);
+        return true;
     }
 
     private boolean willSpawn(Vector2 position) {
@@ -80,10 +88,6 @@ public class PickupFactory implements EnemyListListener {
 
         //Check if the time allows it to create a new powerup
         if (TimeUtils.millis() < nextSpawn)
-            return false;
-
-        //Check if the position is not outside of the screen
-        if (C.oS(position))
             return false;
 
         //Check if the random integer is correct
@@ -102,13 +106,13 @@ public class PickupFactory implements EnemyListListener {
         pickupList.add(pickup);
     }
 
-    public void forceSpawn(Vector2 position) {
+    public boolean forceSpawn(Vector2 position) {
 
         //Update time
         updateTime();
 
         //Spawn a random pickup
-        spawnRandom(position);
+        return spawnRandom(position);
     }
 
     @Override
@@ -420,6 +424,20 @@ public class PickupFactory implements EnemyListListener {
 
         //Create pickup and apply the transform send in parameter
         Pickup pickup = new ShredderCannonPickup(beforePickup(position), context);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new PickupBodyTask(pickup));
+
+        //Execute default tasks
+        afterPickup(pickup);
+
+        //Return to projectile
+        return pickup;
+    }
+    public Pickup createGatlingGunnerPickup(Vector2 position) {
+
+        //Create pickup and apply the transform send in parameter
+        Pickup pickup = new GatlingGunnerPickup(beforePickup(position), context);
 
         //Add bodytask for the projectile
         bodyFactory.addTask(new PickupBodyTask(pickup));

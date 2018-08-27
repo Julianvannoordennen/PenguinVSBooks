@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.stiffiesoft.penguinvsbooks.Main;
 import com.stiffiesoft.penguinvsbooks.effects.Border;
+import com.stiffiesoft.penguinvsbooks.effects.ScreenFader;
 import com.stiffiesoft.penguinvsbooks.effects.ScreenFlasher;
 import com.stiffiesoft.penguinvsbooks.effects.ScreenShaker;
 import com.stiffiesoft.penguinvsbooks.objects.game.counters.Lifes;
@@ -19,6 +20,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.notifications.PauseWindow;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.Player;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerBodyTask;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.*;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.mega.gattlinggunner.GatlingGunnerCounter;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.mega.shreddercannon.ShredderCannonCounter;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileFactory;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileList;
@@ -40,6 +42,7 @@ public class GameContext {
     private ScreenShaker screenShaker;
     private Border border;
     private ScreenFlasher screenFlasher;
+    private ScreenFader screenFader;
 
     //Lists
     private NotificationList notificationList;
@@ -64,6 +67,7 @@ public class GameContext {
     private Score score;
     private Lifes lifes;
     private ShredderCannonCounter shredderCannonCounter;
+    private GatlingGunnerCounter gatlingGunnerCounter;
 
     //Pause
     private PauseWindow pauseWindow;
@@ -95,6 +99,7 @@ public class GameContext {
         this.screenShaker               = new ScreenShaker();
         this.border                     = new Border();
         this.screenFlasher              = new ScreenFlasher();
+        this.screenFader                = new ScreenFader();
 
         //Create all lists
         this.notificationList           = new NotificationList();
@@ -127,6 +132,7 @@ public class GameContext {
         this.score                      = new Score(this);
         this.lifes                      = new Lifes(this);
         this.shredderCannonCounter      = new ShredderCannonCounter(this);
+        this.gatlingGunnerCounter       = new GatlingGunnerCounter(this);
 
         //Connect
         connect();
@@ -139,9 +145,11 @@ public class GameContext {
         gameObjectList.add(score);
         gameObjectList.add(lifes);
         gameObjectList.add(shredderCannonCounter);
+        gameObjectList.add(gatlingGunnerCounter);
         gameObjectList.add(border);
         gameObjectList.add(screenShaker);
         gameObjectList.add(screenFlasher);
+        gameObjectList.add(screenFader);
 
         //Add all connections
         world.setContactListener(new CollisionDetector());
@@ -261,5 +269,13 @@ public class GameContext {
 
     public ShredderCannonCounter getShredderCannonCounter() {
         return shredderCannonCounter;
+    }
+
+    public GatlingGunnerCounter getGatlingGunnerCounter() {
+        return gatlingGunnerCounter;
+    }
+
+    public ScreenFader getScreenFader() {
+        return screenFader;
     }
 }

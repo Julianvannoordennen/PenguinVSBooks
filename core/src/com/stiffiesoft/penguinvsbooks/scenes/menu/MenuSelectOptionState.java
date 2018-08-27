@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.stiffiesoft.penguinvsbooks.effects.MovingFloat;
 import com.stiffiesoft.penguinvsbooks.effects.MovingFloatListener;
-import com.stiffiesoft.penguinvsbooks.effects.ScreenFader;
+import com.stiffiesoft.penguinvsbooks.effects.ScreenFaderDeprecated;
 import com.stiffiesoft.penguinvsbooks.effects.ScreenFaderListener;
 import com.stiffiesoft.penguinvsbooks.objects.menu.MenuButton;
 import com.stiffiesoft.penguinvsbooks.objects.menu.MenuButtonListener;
@@ -20,7 +20,7 @@ import com.stiffiesoft.penguinvsbooks.system.text.S;
 public class MenuSelectOptionState implements StartMenuState, MenuButtonListener, MovingFloatListener, ScreenFaderListener {
 
     private StartMenu startMenu;
-    private ScreenFader screenFader;
+    private ScreenFaderDeprecated screenFaderDeprecated;
     private MenuButton playButton;
     private MenuButton settingsButton;
     private MenuButton statisticsButton;
@@ -37,8 +37,8 @@ public class MenuSelectOptionState implements StartMenuState, MenuButtonListener
 
     public MenuSelectOptionState(StartMenu startMenu) {
         this.startMenu              = startMenu;
-        this.screenFader            = new ScreenFader();
-        this.screenFader.fade(Color.BLACK, 0.5f, 0.5f, 0.01f, null);
+        this.screenFaderDeprecated = new ScreenFaderDeprecated();
+        this.screenFaderDeprecated.fade(Color.BLACK, 0.5f, 0.5f, 0.01f, null);
 
         float space                 = C.pH() * 10;
         float doubleSpace           = space * 2;
@@ -75,7 +75,7 @@ public class MenuSelectOptionState implements StartMenuState, MenuButtonListener
         settingsButton.setX(this.rightButtonsFloat.getValue());
         quitButton.setX(this.rightButtonsFloat.getValue());
 
-        screenFader.draw(batch);
+        screenFaderDeprecated.draw(batch);
         playButton.draw(batch);
         statisticsButton.draw(batch);
         upgradesButton.draw(batch);
@@ -157,12 +157,12 @@ public class MenuSelectOptionState implements StartMenuState, MenuButtonListener
         } else if (pressedId == 1 || pressedId == 6) {
 
             //Screen fader
-            this.screenFader.fade(Color.BLACK, 0.5f, 1, 2f, this);
+            this.screenFaderDeprecated.fade(Color.BLACK, 0.5f, 1, 2f, this);
 
         } else if (pressedId == 7) {
 
             //Screen fader
-            this.screenFader.fade(Color.BLACK, 0.5f, 0, 2f, this);
+            this.screenFaderDeprecated.fade(Color.BLACK, 0.5f, 0, 2f, this);
         }
     }
 

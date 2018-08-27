@@ -13,7 +13,7 @@ import com.stiffiesoft.penguinvsbooks.system.text.S;
 public class MenuIntroState implements StartMenuState, MovingFloatListener {
 
     private StartMenu startMenu;
-    private ScreenFader screenFader;
+    private ScreenFaderDeprecated screenFaderDeprecated;
     private GlyphLayout fontGlyph;
     private BitmapFont font;
     private MovingFloat fontFloat;
@@ -23,8 +23,8 @@ public class MenuIntroState implements StartMenuState, MovingFloatListener {
 
     public MenuIntroState(StartMenu startMenu) {
         this.startMenu = startMenu;
-        this.screenFader = new ScreenFader();
-        screenFader.fade(Color.BLACK, 0f, 0f, 0.01f, null);
+        this.screenFaderDeprecated = new ScreenFaderDeprecated();
+        screenFaderDeprecated.fade(Color.BLACK, 0f, 0f, 0.01f, null);
 
         FontFactory factory = startMenu.getMain().getFontFactory();
         this.font = factory.createNormalFont();
@@ -36,7 +36,7 @@ public class MenuIntroState implements StartMenuState, MovingFloatListener {
 
     @Override
     public void onRender(SpriteBatch batch) {
-        screenFader.draw(batch);
+        screenFaderDeprecated.draw(batch);
         fontFloat.update();
         if (this.fontBool.getValue()) font.draw(batch, fontGlyph, 0, fontFloat.getValue());
 
@@ -46,7 +46,7 @@ public class MenuIntroState implements StartMenuState, MovingFloatListener {
             endIntro = true;
             fontBool.stop();
             fontFloat.move(C.pH() * -5, 5f, this);
-            screenFader.fade(Color.BLACK, 0f, 0.5f, 2f, null);
+            screenFaderDeprecated.fade(Color.BLACK, 0f, 0.5f, 2f, null);
         }
     }
 

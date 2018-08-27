@@ -43,6 +43,7 @@ public class A {
     public static final AssetDescriptor<TextureAtlas> bombBookPickup            = new AssetDescriptor<>("sprites/game/powerups/bombbook/bomb_book_pickup.atlas", TextureAtlas.class);
     public static final AssetDescriptor<TextureAtlas> helpingBookPickup         = new AssetDescriptor<>("sprites/game/powerups/helpingbook/helping_book_pickup.atlas", TextureAtlas.class);
     public static final AssetDescriptor<TextureAtlas> shredderCannonPickup      = new AssetDescriptor<>("sprites/game/powerups/shreddercannon/shredder_cannon_pickup.atlas", TextureAtlas.class);
+    public static final AssetDescriptor<Texture> gatlingGunnerPickup            = new AssetDescriptor<>("sprites/game/powerups/gatlinggunner/gatling_gunner_pickup.png", Texture.class);
 
     //Powerups
     public static final AssetDescriptor<Texture> explosion                      = new AssetDescriptor<>("sprites/game/projectiles/explosion.png", Texture.class);
@@ -75,6 +76,11 @@ public class A {
     public static final AssetDescriptor<Texture> shredderCannonPart3            = new AssetDescriptor<>("sprites/game/powerups/shreddercannon/shredder_cannon_part_3.png", Texture.class);
     public static final AssetDescriptor<Texture> shredderCannonPart4            = new AssetDescriptor<>("sprites/game/powerups/shreddercannon/shredder_cannon_part_4.png", Texture.class);
     public static final AssetDescriptor<Texture> shredderCannonBase             = new AssetDescriptor<>("sprites/game/powerups/shreddercannon/shredder_cannon_base.png", Texture.class);
+    public static final AssetDescriptor<Texture> gatlingGunnerCounterView       = new AssetDescriptor<>("sprites/game/powerups/gatlinggunner/gatling_gunner_screen.png", Texture.class);
+    public static final AssetDescriptor<Texture> gatlingGunnerCannon            = new AssetDescriptor<>("sprites/game/powerups/gatlinggunner/gatling_gunner_cannon.png", Texture.class);
+    public static final AssetDescriptor<TextureAtlas> gatlingGunnerCannonFire   = new AssetDescriptor<>("sprites/game/powerups/gatlinggunner/gatling_gunner_attack.atlas", TextureAtlas.class);
+    public static final AssetDescriptor<Texture> gatlingGunnerCursor            = new AssetDescriptor<>("sprites/game/powerups/gatlinggunner/gatling_gunner_cursor_default.png", Texture.class);
+    public static final AssetDescriptor<TextureAtlas> gatlingGunnerCursorStart  = new AssetDescriptor<>("sprites/game/powerups/gatlinggunner/gatling_gunner_cursor.atlas", TextureAtlas.class);
 
     //Junk
     public static final AssetDescriptor<Texture> defaultBookEnemyJunk1          = new AssetDescriptor<>("sprites/game/enemies/defaultBookEnemy/default_book_enemy_junk_1.png", Texture.class);
@@ -92,6 +98,7 @@ public class A {
     public static final AssetDescriptor<Texture> sawJunk1                       = new AssetDescriptor<>("sprites/game/powerups/saw/saw_junk_1.png", Texture.class);
     public static final AssetDescriptor<Texture> sawJunk2                       = new AssetDescriptor<>("sprites/game/powerups/saw/saw_junk_2.png", Texture.class);
     public static final AssetDescriptor<Texture> cloverJunk                     = new AssetDescriptor<>("sprites/game/powerups/clover/clover_junk.png", Texture.class);
+    public static final AssetDescriptor<Texture> gatlingGunnerJunk              = new AssetDescriptor<>("sprites/game/powerups/gatlinggunner/gatling_gunner_junk.png", Texture.class);
 
     //Effects
     public static final AssetDescriptor<Texture> screenBorder                   = new AssetDescriptor<>("effects/border_screen.png", Texture.class);

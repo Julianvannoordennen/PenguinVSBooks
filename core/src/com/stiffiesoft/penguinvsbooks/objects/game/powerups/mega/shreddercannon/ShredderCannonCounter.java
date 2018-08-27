@@ -18,6 +18,6 @@ public class ShredderCannonCounter extends Counter {
     public void render(SpriteBatch batch) {
 
         //Draw the text including the score
-        font.draw(batch, fontFactory.createCounterGlyph(S.blueprints() + "\n" + value,this.font), C.pW() * 2, (C.pW() * 6) + shakeCurrent);
+        font.draw(batch, fontFactory.createCounterGlyph(S.blueprints() + "\n" + value,this.font), C.pW() * 2, (C.pW() * 8) + shakeCurrent);
     }
 }

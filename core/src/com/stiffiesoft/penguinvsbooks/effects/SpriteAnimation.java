@@ -28,7 +28,7 @@ public class SpriteAnimation {
         this.animation          = new Animation(1f/framesPerSecond, texture.getRegions());
 
         //Set time and size
-        this.elapsedTime        = 0f;
+        reset();
     }
 
     public void reverse() {
@@ -37,6 +37,12 @@ public class SpriteAnimation {
         Object[] frames = animation.getKeyFrames();
         Collections.reverse(Arrays.asList(frames));
         animation = new Animation(1f/framesPerSecond, frames);
+    }
+
+    public void reset() {
+
+        //Reset time
+        elapsedTime = 0f;
     }
 
     public void update() {

@@ -126,6 +126,7 @@ public class S {
         if (l == Language.DUTCH) return "Vlammenwerper";
         else return "Flamethrower";
     }
+
     public static String saw() {
         if (l == Language.DUTCH) return "Zaag";
         else return "Saw";
@@ -158,5 +159,14 @@ public class S {
     public static String blueprints() {
         if (l == Language.DUTCH) return "Blauwdrukken";
         else return "Blueprints";
+    }
+
+    public static String gatlingGunner() {
+        if (l == Language.DUTCH) return "Machinegeweer";
+        else return "Gattling Gunner";
+    }
+    public static String ammo() {
+        if (l == Language.DUTCH) return "Munitie";
+        else return "Ammo";
     }
 }

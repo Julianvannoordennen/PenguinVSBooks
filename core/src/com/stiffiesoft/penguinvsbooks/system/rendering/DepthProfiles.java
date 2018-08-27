@@ -28,5 +28,6 @@ public class DepthProfiles {
 
     //Effects
     public static final int SCREEN_BORDER = 1000;
-    public static final int SCREEN_FLASHER = 1100;
+    public static final int SCREEN_FADER = 1100;
+    public static final int SCREEN_FLASHER = 1200;
 }

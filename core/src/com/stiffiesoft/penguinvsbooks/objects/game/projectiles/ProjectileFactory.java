@@ -5,6 +5,10 @@ import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerDamageExplosion;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerProjectileBodyTask;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.Pickup;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.mega.gattlinggunner.GatlingGunnerCounterView;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.mega.gattlinggunner.GatlingGunnerCursor;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.mega.gattlinggunner.GatlingGunnerGuns;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.mega.gattlinggunner.GatlingGunnerProjectile;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.mega.shreddercannon.*;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.bomb.BombExplosion;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.bomb.BombProjectile;
@@ -597,6 +601,75 @@ public class ProjectileFactory {
 
         //Add bodytask for the projectile
         bodyFactory.addTask(new ShredderCannonProjectileBodyTask((Collidable)projectile));
+
+        //Return explosion
+        return projectile;
+    }
+    public Projectile createGatlingGunnerCounterView(Transform transform) {
+
+        //Manipulate transform
+        transform = transform.clone();
+        transform.setSize(new Vector2(C.pH() * 25, C.pH() * 17.5f));
+        transform.setCenter(new Vector2(transform.getWidth() / 2, 0));
+        transform.setPosition(new Vector2(C.sW() / 2, -transform.getHeight()));
+
+        //Create and apply the transform send in parameter
+        Projectile projectile = new GatlingGunnerCounterView(transform,context);
+
+        //Add explosion to projectilelist
+        projectileList.add(projectile);
+
+        //Return explosion
+        return projectile;
+    }
+    public Projectile createGatlingGunnerGuns(Transform transform) {
+
+        //Manipulate transform
+        transform = transform.clone();
+        transform.setCenter(new Vector2(transform.getWidth() / 2, 0));
+        transform.setPosition(new Vector2(C.sW() / 2 - (transform.getWidth() / 2), -37.5f * C.pH()));
+
+        //Create and apply the transform send in parameter
+        Projectile projectile = new GatlingGunnerGuns(transform,context);
+
+        //Add explosion to projectilelist
+        projectileList.add(projectile);
+
+        //Return explosion
+        return projectile;
+    }
+    public Projectile createGatlingGunnerCursor(Transform transform) {
+
+        //Manipulate transform
+        transform = transform.clone();
+        transform.setSize(new Vector2(C.pH() * 12.5f, C.pH() * 12.5f));
+        transform.setCenter(new Vector2(transform.getWidth() / 2, transform.getHeight() / 2));
+
+        //Create and apply the transform send in parameter
+        Projectile projectile = new GatlingGunnerCursor(transform,context);
+
+        //Add explosion to projectilelist
+        projectileList.add(projectile);
+
+        //Return explosion
+        return projectile;
+    }
+    public Projectile createGatlingGunnerProjectile(Transform transform) {
+
+        //Manipulate transform
+        transform = transform.clone();
+        transform.setRotation(0);
+        transform.setSize(new Vector2(C.pH() * 5, C.pH() * 5));
+        transform.setScale(new Vector2(4f, 4f));
+
+        //Create and apply the transform send in parameter
+        Projectile projectile = new GatlingGunnerProjectile(transform,context);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new DefaultExplosionBodyTask((Collidable)projectile));
+
+        //Add explosion to projectilelist
+        projectileList.add(projectile);
 
         //Return explosion
         return projectile;

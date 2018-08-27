@@ -69,27 +69,50 @@ public class PlayerStateMoving implements PlayerState, GameObject {
 
     public void updateMovement() {
 
+        //Get transfrom
+        Transform transform = player.getTransform();
+
         //Which key is holded down
         if (Gdx.input.isKeyPressed(K.up())) { //W
 
             //Move up
-            player.getTransform().applyPosition(new Vector2(0, currentMovementSpeed * C.cGT()));
+            transform.applyPosition(new Vector2(0, currentMovementSpeed * C.cGT()));
+
+            //Check if we are not going outside screen
+            float limit = C.sH() - transform.getHeight();
+            if (transform.getYPosition() > limit)
+                transform.setPosition(new Vector2(transform.getXPosition(), limit));
 
         } else if (Gdx.input.isKeyPressed(K.down())) { //S
 
             //Move down
-            player.getTransform().applyPosition(new Vector2(0, -currentMovementSpeed * C.cGT()));
+            transform.applyPosition(new Vector2(0, -currentMovementSpeed * C.cGT()));
+
+            //Check if we are not going outside screen
+            float limit = 0;
+            if (transform.getYPosition() < limit)
+                transform.setPosition(new Vector2(transform.getXPosition(), limit));
         }
 
         if (Gdx.input.isKeyPressed(K.left())) { //A
 
             //Move left
-            player.getTransform().applyPosition(new Vector2(-currentMovementSpeed * C.cGT(), 0));
+            transform.applyPosition(new Vector2(-currentMovementSpeed * C.cGT(), 0));
+
+            //Check if we are not going outside screen
+            float limit = 0;
+            if (transform.getXPosition() < limit)
+                transform.setPosition(new Vector2(0, transform.getYPosition()));
 
         } else if (Gdx.input.isKeyPressed(K.right())) { //D
 
+            //Check if we are not going outside screen
+            float limit = C.sW() - transform.getWidth();
+            if (transform.getXPosition() > limit)
+                transform.setPosition(new Vector2(limit, transform.getYPosition()));
+
             //Move right
-            player.getTransform().applyPosition(new Vector2(currentMovementSpeed * C.cGT(), 0));
+            transform.applyPosition(new Vector2(currentMovementSpeed * C.cGT(), 0));
         }
     }
 

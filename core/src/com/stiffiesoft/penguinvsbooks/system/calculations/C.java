@@ -42,7 +42,11 @@ public class C {
 
     //Check if vector is outside screen
     public static boolean oS(Vector2 position) {
-        return (position.x < 0 || position.x > sW() || position.y < 0 || position.y > sH());
+        return oS(position,0);
+    }
+
+    public static boolean oS(Vector2 position, float correction) {
+        return (position.x < correction || position.x > sW() - (correction * 2) || position.y < correction || position.y > sH() - (correction * 2));
     }
 
     //Get position outside screen
