@@ -27,7 +27,7 @@ public class PauseWindow implements GameObject, Transformable {
         this.context                    = context;
         this.notificationList           = context.getNotificationList();
         this.texture                    = A.m.get(A.notificationWindow);
-        this.movementSpeed              = C.pH() * 250;
+        this.movementSpeed              = C.pH() * 200;
         this.fallSpeed                  = C.pH() * 2.5f;
         this.transform                  = new Transform(0,0,C.pW() * 33, C.pH() * 33,1,1,0);
         this.targetPosition             = new Vector2((C.sW() / 2) - (transform.getWidth() / 2), (C.sH() / 2) - (transform.getHeight() / 2));
@@ -100,6 +100,8 @@ public class PauseWindow implements GameObject, Transformable {
                 if (transform.getPosition().dst(targetPosition) <= (C.pW() * 5)) {
 
                     //Apply correct position to transform
+                    Vector2 position = new Vector2(targetPosition);
+                    position.add(new Vector2(-transform.getXCenter() / 2, -transform.getYCenter() / 2));
                     transform.setPosition(targetPosition);
 
                     //Content is ready

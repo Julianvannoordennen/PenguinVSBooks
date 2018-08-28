@@ -33,8 +33,6 @@ public class PauseChecker {
 
                 //Create the pause notification using the notificationfactory
                 notificationFactory.createPauseNotification();
-                notificationFactory.createPauseNotification();
-                notificationFactory.createPauseNotification();
 
                 //Show all current notifications
                 pauseWindow.showNotification();
