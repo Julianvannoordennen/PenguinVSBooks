@@ -58,7 +58,7 @@ public class MenuSelectOptionState implements StartMenuState, MenuButtonListener
 
         this.fontFloat              = new MovingFloat(C.pH() * -5);
         this.fontFactory            = startMenu.getMain().getFontFactory();
-        this.font                   = this.fontFactory.createNormalFont();
+        this.font                   = this.fontFactory.createFont();
         this.fontGlyph              = this.fontFactory.createGlyph("", font);
     }
 

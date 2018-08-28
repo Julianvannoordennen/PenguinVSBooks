@@ -5,21 +5,21 @@ import com.stiffiesoft.penguinvsbooks.objects.game.player.Player;
 import com.stiffiesoft.penguinvsbooks.objects.game.player.PlayerListener;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
-import com.stiffiesoft.penguinvsbooks.system.text.FontFactory;
 import com.stiffiesoft.penguinvsbooks.system.text.S;
 
 public class Lifes extends Counter implements PlayerListener {
 
     public Lifes(GameContext context) {
         super(context);
-        value = 5;
+        value   = 3;
+        max     = 6;
     }
 
     @Override
     public void render(SpriteBatch batch) {
 
         //Draw the text including the lifes
-        font.draw(batch, fontFactory.createCounterGlyph(S.lifes() + "\n" + value,this.font), C.sW() - (C.pW() * 12), (C.sH() - (C.pW() * 2)) + shakeCurrent);
+        font.draw(batch, fontFactory.createCounterGlyph(S.lifes() + "\n" + value + " \\ " + max,this.font), C.sW() - (C.pW() * 20), (C.sH() - (C.pW() * 2)) + shakeCurrent);
     }
 
     @Override

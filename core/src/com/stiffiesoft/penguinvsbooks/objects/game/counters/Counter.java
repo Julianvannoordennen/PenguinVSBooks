@@ -17,11 +17,12 @@ public class Counter implements GameObject {
     protected float shakeReturn;
     protected float shakeCurrent;
     private float shakeLimit;
+    protected int max;
 
     public Counter(GameContext context, int value) {
         this.value          = value;
         this.fontFactory    = context.getFontFactory();
-        this.font           = fontFactory.createSmallFont();
+        this.font           = fontFactory.createFont();
         this.shakeIntensity = 25;
         this.shakeCurrent   = 0;
         this.shakeLimit     = C.pH() * 7.5f;
@@ -41,6 +42,10 @@ public class Counter implements GameObject {
         shake();
     }
 
+    public void setMax(int max) {
+        this.max = max;
+    }
+
     public void apply(int value) {
         this.value += value;
         shake();
@@ -52,8 +57,10 @@ public class Counter implements GameObject {
             shakeCurrent = shakeLimit;
     }
 
-    protected void returnShake() {
-        shakeCurrent -= (shakeCurrent > 0) ? shakeReturn * C.cGT() : 0;
+    private void returnShake() {
+        shakeCurrent -= shakeReturn * C.cGT();
+        if (shakeCurrent < 0)
+            shakeCurrent = 0;
     }
 
     public void reset() {

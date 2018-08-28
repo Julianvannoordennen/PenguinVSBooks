@@ -45,9 +45,6 @@ public class ScreenFader implements GameObject {
         //Check if there is a fade going on
         if (color != null && changingIntensity) {
 
-            //Change intensity from the color
-            this.color = new Color(this.color.r, this.color.g, this.color.b, currentFade);
-
             if (targetIntensity > currentFade) {
 
                 currentFade += fadeSpeed * C.cGT();
@@ -66,6 +63,9 @@ public class ScreenFader implements GameObject {
                     changingIntensity = false;
                 }
             }
+
+            //Change intensity from the color
+            color = new Color(this.color.r, this.color.g, this.color.b, currentFade);
         }
     }
 

@@ -35,7 +35,7 @@ public class GatlingGunnerCounterView implements Projectile, Transformable, Game
         this.inPlace            = false;
         this.target             = new Vector2(C.sW() / 2, 0);
         this.movementSpeed      = C.pH() * 100;
-        this.font               = context.getFontFactory().createNormalFont();
+        this.font               = context.getFontFactory().createFont();
         this.value              = 0;
     }
 

@@ -9,29 +9,15 @@ import com.stiffiesoft.penguinvsbooks.system.rendering.DefinedColors;
 
 public class FontFactory {
 
-    private BitmapFont fontNormal;
-    private BitmapFont fontSmall;
-    private BitmapFont fontTiny;
+    private BitmapFont font;
 
     public FontFactory() {
-        fontNormal = A.m.get(A.defaultFont);
-        fontNormal.getData().setScale(1f,1f);
-        fontSmall = A.m.get(A.defaultFont);
-        fontSmall.getData().setScale(0.3f,0.3f);
-        fontTiny = A.m.get(A.defaultFont);
-        fontTiny.getData().setScale(0.2f,0.2f);
+        font = A.m.get(A.defaultFont);
+        font.getData().setScale(C.pH() / 100,C.pH() / 100);
     }
 
-    public BitmapFont createNormalFont() {
-        return fontNormal;
-    }
-
-    public BitmapFont createSmallFont() {
-        return fontSmall;
-    }
-
-    public BitmapFont createTinyFont() {
-        return fontTiny;
+    public BitmapFont createFont() {
+        return font;
     }
 
     public GlyphLayout createGlyph(String text, BitmapFont font) {
@@ -42,7 +28,13 @@ public class FontFactory {
 
     public GlyphLayout createCounterGlyph(String text, BitmapFont font) {
 
-        GlyphLayout layout = new GlyphLayout(font,text,DefinedColors.PRIMARY,C.pW() * 10,Align.center,true);
+        GlyphLayout layout = new GlyphLayout(font,text,DefinedColors.PRIMARY,C.pW() * 20,Align.center,true);
+        return layout;
+    }
+
+    public GlyphLayout createScoreGlyph(String text, BitmapFont font) {
+
+        GlyphLayout layout = new GlyphLayout(font,text,DefinedColors.SECONDARY,C.pW() * 20,Align.center,true);
         return layout;
     }
 

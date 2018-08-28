@@ -27,7 +27,7 @@ public class MenuIntroState implements StartMenuState, MovingFloatListener {
         screenFaderDeprecated.fade(Color.BLACK, 0f, 0f, 0.01f, null);
 
         FontFactory factory = startMenu.getMain().getFontFactory();
-        this.font = factory.createNormalFont();
+        this.font = factory.createFont();
         this.fontGlyph = factory.createGlyph(S.pressSpacebarToContinue(), font);
         this.fontFloat = new MovingFloat(C.pH() * -5);
         this.fontBool = new FlashingBool(true);

@@ -17,15 +17,20 @@ public class Score extends Counter implements EnemyListListener {
         super(context);
 
         //Set score values
-        defaultIncrement = 10;
-        increment = defaultIncrement;
+        defaultIncrement    = 10;
+        increment           = defaultIncrement;
+        font                = fontFactory.createFont();
+        max                 = 666666; //Highscore here
     }
 
     @Override
     public void render(SpriteBatch batch) {
 
         //Draw the text including the score
-        font.draw(batch, fontFactory.createCounterGlyph(S.score() + "\n" + value,this.font), C.pW() * 2, (C.sH() - (C.pW() * 2)) + shakeCurrent);
+        float scale = font.getData().scaleX;
+        font.getData().setScale(scale * 2);
+        font.draw(batch, fontFactory.createScoreGlyph(S.score() + "\n" + value + " \\ " + max,this.font), (C.sW() / 2) - (C.pW() * 10), (C.sH() - (C.pW() * 2)) + shakeCurrent);
+        font.getData().setScale(scale);
     }
 
     @Override

@@ -8,6 +8,7 @@ import com.stiffiesoft.penguinvsbooks.effects.ScreenFader;
 import com.stiffiesoft.penguinvsbooks.effects.ScreenFlasher;
 import com.stiffiesoft.penguinvsbooks.effects.ScreenShaker;
 import com.stiffiesoft.penguinvsbooks.objects.game.counters.Lifes;
+import com.stiffiesoft.penguinvsbooks.objects.game.counters.Notifications;
 import com.stiffiesoft.penguinvsbooks.objects.game.counters.Score;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.EnemyFactory;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning.EnemyList;
@@ -66,6 +67,7 @@ public class GameContext {
     //Counters
     private Score score;
     private Lifes lifes;
+    private Notifications notifications;
     private ShredderCannonCounter shredderCannonCounter;
     private GatlingGunnerCounter gatlingGunnerCounter;
 
@@ -133,6 +135,7 @@ public class GameContext {
         this.lifes                      = new Lifes(this);
         this.shredderCannonCounter      = new ShredderCannonCounter(this);
         this.gatlingGunnerCounter       = new GatlingGunnerCounter(this);
+        this.notifications              = new Notifications(this);
 
         //Connect
         connect();
@@ -146,6 +149,7 @@ public class GameContext {
         gameObjectList.add(lifes);
         gameObjectList.add(shredderCannonCounter);
         gameObjectList.add(gatlingGunnerCounter);
+        gameObjectList.add(notifications);
         gameObjectList.add(border);
         gameObjectList.add(screenShaker);
         gameObjectList.add(screenFlasher);
@@ -217,6 +221,10 @@ public class GameContext {
 
     public Lifes getLifes() {
         return lifes;
+    }
+
+    public Notifications getNotifications() {
+        return notifications;
     }
 
     public ProjectileListCleaner getProjectileListCleaner() {

@@ -45,6 +45,18 @@ public class S {
         if (l == Language.DUTCH) return "Levens";
         else return "Lifes";
     }
+    public static String notifications() {
+        if (l == Language.DUTCH) return "Meldingen";
+        else return "Notifications";
+    }
+    public static String blueprints() {
+        if (l == Language.DUTCH) return "Blauwdrukken";
+        else return "Blueprints";
+    }
+    public static String ammo() {
+        if (l == Language.DUTCH) return "Munitie";
+        else return "Ammo";
+    }
 
     //Pickup strings
     public static String grenade() {
@@ -156,17 +168,9 @@ public class S {
         if (l == Language.DUTCH) return "Verscheurend kannon";
         else return "Shredder Cannon";
     }
-    public static String blueprints() {
-        if (l == Language.DUTCH) return "Blauwdrukken";
-        else return "Blueprints";
-    }
 
     public static String gatlingGunner() {
         if (l == Language.DUTCH) return "Machinegeweer";
         else return "Gattling Gunner";
-    }
-    public static String ammo() {
-        if (l == Language.DUTCH) return "Munitie";
-        else return "Ammo";
     }
 }
