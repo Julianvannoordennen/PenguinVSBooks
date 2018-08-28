@@ -34,7 +34,7 @@ public class FontFactory {
 
     public GlyphLayout createScoreGlyph(String text, BitmapFont font) {
 
-        GlyphLayout layout = new GlyphLayout(font,text,DefinedColors.SECONDARY,C.pW() * 20,Align.center,true);
+        GlyphLayout layout = new GlyphLayout(font,text,DefinedColors.SECONDARY,C.pW() * 80,Align.center,true);
         return layout;
     }
 

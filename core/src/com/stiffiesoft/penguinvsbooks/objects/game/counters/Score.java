@@ -40,7 +40,7 @@ public class Score extends Counter implements EnemyListListener {
         //Draw the text including the score
         float scale = font.getData().scaleX;
         font.getData().setScale(scale * 2);
-        font.draw(batch, fontFactory.createScoreGlyph(S.score() + " " + multiplier + "\n" + value + " \\ " + max,this.font), (C.sW() / 2) - (C.pW() * 10), (C.sH() - (C.pW() * 2)) + shakeCurrent);
+        font.draw(batch, fontFactory.createScoreGlyph(S.score() + " " + multiplier + "\n" + value + " \\ " + max,this.font), (C.sW() / 2) - (C.pW() * 40), (C.sH() - (C.pW() * 2)) + shakeCurrent);
         font.getData().setScale(scale);
     }
 
