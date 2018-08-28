@@ -18,6 +18,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.saw.SawHitJun
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.saw.SawJunkPackage;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.teleporter.TeleporterJunkPackage;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ExplosionJunkPackage;
+import com.stiffiesoft.penguinvsbooks.objects.game.statistics.JunkStatisticsGroup;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
@@ -28,13 +29,18 @@ public class JunkFactory {
 
     private JunkList junkList;
     private GameContext context;
+    private JunkStatisticsGroup statistics;
 
     public JunkFactory(GameContext context) {
         this.junkList   = context.getJunkList();
         this.context    = context;
+        this.statistics = context.getStatistics().getJunkStatistics();
     }
 
     private void extractJunk(ArrayList<Junk> junk) {
+
+        //Add to statistics
+        statistics.getJunkPackagesCreated().increase();
 
         //For each junk part
         for (Junk junkPart : junk) {

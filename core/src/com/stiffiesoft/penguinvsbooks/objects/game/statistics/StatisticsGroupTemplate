@@ -1,0 +1,23 @@
+public class StatisticsGroupTemplate extends StatisticsGroup {
+
+    //Statistics
+    private Statistic testStatistic;
+
+    @Override
+    void initialize() {
+
+        //Create statistics
+        testStatistic               = new Statistic();
+    }
+
+    @Override
+    public String toString() {
+        return  "-- <CATEGORY> Statistics --" +
+                "\nTest "                     + testStatistic.getValue() +
+                "\n\n";
+    }
+
+    public Statistic getTestStatistic() {
+        return testStatistic;
+    }
+}

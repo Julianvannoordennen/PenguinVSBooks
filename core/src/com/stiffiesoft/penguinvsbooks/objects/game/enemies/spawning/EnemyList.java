@@ -4,6 +4,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Fixture;
+import com.stiffiesoft.penguinvsbooks.objects.game.statistics.EnemyStatisticsGroup;
+import com.stiffiesoft.penguinvsbooks.objects.game.statistics.Statistics;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObject;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObjectList;
@@ -17,17 +19,21 @@ public class EnemyList {
     private ArrayList<Enemy> enemies;
     private ArrayList<Enemy> disposableEnemies;
     private ArrayList<EnemyListListener> listeners;
+    private EnemyStatisticsGroup statistics;
 
     public EnemyList(GameContext context) {
         gameObjectList      = context.getGameObjectList();
         enemies             = new ArrayList<>();
         disposableEnemies   = new ArrayList<>();
         listeners           = new ArrayList<>();
+        statistics          = context.getStatistics().getEnemyStatistics();
     }
 
     public void add(Enemy enemy) {
         enemies.add(enemy);
         gameObjectList.add((GameObject)enemy);
+        statistics.getEnemiesSpawned().increase();
+        statistics.getEnemiesOnScreen().increase();
     }
 
     public ArrayList<Enemy> getArray() {
@@ -85,6 +91,10 @@ public class EnemyList {
             //Get body
             Enemy enemy = (Enemy)iterator.next();
             Body body = enemy.getBody();
+
+            //Update statistics
+            statistics.getEnemiesDied().increase();
+            statistics.getEnemiesOnScreen().decrease();
 
             //Destroy fixtures and object
             for(Fixture fixture : body.getFixtureList()) body.destroyFixture(fixture);

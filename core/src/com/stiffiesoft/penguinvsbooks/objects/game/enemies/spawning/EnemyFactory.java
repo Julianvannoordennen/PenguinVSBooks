@@ -6,6 +6,7 @@ import com.badlogic.gdx.utils.TimeUtils;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.instances.DefaultBookEnemy;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.instances.DefaultBookEnemyBodyTask;
 import com.stiffiesoft.penguinvsbooks.objects.game.junk.JunkFactory;
+import com.stiffiesoft.penguinvsbooks.objects.game.statistics.Statistics;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;
 import com.stiffiesoft.penguinvsbooks.system.collision.BodyFactory;

@@ -1,5 +1,7 @@
 package com.stiffiesoft.penguinvsbooks.scenes.game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -7,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.utils.TimeUtils;
 import com.stiffiesoft.penguinvsbooks.Main;
 import com.stiffiesoft.penguinvsbooks.objects.game.enemies.targetting.EnemyTargetSystem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.base.PickupFactory;
@@ -21,6 +24,7 @@ public class Game extends BaseScene {
     //Debug utilities
     private Box2DDebugRenderer debugRenderer;
     private OrthographicCamera box2DCamera;
+    private long nextPress;
 
     public Game(Main main) {
         super(main);
@@ -36,6 +40,7 @@ public class Game extends BaseScene {
         box2DCamera.setToOrtho(false,C.sW(), C.sH());
         box2DCamera.position.set(C.sW() / 2, C.sH() / 2, 0);
         debugRenderer = new Box2DDebugRenderer();
+        nextPress = TimeUtils.millis() + 1000;
 
         //Create some single normal
         PickupFactory pickupFactory = context.getPickupFactory();
@@ -51,6 +56,13 @@ public class Game extends BaseScene {
 
     @Override
     protected void onRender(SpriteBatch batch) {
+
+        //Draw statistics
+        if (Gdx.input.isKeyPressed(Input.Keys.Q) && TimeUtils.millis() > nextPress) {
+            System.out.println(context.getStatistics());
+            nextPress = TimeUtils.millis() + 1000;
+
+        }
 
         //Check if the pause window is turned off
         if (C.cGT() != 0) {

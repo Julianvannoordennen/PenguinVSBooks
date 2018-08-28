@@ -1,6 +1,7 @@
 package com.stiffiesoft.penguinvsbooks.objects.game.junk;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.stiffiesoft.penguinvsbooks.objects.game.statistics.JunkStatisticsGroup;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObject;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObjectList;
@@ -13,16 +14,20 @@ public class JunkList {
     private GameObjectList gameObjectList;
     private ArrayList<Junk> junkList;
     private ArrayList<Junk> disposableJunkList;
+    private JunkStatisticsGroup statistics;
 
     public JunkList(GameContext context) {
         gameObjectList      = context.getGameObjectList();
         junkList            = new ArrayList<>();
         disposableJunkList  = new ArrayList<>();
+        statistics          = context.getStatistics().getJunkStatistics();
     }
 
     public void add(Junk junk) {
         junkList.add(junk);
         gameObjectList.add(junk);
+        statistics.getJunkCreated().increase();
+        statistics.getJunkOnScreen().increase();
     }
 
     public ArrayList<Junk> get() {
@@ -48,6 +53,7 @@ public class JunkList {
             junkList.remove(junk);
             gameObjectList.remove(junk);
             iterator.remove();
+            statistics.getJunkOnScreen().decrease();
         }
     }
 }

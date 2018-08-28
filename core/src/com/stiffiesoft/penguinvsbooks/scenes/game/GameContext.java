@@ -26,6 +26,7 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.mega.shreddercannon.
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileFactory;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileList;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileListCleaner;
+import com.stiffiesoft.penguinvsbooks.objects.game.statistics.Statistics;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObjectList;
 import com.stiffiesoft.penguinvsbooks.system.collision.BodyFactory;
 import com.stiffiesoft.penguinvsbooks.system.collision.CollisionDetector;
@@ -76,6 +77,7 @@ public class GameContext {
     private PauseChecker pauseChecker;
 
     //Other
+    private Statistics statistics;
     private ProjectileListCleaner projectileListCleaner;
     private Player player;
     private PickupCatalogue pickupCatalogue;
@@ -94,6 +96,7 @@ public class GameContext {
 
         //Create priority normal
         this.main                       = main;
+        this.statistics                 = new Statistics();
         this.world                      = new World(new Vector2(0,0),true);
         this.pickupCatalogue            = main.getPickupCatalogue();
 
@@ -285,5 +288,9 @@ public class GameContext {
 
     public ScreenFader getScreenFader() {
         return screenFader;
+    }
+
+    public Statistics getStatistics() {
+        return statistics;
     }
 }
