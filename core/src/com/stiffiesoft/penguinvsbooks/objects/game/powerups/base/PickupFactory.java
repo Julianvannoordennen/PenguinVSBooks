@@ -22,11 +22,13 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.hacker.Hacker
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.helpingbook.HelpingBookPickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.katana.KatanaPickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.laser.LaserPickup;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.lifemaximizer.LifeMaximizerPickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.magnet.MagnetPickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.megalife.MegaLifePickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.nuke.NukePickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.plasmaturret.PlasmaTurretPickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.saw.SawPickup;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.scoremultiplier.ScoreMultiplierPickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.teleporter.TeleporterPickup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.wizard.WizardPickup;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
@@ -438,6 +440,34 @@ public class PickupFactory implements EnemyListListener {
 
         //Create pickup and apply the transform send in parameter
         Pickup pickup = new GatlingGunnerPickup(beforePickup(position), context);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new PickupBodyTask(pickup));
+
+        //Execute default tasks
+        afterPickup(pickup);
+
+        //Return to projectile
+        return pickup;
+    }
+    public Pickup createLifeMaximizerPickup(Vector2 position) {
+
+        //Create pickup and apply the transform send in parameter
+        Pickup pickup = new LifeMaximizerPickup(beforePickup(position), context);
+
+        //Add bodytask for the projectile
+        bodyFactory.addTask(new PickupBodyTask(pickup));
+
+        //Execute default tasks
+        afterPickup(pickup);
+
+        //Return to projectile
+        return pickup;
+    }
+    public Pickup createScoreMultiplierPickup(Vector2 position) {
+
+        //Create pickup and apply the transform send in parameter
+        Pickup pickup = new ScoreMultiplierPickup(beforePickup(position), context);
 
         //Add bodytask for the projectile
         bodyFactory.addTask(new PickupBodyTask(pickup));

@@ -16,11 +16,13 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.hacker.Hacker
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.helpingbook.HelpingBookCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.katana.KatanaCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.laser.LaserCatalogueItem;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.lifemaximizer.LifeMaximizerCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.magnet.MagnetCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.megalife.MegaLifeCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.nuke.NukeCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.plasmaturret.PlasmaTurretCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.saw.SawCatalogueItem;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.scoremultiplier.ScoreMultiplierCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.teleporter.TeleporterCatalogueItem;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.wizard.WizardCatalogueItem;
 
@@ -64,6 +66,8 @@ public class PickupCatalogue {
         pickupCatalogueItems.add(new HelpingBookCatalogueItem());
         pickupCatalogueItems.add(new ShredderCannonCatalogueItem());
         pickupCatalogueItems.add(new GatlingGunnerCatalogueItem());
+        pickupCatalogueItems.add(new LifeMaximizerCatalogueItem());
+        pickupCatalogueItems.add(new ScoreMultiplierCatalogueItem());
     }
 
     private void loadGeneralData() {

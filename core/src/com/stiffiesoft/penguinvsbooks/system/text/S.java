@@ -173,4 +173,14 @@ public class S {
         if (l == Language.DUTCH) return "Machinegeweer";
         else return "Gattling Gunner";
     }
+
+    public static String lifeMaximizer() {
+        if (l == Language.DUTCH) return "Levens Maximalizeerder";
+        else return "Life Maximizer";
+    }
+
+    public static String scoreMultiplier() {
+        if (l == Language.DUTCH) return "Score Verdubbelaar";
+        else return "Score Multiplier";
+    }
 }

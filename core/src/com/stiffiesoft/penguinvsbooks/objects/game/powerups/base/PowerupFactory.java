@@ -16,11 +16,13 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.hacker.Hacker
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.helpingbook.HelpingBookPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.katana.KatanaPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.laser.LaserPowerup;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.lifemaximizer.LifeMaximizerPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.magnet.MagnetPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.megalife.MegaLifePowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.nuke.NukePowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.plasmaturret.PlasmaTurretPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.saw.SawPowerup;
+import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.scoremultiplier.ScoreMultiplierPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.teleporter.TeleporterPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.wizard.WizardPowerup;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ProjectileFactory;
@@ -286,6 +288,28 @@ public class PowerupFactory {
 
         //Create powerup
         Powerup powerup = new GatlingGunnerPowerup(context, transform.clone());
+
+        //Add powerup to the list so the program can keep track of it
+        powerupList.add(powerup);
+
+        //Return powerup
+        return powerup;
+    }
+    public Powerup createLifeMaximizerPowerup(Transform transform) {
+
+        //Create powerup
+        Powerup powerup = new LifeMaximizerPowerup(context, transform.clone());
+
+        //Add powerup to the list so the program can keep track of it
+        powerupList.add(powerup);
+
+        //Return powerup
+        return powerup;
+    }
+    public Powerup createScoreMultiplierPowerup(Transform transform) {
+
+        //Create powerup
+        Powerup powerup = new ScoreMultiplierPowerup(context, transform.clone());
 
         //Add powerup to the list so the program can keep track of it
         powerupList.add(powerup);

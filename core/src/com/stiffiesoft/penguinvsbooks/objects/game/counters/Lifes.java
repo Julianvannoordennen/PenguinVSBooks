@@ -11,8 +11,9 @@ public class Lifes extends Counter implements PlayerListener {
 
     public Lifes(GameContext context) {
         super(context);
-        value   = 3;
-        max     = 6;
+        value       = 3;
+        max         = 6;
+        blockMax    = true;
     }
 
     @Override

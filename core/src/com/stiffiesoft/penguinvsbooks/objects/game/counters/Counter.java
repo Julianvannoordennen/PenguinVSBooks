@@ -18,6 +18,7 @@ public class Counter implements GameObject {
     protected float shakeCurrent;
     private float shakeLimit;
     protected int max;
+    protected boolean blockMax;
 
     public Counter(GameContext context, int value) {
         this.value          = value;
@@ -27,6 +28,7 @@ public class Counter implements GameObject {
         this.shakeCurrent   = 0;
         this.shakeLimit     = C.pH() * 7.5f;
         this.shakeReturn    = C.pH() * 50;
+        this.blockMax       = false;
     }
 
     public Counter(GameContext context) {
@@ -37,8 +39,14 @@ public class Counter implements GameObject {
         return value;
     }
 
+    private void checkMax() {
+        if (value > max && blockMax)
+            value = max;
+    }
+
     public void set(int value) {
         this.value = value;
+        checkMax();
         shake();
     }
 
@@ -46,8 +54,11 @@ public class Counter implements GameObject {
         this.max = max;
     }
 
+    public int getMax() { return max; }
+
     public void apply(int value) {
         this.value += value;
+        checkMax();
         shake();
     }
 
