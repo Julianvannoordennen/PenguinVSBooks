@@ -53,7 +53,7 @@ public class HelpingBookEnemy extends LinearProjectile {
     private void generatePickup() {
 
         //Create a pickup in the pickup factory
-        pickupFactory.forceSpawn(transform.getPosition());
+        pickupFactory.forceSpawn(new Vector2(C.sW() / 2, C.sH() / 2));
 
         //Retrieve the last pickup
         pickup = pickupList.get().get(pickupList.get().size() - 1);
