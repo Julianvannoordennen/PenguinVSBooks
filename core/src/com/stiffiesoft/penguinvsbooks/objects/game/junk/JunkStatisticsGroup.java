@@ -1,4 +1,7 @@
-package com.stiffiesoft.penguinvsbooks.objects.game.statistics;
+package com.stiffiesoft.penguinvsbooks.objects.game.junk;
+
+import com.stiffiesoft.penguinvsbooks.objects.game.statistics.Statistic;
+import com.stiffiesoft.penguinvsbooks.objects.game.statistics.StatisticsGroup;
 
 public class JunkStatisticsGroup extends StatisticsGroup {
 
@@ -8,7 +11,7 @@ public class JunkStatisticsGroup extends StatisticsGroup {
     private Statistic junkOnScreen;
 
     @Override
-    void initialize() {
+    protected void initialize() {
 
         //Create statistics
         junkCreated                 = new Statistic();

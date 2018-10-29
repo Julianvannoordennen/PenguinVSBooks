@@ -1,4 +1,7 @@
-package com.stiffiesoft.penguinvsbooks.objects.game.statistics;
+package com.stiffiesoft.penguinvsbooks.objects.game.enemies.spawning;
+
+import com.stiffiesoft.penguinvsbooks.objects.game.statistics.Statistic;
+import com.stiffiesoft.penguinvsbooks.objects.game.statistics.StatisticsGroup;
 
 public class EnemyStatisticsGroup extends StatisticsGroup {
 
@@ -8,7 +11,7 @@ public class EnemyStatisticsGroup extends StatisticsGroup {
     private Statistic enemiesOnScreen;
 
     @Override
-    void initialize() {
+    protected void initialize() {
 
         //Enemy statistics
         enemiesSpawned              = new Statistic();

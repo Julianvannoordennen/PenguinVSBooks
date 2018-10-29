@@ -13,8 +13,7 @@ public class StatisticsGroupTemplate extends StatisticsGroup {
     @Override
     public String toString() {
         return  "-- <CATEGORY> Statistics --" +
-                "\nTest "                     + testStatistic.getValue() +
-                "\n\n";
+                "\nTest "                     + testStatistic.getValue();
     }
 
     public Statistic getTestStatistic() {

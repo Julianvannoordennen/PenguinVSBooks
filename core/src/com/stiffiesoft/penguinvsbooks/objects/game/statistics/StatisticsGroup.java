@@ -6,7 +6,7 @@ public abstract class StatisticsGroup {
         initialize();
     }
 
-    abstract void initialize();
+    protected abstract void initialize();
 
     @Override
     public abstract String toString();

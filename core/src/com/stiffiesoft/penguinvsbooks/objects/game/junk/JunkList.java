@@ -1,9 +1,6 @@
 package com.stiffiesoft.penguinvsbooks.objects.game.junk;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.stiffiesoft.penguinvsbooks.objects.game.statistics.JunkStatisticsGroup;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
-import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObject;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.GameObjectList;
 
 import java.util.ArrayList;

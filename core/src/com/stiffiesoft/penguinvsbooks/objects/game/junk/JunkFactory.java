@@ -18,7 +18,6 @@ import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.saw.SawHitJun
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.saw.SawJunkPackage;
 import com.stiffiesoft.penguinvsbooks.objects.game.powerups.normal.teleporter.TeleporterJunkPackage;
 import com.stiffiesoft.penguinvsbooks.objects.game.projectiles.ExplosionJunkPackage;
-import com.stiffiesoft.penguinvsbooks.objects.game.statistics.JunkStatisticsGroup;
 import com.stiffiesoft.penguinvsbooks.scenes.game.GameContext;
 import com.stiffiesoft.penguinvsbooks.scenes.game.utility.Transform;
 import com.stiffiesoft.penguinvsbooks.system.calculations.C;

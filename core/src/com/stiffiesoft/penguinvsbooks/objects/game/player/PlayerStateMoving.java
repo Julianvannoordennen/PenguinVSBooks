@@ -32,6 +32,7 @@ public class PlayerStateMoving implements PlayerState, GameObject {
     private Boolean flickerOn;
     private long flickerLast;
     private long flickerLength;
+    private PlayerStatisticsGroup statistics;
 
     public PlayerStateMoving(Player player, GameContext context) {
 
@@ -39,6 +40,7 @@ public class PlayerStateMoving implements PlayerState, GameObject {
         this.player             = player;
         this.screenFlasher      = context.getScreenFlasher();
         this.projectileFactory  = context.getProjectileFactory();
+        this.statistics         = context.getStatistics().getPlayerStatisticsGroup();
 
         //Apply speed to the player
         defaultMovementSpeed    = C.pH() * 20;
@@ -123,6 +125,7 @@ public class PlayerStateMoving implements PlayerState, GameObject {
 
             //Now we have to wait before we can fire again
             updateFire();
+            statistics.getProjectilesThrown().increase();
 
             //Clone the transform of the player
             Transform projectileTransform = player.getTransform().clone();
@@ -198,6 +201,7 @@ public class PlayerStateMoving implements PlayerState, GameObject {
 
         //Tell counter that there is some damage
         player.getPlayerListeners().forEach(playerListener -> playerListener.onPlayerDamage(player));
+        statistics.getTimesDamaged().increase();
 
         //Make player temporary immortal
         player.canReceiveDamage(false);
